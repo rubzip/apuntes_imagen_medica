@@ -34,7 +34,7 @@ Antes de entrar en los detalles, imagina que todo lo que te rodea está construi
 Con esta idea, muchas cosas se entienden mejor:
 
 - **Pocos tipos de pieza, infinitas construcciones.** Se conocen unos 118 elementos, y con ellos se forma todo lo que existe: desde el agua hasta un hueso.
-- **Cada sustancia tiene su «receta».** Una molécula de agua se construye con 2 piezas de hidrógeno y 1 de oxígeno. El plomo de una placa de protección está hecho de un solo tipo de pieza, el plomo.
+- **Cada sustancia tiene sus «instrucciones».** Una molécula de agua se construye con 2 piezas de hidrógeno y 1 de oxígeno. El plomo de una placa de protección está hecho de un solo tipo de pieza, el plomo.
 - **Mismas piezas, resultados distintos.** El diamante y el grafito del lápiz están hechos solo de átomos de carbono, pero colocados de forma diferente, y por eso se comportan de manera muy distinta.
 
 Esta forma de ver la materia, con piezas sólidas que no se rompen, es en esencia la idea de **Dalton** (apartado 1.2).

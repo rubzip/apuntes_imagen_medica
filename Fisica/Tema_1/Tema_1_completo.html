@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema_1 - Apuntes</title>
+    <style>
+
+@page {
+    size: A4;
+    margin: 18mm 16mm 20mm 16mm;
+    @bottom-center {
+        content: counter(page);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 8.5pt;
+        color: #64748b;
+    }
+}
+
+@media print {
+    body {
+        font-size: 10.5pt;
+        line-height: 1.55;
+    }
+    .portada {
+        page-break-after: always;
+        height: 92vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .modulo-container {
+        page-break-before: always;
+    }
+    .no-break {
+        page-break-inside: avoid;
+    }
+    table, figure, .callout, blockquote {
+        page-break-inside: avoid;
+    }
+    h1, h2, h3, h4 {
+        page-break-after: avoid;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #1e293b;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* PORTADA */
+.portada {
+    padding: 30px 20px;
+    text-align: center;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    margin-bottom: 40px;
+}
+.portada-header {
+    margin-top: 20px;
+}
+.portada-institucion {
+    font-size: 11pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #0369a1;
+    margin-bottom: 8px;
+}
+.portada-grado {
+    font-size: 13pt;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 35px;
+}
+.portada-modulo-titulo {
+    font-size: 26pt;
+    font-weight: 800;
+    color: #1e3a8a;
+    line-height: 1.25;
+    margin: 25px 0 10px 0;
+}
+.portada-subtitulo {
+    font-size: 14pt;
+    color: #475569;
+    margin-bottom: 40px;
+}
+.portada-indice {
+    text-align: left;
+    max-width: 520px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 18px 24px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+.portada-indice h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 12pt;
+    color: #1e40af;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 6px;
+}
+.portada-indice ol {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 10pt;
+    color: #334155;
+}
+.portada-indice li {
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+.portada-footer {
+    font-size: 9pt;
+    color: #94a3b8;
+    margin-top: 30px;
+}
+
+/* ENCABEZADOS */
+h1 {
+    font-size: 20pt;
+    font-weight: 800;
+    color: #1e3a8a;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #3b82f6;
+    padding-bottom: 6px;
+}
+h2 {
+    font-size: 15pt;
+    font-weight: 700;
+    color: #1e40af;
+    margin-top: 24px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 4px;
+}
+h3 {
+    font-size: 12pt;
+    font-weight: 600;
+    color: #334155;
+    margin-top: 18px;
+    margin-bottom: 8px;
+}
+h4 {
+    font-size: 11pt;
+    font-weight: 600;
+    color: #475569;
+    margin-top: 14px;
+    margin-bottom: 6px;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+/* LISTAS */
+ul, ol {
+    margin-top: 0;
+    margin-bottom: 12px;
+    padding-left: 24px;
+}
+li {
+    margin-bottom: 4px;
+}
+
+/* TABLAS */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 18px 0;
+    font-size: 9.5pt;
+    page-break-inside: avoid;
+}
+th, td {
+    border: 1px solid #cbd5e1;
+    padding: 7px 11px;
+    text-align: left;
+    vertical-align: top;
+}
+th {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    font-weight: 700;
+}
+tr:nth-child(even) td {
+    background-color: #f8fafc;
+}
+
+/* CITAS Y BLOQUES RESALTADOS */
+blockquote {
+    margin: 14px 0;
+    padding: 10px 16px;
+    background-color: #f0f7ff;
+    border-left: 4px solid #2563eb;
+    border-radius: 0 6px 6px 0;
+    color: #1e293b;
+    page-break-inside: avoid;
+}
+blockquote p {
+    margin-bottom: 6px;
+    text-align: left;
+}
+blockquote p:last-child {
+    margin-bottom: 0;
+}
+blockquote strong {
+    color: #1e40af;
+}
+
+/* IMÁGENES Y DIAGRAMAS SVG */
+figure {
+    margin: 18px auto;
+    text-align: center;
+    page-break-inside: avoid;
+}
+figure img, p img {
+    max-width: 92%;
+    max-height: 380px;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    object-fit: contain;
+}
+figcaption, .pie-figura {
+    font-size: 9pt;
+    font-style: italic;
+    color: #64748b;
+    margin-top: 6px;
+    margin-bottom: 12px;
+    text-align: center;
+    display: block;
+}
+
+/* SEPARADORES */
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #e2e8f0;
+    margin: 20px 0;
+}
+
+/* CÓDIGO INLINE */
+code {
+    background-color: #f1f5f9;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 9pt;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+    </style>
+</head>
+<body>
+
+        <div class="portada">
+            <div class="portada-header">
+                <div class="portada-institucion">Ciclo Formativo de Grado Superior</div>
+                <div class="portada-grado">Imagen para el Diagnóstico y Medicina Nuclear</div>
+            </div>
+            <div>
+                <div class="portada-modulo-titulo">Tema 1</div>
+                <div class="portada-subtitulo">Fundamentos Físicos y Equipos · Apuntes de Estudio</div>
+                <div class="portada-indice">
+                    <h3>Contenido del Tema</h3>
+                    <ol>
+                        <li><strong>Módulo 1:</strong> La estructura de la materia</li>
+<li><strong>Módulo 2:</strong> Métodos de transmisión de energía</li>
+<li><strong>Módulo 3:</strong> Clasificación de la radiación según su impacto</li>
+<li><strong>Módulo 4:</strong> El mundo de las ondas</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="portada-footer">
+                Documento generado automáticamente · Compilación unificada de módulos
+            </div>
+        </div>
+        
+
+        <section class="modulo-container" id="modulo-1">
+            <h1 id="modulo-1-la-estructura-de-la-materia">Módulo 1. La estructura de la materia</h1>
+<p><em>Bases para entender el átomo y la radiación</em></p>
+<blockquote>
+<p><strong>Al terminar este módulo sabrás:</strong></p>
+<ul>
+<li>Describir de qué partículas está formado un átomo, dónde se sitúan y qué carga y masa tienen.</li>
+<li>Explicar por qué los modelos atómicos fueron cambiando y qué aporta el modelo de Bohr.</li>
+<li>Interpretar la notación ᴬ₂X y deducir protones, neutrones y electrones de un átomo.</li>
+<li>Distinguir isótopos e iones, y calcular la carga de un ion.</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="1-que-es-la-materia">1. ¿Qué es la materia?</h2>
+<p>Una de las primeras preguntas que se hizo la humanidad es qué es la materia y de qué está hecha.</p>
+<p>Resulta evidente que el agua, el aire que nos redea, las piedras los humanos o el sol son materia ya que ocupamos un volumen y tenemos masa. No obstante somos muy distintos, tenemos propiedades completamente distintos e interactuamos con otra materia de manera distinta. Es por eso que llegamos a la pregunta, ¿Qué tiene en común toda la materia? ¿Y, qué hace diferenciarnos? Para responder estas preguntas decidieron ir a la raíz del problema, ¿Cuáles son las unidades mínimas que forman la materia?</p>
+<h2 id="11-de-que-esta-hecha-la-materia">1.1. ¿De qué está hecha la materia?</h2>
+<p>Un hueso, el aire, el agua o una placa de plomo tienen propiedades muy distintas, pero todos están formados por <strong>átomos</strong>. La palabra viene del griego <em>a-tomon</em>, «sin división»: durante siglos se pensó que el átomo era la unidad última e indivisible de la materia.</p>
+<h3 id="una-analogia-la-materia-como-una-construccion-de-lego">Una analogía: la materia como una construcción de LEGO</h3>
+<p>Antes de entrar en los detalles, imagina que todo lo que te rodea está construido con piezas de LEGO. Hay <strong>pocos tipos de piezas</strong>, pero se pueden combinar de muchísimas maneras. Con la materia ocurre algo parecido: las piezas son los <strong>átomos</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>En el LEGO</th>
+<th>En la materia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Una pieza</td>
+<td>Un <strong>átomo</strong></td>
+</tr>
+<tr>
+<td>Un tipo de pieza (forma y color)</td>
+<td>Un <strong>elemento químico</strong> (hidrógeno, carbono, oxígeno, calcio…)</td>
+</tr>
+<tr>
+<td>Piezas encajadas entre sí</td>
+<td>Átomos unidos entre sí (<strong>moléculas</strong>)</td>
+</tr>
+<tr>
+<td>Una construcción terminada</td>
+<td>Una <strong>sustancia o material</strong> (agua, aire, hueso, plomo…)</td>
+</tr>
+</tbody>
+</table>
+<p>Con esta idea, muchas cosas se entienden mejor:</p>
+<ul>
+<li><strong>Pocos tipos de pieza, infinitas construcciones.</strong> Se conocen unos 118 elementos, y con ellos se forma todo lo que existe: desde el agua hasta un hueso.</li>
+<li><strong>Cada sustancia tiene sus «instrucciones».</strong> Una molécula de agua se construye con 2 piezas de hidrógeno y 1 de oxígeno. El plomo de una placa de protección está hecho de un solo tipo de pieza, el plomo.</li>
+<li><strong>Mismas piezas, resultados distintos.</strong> El diamante y el grafito del lápiz están hechos solo de átomos de carbono, pero colocados de forma diferente, y por eso se comportan de manera muy distinta.</li>
+</ul>
+<p>Esta forma de ver la materia, con piezas sólidas que no se rompen, es en esencia la idea de <strong>Dalton</strong> (apartado 1.2).</p>
+<blockquote>
+<p><strong>Dónde falla la analogía:</strong> una pieza de LEGO es un bloque macizo, y no se puede dividir en nada más pequeño. El átomo, en cambio, <strong>sí tiene piezas por dentro</strong>. Es lo que vemos a continuación.</p>
+</blockquote>
+<h3 id="es-realmente-indivisible-un-atomo">¿Es realmente indivisible un átomo?</h3>
+<p>Hoy sabemos que el átomo no es indivisible. A finales del siglo XIX y principios del XX se demostró que el átomo tiene estructura interna: está formado por <strong>partículas subatómicas</strong> repartidas en dos regiones.</p>
+<table>
+<thead>
+<tr>
+<th>Región</th>
+<th>Tamaño aproximado</th>
+<th>Qué contiene</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Núcleo</strong> (centro)</td>
+<td>radio ≈ 10⁻¹⁴ m</td>
+<td>Protones y neutrones. Concentra casi toda la masa del átomo.</td>
+</tr>
+<tr>
+<td><strong>Corteza electrónica</strong> (periferia)</td>
+<td>distancia media ≈ 10⁻¹⁰ m</td>
+<td>Electrones.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Para hacerte una idea:</strong> el núcleo es unas <strong>10 000 veces más pequeño</strong> que el átomo. Si el núcleo fuese una canica de 1 cm, el átomo entero mediría unos 100 m, como un campo de fútbol. Casi todo el átomo es espacio vacío.</p>
+</blockquote>
+<p>Esquema del átomo
+<img alt="1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MzAgMjQwIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyI+PHJlY3Qgd2lkdGg9IjQzMCIgaGVpZ2h0PSIyNDAiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxMjAiIGN5PSIxMjAiIHI9IjEwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNmI3YmIzIiBzdHJva2UtZGFzaGFycmF5PSI0IDQiLz48Y2lyY2xlIGN4PSIxMjAiIGN5PSIxMjAiIHI9IjY4IiBmaWxsPSJub25lIiBzdHJva2U9IiM2YjdiYjMiIHN0cm9rZS1kYXNoYXJyYXk9IjQgNCIvPjxjaXJjbGUgY3g9IjExMy4wIiBjeT0iMTEzLjAiIHI9IjciIGZpbGw9IiNkMzMiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIuNiIvPjxjaXJjbGUgY3g9IjEyNy4wIiBjeT0iMTEzLjAiIHI9IjciIGZpbGw9IiM5OTkiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIuNiIvPjxjaXJjbGUgY3g9IjExMy4wIiBjeT0iMTI3LjAiIHI9IjciIGZpbGw9IiM5OTkiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIuNiIvPjxjaXJjbGUgY3g9IjEyNy4wIiBjeT0iMTI3LjAiIHI9IjciIGZpbGw9IiNkMzMiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIuNiIvPjxjaXJjbGUgY3g9IjEyMC4wIiBjeT0iMjAuMCIgcj0iNSIgZmlsbD0iIzI1YyIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9Ii42Ii8+PGNpcmNsZSBjeD0iMTIwLjAiIGN5PSIyMjAuMCIgcj0iNSIgZmlsbD0iIzI1YyIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9Ii42Ii8+PGNpcmNsZSBjeD0iMTg4LjAiIGN5PSIxMjAuMCIgcj0iNSIgZmlsbD0iIzI1YyIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9Ii42Ii8+PGNpcmNsZSBjeD0iNTIuMCIgY3k9IjEyMC4wIiByPSI1IiBmaWxsPSIjMjVjIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iLjYiLz48Y2lyY2xlIGN4PSIyNTAuMCIgY3k9IjUwLjAiIHI9IjYiIGZpbGw9IiNkMzMiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIuNiIvPjx0ZXh0IHg9IjI2NiIgeT0iNTUiIHRleHQtYW5jaG9yPSJzdGFydCIgZmlsbD0iIzIyMiI+UHJvdMOzbiAoKyk8L3RleHQ+PGNpcmNsZSBjeD0iMjUwLjAiIGN5PSI3OC4wIiByPSI2IiBmaWxsPSIjOTk5IiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iLjYiLz48dGV4dCB4PSIyNjYiIHk9IjgzIiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZpbGw9IiMyMjIiPk5ldXRyw7NuICgwKTwvdGV4dD48Y2lyY2xlIGN4PSIyNTAuMCIgY3k9IjEwNi4wIiByPSI2IiBmaWxsPSIjMjVjIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iLjYiLz48dGV4dCB4PSIyNjYiIHk9IjExMSIgdGV4dC1hbmNob3I9InN0YXJ0IiBmaWxsPSIjMjIyIj5FbGVjdHLDs24gKOKIkik8L3RleHQ+PHRleHQgeD0iMjUwIiB5PSIxNjAiIHRleHQtYW5jaG9yPSJzdGFydCIgZmlsbD0iIzIyMiI+TsO6Y2xlbyDiiYggMTDigbvCueKBtCBtPC90ZXh0Pjx0ZXh0IHg9IjI1MCIgeT0iMTgyIiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZpbGw9IiMyMjIiPsOBdG9tbyDiiYggMTDigbvCueKBsCBtPC90ZXh0Pjx0ZXh0IHg9IjI1MCIgeT0iMjA0IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZpbGw9IiM2NjYiPihubyBhIGVzY2FsYSk8L3RleHQ+PC9zdmc+" />
+<em>Figura 1. Estructura del átomo: núcleo con protones y neutrones, y electrones en la corteza.</em></p>
+<h3 id="las-tres-particulas-fundamentales">Las tres partículas fundamentales</h3>
+<table>
+<thead>
+<tr>
+<th>Partícula</th>
+<th>Localización</th>
+<th>Carga (C)</th>
+<th>Carga relativa</th>
+<th>Masa (kg)</th>
+<th>Masa relativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Protón</strong> (p⁺)</td>
+<td>Núcleo</td>
+<td>+1,6 × 10⁻¹⁹</td>
+<td>+1</td>
+<td>1,673 × 10⁻²⁷</td>
+<td>≈ 1 u</td>
+</tr>
+<tr>
+<td><strong>Neutrón</strong> (n⁰)</td>
+<td>Núcleo</td>
+<td>0</td>
+<td>0</td>
+<td>1,675 × 10⁻²⁷</td>
+<td>≈ 1 u</td>
+</tr>
+<tr>
+<td><strong>Electrón</strong> (e⁻)</td>
+<td>Corteza</td>
+<td>−1,6 × 10⁻¹⁹</td>
+<td>−1</td>
+<td>9,1 × 10⁻³¹</td>
+<td>≈ 0 u (despreciable)</td>
+</tr>
+</tbody>
+</table>
+<p><em>1 u (unidad de masa atómica) ≈ 1,66 × 10⁻²⁷ kg.</em></p>
+<ul>
+<li><strong>Protón:</strong> tiene carga positiva. <strong>Su número determina de qué elemento químico se trata.</strong></li>
+<li><strong>Neutrón:</strong> no tiene carga. Fue descubierto por James Chadwick en 1932. Su masa es ligeramente superior a la del protón y ayuda a estabilizar el núcleo.</li>
+<li><strong>Electrón:</strong> tiene carga negativa, igual en valor a la del protón pero de signo opuesto. Es unas <strong>1 836 veces más ligero</strong> que el protón.</li>
+</ul>
+<p><strong>Idea clave:</strong> la masa del átomo está casi toda en el núcleo; las propiedades químicas dependen de cuántos protones tiene.</p>
+<hr />
+<h2 id="12-evolucion-de-los-modelos-atomicos">1.2. Evolución de los modelos atómicos</h2>
+<p>Un modelo científico es una representación que explica lo que se observa. Cuando aparecen resultados que no encajan, el modelo se sustituye. Esto es lo que ocurrió con el átomo:</p>
+<table>
+<thead>
+<tr>
+<th>Modelo</th>
+<th>Idea principal</th>
+<th>Por qué dejó de valer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Dalton</strong> (principios del s. XIX)</td>
+<td>Esfera maciza, indivisible e indestructible. Todos los átomos de un elemento son idénticos.</td>
+<td>Thomson identificó el electrón como partícula aislada: el átomo sí tiene partes.</td>
+</tr>
+<tr>
+<td><strong>Thomson</strong> (1904), «pudin de pasas»</td>
+<td>Esfera con carga positiva y casi toda la masa, con electrones incrustados como pasas en un bizcocho.</td>
+<td>Los experimentos dirigidos por Rutherford mostraron que la carga positiva y la masa están concentradas en un centro diminuto.</td>
+</tr>
+<tr>
+<td><strong>Rutherford</strong> (1911), «planetario»</td>
+<td>Núcleo central positivo y electrones girando a su alrededor en órbitas, como los planetas alrededor del Sol.</td>
+<td>Tiene tres problemas (ver debajo).</td>
+</tr>
+<tr>
+<td><strong>Bohr</strong> (1913)</td>
+<td>Electrones en órbitas con energías concretas («niveles»).</td>
+<td>Es la base del modelo actual (ver 1.3).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="los-tres-problemas-del-modelo-de-rutherford">Los tres problemas del modelo de Rutherford</h3>
+<ol>
+<li><strong>Estabilidad del núcleo.</strong> Los protones tienen carga positiva y se repelen. Apretados en un espacio tan pequeño, el núcleo debería «estallar».</li>
+<li><strong>Estabilidad del electrón.</strong> Según la física clásica, una carga que gira (acelerada) emite energía continuamente. El electrón perdería energía y caería en espiral contra el núcleo en unos 10⁻¹⁰ s. La materia colapsaría.</li>
+<li><strong>Espectros de emisión.</strong> Cada elemento emite luz solo en colores (longitudes de onda) muy concretos, siempre los mismos. El modelo no lo explicaba.</li>
+</ol>
+<p>El problema 1 se resuelve con la fuerza nuclear fuerte (apartado 1.4). Los problemas 2 y 3 los resuelve Bohr.</p>
+<hr />
+<h2 id="13-el-modelo-de-bohr-la-base-de-la-emision-de-radiacion">1.3. El modelo de Bohr: la base de la emisión de radiación</h2>
+<p>En 1913, el danés Niels Bohr aplicó las ideas de Planck y Einstein sobre la cuantización de la luz y propuso tres postulados.</p>
+<p><strong>Postulado 1: órbitas estacionarias.</strong> Los electrones giran en órbitas circulares estables sin emitir energía. La atracción eléctrica del núcleo se compensa con la fuerza centrípeta del giro.</p>
+<p><strong>Postulado 2: cuantización de la energía.</strong> Solo están permitidas ciertas órbitas, con energías concretas. Se identifican con el número entero <strong>n = 1, 2, 3…</strong>, los llamados <strong>niveles de energía</strong> (capas K, L, M…).</p>
+<ul>
+<li>Cuanto más cerca del núcleo (n = 1), más fuertemente está ligado el electrón.</li>
+<li>La <strong>energía de ligadura</strong> de un nivel es la energía mínima necesaria para arrancar el electrón del átomo. A ese proceso se le llama <strong>ionización</strong>.</li>
+<li>En cada nivel caben como máximo <strong>2n²</strong> electrones (2 en el primero, 8 en el segundo, 18 en el tercero…).</li>
+</ul>
+<p><strong>Postulado 3: saltos de energía mediante fotones.</strong> Un electrón solo cambia de nivel si absorbe o emite energía en forma de <strong>fotón</strong>, y este debe llevar exactamente la diferencia de energía entre ambos niveles.</p>
+<p><strong>En resumidas cuentas:</strong> según Bohr los electrones se distribuyen en distintas órbitas (o niveles). Cada nivel está asociado a un número (n = 1, 2, 3, ...). Un electrón tiene una energía distinta según el nivel en el que está. Cada nivel tiene una capacidad máxima de electrones, en el nivel 1 solo caben 2, en el nivel 2 solo caben 8, en el nivel 3 caben 18... </p>
+<p>Si un electrón quiere moverse del nivel 1 al nivel 3 necesita: <strong>primero:</strong> que el nivel no esté lleno, si hay 18 electrones en el nivel 3 no es posible que exista ninguno más. <strong>segundo:</strong> recibir la diferencia de energía necesaria para moverse de uno a otro (el mínimo de energía es la energía del nivel 3 menos la energía del nivel 1).</p>
+<p>Para moverse un electrón de un nivel superior a uno inferior pasa lo contrario: <strong>primero:</strong> el nivel inferior debe no estar lleno, <strong>segundo:</strong> debe soltar la energía que le sobra pues al estar en un nivel superior tiene más energía de la que se necesita en el inferior.</p>
+<table>
+<thead>
+<tr>
+<th>Proceso</th>
+<th>Qué ocurre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Excitación</strong></td>
+<td>El electrón absorbe un fotón con la energía justa y salta a un nivel superior (n mayor).</td>
+</tr>
+<tr>
+<td><strong>Desexcitación</strong></td>
+<td>El electrón cae a un nivel inferior (n menor) y emite un fotón con el exceso de energía.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Energía del fotón: <strong>Eγ = | En,i − En,f |</strong> (diferencia de energía entre el nivel inicial <em>i</em> y el final <em>f</em>).</p>
+</blockquote>
+<p>Transición electrónica según Bohr</p>
+<p><img alt="1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDAgMjUwIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyI+PHJlY3Qgd2lkdGg9IjQ0MCIgaGVpZ2h0PSIyNTAiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxNTAiIGN5PSIxMjUiIHI9IjMwIiBmaWxsPSJub25lIiBzdHJva2U9IiM2YjdiYjMiIHN0cm9rZS1kYXNoYXJyYXk9IjQgNCIvPjxjaXJjbGUgY3g9IjE1MCIgY3k9IjEyNSIgcj0iNjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzZiN2JiMyIgc3Ryb2tlLWRhc2hhcnJheT0iNCA0Ii8+PGNpcmNsZSBjeD0iMTUwIiBjeT0iMTI1IiByPSI5MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNmI3YmIzIiBzdHJva2UtZGFzaGFycmF5PSI0IDQiLz48Y2lyY2xlIGN4PSIxNTAuMCIgY3k9IjEyNS4wIiByPSI4IiBmaWxsPSIjZDMzIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iLjYiLz48dGV4dCB4PSIxNTAiIHk9IjEyOSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2ZmZiI+KzwvdGV4dD48dGV4dCB4PSIxMTYiIHk9IjEyOSIgdGV4dC1hbmNob3I9InN0YXJ0IiBmaWxsPSIjMjIyIj48L3RleHQ+PHRleHQgeD0iODYiIHk9IjEyOSIgdGV4dC1hbmNob3I9InN0YXJ0IiBmaWxsPSIjMjIyIj48L3RleHQ+PHRleHQgeD0iNTYiIHk9IjEyOSIgdGV4dC1hbmNob3I9InN0YXJ0IiBmaWxsPSIjMjIyIj48L3RleHQ+PHRleHQgeD0iMTQwLjAiIHk9IjE2OSIgdGV4dC1hbmNob3I9ImVuZCIgZmlsbD0iIzY2NiI+biA9IDE8L3RleHQ+PHRleHQgeD0iMTQwLjAiIHk9IjE5OSIgdGV4dC1hbmNob3I9ImVuZCIgZmlsbD0iIzY2NiI+biA9IDI8L3RleHQ+PHRleHQgeD0iMTQwLjAiIHk9IjIyOSIgdGV4dC1hbmNob3I9ImVuZCIgZmlsbD0iIzY2NiI+biA9IDM8L3RleHQ+PGNpcmNsZSBjeD0iMjA3LjkiIGN5PSI1Ni4xIiByPSI2IiBmaWxsPSIjMjVjIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iLjYiLz48Y2lyY2xlIGN4PSIxNjkuMyIgY3k9IjEwMi4wIiByPSI2IiBmaWxsPSIjMjVjIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iLjYiLz48bGluZSB4MT0iMjA0LjkiIHkxPSI2MC4xIiB4Mj0iMTcxLjMiIHkyPSI5Ny4wIiBzdHJva2U9IiMyNWMiIHN0cm9rZS1kYXNoYXJyYXk9IjMgMyIgbWFya2VyLWVuZD0idXJsKCNtKSIvPjxkZWZzPjxtYXJrZXIgaWQ9Im0iIG1hcmtlcldpZHRoPSI4IiBtYXJrZXJIZWlnaHQ9IjgiIHJlZlg9IjYiIHJlZlk9IjQiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTTAgMEw4IDRMMCA4eiIgZmlsbD0iIzI1YyIvPjwvbWFya2VyPjwvZGVmcz48cGF0aCBkPSJNIDIxNSA4NSBxIDEwIC0xNCAyMCAwIHQgMjAgMCB0IDIwIDAgdCAyMCAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNkMzMiIHN0cm9rZS13aWR0aD0iMiIvPjx0ZXh0IHg9IjMwMCIgeT0iNDgiIHRleHQtYW5jaG9yPSJzdGFydCIgZmlsbD0iI2QzMyI+Rm90w7NuIGVtaXRpZG88L3RleHQ+PHRleHQgeD0iMzAwIiB5PSI2NCIgdGV4dC1hbmNob3I9InN0YXJ0IiBmaWxsPSIjZDMzIj5FID0gfEXhtaIg4oiSIEVfZnw8L3RleHQ+PHRleHQgeD0iMzAwIiB5PSIxNzAiIHRleHQtYW5jaG9yPSJzdGFydCIgZmlsbD0iIzIyMiI+RGVzZXhjaXRhY2nDs246PC90ZXh0Pjx0ZXh0IHg9IjMwMCIgeT0iMTg4IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZpbGw9IiMyMjIiPmVsIGVsZWN0csOzbiBiYWphIGRlIG5pdmVsPC90ZXh0Pjx0ZXh0IHg9IjMwMCIgeT0iMjA2IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZpbGw9IiMyMjIiPnkgZW1pdGUgdW4gZm90w7NuLjwvdGV4dD48L3N2Zz4=" />
+<em>Figura 2. Desexcitación en el modelo de Bohr: el electrón pasa a un nivel inferior y emite un fotón.</em></p>
+<blockquote>
+<p><strong>En el hospital:</strong> este tercer postulado es el mecanismo detrás de la <strong>radiación X característica</strong> de los tubos de rayos X. Lo verás en detalle en el Módulo 4.</p>
+<p><strong>Para ir más allá: fórmulas de Bohr</strong></p>
+<ul>
+<li>Radio de la órbita n: <strong>rₙ = 0,5 · n² / Z</strong> (en ångström, 1 Å = 10⁻¹⁰ m)</li>
+<li>Energía del electrón en la órbita n: <strong>Eₙ = −13,6 · Z² / n²</strong> (en electronvoltios, 1 eV = 1,6 × 10⁻¹⁹ J)</li>
+</ul>
+<p>donde Z es el número atómico (ver 1.4). El signo negativo es un convenio: se toma como cero la energía del electrón ya libre, de modo que un electrón ligado tiene menos energía. La energía de ionización es el valor absoluto, |Eₙ|.</p>
+<p><strong>Ejemplo (hidrógeno, Z = 1).</strong> En n = 1: E₁ = −13,6 eV, así que arrancar su electrón cuesta 13,6 eV. En n = 2: E₂ = −3,4 eV. Si el electrón cae de n = 2 a n = 1, emite un fotón de |−3,4 − (−13,6)| = <strong>10,2 eV</strong>.</p>
+<p>Para el wolframio (Z = 74), la fórmula da unos 74 keV para el nivel K; el valor real es ≈ 70 keV. Es el orden de energía de los rayos X de diagnóstico.</p>
+<p>El modelo de Bohr funciona exactamente solo para átomos con un electrón, pero describe bien la idea de fondo para los demás.</p>
+</blockquote>
+<hr />
+<h2 id="14-identidad-nuclear-z-n-y-a">1.4. Identidad nuclear: Z, N y A</h2>
+<h3 id="los-numeros-que-definen-un-nucleo">Los números que definen un núcleo</h3>
+<p>Hasta ahora para definir un átomo hemos hablado de <strong>número de protones</strong>, <strong>número de neutrones</strong> y <strong>número de electrones</strong>. Aunque esta notación es completamente adecuada en física se utiliza otra (Z, A). </p>
+<p>Debemos recordar que lo que más define a un átomo es <strong>el numero de protones</strong>, por así decirlo es el <em>DNI del elemento</em>. Conociendo el <strong>Número atómico (Z)</strong> (número de protones) podemos definir la mayoría de propiedades del átomo. En física el numero de protones se dice con la letra Z. Si decimos que un átomo tiene Z = 12, sabemos que tiene 12 protones y que estamos hablando del elemento llamado <em>Magnesio (Mg)</em>. Sabiendo el numero Z del átomo, podemos identificar a que elemento pertenece tan solo buscando en la tabla periódica.</p>
+<p><em>Ejercicio: Busca los elementos con Z = 1, 6, 92. Truco busca en la tabla periodica el número que viene en la esquina superior izquierda.</em></p>
+<p>Por otro lado el otro número que usamos para definir un átomo es el <strong>número másico (A)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Símbolo</th>
+<th>Nombre</th>
+<th>Qué es</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Z</strong></td>
+<td>Número atómico</td>
+<td>Número de <strong>protones</strong>. Define el elemento y su posición en la tabla periódica.</td>
+</tr>
+<tr>
+<td><strong>N</strong></td>
+<td>Número de neutrones</td>
+<td>Número de <strong>neutrones</strong>.</td>
+</tr>
+<tr>
+<td><strong>A</strong></td>
+<td>Número másico</td>
+<td>Número de <strong>nucleones</strong> (protones + neutrones): <strong>A = Z + N</strong>, es decir, <strong>N = A − Z</strong>.</td>
+</tr>
+</tbody>
+</table>
+<p>En un átomo <strong>neutro</strong>, el número de electrones es igual a Z.</p>
+<p><strong>Notación:</strong> ᴬ₂X, donde X es el símbolo del elemento. Como X y Z dan la misma información, a menudo se escribe solo ᴬX (por ejemplo, ¹⁴C).</p>
+<h3 id="ejemplo-resuelto-1-carga-y-masa-de-un-atomo-de-carbono">Ejemplo resuelto 1: carga y masa de un átomo de carbono</h3>
+<p>Un átomo neutro de carbono tiene 6 protones, 6 neutrones y 6 electrones.</p>
+<p><strong>Carga:</strong></p>
+<ul>
+<li>Protones: 6 × (+1,6 × 10⁻¹⁹ C) = +9,6 × 10⁻¹⁹ C</li>
+<li>Electrones: 6 × (−1,6 × 10⁻¹⁹ C) = −9,6 × 10⁻¹⁹ C</li>
+<li>Neutrones: 0 C</li>
+<li><strong>Carga neta = 0 C</strong> (átomo neutro).</li>
+</ul>
+<p><strong>Masa:</strong></p>
+<ul>
+<li>Protones: 6 × 1,673 × 10⁻²⁷ = 10,038 × 10⁻²⁷ kg</li>
+<li>Neutrones: 6 × 1,675 × 10⁻²⁷ = 10,050 × 10⁻²⁷ kg</li>
+<li>Electrones: 6 × 9,1 × 10⁻³¹ = 0,00546 × 10⁻²⁷ kg</li>
+<li><strong>Masa total ≈ 20,093 × 10⁻²⁷ kg</strong></li>
+</ul>
+<p>Los electrones aportan menos del 0,03 % de la masa total: <strong>la masa está casi toda en el núcleo</strong>.</p>
+<h3 id="ejemplo-resuelto-2-del-simbolo-a-las-particulas">Ejemplo resuelto 2: del símbolo a las partículas</h3>
+<p>Átomo de aluminio, ²⁷₁₃Al:</p>
+<ul>
+<li>Z = 13 → <strong>13 protones</strong>.</li>
+<li>N = A − Z = 27 − 13 = <strong>14 neutrones</strong>.</li>
+<li>Neutro → <strong>13 electrones</strong>.</li>
+<li>Masa aproximada: A ≈ <strong>27 u</strong>.</li>
+</ul>
+<hr />
+<h3 id="la-fuerza-nuclear-fuerte">La fuerza nuclear fuerte</h3>
+<p>Si los protones se repelen, ¿por qué el núcleo no se rompe? La gravedad es demasiado débil para evitarlo. Se postuló una nueva interacción de la naturaleza, la <strong>interacción nuclear fuerte</strong>, que tiene estas características:</p>
+<ul>
+<li>Es <strong>atractiva</strong> y muy intensa.</li>
+<li>Es de <strong>muy corto alcance</strong>: solo actúa a distancias del orden del tamaño del núcleo (\~10⁻¹⁴ m).</li>
+<li><strong>No depende de la carga</strong>: atrae igual a protones y neutrones.</li>
+</ul>
+<p>Los neutrones aportan atracción sin añadir repulsión eléctrica, por eso actúan como «estabilizadores» del núcleo.</p>
+<h2 id="15-isotopos-mismo-elemento-distinta-masa">1.5. Isótopos: mismo elemento, distinta masa</h2>
+<p>Los <strong>isótopos</strong> son átomos del mismo elemento (mismo Z, mismo número de protones) con <strong>distinto número másico A</strong>, es decir, con distinto número de neutrones.</p>
+<p>Como tienen los mismos protones y electrones, <strong>todos los isótopos de un elemento se comportan igual químicamente</strong>. Cambian su masa y su <strong>estabilidad nuclear</strong>: unos son estables y otros son radiactivos.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Carbono-12 (¹²C)</th>
+<th>Carbono-14 (¹⁴C)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Protones (Z)</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Neutrones (N = A − Z)</td>
+<td>6</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Electrones (neutro)</td>
+<td>6</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Carga neta</td>
+<td>0 C</td>
+<td>0 C</td>
+</tr>
+<tr>
+<td>Masa aproximada</td>
+<td>≈ 12 u</td>
+<td>≈ 14 u</td>
+</tr>
+<tr>
+<td>Estabilidad</td>
+<td>Estable</td>
+<td><strong>Inestable (radiactivo)</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Isótopos del carbono</p>
+<p><img alt="1" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDAgMjMwIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyI+PHJlY3Qgd2lkdGg9IjQ0MCIgaGVpZ2h0PSIyMzAiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxMTAiIGN5PSIxMDAiIHI9IjYyIiBmaWxsPSJub25lIiBzdHJva2U9IiM2YjdiYjMiIHN0cm9rZS1kYXNoYXJyYXk9IjQgNCIvPjxjaXJjbGUgY3g9IjExMC4wIiBjeT0iMTAwLjAiIHI9IjMwIiBmaWxsPSIjYzlhIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iLjYiLz48dGV4dCB4PSIxMTAiIHk9Ijk2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMjIyIj42IHDigbo8L3RleHQ+PHRleHQgeD0iMTEwIiB5PSIxMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMyMjIiPjYgbuKBsDwvdGV4dD48Y2lyY2xlIGN4PSIxNjguMyIgY3k9IjEyMS4yIiByPSI1IiBmaWxsPSIjMjVjIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iLjYiLz48Y2lyY2xlIGN4PSIxMjAuOCIgY3k9IjE2MS4xIiByPSI1IiBmaWxsPSIjMjVjIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iLjYiLz48Y2lyY2xlIGN4PSI2Mi41IiBjeT0iMTM5LjkiIHI9IjUiIGZpbGw9IiMyNWMiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIuNiIvPjxjaXJjbGUgY3g9IjUxLjciIGN5PSI3OC44IiByPSI1IiBmaWxsPSIjMjVjIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iLjYiLz48Y2lyY2xlIGN4PSI5OS4yIiBjeT0iMzguOSIgcj0iNSIgZmlsbD0iIzI1YyIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9Ii42Ii8+PGNpcmNsZSBjeD0iMTU3LjUiIGN5PSI2MC4xIiByPSI1IiBmaWxsPSIjMjVjIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iLjYiLz48dGV4dCB4PSIxMTAiIHk9IjE5NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzIyMiI+Q2FyYm9uby0xMiAowrnCskMpPC90ZXh0Pjx0ZXh0IHg9IjExMCIgeT0iMjE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjY2Ij5lc3RhYmxlPC90ZXh0PjxjaXJjbGUgY3g9IjMzMCIgY3k9IjEwMCIgcj0iNjIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzZiN2JiMyIgc3Ryb2tlLWRhc2hhcnJheT0iNCA0Ii8+PGNpcmNsZSBjeD0iMzMwLjAiIGN5PSIxMDAuMCIgcj0iMzAiIGZpbGw9IiNjOWEiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIuNiIvPjx0ZXh0IHg9IjMzMCIgeT0iOTYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMyMjIiPjYgcOKBujwvdGV4dD48dGV4dCB4PSIzMzAiIHk9IjExMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzIyMiI+OCBu4oGwPC90ZXh0PjxjaXJjbGUgY3g9IjM4OC4zIiBjeT0iMTIxLjIiIHI9IjUiIGZpbGw9IiMyNWMiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIuNiIvPjxjaXJjbGUgY3g9IjM0MC44IiBjeT0iMTYxLjEiIHI9IjUiIGZpbGw9IiMyNWMiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIuNiIvPjxjaXJjbGUgY3g9IjI4Mi41IiBjeT0iMTM5LjkiIHI9IjUiIGZpbGw9IiMyNWMiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIuNiIvPjxjaXJjbGUgY3g9IjI3MS43IiBjeT0iNzguOCIgcj0iNSIgZmlsbD0iIzI1YyIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9Ii42Ii8+PGNpcmNsZSBjeD0iMzE5LjIiIGN5PSIzOC45IiByPSI1IiBmaWxsPSIjMjVjIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iLjYiLz48Y2lyY2xlIGN4PSIzNzcuNSIgY3k9IjYwLjEiIHI9IjUiIGZpbGw9IiMyNWMiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIuNiIvPjx0ZXh0IHg9IjMzMCIgeT0iMTk1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMjIyIj5DYXJib25vLTE0ICjCueKBtEMpPC90ZXh0Pjx0ZXh0IHg9IjMzMCIgeT0iMjE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjY2Ij5yYWRpYWN0aXZvPC90ZXh0Pjwvc3ZnPg==" />
+<em>Figura 3. Isótopos del carbono: mismo Z (6 protones) y distinto número de neutrones.</em></p>
+<p><strong>Conclusión:</strong> el ¹⁴C tiene dos neutrones de más. Eso aumenta su masa y lo hace inestable. Los núcleos inestables son los que emiten radiación (Módulo 3).</p>
+<hr />
+<h2 id="16-iones-cuando-se-rompe-el-equilibrio-electrico">1.6. Iones: cuando se rompe el equilibrio eléctrico</h2>
+<p>En un átomo neutro, <strong>protones = electrones</strong>. Si el átomo pierde o gana electrones, esa igualdad se rompe y se forma un <strong>ion</strong>. Los protones no cambian: el elemento sigue siendo el mismo.</p>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Qué ocurre</th>
+<th>Carga</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Catión</strong></td>
+<td>Pierde uno o más electrones</td>
+<td>Positiva</td>
+</tr>
+<tr>
+<td><strong>Anión</strong></td>
+<td>Gana uno o más electrones</td>
+<td>Negativa</td>
+</tr>
+</tbody>
+</table>
+<p>La <strong>radiación ionizante</strong> es justamente la que tiene energía suficiente para arrancar electrones de la corteza y producir iones. Esto es lo que da nombre a este tipo de radiación (Módulo 2).</p>
+<h3 id="ejemplo-resuelto-3-formacion-de-un-cation">Ejemplo resuelto 3: formación de un catión</h3>
+<p>Átomo de calcio (Z = 20): 20 protones y 20 electrones. Una radiación ionizante le arranca <strong>2 electrones</strong>.</p>
+<ul>
+<li>Protones: 20 × (+1,6 × 10⁻¹⁹) = +3,2 × 10⁻¹⁸ C</li>
+<li>Electrones: 18 × (−1,6 × 10⁻¹⁹) = −2,88 × 10⁻¹⁸ C</li>
+<li><strong>Carga neta = +3,2 × 10⁻¹⁹ C = +2 cargas elementales</strong> → Ca²⁺</li>
+</ul>
+<h3 id="ejemplo-resuelto-4-formacion-de-un-anion">Ejemplo resuelto 4: formación de un anión</h3>
+<p>Átomo de cloro (Z = 17): 17 protones y 17 electrones. Capta <strong>1 electrón</strong>.</p>
+<ul>
+<li>Carga neta = 17 − 18 = <strong>−1 carga elemental = −1,6 × 10⁻¹⁹ C</strong> → Cl⁻</li>
+</ul>
+<hr />
+<h2 id="resumen-del-modulo">Resumen del módulo</h2>
+<ul>
+<li>El átomo tiene <strong>núcleo</strong> (protones + neutrones, casi toda la masa) y <strong>corteza</strong> (electrones).</li>
+<li><strong>Z</strong> (protones) define el elemento; <strong>A = Z + N</strong>; en un átomo neutro, electrones = Z.</li>
+<li>Los modelos de Dalton, Thomson y Rutherford fueron superados; <strong>Bohr</strong> introduce los <strong>niveles de energía</strong> y los saltos con emisión o absorción de <strong>fotones</strong>.</li>
+<li>La <strong>fuerza nuclear fuerte</strong> mantiene unido el núcleo.</li>
+<li>Los <strong>isótopos</strong> tienen el mismo Z y distinto A; algunos son radiactivos.</li>
+<li>Un <strong>ion</strong> es un átomo con carga: catión (pierde electrones) o anión (gana electrones). La radiación ionizante los produce.</li>
+</ul>
+<h2 id="glosario">Glosario</h2>
+<table>
+<thead>
+<tr>
+<th>Término</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nucleón</strong></td>
+<td>Partícula del núcleo (protón o neutrón).</td>
+</tr>
+<tr>
+<td><strong>Nivel de energía</strong></td>
+<td>Órbita permitida para un electrón, identificada por n.</td>
+</tr>
+<tr>
+<td><strong>Energía de ligadura</strong></td>
+<td>Energía mínima necesaria para arrancar un electrón de su nivel.</td>
+</tr>
+<tr>
+<td><strong>Fotón</strong></td>
+<td>Paquete de energía de la radiación electromagnética.</td>
+</tr>
+<tr>
+<td><strong>Ionización</strong></td>
+<td>Proceso por el que un átomo pierde un electrón.</td>
+</tr>
+<tr>
+<td><strong>u</strong></td>
+<td>Unidad de masa atómica (≈ 1,66 × 10⁻²⁷ kg).</td>
+</tr>
+<tr>
+<td><strong>eV</strong></td>
+<td>Electronvoltio, unidad de energía (1 eV = 1,6 × 10⁻¹⁹ J).</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ejercicios-propuestos">Ejercicios propuestos</h2>
+<ol>
+<li>Un núcleo de fósforo se representa como ³¹₁₅P. ¿Cuántos protones, neutrones y electrones tiene en estado neutro?</li>
+<li>Un átomo neutro tiene 26 electrones y A = 56. ¿Cuántos neutrones tiene y cuál es su número atómico Z?</li>
+<li>Un átomo tiene Z = 8 y N = 10. Escribe su símbolo en la notación ᴬ₂X (el elemento con Z = 8 es el oxígeno, O) y calcula su carga neta en estado neutro.</li>
+<li>Un átomo de magnesio (Z = 12) pierde 2 electrones. ¿Cuál es su carga neta en cargas elementales? ¿Cómo se escribe el ion?</li>
+<li>Un átomo de azufre (Z = 16) gana 2 electrones. ¿Cuántos electrones tiene ahora y cuál es su carga neta? ¿Es un catión o un anión?</li>
+</ol>
+<h2 id="soluciones">Soluciones</h2>
+<ol>
+<li>Z = 15 → <strong>15 protones</strong>; N = 31 − 15 = <strong>16 neutrones</strong>; neutro → <strong>15 electrones</strong>.</li>
+<li>Neutro → Z = 26 (hierro, Fe). N = 56 − 26 = <strong>30 neutrones</strong>.</li>
+<li>A = 8 + 10 = 18 → <strong>¹⁸₈O</strong> (oxígeno-18). Neutro: 8 protones y 8 electrones → carga neta <strong>0 C</strong>.</li>
+<li>12 protones y 10 electrones → <strong>+2 cargas elementales</strong> (+3,2 × 10⁻¹⁹ C). Ion: <strong>Mg²⁺</strong>.</li>
+<li>16 + 2 = <strong>18 electrones</strong>; carga neta 16 − 18 = <strong>−2</strong> (−3,2 × 10⁻¹⁹ C). Es un <strong>anión</strong>: <strong>S²⁻</strong>.</li>
+</ol>
+<hr />
+<p><strong>Siguiente módulo:</strong> ahora que sabes qué es un ion, el Módulo 2 explica qué es la radiación y por qué algunas radiaciones son capaces de producirlos y otras no.</p>
+        </section>
+        
+        <section class="modulo-container" id="modulo-2">
+            <h1 id="modulo-2-metodos-de-transmision-de-energia">Módulo 2. Métodos de transmisión de energía</h1>
+<p><em>¿Cómo viaja la energía de un punto a otro y qué es realmente la radiación?</em></p>
+<blockquote>
+<p><strong>Al terminar este módulo sabrás:</strong></p>
+<ul>
+<li>Explicar con la «prueba del espacio exterior» qué métodos de transmisión de energía necesitan materia y cuáles no.</li>
+<li>Definir qué es la radiación.</li>
+<li>Distinguir entre ondas electromagnéticas y radiación de partículas.</li>
+<li>Dar ejemplos de cada método, también en medicina.</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="21-el-gran-experimento-mental-la-prueba-del-espacio-exterior">2.1. El gran experimento mental: la prueba del espacio exterior</h2>
+<p>Para entender la física de la radiación sin perderse en fórmulas, basta con hacerse una pregunta muy simple: <strong>¿cómo puede viajar la energía desde un emisor hasta un receptor?</strong></p>
+<p>La mejor forma de comprobarlo es someter cada tipo de energía a la <strong>«prueba del espacio exterior»</strong>, es decir, al <strong>vacío</strong>. En el espacio casi no hay átomos ni moléculas flotando: es esencialmente la nada. Si colocamos algo en el espacio, nos preguntamos:</p>
+<ul>
+<li>¿Puede transmitir energía?</li>
+<li>¿Necesita apoyarse en átomos intermedios para avanzar, como quien cruza un río pisando piedras, o es capaz de cruzar el vacío por sí mismo?</li>
+</ul>
+<p>La respuesta divide todos los fenómenos en <strong>dos grandes familias</strong>: los que <strong>necesitan materia</strong> y los que <strong>no la necesitan</strong> (la radiación).</p>
+<p><img alt="diagrama" src="data:image/svg+xml;base64,PHN2ZyBpZD0ibWVybWFpZC0xNzkwOTM3NzQwMjI2LTB5cTNsN3o5aiIgd2lkdGg9IjEwMCUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgY2xhc3M9ImZsb3djaGFydCIgc3R5bGU9Im1heC13aWR0aDogMTA3MC40MDYyNXB4OyIgdmlld0JveD0iMCAwIDEwNzAuNDA2MjUgNDMwIiByb2xlPSJncmFwaGljcy1kb2N1bWVudCBkb2N1bWVudCIgYXJpYS1yb2xlZGVzY3JpcHRpb249ImZsb3djaGFydC12MiI+PHN0eWxlPiNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqe2ZvbnQtZmFtaWx5OiJ0cmVidWNoZXQgbXMiLHZlcmRhbmEsYXJpYWwsc2Fucy1zZXJpZjtmb250LXNpemU6MTZweDtmaWxsOiMzMzM7fUBrZXlmcmFtZXMgZWRnZS1hbmltYXRpb24tZnJhbWV7ZnJvbXtzdHJva2UtZGFzaG9mZnNldDowO319QGtleWZyYW1lcyBkYXNoe3Rve3N0cm9rZS1kYXNob2Zmc2V0OjA7fX0jbWVybWFpZC0xNzkwOTM3NzQwMjI2LTB5cTNsN3o5aiAuZWRnZS1hbmltYXRpb24tc2xvd3tzdHJva2UtZGFzaGFycmF5OjksNSFpbXBvcnRhbnQ7c3Ryb2tlLWRhc2hvZmZzZXQ6OTAwO2FuaW1hdGlvbjpkYXNoIDUwcyBsaW5lYXIgaW5maW5pdGU7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7fSNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIC5lZGdlLWFuaW1hdGlvbi1mYXN0e3N0cm9rZS1kYXNoYXJyYXk6OSw1IWltcG9ydGFudDtzdHJva2UtZGFzaG9mZnNldDo5MDA7YW5pbWF0aW9uOmRhc2ggMjBzIGxpbmVhciBpbmZpbml0ZTtzdHJva2UtbGluZWNhcDpyb3VuZDt9I21lcm1haWQtMTc5MDkzNzc0MDIyNi0weXEzbDd6OWogLmVycm9yLWljb257ZmlsbDojNTUyMjIyO30jbWVybWFpZC0xNzkwOTM3NzQwMjI2LTB5cTNsN3o5aiAuZXJyb3ItdGV4dHtmaWxsOiM1NTIyMjI7c3Ryb2tlOiM1NTIyMjI7fSNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIC5lZGdlLXRoaWNrbmVzcy1ub3JtYWx7c3Ryb2tlLXdpZHRoOjFweDt9I21lcm1haWQtMTc5MDkzNzc0MDIyNi0weXEzbDd6OWogLmVkZ2UtdGhpY2tuZXNzLXRoaWNre3N0cm9rZS13aWR0aDozLjVweDt9I21lcm1haWQtMTc5MDkzNzc0MDIyNi0weXEzbDd6OWogLmVkZ2UtcGF0dGVybi1zb2xpZHtzdHJva2UtZGFzaGFycmF5OjA7fSNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIC5lZGdlLXRoaWNrbmVzcy1pbnZpc2libGV7c3Ryb2tlLXdpZHRoOjA7ZmlsbDpub25lO30jbWVybWFpZC0xNzkwOTM3NzQwMjI2LTB5cTNsN3o5aiAuZWRnZS1wYXR0ZXJuLWRhc2hlZHtzdHJva2UtZGFzaGFycmF5OjM7fSNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIC5lZGdlLXBhdHRlcm4tZG90dGVke3N0cm9rZS1kYXNoYXJyYXk6Mjt9I21lcm1haWQtMTc5MDkzNzc0MDIyNi0weXEzbDd6OWogLm1hcmtlcntmaWxsOiMzMzMzMzM7c3Ryb2tlOiMzMzMzMzM7fSNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIC5tYXJrZXIuY3Jvc3N7c3Ryb2tlOiMzMzMzMzM7fSNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIHN2Z3tmb250LWZhbWlseToidHJlYnVjaGV0IG1zIix2ZXJkYW5hLGFyaWFsLHNhbnMtc2VyaWY7Zm9udC1zaXplOjE2cHg7fSNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIHB7bWFyZ2luOjA7fSNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIC5sYWJlbHtmb250LWZhbWlseToidHJlYnVjaGV0IG1zIix2ZXJkYW5hLGFyaWFsLHNhbnMtc2VyaWY7Y29sb3I6IzMzMzt9I21lcm1haWQtMTc5MDkzNzc0MDIyNi0weXEzbDd6OWogLmNsdXN0ZXItbGFiZWwgdGV4dHtmaWxsOiMzMzM7fSNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIC5jbHVzdGVyLWxhYmVsIHNwYW57Y29sb3I6IzMzMzt9I21lcm1haWQtMTc5MDkzNzc0MDIyNi0weXEzbDd6OWogLmNsdXN0ZXItbGFiZWwgc3BhbiBwe2JhY2tncm91bmQtY29sb3I6dHJhbnNwYXJlbnQ7fSNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIC5sYWJlbCB0ZXh0LCNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIHNwYW57ZmlsbDojMzMzO2NvbG9yOiMzMzM7fSNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIC5ub2RlIHJlY3QsI21lcm1haWQtMTc5MDkzNzc0MDIyNi0weXEzbDd6OWogLm5vZGUgY2lyY2xlLCNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIC5ub2RlIGVsbGlwc2UsI21lcm1haWQtMTc5MDkzNzc0MDIyNi0weXEzbDd6OWogLm5vZGUgcG9seWdvbiwjbWVybWFpZC0xNzkwOTM3NzQwMjI2LTB5cTNsN3o5aiAubm9kZSBwYXRoe2ZpbGw6I0VDRUNGRjtzdHJva2U6IzkzNzBEQjtzdHJva2Utd2lkdGg6MXB4O30jbWVybWFpZC0xNzkwOTM3NzQwMjI2LTB5cTNsN3o5aiAucm91Z2gtbm9kZSAubGFiZWwgdGV4dCwjbWVybWFpZC0xNzkwOTM3NzQwMjI2LTB5cTNsN3o5aiAubm9kZSAubGFiZWwgdGV4dCwjbWVybWFpZC0xNzkwOTM3NzQwMjI2LTB5cTNsN3o5aiAuaW1hZ2Utc2hhcGUgLmxhYmVsLCNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIC5pY29uLXNoYXBlIC5sYWJlbHt0ZXh0LWFuY2hvcjptaWRkbGU7fSNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIC5ub2RlIC5rYXRleCBwYXRoe2ZpbGw6IzAwMDtzdHJva2U6IzAwMDtzdHJva2Utd2lkdGg6MXB4O30jbWVybWFpZC0xNzkwOTM3NzQwMjI2LTB5cTNsN3o5aiAucm91Z2gtbm9kZSAubGFiZWwsI21lcm1haWQtMTc5MDkzNzc0MDIyNi0weXEzbDd6OWogLm5vZGUgLmxhYmVsLCNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIC5pbWFnZS1zaGFwZSAubGFiZWwsI21lcm1haWQtMTc5MDkzNzc0MDIyNi0weXEzbDd6OWogLmljb24tc2hhcGUgLmxhYmVse3RleHQtYWxpZ246Y2VudGVyO30jbWVybWFpZC0xNzkwOTM3NzQwMjI2LTB5cTNsN3o5aiAubm9kZS5jbGlja2FibGV7Y3Vyc29yOnBvaW50ZXI7fSNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIC5yb290IC5hbmNob3IgcGF0aHtmaWxsOiMzMzMzMzMhaW1wb3J0YW50O3N0cm9rZS13aWR0aDowO3N0cm9rZTojMzMzMzMzO30jbWVybWFpZC0xNzkwOTM3NzQwMjI2LTB5cTNsN3o5aiAuYXJyb3doZWFkUGF0aHtmaWxsOiMzMzMzMzM7fSNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIC5lZGdlUGF0aCAucGF0aHtzdHJva2U6IzMzMzMzMztzdHJva2Utd2lkdGg6Mi4wcHg7fSNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIC5mbG93Y2hhcnQtbGlua3tzdHJva2U6IzMzMzMzMztmaWxsOm5vbmU7fSNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIC5lZGdlTGFiZWx7YmFja2dyb3VuZC1jb2xvcjpyZ2JhKDIzMiwyMzIsMjMyLCAwLjgpO3RleHQtYWxpZ246Y2VudGVyO30jbWVybWFpZC0xNzkwOTM3NzQwMjI2LTB5cTNsN3o5aiAuZWRnZUxhYmVsIHB7YmFja2dyb3VuZC1jb2xvcjpyZ2JhKDIzMiwyMzIsMjMyLCAwLjgpO30jbWVybWFpZC0xNzkwOTM3NzQwMjI2LTB5cTNsN3o5aiAuZWRnZUxhYmVsIHJlY3R7b3BhY2l0eTowLjU7YmFja2dyb3VuZC1jb2xvcjpyZ2JhKDIzMiwyMzIsMjMyLCAwLjgpO2ZpbGw6cmdiYSgyMzIsMjMyLDIzMiwgMC44KTt9I21lcm1haWQtMTc5MDkzNzc0MDIyNi0weXEzbDd6OWogLmxhYmVsQmtne2JhY2tncm91bmQtY29sb3I6cmdiYSgyMzIsIDIzMiwgMjMyLCAwLjUpO30jbWVybWFpZC0xNzkwOTM3NzQwMjI2LTB5cTNsN3o5aiAuY2x1c3RlciByZWN0e2ZpbGw6I2ZmZmZkZTtzdHJva2U6I2FhYWEzMztzdHJva2Utd2lkdGg6MXB4O30jbWVybWFpZC0xNzkwOTM3NzQwMjI2LTB5cTNsN3o5aiAuY2x1c3RlciB0ZXh0e2ZpbGw6IzMzMzt9I21lcm1haWQtMTc5MDkzNzc0MDIyNi0weXEzbDd6OWogLmNsdXN0ZXIgc3Bhbntjb2xvcjojMzMzO30jbWVybWFpZC0xNzkwOTM3NzQwMjI2LTB5cTNsN3o5aiBkaXYubWVybWFpZFRvb2x0aXB7cG9zaXRpb246YWJzb2x1dGU7dGV4dC1hbGlnbjpjZW50ZXI7bWF4LXdpZHRoOjIwMHB4O3BhZGRpbmc6MnB4O2ZvbnQtZmFtaWx5OiJ0cmVidWNoZXQgbXMiLHZlcmRhbmEsYXJpYWwsc2Fucy1zZXJpZjtmb250LXNpemU6MTJweDtiYWNrZ3JvdW5kOmhzbCg4MCwgMTAwJSwgOTYuMjc0NTA5ODAzOSUpO2JvcmRlcjoxcHggc29saWQgI2FhYWEzMztib3JkZXItcmFkaXVzOjJweDtwb2ludGVyLWV2ZW50czpub25lO3otaW5kZXg6MTAwO30jbWVybWFpZC0xNzkwOTM3NzQwMjI2LTB5cTNsN3o5aiAuZmxvd2NoYXJ0VGl0bGVUZXh0e3RleHQtYW5jaG9yOm1pZGRsZTtmb250LXNpemU6MThweDtmaWxsOiMzMzM7fSNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIHJlY3QudGV4dHtmaWxsOm5vbmU7c3Ryb2tlLXdpZHRoOjA7fSNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIC5pY29uLXNoYXBlLCNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIC5pbWFnZS1zaGFwZXtiYWNrZ3JvdW5kLWNvbG9yOnJnYmEoMjMyLDIzMiwyMzIsIDAuOCk7dGV4dC1hbGlnbjpjZW50ZXI7fSNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIC5pY29uLXNoYXBlIHAsI21lcm1haWQtMTc5MDkzNzc0MDIyNi0weXEzbDd6OWogLmltYWdlLXNoYXBlIHB7YmFja2dyb3VuZC1jb2xvcjpyZ2JhKDIzMiwyMzIsMjMyLCAwLjgpO3BhZGRpbmc6MnB4O30jbWVybWFpZC0xNzkwOTM3NzQwMjI2LTB5cTNsN3o5aiAuaWNvbi1zaGFwZSByZWN0LCNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIC5pbWFnZS1zaGFwZSByZWN0e29wYWNpdHk6MC41O2JhY2tncm91bmQtY29sb3I6cmdiYSgyMzIsMjMyLDIzMiwgMC44KTtmaWxsOnJnYmEoMjMyLDIzMiwyMzIsIDAuOCk7fSNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIC5sYWJlbC1pY29ue2Rpc3BsYXk6aW5saW5lLWJsb2NrO2hlaWdodDoxZW07b3ZlcmZsb3c6dmlzaWJsZTt2ZXJ0aWNhbC1hbGlnbjotMC4xMjVlbTt9I21lcm1haWQtMTc5MDkzNzc0MDIyNi0weXEzbDd6OWogLm5vZGUgLmxhYmVsLWljb24gcGF0aHtmaWxsOmN1cnJlbnRDb2xvcjtzdHJva2U6cmV2ZXJ0O3N0cm9rZS13aWR0aDpyZXZlcnQ7fSNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqIDpyb290ey0tbWVybWFpZC1mb250LWZhbWlseToidHJlYnVjaGV0IG1zIix2ZXJkYW5hLGFyaWFsLHNhbnMtc2VyaWY7fTwvc3R5bGU+PGc+PG1hcmtlciBpZD0ibWVybWFpZC0xNzkwOTM3NzQwMjI2LTB5cTNsN3o5al9mbG93Y2hhcnQtdjItcG9pbnRFbmQiIGNsYXNzPSJtYXJrZXIgZmxvd2NoYXJ0LXYyIiB2aWV3Qm94PSIwIDAgMTAgMTAiIHJlZlg9IjUiIHJlZlk9IjUiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgbWFya2VyV2lkdGg9IjgiIG1hcmtlckhlaWdodD0iOCIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNIDAgMCBMIDEwIDUgTCAwIDEwIHoiIGNsYXNzPSJhcnJvd01hcmtlclBhdGgiIHN0eWxlPSJzdHJva2Utd2lkdGg6IDE7IHN0cm9rZS1kYXNoYXJyYXk6IDEsIDA7Ij48L3BhdGg+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWVybWFpZC0xNzkwOTM3NzQwMjI2LTB5cTNsN3o5al9mbG93Y2hhcnQtdjItcG9pbnRTdGFydCIgY2xhc3M9Im1hcmtlciBmbG93Y2hhcnQtdjIiIHZpZXdCb3g9IjAgMCAxMCAxMCIgcmVmWD0iNC41IiByZWZZPSI1IiBtYXJrZXJVbml0cz0idXNlclNwYWNlT25Vc2UiIG1hcmtlcldpZHRoPSI4IiBtYXJrZXJIZWlnaHQ9IjgiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTSAwIDUgTCAxMCAxMCBMIDEwIDAgeiIgY2xhc3M9ImFycm93TWFya2VyUGF0aCIgc3R5bGU9InN0cm9rZS13aWR0aDogMTsgc3Ryb2tlLWRhc2hhcnJheTogMSwgMDsiPjwvcGF0aD48L21hcmtlcj48bWFya2VyIGlkPSJtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqX2Zsb3djaGFydC12Mi1jaXJjbGVFbmQiIGNsYXNzPSJtYXJrZXIgZmxvd2NoYXJ0LXYyIiB2aWV3Qm94PSIwIDAgMTAgMTAiIHJlZlg9IjExIiByZWZZPSI1IiBtYXJrZXJVbml0cz0idXNlclNwYWNlT25Vc2UiIG1hcmtlcldpZHRoPSIxMSIgbWFya2VySGVpZ2h0PSIxMSIgb3JpZW50PSJhdXRvIj48Y2lyY2xlIGN4PSI1IiBjeT0iNSIgcj0iNSIgY2xhc3M9ImFycm93TWFya2VyUGF0aCIgc3R5bGU9InN0cm9rZS13aWR0aDogMTsgc3Ryb2tlLWRhc2hhcnJheTogMSwgMDsiPjwvY2lyY2xlPjwvbWFya2VyPjxtYXJrZXIgaWQ9Im1lcm1haWQtMTc5MDkzNzc0MDIyNi0weXEzbDd6OWpfZmxvd2NoYXJ0LXYyLWNpcmNsZVN0YXJ0IiBjbGFzcz0ibWFya2VyIGZsb3djaGFydC12MiIgdmlld0JveD0iMCAwIDEwIDEwIiByZWZYPSItMSIgcmVmWT0iNSIgbWFya2VyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBtYXJrZXJXaWR0aD0iMTEiIG1hcmtlckhlaWdodD0iMTEiIG9yaWVudD0iYXV0byI+PGNpcmNsZSBjeD0iNSIgY3k9IjUiIHI9IjUiIGNsYXNzPSJhcnJvd01hcmtlclBhdGgiIHN0eWxlPSJzdHJva2Utd2lkdGg6IDE7IHN0cm9rZS1kYXNoYXJyYXk6IDEsIDA7Ij48L2NpcmNsZT48L21hcmtlcj48bWFya2VyIGlkPSJtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqX2Zsb3djaGFydC12Mi1jcm9zc0VuZCIgY2xhc3M9Im1hcmtlciBjcm9zcyBmbG93Y2hhcnQtdjIiIHZpZXdCb3g9IjAgMCAxMSAxMSIgcmVmWD0iMTIiIHJlZlk9IjUuMiIgbWFya2VyVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBtYXJrZXJXaWR0aD0iMTEiIG1hcmtlckhlaWdodD0iMTEiIG9yaWVudD0iYXV0byI+PHBhdGggZD0iTSAxLDEgbCA5LDkgTSAxMCwxIGwgLTksOSIgY2xhc3M9ImFycm93TWFya2VyUGF0aCIgc3R5bGU9InN0cm9rZS13aWR0aDogMjsgc3Ryb2tlLWRhc2hhcnJheTogMSwgMDsiPjwvcGF0aD48L21hcmtlcj48bWFya2VyIGlkPSJtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqX2Zsb3djaGFydC12Mi1jcm9zc1N0YXJ0IiBjbGFzcz0ibWFya2VyIGNyb3NzIGZsb3djaGFydC12MiIgdmlld0JveD0iMCAwIDExIDExIiByZWZYPSItMSIgcmVmWT0iNS4yIiBtYXJrZXJVbml0cz0idXNlclNwYWNlT25Vc2UiIG1hcmtlcldpZHRoPSIxMSIgbWFya2VySGVpZ2h0PSIxMSIgb3JpZW50PSJhdXRvIj48cGF0aCBkPSJNIDEsMSBsIDksOSBNIDEwLDEgbCAtOSw5IiBjbGFzcz0iYXJyb3dNYXJrZXJQYXRoIiBzdHlsZT0ic3Ryb2tlLXdpZHRoOiAyOyBzdHJva2UtZGFzaGFycmF5OiAxLCAwOyI+PC9wYXRoPjwvbWFya2VyPjxnIGNsYXNzPSJyb290Ij48ZyBjbGFzcz0iY2x1c3RlcnMiPjwvZz48ZyBjbGFzcz0iZWRnZVBhdGhzIj48cGF0aCBkPSJNNDIzLjIzLDU2LjI4NkwzOTUuODc2LDYxLjQwNUMzNjguNTIxLDY2LjUyNCwzMTMuODExLDc2Ljc2MiwyODYuNDU2LDg1LjM4MUMyNTkuMTAyLDk0LDI1OS4xMDIsMTAxLDI1OS4xMDIsMTA0LjVMMjU5LjEwMiwxMDgiIGlkPSJMX0FfQl8wIiBjbGFzcz0iIGVkZ2UtdGhpY2tuZXNzLW5vcm1hbCBlZGdlLXBhdHRlcm4tc29saWQgZWRnZS10aGlja25lc3Mtbm9ybWFsIGVkZ2UtcGF0dGVybi1zb2xpZCBmbG93Y2hhcnQtbGluayIgc3R5bGU9IiIgbWFya2VyLWVuZD0idXJsKCNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqX2Zsb3djaGFydC12Mi1wb2ludEVuZCkiPjwvcGF0aD48cGF0aCBkPSJNNjUwLjczLDU2LjkzNkw2NzYuNzE0LDYxLjk0NkM3MDIuNjk4LDY2Ljk1Nyw3NTQuNjY1LDc2Ljk3OSw3ODAuNjQ5LDg1LjQ4OUM4MDYuNjMzLDk0LDgwNi42MzMsMTAxLDgwNi42MzMsMTA0LjVMODA2LjYzMywxMDgiIGlkPSJMX0FfQ18wIiBjbGFzcz0iIGVkZ2UtdGhpY2tuZXNzLW5vcm1hbCBlZGdlLXBhdHRlcm4tc29saWQgZWRnZS10aGlja25lc3Mtbm9ybWFsIGVkZ2UtcGF0dGVybi1zb2xpZCBmbG93Y2hhcnQtbGluayIgc3R5bGU9IiIgbWFya2VyLWVuZD0idXJsKCNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqX2Zsb3djaGFydC12Mi1wb2ludEVuZCkiPjwvcGF0aD48cGF0aCBkPSJNMTc3LjQ4MywxOTBMMTY4Ljc2NCwxOTQuMTY3QzE2MC4wNDQsMTk4LjMzMywxNDIuNjA0LDIwNi42NjcsMTMzLjg4NCwyMTQuMzMzQzEyNS4xNjQsMjIyLDEyNS4xNjQsMjI5LDEyNS4xNjQsMjMyLjVMMTI1LjE2NCwyMzYiIGlkPSJMX0JfRF8wIiBjbGFzcz0iIGVkZ2UtdGhpY2tuZXNzLW5vcm1hbCBlZGdlLXBhdHRlcm4tc29saWQgZWRnZS10aGlja25lc3Mtbm9ybWFsIGVkZ2UtcGF0dGVybi1zb2xpZCBmbG93Y2hhcnQtbGluayIgc3R5bGU9IiIgbWFya2VyLWVuZD0idXJsKCNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqX2Zsb3djaGFydC12Mi1wb2ludEVuZCkiPjwvcGF0aD48cGF0aCBkPSJNMzQwLjcyLDE5MEwzNDkuNDQsMTk0LjE2N0MzNTguMTYsMTk4LjMzMywzNzUuNTk5LDIwNi42NjcsMzg0LjMxOSwyMTQuMzMzQzM5My4wMzksMjIyLDM5My4wMzksMjI5LDM5My4wMzksMjMyLjVMMzkzLjAzOSwyMzYiIGlkPSJMX0JfRV8wIiBjbGFzcz0iIGVkZ2UtdGhpY2tuZXNzLW5vcm1hbCBlZGdlLXBhdHRlcm4tc29saWQgZWRnZS10aGlja25lc3Mtbm9ybWFsIGVkZ2UtcGF0dGVybi1zb2xpZCBmbG93Y2hhcnQtbGluayIgc3R5bGU9IiIgbWFya2VyLWVuZD0idXJsKCNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqX2Zsb3djaGFydC12Mi1wb2ludEVuZCkiPjwvcGF0aD48cGF0aCBkPSJNNzIwLjAwMiwxOTBMNzEwLjc0NiwxOTQuMTY3QzcwMS40OTEsMTk4LjMzMyw2ODIuOTgsMjA2LjY2Nyw2NzMuNzI0LDIxNC4zMzNDNjY0LjQ2OSwyMjIsNjY0LjQ2OSwyMjksNjY0LjQ2OSwyMzIuNUw2NjQuNDY5LDIzNiIgaWQ9IkxfQ19GXzAiIGNsYXNzPSIgZWRnZS10aGlja25lc3Mtbm9ybWFsIGVkZ2UtcGF0dGVybi1zb2xpZCBlZGdlLXRoaWNrbmVzcy1ub3JtYWwgZWRnZS1wYXR0ZXJuLXNvbGlkIGZsb3djaGFydC1saW5rIiBzdHlsZT0iIiBtYXJrZXItZW5kPSJ1cmwoI21lcm1haWQtMTc5MDkzNzc0MDIyNi0weXEzbDd6OWpfZmxvd2NoYXJ0LXYyLXBvaW50RW5kKSI+PC9wYXRoPjxwYXRoIGQ9Ik04OTMuMjY0LDE5MEw5MDIuNTIsMTk0LjE2N0M5MTEuNzc1LDE5OC4zMzMsOTMwLjI4NiwyMDYuNjY3LDkzOS41NDEsMjE0LjMzM0M5NDguNzk3LDIyMiw5NDguNzk3LDIyOSw5NDguNzk3LDIzMi41TDk0OC43OTcsMjM2IiBpZD0iTF9DX0dfMCIgY2xhc3M9IiBlZGdlLXRoaWNrbmVzcy1ub3JtYWwgZWRnZS1wYXR0ZXJuLXNvbGlkIGVkZ2UtdGhpY2tuZXNzLW5vcm1hbCBlZGdlLXBhdHRlcm4tc29saWQgZmxvd2NoYXJ0LWxpbmsiIHN0eWxlPSIiIG1hcmtlci1lbmQ9InVybCgjbWVybWFpZC0xNzkwOTM3NzQwMjI2LTB5cTNsN3o5al9mbG93Y2hhcnQtdjItcG9pbnRFbmQpIj48L3BhdGg+PHBhdGggZD0iTTY2NC40NjksMzE4TDY2NC40NjksMzIyLjE2N0M2NjQuNDY5LDMyNi4zMzMsNjY0LjQ2OSwzMzQuNjY3LDY3NS4yMzQsMzQyLjc3MUM2ODUuOTk5LDM1MC44NzUsNzA3LjUzLDM1OC43NTEsNzE4LjI5NSwzNjIuNjg4TDcyOS4wNiwzNjYuNjI2IiBpZD0iTF9GX0hfMCIgY2xhc3M9IiBlZGdlLXRoaWNrbmVzcy1ub3JtYWwgZWRnZS1wYXR0ZXJuLXNvbGlkIGVkZ2UtdGhpY2tuZXNzLW5vcm1hbCBlZGdlLXBhdHRlcm4tc29saWQgZmxvd2NoYXJ0LWxpbmsiIHN0eWxlPSIiIG1hcmtlci1lbmQ9InVybCgjbWVybWFpZC0xNzkwOTM3NzQwMjI2LTB5cTNsN3o5al9mbG93Y2hhcnQtdjItcG9pbnRFbmQpIj48L3BhdGg+PHBhdGggZD0iTTk0OC43OTcsMzE4TDk0OC43OTcsMzIyLjE2N0M5NDguNzk3LDMyNi4zMzMsOTQ4Ljc5NywzMzQuNjY3LDkzOC4wMzIsMzQyLjc3MUM5MjcuMjY2LDM1MC44NzUsOTA1LjczNiwzNTguNzUxLDg5NC45NzEsMzYyLjY4OEw4ODQuMjA1LDM2Ni42MjYiIGlkPSJMX0dfSF8wIiBjbGFzcz0iIGVkZ2UtdGhpY2tuZXNzLW5vcm1hbCBlZGdlLXBhdHRlcm4tc29saWQgZWRnZS10aGlja25lc3Mtbm9ybWFsIGVkZ2UtcGF0dGVybi1zb2xpZCBmbG93Y2hhcnQtbGluayIgc3R5bGU9IiIgbWFya2VyLWVuZD0idXJsKCNtZXJtYWlkLTE3OTA5Mzc3NDAyMjYtMHlxM2w3ejlqX2Zsb3djaGFydC12Mi1wb2ludEVuZCkiPjwvcGF0aD48L2c+PGcgY2xhc3M9ImVkZ2VMYWJlbHMiPjxnIGNsYXNzPSJlZGdlTGFiZWwiPjxnIGNsYXNzPSJsYWJlbCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCwgMCkiPjxmb3JlaWduT2JqZWN0IHdpZHRoPSIwIiBoZWlnaHQ9IjAiPjxkaXYgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiIGNsYXNzPSJsYWJlbEJrZyIgc3R5bGU9ImRpc3BsYXk6IHRhYmxlLWNlbGw7IHdoaXRlLXNwYWNlOiBub3dyYXA7IGxpbmUtaGVpZ2h0OiAxLjU7IG1heC13aWR0aDogMjAwcHg7IHRleHQtYWxpZ246IGNlbnRlcjsiPjxzcGFuIGNsYXNzPSJlZGdlTGFiZWwgIj48L3NwYW4+PC9kaXY+PC9mb3JlaWduT2JqZWN0PjwvZz48L2c+PGcgY2xhc3M9ImVkZ2VMYWJlbCI+PGcgY2xhc3M9ImxhYmVsIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLCAwKSI+PGZvcmVpZ25PYmplY3Qgd2lkdGg9IjAiIGhlaWdodD0iMCI+PGRpdiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCIgY2xhc3M9ImxhYmVsQmtnIiBzdHlsZT0iZGlzcGxheTogdGFibGUtY2VsbDsgd2hpdGUtc3BhY2U6IG5vd3JhcDsgbGluZS1oZWlnaHQ6IDEuNTsgbWF4LXdpZHRoOiAyMDBweDsgdGV4dC1hbGlnbjogY2VudGVyOyI+PHNwYW4gY2xhc3M9ImVkZ2VMYWJlbCAiPjwvc3Bhbj48L2Rpdj48L2ZvcmVpZ25PYmplY3Q+PC9nPjwvZz48ZyBjbGFzcz0iZWRnZUxhYmVsIj48ZyBjbGFzcz0ibGFiZWwiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIDApIj48Zm9yZWlnbk9iamVjdCB3aWR0aD0iMCIgaGVpZ2h0PSIwIj48ZGl2IHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hodG1sIiBjbGFzcz0ibGFiZWxCa2ciIHN0eWxlPSJkaXNwbGF5OiB0YWJsZS1jZWxsOyB3aGl0ZS1zcGFjZTogbm93cmFwOyBsaW5lLWhlaWdodDogMS41OyBtYXgtd2lkdGg6IDIwMHB4OyB0ZXh0LWFsaWduOiBjZW50ZXI7Ij48c3BhbiBjbGFzcz0iZWRnZUxhYmVsICI+PC9zcGFuPjwvZGl2PjwvZm9yZWlnbk9iamVjdD48L2c+PC9nPjxnIGNsYXNzPSJlZGdlTGFiZWwiPjxnIGNsYXNzPSJsYWJlbCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCwgMCkiPjxmb3JlaWduT2JqZWN0IHdpZHRoPSIwIiBoZWlnaHQ9IjAiPjxkaXYgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiIGNsYXNzPSJsYWJlbEJrZyIgc3R5bGU9ImRpc3BsYXk6IHRhYmxlLWNlbGw7IHdoaXRlLXNwYWNlOiBub3dyYXA7IGxpbmUtaGVpZ2h0OiAxLjU7IG1heC13aWR0aDogMjAwcHg7IHRleHQtYWxpZ246IGNlbnRlcjsiPjxzcGFuIGNsYXNzPSJlZGdlTGFiZWwgIj48L3NwYW4+PC9kaXY+PC9mb3JlaWduT2JqZWN0PjwvZz48L2c+PGcgY2xhc3M9ImVkZ2VMYWJlbCI+PGcgY2xhc3M9ImxhYmVsIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLCAwKSI+PGZvcmVpZ25PYmplY3Qgd2lkdGg9IjAiIGhlaWdodD0iMCI+PGRpdiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCIgY2xhc3M9ImxhYmVsQmtnIiBzdHlsZT0iZGlzcGxheTogdGFibGUtY2VsbDsgd2hpdGUtc3BhY2U6IG5vd3JhcDsgbGluZS1oZWlnaHQ6IDEuNTsgbWF4LXdpZHRoOiAyMDBweDsgdGV4dC1hbGlnbjogY2VudGVyOyI+PHNwYW4gY2xhc3M9ImVkZ2VMYWJlbCAiPjwvc3Bhbj48L2Rpdj48L2ZvcmVpZ25PYmplY3Q+PC9nPjwvZz48ZyBjbGFzcz0iZWRnZUxhYmVsIj48ZyBjbGFzcz0ibGFiZWwiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAsIDApIj48Zm9yZWlnbk9iamVjdCB3aWR0aD0iMCIgaGVpZ2h0PSIwIj48ZGl2IHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hodG1sIiBjbGFzcz0ibGFiZWxCa2ciIHN0eWxlPSJkaXNwbGF5OiB0YWJsZS1jZWxsOyB3aGl0ZS1zcGFjZTogbm93cmFwOyBsaW5lLWhlaWdodDogMS41OyBtYXgtd2lkdGg6IDIwMHB4OyB0ZXh0LWFsaWduOiBjZW50ZXI7Ij48c3BhbiBjbGFzcz0iZWRnZUxhYmVsICI+PC9zcGFuPjwvZGl2PjwvZm9yZWlnbk9iamVjdD48L2c+PC9nPjxnIGNsYXNzPSJlZGdlTGFiZWwiPjxnIGNsYXNzPSJsYWJlbCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCwgMCkiPjxmb3JlaWduT2JqZWN0IHdpZHRoPSIwIiBoZWlnaHQ9IjAiPjxkaXYgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiIGNsYXNzPSJsYWJlbEJrZyIgc3R5bGU9ImRpc3BsYXk6IHRhYmxlLWNlbGw7IHdoaXRlLXNwYWNlOiBub3dyYXA7IGxpbmUtaGVpZ2h0OiAxLjU7IG1heC13aWR0aDogMjAwcHg7IHRleHQtYWxpZ246IGNlbnRlcjsiPjxzcGFuIGNsYXNzPSJlZGdlTGFiZWwgIj48L3NwYW4+PC9kaXY+PC9mb3JlaWduT2JqZWN0PjwvZz48L2c+PGcgY2xhc3M9ImVkZ2VMYWJlbCI+PGcgY2xhc3M9ImxhYmVsIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLCAwKSI+PGZvcmVpZ25PYmplY3Qgd2lkdGg9IjAiIGhlaWdodD0iMCI+PGRpdiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCIgY2xhc3M9ImxhYmVsQmtnIiBzdHlsZT0iZGlzcGxheTogdGFibGUtY2VsbDsgd2hpdGUtc3BhY2U6IG5vd3JhcDsgbGluZS1oZWlnaHQ6IDEuNTsgbWF4LXdpZHRoOiAyMDBweDsgdGV4dC1hbGlnbjogY2VudGVyOyI+PHNwYW4gY2xhc3M9ImVkZ2VMYWJlbCAiPjwvc3Bhbj48L2Rpdj48L2ZvcmVpZ25PYmplY3Q+PC9nPjwvZz48L2c+PGcgY2xhc3M9Im5vZGVzIj48ZyBjbGFzcz0ibm9kZSBkZWZhdWx0ICAiIGlkPSJmbG93Y2hhcnQtQS0wIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg1MzYuOTgwNDY4NzUsIDM1KSI+PHJlY3QgY2xhc3M9ImJhc2ljIGxhYmVsLWNvbnRhaW5lciIgc3R5bGU9IiIgeD0iLTExMy43NSIgeT0iLTI3IiB3aWR0aD0iMjI3LjUiIGhlaWdodD0iNTQiPjwvcmVjdD48ZyBjbGFzcz0ibGFiZWwiIHN0eWxlPSIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC04My43NSwgLTEyKSI+PHJlY3Q+PC9yZWN0Pjxmb3JlaWduT2JqZWN0IHdpZHRoPSIxNjcuNSIgaGVpZ2h0PSIyNCI+PGRpdiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCIgc3R5bGU9ImRpc3BsYXk6IHRhYmxlLWNlbGw7IHdoaXRlLXNwYWNlOiBub3dyYXA7IGxpbmUtaGVpZ2h0OiAxLjU7IG1heC13aWR0aDogMjAwcHg7IHRleHQtYWxpZ246IGNlbnRlcjsiPjxzcGFuIGNsYXNzPSJub2RlTGFiZWwgIj48cD5UcmFuc21pc2nDs24gZGUgZW5lcmfDrWE8L3A+PC9zcGFuPjwvZGl2PjwvZm9yZWlnbk9iamVjdD48L2c+PC9nPjxnIGNsYXNzPSJub2RlIGRlZmF1bHQgICIgaWQ9ImZsb3djaGFydC1CLTEiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI1OS4xMDE1NjI1LCAxNTEpIj48cmVjdCBjbGFzcz0iYmFzaWMgbGFiZWwtY29udGFpbmVyIiBzdHlsZT0iIiB4PSItMTEwLjQ4NDM3NSIgeT0iLTM5IiB3aWR0aD0iMjIwLjk2ODc1IiBoZWlnaHQ9Ijc4Ij48L3JlY3Q+PGcgY2xhc3M9ImxhYmVsIiBzdHlsZT0iIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtODAuNDg0Mzc1LCAtMjQpIj48cmVjdD48L3JlY3Q+PGZvcmVpZ25PYmplY3Qgd2lkdGg9IjE2MC45Njg3NSIgaGVpZ2h0PSI0OCI+PGRpdiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCIgc3R5bGU9ImRpc3BsYXk6IHRhYmxlLWNlbGw7IHdoaXRlLXNwYWNlOiBub3dyYXA7IGxpbmUtaGVpZ2h0OiAxLjU7IG1heC13aWR0aDogMjAwcHg7IHRleHQtYWxpZ246IGNlbnRlcjsiPjxzcGFuIGNsYXNzPSJub2RlTGFiZWwgIj48cD5OZWNlc2l0YW4gbWVkaW8gZsOtc2ljbzxici8+bm8gdmlhamFuIGVuIGVsIHZhY8OtbzwvcD48L3NwYW4+PC9kaXY+PC9mb3JlaWduT2JqZWN0PjwvZz48L2c+PGcgY2xhc3M9Im5vZGUgZGVmYXVsdCAgIiBpZD0iZmxvd2NoYXJ0LUMtMyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoODA2LjYzMjgxMjUsIDE1MSkiPjxyZWN0IGNsYXNzPSJiYXNpYyBsYWJlbC1jb250YWluZXIiIHN0eWxlPSIiIHg9Ii0xMjEuNjAxNTYyNSIgeT0iLTM5IiB3aWR0aD0iMjQzLjIwMzEyNSIgaGVpZ2h0PSI3OCI+PC9yZWN0PjxnIGNsYXNzPSJsYWJlbCIgc3R5bGU9IiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTkxLjYwMTU2MjUsIC0yNCkiPjxyZWN0PjwvcmVjdD48Zm9yZWlnbk9iamVjdCB3aWR0aD0iMTgzLjIwMzEyNSIgaGVpZ2h0PSI0OCI+PGRpdiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCIgc3R5bGU9ImRpc3BsYXk6IHRhYmxlLWNlbGw7IHdoaXRlLXNwYWNlOiBub3dyYXA7IGxpbmUtaGVpZ2h0OiAxLjU7IG1heC13aWR0aDogMjAwcHg7IHRleHQtYWxpZ246IGNlbnRlcjsiPjxzcGFuIGNsYXNzPSJub2RlTGFiZWwgIj48cD5ObyBuZWNlc2l0YW4gbWVkaW8gZsOtc2ljbzxici8+Y3J1emFuIGVsIHZhY8OtbzwvcD48L3NwYW4+PC9kaXY+PC9mb3JlaWduT2JqZWN0PjwvZz48L2c+PGcgY2xhc3M9Im5vZGUgZGVmYXVsdCAgIiBpZD0iZmxvd2NoYXJ0LUQtNSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI1LjE2NDA2MjUsIDI3OSkiPjxyZWN0IGNsYXNzPSJiYXNpYyBsYWJlbC1jb250YWluZXIiIHN0eWxlPSIiIHg9Ii0xMTcuMTY0MDYyNSIgeT0iLTM5IiB3aWR0aD0iMjM0LjMyODEyNSIgaGVpZ2h0PSI3OCI+PC9yZWN0PjxnIGNsYXNzPSJsYWJlbCIgc3R5bGU9IiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTg3LjE2NDA2MjUsIC0yNCkiPjxyZWN0PjwvcmVjdD48Zm9yZWlnbk9iamVjdCB3aWR0aD0iMTc0LjMyODEyNSIgaGVpZ2h0PSI0OCI+PGRpdiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCIgc3R5bGU9ImRpc3BsYXk6IHRhYmxlLWNlbGw7IHdoaXRlLXNwYWNlOiBub3dyYXA7IGxpbmUtaGVpZ2h0OiAxLjU7IG1heC13aWR0aDogMjAwcHg7IHRleHQtYWxpZ246IGNlbnRlcjsiPjxzcGFuIGNsYXNzPSJub2RlTGFiZWwgIj48cD5UcmFuc2ZlcmVuY2lhIHTDqXJtaWNhPGJyLz5jb25kdWNjacOzbiAvIGNvbnZlY2Npw7NuPC9wPjwvc3Bhbj48L2Rpdj48L2ZvcmVpZ25PYmplY3Q+PC9nPjwvZz48ZyBjbGFzcz0ibm9kZSBkZWZhdWx0ICAiIGlkPSJmbG93Y2hhcnQtRS03IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzOTMuMDM5MDYyNSwgMjc5KSI+PHJlY3QgY2xhc3M9ImJhc2ljIGxhYmVsLWNvbnRhaW5lciIgc3R5bGU9IiIgeD0iLTEwMC43MTA5Mzc1IiB5PSItMzkiIHdpZHRoPSIyMDEuNDIxODc1IiBoZWlnaHQ9Ijc4Ij48L3JlY3Q+PGcgY2xhc3M9ImxhYmVsIiBzdHlsZT0iIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNzAuNzEwOTM3NSwgLTI0KSI+PHJlY3Q+PC9yZWN0Pjxmb3JlaWduT2JqZWN0IHdpZHRoPSIxNDEuNDIxODc1IiBoZWlnaHQ9IjQ4Ij48ZGl2IHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hodG1sIiBzdHlsZT0iZGlzcGxheTogdGFibGUtY2VsbDsgd2hpdGUtc3BhY2U6IG5vd3JhcDsgbGluZS1oZWlnaHQ6IDEuNTsgbWF4LXdpZHRoOiAyMDBweDsgdGV4dC1hbGlnbjogY2VudGVyOyI+PHNwYW4gY2xhc3M9Im5vZGVMYWJlbCAiPjxwPk9uZGFzIG1lY8OhbmljYXM8YnIvPnNvbmlkbyAvIHZpYnJhY2lvbmVzPC9wPjwvc3Bhbj48L2Rpdj48L2ZvcmVpZ25PYmplY3Q+PC9nPjwvZz48ZyBjbGFzcz0ibm9kZSBkZWZhdWx0ICAiIGlkPSJmbG93Y2hhcnQtRi05IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2NjQuNDY4NzUsIDI3OSkiPjxyZWN0IGNsYXNzPSJiYXNpYyBsYWJlbC1jb250YWluZXIiIHN0eWxlPSIiIHg9Ii0xMjAuNzE4NzUiIHk9Ii0zOSIgd2lkdGg9IjI0MS40Mzc1IiBoZWlnaHQ9Ijc4Ij48L3JlY3Q+PGcgY2xhc3M9ImxhYmVsIiBzdHlsZT0iIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtOTAuNzE4NzUsIC0yNCkiPjxyZWN0PjwvcmVjdD48Zm9yZWlnbk9iamVjdCB3aWR0aD0iMTgxLjQzNzUiIGhlaWdodD0iNDgiPjxkaXYgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiIHN0eWxlPSJkaXNwbGF5OiB0YWJsZS1jZWxsOyB3aGl0ZS1zcGFjZTogbm93cmFwOyBsaW5lLWhlaWdodDogMS41OyBtYXgtd2lkdGg6IDIwMHB4OyB0ZXh0LWFsaWduOiBjZW50ZXI7Ij48c3BhbiBjbGFzcz0ibm9kZUxhYmVsICI+PHA+T25kYXMgZWxlY3Ryb21hZ27DqXRpY2FzPGJyLz5sdXosIHJheW9zIFg8L3A+PC9zcGFuPjwvZGl2PjwvZm9yZWlnbk9iamVjdD48L2c+PC9nPjxnIGNsYXNzPSJub2RlIGRlZmF1bHQgICIgaWQ9ImZsb3djaGFydC1HLTExIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg5NDguNzk2ODc1LCAyNzkpIj48cmVjdCBjbGFzcz0iYmFzaWMgbGFiZWwtY29udGFpbmVyIiBzdHlsZT0iIiB4PSItMTEzLjYwOTM3NSIgeT0iLTM5IiB3aWR0aD0iMjI3LjIxODc1IiBoZWlnaHQ9Ijc4Ij48L3JlY3Q+PGcgY2xhc3M9ImxhYmVsIiBzdHlsZT0iIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtODMuNjA5Mzc1LCAtMjQpIj48cmVjdD48L3JlY3Q+PGZvcmVpZ25PYmplY3Qgd2lkdGg9IjE2Ny4yMTg3NSIgaGVpZ2h0PSI0OCI+PGRpdiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCIgc3R5bGU9ImRpc3BsYXk6IHRhYmxlLWNlbGw7IHdoaXRlLXNwYWNlOiBub3dyYXA7IGxpbmUtaGVpZ2h0OiAxLjU7IG1heC13aWR0aDogMjAwcHg7IHRleHQtYWxpZ246IGNlbnRlcjsiPjxzcGFuIGNsYXNzPSJub2RlTGFiZWwgIj48cD5SYWRpYWNpw7NuIGRlIHBhcnTDrWN1bGFzPGJyLz7Cq2JhbGFzwrsgc3ViYXTDs21pY2FzPC9wPjwvc3Bhbj48L2Rpdj48L2ZvcmVpZ25PYmplY3Q+PC9nPjwvZz48ZyBjbGFzcz0ibm9kZSBkZWZhdWx0ICAiIGlkPSJmbG93Y2hhcnQtSC0xMyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoODA2LjYzMjgxMjUsIDM5NSkiPjxyZWN0IGNsYXNzPSJiYXNpYyBsYWJlbC1jb250YWluZXIiIHN0eWxlPSIiIHg9Ii05Mi4yMzQzNzUiIHk9Ii0yNyIgd2lkdGg9IjE4NC40Njg3NSIgaGVpZ2h0PSI1NCI+PC9yZWN0PjxnIGNsYXNzPSJsYWJlbCIgc3R5bGU9IiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTYyLjIzNDM3NSwgLTEyKSI+PHJlY3Q+PC9yZWN0Pjxmb3JlaWduT2JqZWN0IHdpZHRoPSIxMjQuNDY4NzUiIGhlaWdodD0iMjQiPjxkaXYgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiIHN0eWxlPSJkaXNwbGF5OiB0YWJsZS1jZWxsOyB3aGl0ZS1zcGFjZTogbm93cmFwOyBsaW5lLWhlaWdodDogMS41OyBtYXgtd2lkdGg6IDIwMHB4OyB0ZXh0LWFsaWduOiBjZW50ZXI7Ij48c3BhbiBjbGFzcz0ibm9kZUxhYmVsICI+PHA+wqFFUyBSQURJQUNJw5NOITwvcD48L3NwYW4+PC9kaXY+PC9mb3JlaWduT2JqZWN0PjwvZz48L2c+PC9nPjwvZz48L2c+PC9zdmc+" /></p>
+<p><strong>Idea clave:</strong> si la energía puede cruzar el vacío, hablamos de radiación.</p>
+<hr />
+<h2 id="22-metodos-que-requieren-un-medio-material">2.2. Métodos que REQUIEREN un medio material</h2>
+<p><em>No funcionan en el espacio.</em></p>
+<h3 id="transmision-de-calor-por-contacto-o-fluidos-conduccion-y-conveccion">Transmisión de calor por contacto o fluidos (conducción y convección)</h3>
+<p>En nuestro día a día en la Tierra estamos permanentemente sumergidos en materia (aire o agua):</p>
+<ul>
+<li><strong>En el mar:</strong> al meterte en agua fría, las moléculas de agua en contacto directo con tu piel absorben tu energía térmica y te enfrían rápidamente.</li>
+<li><strong>En el aire:</strong> una ráfaga de viento caliente calienta tu cuerpo porque el aire en movimiento (convección) transporta la energía hacia ti.</li>
+<li><strong>En el espacio:</strong> al no haber moléculas de aire ni de ningún gas a tu alrededor, nada te transmite ni te roba calor por contacto directo o por corrientes.</li>
+</ul>
+<blockquote>
+<p>La conducción y la convección son físicamente imposibles en el vacío absoluto porque les faltan las «manos» (las partículas) para pasarse la energía unas a otras.</p>
+</blockquote>
+<h3 id="ondas-mecanicas-vibraciones-y-sonido">Ondas mecánicas (vibraciones y sonido)</h3>
+<p>El sonido es una <strong>perturbación mecánica</strong>: una molécula empuja a la vecina, esa a la siguiente, y así sucesivamente, en una reacción en cadena de compresiones y dilataciones.</p>
+<ul>
+<li>Para que haya sonido tiene que haber <strong>materia vibrando</strong> (aire, agua, metal, tejido humano).</li>
+<li><strong>En el espacio:</strong> no hay atmósfera. Si una nave explota a diez metros de ti en el espacio exterior, no oirás absolutamente nada. La frase de la película <em>Alien</em> es una verdad física literal: <em>«En el espacio nadie puede oír tus gritos»</em>. Sin un soporte de partículas que choquen entre sí, las ondas sonoras no pueden propagarse.</li>
+</ul>
+<hr />
+<h2 id="23-metodos-que-no-requieren-un-medio-material-la-radiacion">2.3. Métodos que NO requieren un medio material: la RADIACIÓN</h2>
+<p>Llamamos <strong>radiación</strong> a todo proceso en el que la energía viaja a través del espacio <strong>sin necesidad de apoyarse en un medio material</strong>, es decir, capaz de propagarse en el vacío absoluto.</p>
+<p>Solo existen <strong>dos formas</strong> de lograrlo.</p>
+<h3 id="a-ondas-electromagneticas-la-energia-pura-que-viaja-sola">A. Ondas electromagnéticas: la energía pura que viaja sola</h3>
+<p>No son partículas materiales chocando entre sí. Son <strong>oscilaciones acopladas de un campo eléctrico y un campo magnético</strong> que se impulsan mutuamente a través del espacio.</p>
+<blockquote>
+<p><strong>La prueba del espacio:</strong> por la noche miras al cielo y ves estrellas que están a millones de años luz. Entre esa estrella y tus ojos hay billones de kilómetros de vacío casi absoluto. La luz (y los rayos X, o la radiación infrarroja térmica del Sol) no necesita carreteras de aire ni de agua para viajar: cruza el cosmos vacío y llega hasta la Tierra.</p>
+</blockquote>
+<h3 id="b-radiacion-de-particulas-los-proyectiles-que-cruzan-el-vacio">B. Radiación de partículas: los proyectiles que cruzan el vacío</h3>
+<p>La otra forma de enviar energía sin un medio que la conduzca es, sencillamente, <strong>lanzar un proyectil físico con masa y velocidad</strong>.</p>
+<blockquote>
+<p><strong>La analogía del meteorito en el espacio.</strong> Imagina que flotas en mitad del vacío interestelar. Entre un meteorito que viene hacia ti y tu traje espacial no hay nada: cero aire, cero materia. ¿Impide eso que llegue hasta ti? En absoluto. El meteorito no necesita aire para viajar: lo hace por inercia y transporta una enorme cantidad de <strong>energía cinética</strong> (energía de movimiento). Cuando choca contra ti, descarga de golpe toda esa energía, destruyendo el traje y transfiriéndote su fuerza de impacto.</p>
+</blockquote>
+<p>La radiación de partículas funciona exactamente igual, pero a escala microscópica:</p>
+<ul>
+<li>En lugar de un meteorito gigante, son <strong>«balas subatómicas»</strong> lanzadas a altísima velocidad: núcleos de helio (<strong>partículas alfa, α</strong>), electrones veloces (<strong>partículas beta, β</strong>) o <strong>neutrones</strong> libres.</li>
+<li>No necesitan aire para viajar: cruzan el vacío y, cuando colisionan contra los átomos de tus células o de una placa radiográfica, <strong>descargan su energía cinética</strong> en ellos, arrancándoles electrones o rompiendo enlaces químicos.</li>
+</ul>
+<hr />
+<h2 id="24-tabla-resumen-de-metodos-de-transmision">2.4. Tabla resumen de métodos de transmisión</h2>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>¿Qué viaja?</th>
+<th>¿Requiere medio material?</th>
+<th>¿Funciona en el espacio exterior?</th>
+<th>Ejemplo en la vida real y en medicina</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Conducción / convección</strong></td>
+<td>Calor por choque térmico directo de moléculas</td>
+<td><strong>SÍ</strong> (sólido, líquido o gas)</td>
+<td>NO</td>
+<td>Enfriarse al sumergirse en agua de mar; quemarse al tocar una plancha</td>
+</tr>
+<tr>
+<td><strong>Ondas mecánicas</strong></td>
+<td>Vibración y presión de la materia</td>
+<td><strong>SÍ</strong> (imprescindible)</td>
+<td>NO</td>
+<td>El sonido de la voz; el ultrasonido de una ecografía</td>
+</tr>
+<tr>
+<td><strong>Ondas electromagnéticas</strong></td>
+<td>Campos eléctricos y magnéticos oscilantes</td>
+<td><strong>NO</strong> (viaja en el vacío)</td>
+<td><strong>SÍ</strong> (es radiación)</td>
+<td>La luz de las estrellas; las microondas; los rayos X de un hospital</td>
+</tr>
+<tr>
+<td><strong>Radiación de partículas</strong></td>
+<td>Proyectiles subatómicos con masa y velocidad</td>
+<td><strong>NO</strong> (viaja en el vacío)</td>
+<td><strong>SÍ</strong> (es radiación)</td>
+<td>Partículas α y β; neutrones</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="resumen-del-modulo">Resumen del módulo</h2>
+<ul>
+<li>La <strong>prueba del espacio exterior</strong> (el vacío) separa los métodos de transmisión de energía en dos familias.</li>
+<li><strong>Necesitan medio material:</strong> conducción y convección (calor) y ondas mecánicas (sonido, ultrasonidos).</li>
+<li><strong>No lo necesitan</strong> y se llaman <strong>radiación:</strong> ondas electromagnéticas (luz, rayos X) y radiación de partículas (α, β, neutrones).</li>
+<li>Las ondas electromagnéticas son campos eléctrico y magnético que se propagan juntos; la radiación de partículas es energía cinética transportada por proyectiles subatómicos.</li>
+</ul>
+<hr />
+<p><strong>Siguiente módulo:</strong> ahora que sabes qué es la radiación, toca clasificarla según el efecto que produce en la materia: radiación ionizante y no ionizante.</p>
+        </section>
+        
+        <section class="modulo-container" id="modulo-3">
+            <h1 id="modulo-3-clasificacion-de-la-radiacion-segun-su-impacto">Módulo 3. Clasificación de la radiación según su impacto</h1>
+<p><em>Radiación ionizante y no ionizante</em></p>
+<blockquote>
+<p><strong>Al terminar este módulo sabrás:</strong></p>
+<ul>
+<li>Explicar la diferencia entre radiación ionizante y no ionizante.</li>
+<li>Relacionar la ionización con lo que aprendiste sobre los iones en el Módulo 1.</li>
+<li>Distinguir entre radiación directa e indirectamente ionizante.</li>
+<li>Dar ejemplos de cada tipo, también en el ámbito sanitario.</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="31-que-ocurre-cuando-la-radiacion-llega-al-paciente">3.1. ¿Qué ocurre cuando la radiación llega al paciente?</h2>
+<p>Ahora que sabemos que la radiación es <strong>energía</strong> (en forma de ondas o de partículas) que viaja a través del vacío o la materia, la siguiente pregunta clave en medicina es: <strong>¿qué ocurre cuando esa radiación choca contra el cuerpo del paciente?</strong></p>
+<p>Para clasificar la radiación según el <strong>efecto</strong> que produce al encontrarse con la materia, la dividimos en dos grupos: <strong>radiación no ionizante</strong> y <strong>radiación ionizante</strong>.</p>
+<blockquote>
+<p><strong>Idea clave:</strong> la diferencia entre ambas radica, exclusivamente, en <strong>cuánta energía lleva el «proyectil»</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="32-radiacion-no-ionizante-el-empujon-suave">3.2. Radiación no ionizante: el empujón suave</h2>
+<p>Se llama <strong>radiación no ionizante</strong> a aquella que <strong>transfiere energía a la materia, pero menor que el potencial de ionización del átomo</strong>.</p>
+<ul>
+<li><strong>¿Qué significa en la práctica?</strong> El «proyectil» (por ejemplo, una onda electromagnética) no tiene fuerza suficiente para arrancar los electrones de sus órbitas atómicas.</li>
+<li><strong>¿Qué efectos produce?</strong> Aunque no rompe el átomo, sí produce otros efectos físicos: puede <strong>calentar</strong> la materia (hace vibrar las moléculas) o <strong>excitar</strong> los electrones sin llegar a expulsarlos.</li>
+<li><strong>Ejemplos cotidianos:</strong></li>
+<li>Radiación de <strong>microondas</strong>.</li>
+<li><strong>Espectro infrarrojo</strong> (el calor que emite una estufa).</li>
+<li><strong>Luz visible</strong> (la de una bombilla o la del Sol).</li>
+</ul>
+<hr />
+<h2 id="33-radiacion-ionizante-el-proyectil-que-rompe-el-atomo">3.3. Radiación ionizante: el proyectil que rompe el átomo</h2>
+<p>Hablamos de <strong>radiación ionizante</strong> cuando el proyectil tiene energía suficiente para <strong>arrancar uno o varios electrones orbitales</strong> de un átomo o molécula.</p>
+<p>Como vimos al estudiar los iones (apartado 1.6), si a un átomo neutro le arrancas electrones, que son negativos, el balance eléctrico se rompe y el átomo se convierte en un <strong>ion positivo (catión)</strong>. Por tanto, la radiación ionizante es, literalmente, <strong>la que es capaz de ionizar la materia</strong>.</p>
+<blockquote>
+<p><strong>En el hospital:</strong> en el cuerpo humano, arrancar electrones significa <strong>romper enlaces químicos</strong> de nuestras células y de nuestro ADN. Por eso esta radiación tiene aplicaciones médicas potentes, como destruir tumores en radioterapia, pero exige <strong>medidas estrictas de protección radiológica</strong>.</p>
+</blockquote>
+<h3 id="ejemplos-de-radiacion-ionizante">Ejemplos de radiación ionizante</h3>
+<table>
+<thead>
+<tr>
+<th>Tipo</th>
+<th>Ejemplos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ondas electromagnéticas</strong></td>
+<td>Rayos X de los equipos de radiodiagnóstico</td>
+</tr>
+<tr>
+<td><strong>Radiación de partículas</strong></td>
+<td>Partículas cargadas, como las <strong>alfa (α)</strong> y las <strong>beta (β)</strong>; y también algunas partículas sin carga, como los <strong>neutrones</strong> libres</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Para ir más allá: ¿cuánta energía hace falta?</strong></p>
+<p>Para arrancar un electrón de los átomos que forman los tejidos hace falta una energía del orden de <strong>10 eV</strong>. Un fotón de luz visible lleva solo entre 1,6 y 3,1 eV aproximadamente, así que no puede ionizar. Los fotones de los rayos X de diagnóstico llevan decenas de miles de eV (decenas de keV), mucho más de lo necesario. El electronvoltio (eV) es la misma unidad que vimos en el Módulo 1.</p>
+</blockquote>
+<hr />
+<h2 id="34-ionizacion-directa-e-indirecta">3.4. Ionización directa e indirecta</h2>
+<p>Dentro de la radiación ionizante hay <strong>dos formas</strong> de transferir energía al átomo.</p>
+<p><strong>1. Directamente ionizante</strong> La radiación, normalmente una <strong>partícula con carga eléctrica</strong> (como la alfa o la beta), choca o interactúa eléctricamente con el electrón orbital y lo <strong>expulsa de forma directa</strong>.</p>
+<p><strong>2. Indirectamente ionizante</strong> La radiación, como un <strong>rayo X</strong> o un <strong>neutrón</strong> sin carga, penetra en la materia y primero <strong>pone en movimiento a otras partículas cargadas secundarias</strong>. Son estas partículas secundarias las que terminan ionizando los átomos del entorno.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Directamente ionizante</th>
+<th>Indirectamente ionizante</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>¿Tiene carga eléctrica?</strong></td>
+<td>Sí</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>¿Quién ioniza?</strong></td>
+<td>La propia radiación</td>
+<td>Partículas secundarias que ella pone en movimiento</td>
+</tr>
+<tr>
+<td><strong>Ejemplos</strong></td>
+<td>Partículas α y β</td>
+<td>Rayos X, neutrones</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="35-comparacion">3.5. Comparación</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Radiación no ionizante</th>
+<th>Radiación ionizante</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Energía por «proyectil»</strong></td>
+<td>Menor que el potencial de ionización</td>
+<td>Suficiente para arrancar electrones</td>
+</tr>
+<tr>
+<td><strong>Efecto principal</strong></td>
+<td>Calentar o excitar la materia</td>
+<td>Ionizar: romper enlaces y formar iones</td>
+</tr>
+<tr>
+<td><strong>Ejemplos</strong></td>
+<td>Microondas, infrarrojo, luz visible</td>
+<td>Rayos X, partículas α y β, neutrones</td>
+</tr>
+<tr>
+<td><strong>Protección</strong></td>
+<td>Precauciones habituales</td>
+<td>Medidas estrictas de protección radiológica</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="resumen-del-modulo">Resumen del módulo</h2>
+<ul>
+<li>La radiación se clasifica según su efecto en la materia, y lo que decide es la <strong>energía</strong> que lleva.</li>
+<li><strong>No ionizante:</strong> su energía es menor que el potencial de ionización. No arranca electrones, pero puede calentar o excitar la materia.</li>
+<li><strong>Ionizante:</strong> arranca electrones y forma iones. En el cuerpo, esto rompe enlaces químicos, por lo que sirve en radioterapia y exige protección radiológica.</li>
+<li><strong>Directamente ionizante:</strong> partículas con carga (α, β). </li>
+<li><strong>Indirectamente ionizante:</strong> radiación sin carga (rayos X, neutrones), que ioniza a través de partículas secundarias.</li>
+</ul>
+<hr />
+<p><strong>Siguiente módulo:</strong> ya sabemos qué efecto tiene la radiación. Ahora toca estudiar de dónde viene. Empezaremos por las <strong>ondas electromagnéticas</strong>: el espectro y el origen de los rayos X.</p>
+        </section>
+        
+        <section class="modulo-container" id="modulo-4">
+            <h1 id="modulo-4-el-mundo-de-las-ondas">Módulo 4. El mundo de las ondas</h1>
+<p><em>De la ecografía a las medidas básicas de una onda</em></p>
+<blockquote>
+<p><strong>Al terminar este módulo sabrás:</strong></p>
+<ul>
+<li>Explicar qué es una onda con tus propias palabras.</li>
+<li>Distinguir ondas transversales y longitudinales.</li>
+<li>Explicar qué son la amplitud, la longitud de onda, la frecuencia, el periodo y la velocidad de una onda, y cómo se relacionan.</li>
+<li>Describir cómo funciona una ecografía y por qué no usa radiación ionizante.</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="41-que-es-una-onda">4.1. ¿Qué es una onda?</h2>
+<p>Para entender cómo funcionan la luz, los rayos X o los ultrasonidos en un hospital, primero hay que tener muy claro <strong>qué es una onda</strong> y <strong>cómo se mide</strong>.</p>
+<p>Una onda <strong>no es un objeto</strong>. Es una <strong>perturbación que viaja</strong> de un sitio a otro y que transporta <strong>energía</strong>, pero <strong>no transporta materia</strong>.</p>
+<p>Un ejemplo: la <strong>ola</strong> que hace el público en un estadio. La ola da la vuelta entera al campo, pero ningún espectador cambia de sitio: cada uno solo se levanta y se sienta. Viaja el movimiento, no las personas.</p>
+<p>Lo mismo pasa con una ola en el mar. Si echas un corcho al agua, verás que <strong>el corcho no avanza con la ola</strong>: solo sube y baja.</p>
+<p>Onda en el agua con un corcho</p>
+<p><img alt="fig2" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NjAgMjUwIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTUiPjxyZWN0IHdpZHRoPSI1NjAiIGhlaWdodD0iMjUwIiBmaWxsPSIjZmZmIi8+PGRlZnM+PG1hcmtlciBpZD0ibWIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMjU2M2ViIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibXIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjZGMyNjI2Ii8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWciIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMTU4MDNkIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWsiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjNTU1NTU1Ii8+PC9tYXJrZXI+PC9kZWZzPjxwb2x5Z29uIHBvaW50cz0iMjAuMCwxMzIuMyAyMi4wLDEzNC4xIDI0LjAsMTM1LjkgMjYuMCwxMzcuNyAyOC4wLDEzOS40IDMwLjAsMTQxLjAgMzIuMCwxNDIuNiAzNC4wLDE0NC4wIDM2LjAsMTQ1LjQgMzguMCwxNDYuNyA0MC4wLDE0Ny44IDQyLjAsMTQ4LjggNDQuMCwxNDkuNyA0Ni4wLDE1MC41IDQ4LjAsMTUxLjEgNTAuMCwxNTEuNSA1Mi4wLDE1MS44IDU0LjAsMTUyLjAgNTYuMCwxNTIuMCA1OC4wLDE1MS44IDYwLjAsMTUxLjUgNjIuMCwxNTEuMSA2NC4wLDE1MC41IDY2LjAsMTQ5LjcgNjguMCwxNDguOCA3MC4wLDE0Ny44IDcyLjAsMTQ2LjcgNzQuMCwxNDUuNCA3Ni4wLDE0NC4wIDc4LjAsMTQyLjYgODAuMCwxNDEuMCA4Mi4wLDEzOS40IDg0LjAsMTM3LjcgODYuMCwxMzUuOSA4OC4wLDEzNC4xIDkwLjAsMTMyLjMgOTIuMCwxMzAuNSA5NC4wLDEyOC42IDk2LjAsMTI2LjggOTguMCwxMjUuMCAxMDAuMCwxMjMuMiAxMDIuMCwxMjEuNSAxMDQuMCwxMTkuOCAxMDYuMCwxMTguMiAxMDguMCwxMTYuNyAxMTAuMCwxMTUuMyAxMTIuMCwxMTQuMCAxMTQuMCwxMTIuOCAxMTYuMCwxMTEuNyAxMTguMCwxMTAuNyAxMjAuMCwxMDkuOSAxMjIuMCwxMDkuMiAxMjQuMCwxMDguNyAxMjYuMCwxMDguMyAxMjguMCwxMDguMSAxMzAuMCwxMDguMCAxMzIuMCwxMDguMSAxMzQuMCwxMDguMyAxMzYuMCwxMDguNyAxMzguMCwxMDkuMiAxNDAuMCwxMDkuOSAxNDIuMCwxMTAuNyAxNDQuMCwxMTEuNyAxNDYuMCwxMTIuOCAxNDguMCwxMTQuMCAxNTAuMCwxMTUuMyAxNTIuMCwxMTYuNyAxNTQuMCwxMTguMiAxNTYuMCwxMTkuOCAxNTguMCwxMjEuNSAxNjAuMCwxMjMuMiAxNjIuMCwxMjUuMCAxNjQuMCwxMjYuOCAxNjYuMCwxMjguNiAxNjguMCwxMzAuNSAxNzAuMCwxMzIuMyAxNzIuMCwxMzQuMSAxNzQuMCwxMzUuOSAxNzYuMCwxMzcuNyAxNzguMCwxMzkuNCAxODAuMCwxNDEuMCAxODIuMCwxNDIuNiAxODQuMCwxNDQuMCAxODYuMCwxNDUuNCAxODguMCwxNDYuNyAxOTAuMCwxNDcuOCAxOTIuMCwxNDguOCAxOTQuMCwxNDkuNyAxOTYuMCwxNTAuNSAxOTguMCwxNTEuMSAyMDAuMCwxNTEuNSAyMDIuMCwxNTEuOCAyMDQuMCwxNTIuMCAyMDYuMCwxNTIuMCAyMDguMCwxNTEuOCAyMTAuMCwxNTEuNSAyMTIuMCwxNTEuMSAyMTQuMCwxNTAuNSAyMTYuMCwxNDkuNyAyMTguMCwxNDguOCAyMjAuMCwxNDcuOCAyMjIuMCwxNDYuNyAyMjQuMCwxNDUuNCAyMjYuMCwxNDQuMCAyMjguMCwxNDIuNiAyMzAuMCwxNDEuMCAyMzIuMCwxMzkuNCAyMzQuMCwxMzcuNyAyMzYuMCwxMzUuOSAyMzguMCwxMzQuMSAyNDAuMCwxMzIuMyAyNDIuMCwxMzAuNSAyNDQuMCwxMjguNiAyNDYuMCwxMjYuOCAyNDguMCwxMjUuMCAyNTAuMCwxMjMuMiAyNTIuMCwxMjEuNSAyNTQuMCwxMTkuOCAyNTYuMCwxMTguMiAyNTguMCwxMTYuNyAyNjAuMCwxMTUuMyAyNjIuMCwxMTQuMCAyNjQuMCwxMTIuOCAyNjYuMCwxMTEuNyAyNjguMCwxMTAuNyAyNzAuMCwxMDkuOSAyNzIuMCwxMDkuMiAyNzQuMCwxMDguNyAyNzYuMCwxMDguMyAyNzguMCwxMDguMSAyODAuMCwxMDguMCAyODIuMCwxMDguMSAyODQuMCwxMDguMyAyODYuMCwxMDguNyAyODguMCwxMDkuMiAyOTAuMCwxMDkuOSAyOTIuMCwxMTAuNyAyOTQuMCwxMTEuNyAyOTYuMCwxMTIuOCAyOTguMCwxMTQuMCAzMDAuMCwxMTUuMyAzMDIuMCwxMTYuNyAzMDQuMCwxMTguMiAzMDYuMCwxMTkuOCAzMDguMCwxMjEuNSAzMTAuMCwxMjMuMiAzMTIuMCwxMjUuMCAzMTQuMCwxMjYuOCAzMTYuMCwxMjguNiAzMTguMCwxMzAuNSAzMjAuMCwxMzIuMyAzMjIuMCwxMzQuMSAzMjQuMCwxMzUuOSAzMjYuMCwxMzcuNyAzMjguMCwxMzkuNCAzMzAuMCwxNDEuMCAzMzIuMCwxNDIuNiAzMzQuMCwxNDQuMCAzMzYuMCwxNDUuNCAzMzguMCwxNDYuNyAzNDAuMCwxNDcuOCAzNDIuMCwxNDguOCAzNDQuMCwxNDkuNyAzNDYuMCwxNTAuNSAzNDguMCwxNTEuMSAzNTAuMCwxNTEuNSAzNTIuMCwxNTEuOCAzNTQuMCwxNTIuMCAzNTYuMCwxNTIuMCAzNTguMCwxNTEuOCAzNjAuMCwxNTEuNSAzNjIuMCwxNTEuMSAzNjQuMCwxNTAuNSAzNjYuMCwxNDkuNyAzNjguMCwxNDguOCAzNzAuMCwxNDcuOCAzNzIuMCwxNDYuNyAzNzQuMCwxNDUuNCAzNzYuMCwxNDQuMCAzNzguMCwxNDIuNiAzODAuMCwxNDEuMCAzODIuMCwxMzkuNCAzODQuMCwxMzcuNyAzODYuMCwxMzUuOSAzODguMCwxMzQuMSAzOTAuMCwxMzIuMyAzOTIuMCwxMzAuNSAzOTQuMCwxMjguNiAzOTYuMCwxMjYuOCAzOTguMCwxMjUuMCA0MDAuMCwxMjMuMiA0MDIuMCwxMjEuNSA0MDQuMCwxMTkuOCA0MDYuMCwxMTguMiA0MDguMCwxMTYuNyA0MTAuMCwxMTUuMyA0MTIuMCwxMTQuMCA0MTQuMCwxMTIuOCA0MTYuMCwxMTEuNyA0MTguMCwxMTAuNyA0MjAuMCwxMDkuOSA0MjIuMCwxMDkuMiA0MjQuMCwxMDguNyA0MjYuMCwxMDguMyA0MjguMCwxMDguMSA0MzAuMCwxMDguMCA0MzIuMCwxMDguMSA0MzQuMCwxMDguMyA0MzYuMCwxMDguNyA0MzguMCwxMDkuMiA0NDAuMCwxMDkuOSA0NDIuMCwxMTAuNyA0NDQuMCwxMTEuNyA0NDYuMCwxMTIuOCA0NDguMCwxMTQuMCA0NTAuMCwxMTUuMyA0NTIuMCwxMTYuNyA0NTQuMCwxMTguMiA0NTYuMCwxMTkuOCA0NTguMCwxMjEuNSA0NjAuMCwxMjMuMiA0NjIuMCwxMjUuMCA0NjQuMCwxMjYuOCA0NjYuMCwxMjguNiA0NjguMCwxMzAuNSA0NzAuMCwxMzIuMyA0NzIuMCwxMzQuMSA0NzQuMCwxMzUuOSA0NzYuMCwxMzcuNyA0NzguMCwxMzkuNCA0ODAuMCwxNDEuMCA0ODIuMCwxNDIuNiA0ODQuMCwxNDQuMCA0ODYuMCwxNDUuNCA0ODguMCwxNDYuNyA0OTAuMCwxNDcuOCA0OTIuMCwxNDguOCA0OTQuMCwxNDkuNyA0OTYuMCwxNTAuNSA0OTguMCwxNTEuMSA1MDAuMCwxNTEuNSA1MDIuMCwxNTEuOCA1MDQuMCwxNTIuMCA1MDYuMCwxNTIuMCA1MDguMCwxNTEuOCA1MTAuMCwxNTEuNSA1MTIuMCwxNTEuMSA1MTQuMCwxNTAuNSA1MTYuMCwxNDkuNyA1MTguMCwxNDguOCA1MjAuMCwxNDcuOCA1MjIuMCwxNDYuNyA1MjQuMCwxNDUuNCA1MjYuMCwxNDQuMCA1MjguMCwxNDIuNiA1MzAuMCwxNDEuMCA1MzIuMCwxMzkuNCA1MzQuMCwxMzcuNyA1MzYuMCwxMzUuOSA1MzguMCwxMzQuMSA1NDAuMCwxMzIuMyA1NDAsMjE1IDIwLDIxNSIgZmlsbD0iI2RiZWFmZSIvPjxwb2x5bGluZSBwb2ludHM9IjIwLjAsMTMyLjMgMjIuMCwxMzQuMSAyNC4wLDEzNS45IDI2LjAsMTM3LjcgMjguMCwxMzkuNCAzMC4wLDE0MS4wIDMyLjAsMTQyLjYgMzQuMCwxNDQuMCAzNi4wLDE0NS40IDM4LjAsMTQ2LjcgNDAuMCwxNDcuOCA0Mi4wLDE0OC44IDQ0LjAsMTQ5LjcgNDYuMCwxNTAuNSA0OC4wLDE1MS4xIDUwLjAsMTUxLjUgNTIuMCwxNTEuOCA1NC4wLDE1Mi4wIDU2LjAsMTUyLjAgNTguMCwxNTEuOCA2MC4wLDE1MS41IDYyLjAsMTUxLjEgNjQuMCwxNTAuNSA2Ni4wLDE0OS43IDY4LjAsMTQ4LjggNzAuMCwxNDcuOCA3Mi4wLDE0Ni43IDc0LjAsMTQ1LjQgNzYuMCwxNDQuMCA3OC4wLDE0Mi42IDgwLjAsMTQxLjAgODIuMCwxMzkuNCA4NC4wLDEzNy43IDg2LjAsMTM1LjkgODguMCwxMzQuMSA5MC4wLDEzMi4zIDkyLjAsMTMwLjUgOTQuMCwxMjguNiA5Ni4wLDEyNi44IDk4LjAsMTI1LjAgMTAwLjAsMTIzLjIgMTAyLjAsMTIxLjUgMTA0LjAsMTE5LjggMTA2LjAsMTE4LjIgMTA4LjAsMTE2LjcgMTEwLjAsMTE1LjMgMTEyLjAsMTE0LjAgMTE0LjAsMTEyLjggMTE2LjAsMTExLjcgMTE4LjAsMTEwLjcgMTIwLjAsMTA5LjkgMTIyLjAsMTA5LjIgMTI0LjAsMTA4LjcgMTI2LjAsMTA4LjMgMTI4LjAsMTA4LjEgMTMwLjAsMTA4LjAgMTMyLjAsMTA4LjEgMTM0LjAsMTA4LjMgMTM2LjAsMTA4LjcgMTM4LjAsMTA5LjIgMTQwLjAsMTA5LjkgMTQyLjAsMTEwLjcgMTQ0LjAsMTExLjcgMTQ2LjAsMTEyLjggMTQ4LjAsMTE0LjAgMTUwLjAsMTE1LjMgMTUyLjAsMTE2LjcgMTU0LjAsMTE4LjIgMTU2LjAsMTE5LjggMTU4LjAsMTIxLjUgMTYwLjAsMTIzLjIgMTYyLjAsMTI1LjAgMTY0LjAsMTI2LjggMTY2LjAsMTI4LjYgMTY4LjAsMTMwLjUgMTcwLjAsMTMyLjMgMTcyLjAsMTM0LjEgMTc0LjAsMTM1LjkgMTc2LjAsMTM3LjcgMTc4LjAsMTM5LjQgMTgwLjAsMTQxLjAgMTgyLjAsMTQyLjYgMTg0LjAsMTQ0LjAgMTg2LjAsMTQ1LjQgMTg4LjAsMTQ2LjcgMTkwLjAsMTQ3LjggMTkyLjAsMTQ4LjggMTk0LjAsMTQ5LjcgMTk2LjAsMTUwLjUgMTk4LjAsMTUxLjEgMjAwLjAsMTUxLjUgMjAyLjAsMTUxLjggMjA0LjAsMTUyLjAgMjA2LjAsMTUyLjAgMjA4LjAsMTUxLjggMjEwLjAsMTUxLjUgMjEyLjAsMTUxLjEgMjE0LjAsMTUwLjUgMjE2LjAsMTQ5LjcgMjE4LjAsMTQ4LjggMjIwLjAsMTQ3LjggMjIyLjAsMTQ2LjcgMjI0LjAsMTQ1LjQgMjI2LjAsMTQ0LjAgMjI4LjAsMTQyLjYgMjMwLjAsMTQxLjAgMjMyLjAsMTM5LjQgMjM0LjAsMTM3LjcgMjM2LjAsMTM1LjkgMjM4LjAsMTM0LjEgMjQwLjAsMTMyLjMgMjQyLjAsMTMwLjUgMjQ0LjAsMTI4LjYgMjQ2LjAsMTI2LjggMjQ4LjAsMTI1LjAgMjUwLjAsMTIzLjIgMjUyLjAsMTIxLjUgMjU0LjAsMTE5LjggMjU2LjAsMTE4LjIgMjU4LjAsMTE2LjcgMjYwLjAsMTE1LjMgMjYyLjAsMTE0LjAgMjY0LjAsMTEyLjggMjY2LjAsMTExLjcgMjY4LjAsMTEwLjcgMjcwLjAsMTA5LjkgMjcyLjAsMTA5LjIgMjc0LjAsMTA4LjcgMjc2LjAsMTA4LjMgMjc4LjAsMTA4LjEgMjgwLjAsMTA4LjAgMjgyLjAsMTA4LjEgMjg0LjAsMTA4LjMgMjg2LjAsMTA4LjcgMjg4LjAsMTA5LjIgMjkwLjAsMTA5LjkgMjkyLjAsMTEwLjcgMjk0LjAsMTExLjcgMjk2LjAsMTEyLjggMjk4LjAsMTE0LjAgMzAwLjAsMTE1LjMgMzAyLjAsMTE2LjcgMzA0LjAsMTE4LjIgMzA2LjAsMTE5LjggMzA4LjAsMTIxLjUgMzEwLjAsMTIzLjIgMzEyLjAsMTI1LjAgMzE0LjAsMTI2LjggMzE2LjAsMTI4LjYgMzE4LjAsMTMwLjUgMzIwLjAsMTMyLjMgMzIyLjAsMTM0LjEgMzI0LjAsMTM1LjkgMzI2LjAsMTM3LjcgMzI4LjAsMTM5LjQgMzMwLjAsMTQxLjAgMzMyLjAsMTQyLjYgMzM0LjAsMTQ0LjAgMzM2LjAsMTQ1LjQgMzM4LjAsMTQ2LjcgMzQwLjAsMTQ3LjggMzQyLjAsMTQ4LjggMzQ0LjAsMTQ5LjcgMzQ2LjAsMTUwLjUgMzQ4LjAsMTUxLjEgMzUwLjAsMTUxLjUgMzUyLjAsMTUxLjggMzU0LjAsMTUyLjAgMzU2LjAsMTUyLjAgMzU4LjAsMTUxLjggMzYwLjAsMTUxLjUgMzYyLjAsMTUxLjEgMzY0LjAsMTUwLjUgMzY2LjAsMTQ5LjcgMzY4LjAsMTQ4LjggMzcwLjAsMTQ3LjggMzcyLjAsMTQ2LjcgMzc0LjAsMTQ1LjQgMzc2LjAsMTQ0LjAgMzc4LjAsMTQyLjYgMzgwLjAsMTQxLjAgMzgyLjAsMTM5LjQgMzg0LjAsMTM3LjcgMzg2LjAsMTM1LjkgMzg4LjAsMTM0LjEgMzkwLjAsMTMyLjMgMzkyLjAsMTMwLjUgMzk0LjAsMTI4LjYgMzk2LjAsMTI2LjggMzk4LjAsMTI1LjAgNDAwLjAsMTIzLjIgNDAyLjAsMTIxLjUgNDA0LjAsMTE5LjggNDA2LjAsMTE4LjIgNDA4LjAsMTE2LjcgNDEwLjAsMTE1LjMgNDEyLjAsMTE0LjAgNDE0LjAsMTEyLjggNDE2LjAsMTExLjcgNDE4LjAsMTEwLjcgNDIwLjAsMTA5LjkgNDIyLjAsMTA5LjIgNDI0LjAsMTA4LjcgNDI2LjAsMTA4LjMgNDI4LjAsMTA4LjEgNDMwLjAsMTA4LjAgNDMyLjAsMTA4LjEgNDM0LjAsMTA4LjMgNDM2LjAsMTA4LjcgNDM4LjAsMTA5LjIgNDQwLjAsMTA5LjkgNDQyLjAsMTEwLjcgNDQ0LjAsMTExLjcgNDQ2LjAsMTEyLjggNDQ4LjAsMTE0LjAgNDUwLjAsMTE1LjMgNDUyLjAsMTE2LjcgNDU0LjAsMTE4LjIgNDU2LjAsMTE5LjggNDU4LjAsMTIxLjUgNDYwLjAsMTIzLjIgNDYyLjAsMTI1LjAgNDY0LjAsMTI2LjggNDY2LjAsMTI4LjYgNDY4LjAsMTMwLjUgNDcwLjAsMTMyLjMgNDcyLjAsMTM0LjEgNDc0LjAsMTM1LjkgNDc2LjAsMTM3LjcgNDc4LjAsMTM5LjQgNDgwLjAsMTQxLjAgNDgyLjAsMTQyLjYgNDg0LjAsMTQ0LjAgNDg2LjAsMTQ1LjQgNDg4LjAsMTQ2LjcgNDkwLjAsMTQ3LjggNDkyLjAsMTQ4LjggNDk0LjAsMTQ5LjcgNDk2LjAsMTUwLjUgNDk4LjAsMTUxLjEgNTAwLjAsMTUxLjUgNTAyLjAsMTUxLjggNTA0LjAsMTUyLjAgNTA2LjAsMTUyLjAgNTA4LjAsMTUxLjggNTEwLjAsMTUxLjUgNTEyLjAsMTUxLjEgNTE0LjAsMTUwLjUgNTE2LjAsMTQ5LjcgNTE4LjAsMTQ4LjggNTIwLjAsMTQ3LjggNTIyLjAsMTQ2LjcgNTI0LjAsMTQ1LjQgNTI2LjAsMTQ0LjAgNTI4LjAsMTQyLjYgNTMwLjAsMTQxLjAgNTMyLjAsMTM5LjQgNTM0LjAsMTM3LjcgNTM2LjAsMTM1LjkgNTM4LjAsMTM0LjEgNTQwLjAsMTMyLjMiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI1NjNlYiIgc3Ryb2tlLXdpZHRoPSIzLjUiLz48Y2lyY2xlIGN4PSIyODAiIGN5PSI5OCIgcj0iMTAiIGZpbGw9IiNiNDUzMDkiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjMxOCIgeTE9IjY4IiB4Mj0iMzE4IiB5Mj0iMTUwIiBzdHJva2U9IiNkYzI2MjYiIHN0cm9rZS13aWR0aD0iMyIgbWFya2VyLWVuZD0idXJsKCNtcikiIG1hcmtlci1zdGFydD0idXJsKCNtcikiLz48dGV4dCB4PSIzMzAiIHk9IjgwIiBmaWxsPSIjZGMyNjI2IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtc2l6ZT0iMTUiPkVsIGNvcmNobyBzb2xvPC90ZXh0Pjx0ZXh0IHg9IjMzMCIgeT0iOTgiIGZpbGw9IiNkYzI2MjYiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1zaXplPSIxNSI+c3ViZSB5IGJhamE8L3RleHQ+PGxpbmUgeDE9IjEzMCIgeTE9IjQwIiB4Mj0iNDAwIiB5Mj0iNDAiIHN0cm9rZT0iIzI1NjNlYiIgc3Ryb2tlLXdpZHRoPSIzIiBtYXJrZXItZW5kPSJ1cmwoI21iKSIvPjx0ZXh0IHg9IjI2NSIgeT0iMzAiIGZpbGw9IiMyNTYzZWIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSJib2xkIj5MYSBvbGEgYXZhbnphPC90ZXh0Pjx0ZXh0IHg9IjI4MCIgeT0iMjM4IiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE1Ij5MYSBlbmVyZ8OtYSB2aWFqYSBjb24gbGEgb2xhOyBlbCBjb3JjaG8gc2UgcXVlZGEgZW4gc3Ugc2l0aW8uPC90ZXh0Pjwvc3ZnPg==" />
+<em>Figura 1. Una onda en el agua. La ola avanza, pero el corcho solo sube y baja alrededor de su sitio.</em></p>
+<p>Ese sitio donde se queda cada partícula cuando no hay onda se llama <strong>posición de equilibrio</strong> (o de reposo).</p>
+<blockquote>
+<p><strong>Idea clave:</strong> en una onda <strong>viaja la energía</strong>; la materia solo <strong>vibra</strong> alrededor de su posición de equilibrio.</p>
+</blockquote>
+<hr />
+<h2 id="42-tipos-de-ondas-mecanicas-transversales-y-longitudinales">4.2. Tipos de ondas mecánicas: transversales y longitudinales</h2>
+<p>Como vimos en el Módulo 2, las <strong>ondas mecánicas</strong> necesitan un medio material (agua, aire, tejido humano…) para viajar. Según <strong>cómo vibran las partículas</strong> respecto a la dirección en la que avanza la onda, hay dos tipos:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Onda transversal</strong></th>
+<th><strong>Onda longitudinal</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cómo vibran las partículas</strong></td>
+<td><strong>Perpendicular</strong> a la dirección de avance (arriba y abajo)</td>
+<td>En la <strong>misma dirección</strong> que el avance (adelante y atrás)</td>
+</tr>
+<tr>
+<td><strong>Ejemplo</strong></td>
+<td>Agitar una cuerda</td>
+<td>El sonido; empujar y soltar un muelle</td>
+</tr>
+<tr>
+<td><strong>Partes de la onda</strong></td>
+<td><strong>Crestas</strong> (puntos más altos) y <strong>valles</strong> (puntos más bajos)</td>
+<td><strong>Compresiones</strong> (partículas apretadas) y <strong>rarefacciones</strong> (partículas separadas)</td>
+</tr>
+</tbody>
+</table>
+<p>Onda transversal y onda longitudinal
+<img alt="fig2" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NjAgMzUwIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTUiPjxyZWN0IHdpZHRoPSI1NjAiIGhlaWdodD0iMzUwIiBmaWxsPSIjZmZmIi8+PGRlZnM+PG1hcmtlciBpZD0ibWIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMjU2M2ViIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibXIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjZGMyNjI2Ii8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWciIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMTU4MDNkIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWsiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjNTU1NTU1Ii8+PC9tYXJrZXI+PC9kZWZzPjx0ZXh0IHg9IjIwIiB5PSIyNCIgZmlsbD0iIzIyMiIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iYm9sZCI+T25kYSB0cmFuc3ZlcnNhbCAodW5hIGN1ZXJkYSk8L3RleHQ+PHBvbHlsaW5lIHBvaW50cz0iNDAuMCw5NS4wIDQyLjAsOTIuOCA0NC4wLDkwLjYgNDYuMCw4OC41IDQ4LjAsODYuMyA1MC4wLDg0LjMgNTIuMCw4Mi4zIDU0LjAsODAuNCA1Ni4wLDc4LjUgNTguMCw3Ni44IDYwLjAsNzUuMiA2Mi4wLDczLjcgNjQuMCw3Mi4zIDY2LjAsNzEuMSA2OC4wLDcwLjEgNzAuMCw2OS4xIDcyLjAsNjguNCA3NC4wLDY3LjggNzYuMCw2Ny4zIDc4LjAsNjcuMSA4MC4wLDY3LjAgODIuMCw2Ny4xIDg0LjAsNjcuMyA4Ni4wLDY3LjggODguMCw2OC40IDkwLjAsNjkuMSA5Mi4wLDcwLjEgOTQuMCw3MS4xIDk2LjAsNzIuMyA5OC4wLDczLjcgMTAwLjAsNzUuMiAxMDIuMCw3Ni44IDEwNC4wLDc4LjUgMTA2LjAsODAuNCAxMDguMCw4Mi4zIDExMC4wLDg0LjMgMTEyLjAsODYuMyAxMTQuMCw4OC41IDExNi4wLDkwLjYgMTE4LjAsOTIuOCAxMjAuMCw5NS4wIDEyMi4wLDk3LjIgMTI0LjAsOTkuNCAxMjYuMCwxMDEuNSAxMjguMCwxMDMuNyAxMzAuMCwxMDUuNyAxMzIuMCwxMDcuNyAxMzQuMCwxMDkuNiAxMzYuMCwxMTEuNSAxMzguMCwxMTMuMiAxNDAuMCwxMTQuOCAxNDIuMCwxMTYuMyAxNDQuMCwxMTcuNyAxNDYuMCwxMTguOSAxNDguMCwxMTkuOSAxNTAuMCwxMjAuOSAxNTIuMCwxMjEuNiAxNTQuMCwxMjIuMiAxNTYuMCwxMjIuNyAxNTguMCwxMjIuOSAxNjAuMCwxMjMuMCAxNjIuMCwxMjIuOSAxNjQuMCwxMjIuNyAxNjYuMCwxMjIuMiAxNjguMCwxMjEuNiAxNzAuMCwxMjAuOSAxNzIuMCwxMTkuOSAxNzQuMCwxMTguOSAxNzYuMCwxMTcuNyAxNzguMCwxMTYuMyAxODAuMCwxMTQuOCAxODIuMCwxMTMuMiAxODQuMCwxMTEuNSAxODYuMCwxMDkuNiAxODguMCwxMDcuNyAxOTAuMCwxMDUuNyAxOTIuMCwxMDMuNyAxOTQuMCwxMDEuNSAxOTYuMCw5OS40IDE5OC4wLDk3LjIgMjAwLjAsOTUuMCAyMDIuMCw5Mi44IDIwNC4wLDkwLjYgMjA2LjAsODguNSAyMDguMCw4Ni4zIDIxMC4wLDg0LjMgMjEyLjAsODIuMyAyMTQuMCw4MC40IDIxNi4wLDc4LjUgMjE4LjAsNzYuOCAyMjAuMCw3NS4yIDIyMi4wLDczLjcgMjI0LjAsNzIuMyAyMjYuMCw3MS4xIDIyOC4wLDcwLjEgMjMwLjAsNjkuMSAyMzIuMCw2OC40IDIzNC4wLDY3LjggMjM2LjAsNjcuMyAyMzguMCw2Ny4xIDI0MC4wLDY3LjAgMjQyLjAsNjcuMSAyNDQuMCw2Ny4zIDI0Ni4wLDY3LjggMjQ4LjAsNjguNCAyNTAuMCw2OS4xIDI1Mi4wLDcwLjEgMjU0LjAsNzEuMSAyNTYuMCw3Mi4zIDI1OC4wLDczLjcgMjYwLjAsNzUuMiAyNjIuMCw3Ni44IDI2NC4wLDc4LjUgMjY2LjAsODAuNCAyNjguMCw4Mi4zIDI3MC4wLDg0LjMgMjcyLjAsODYuMyAyNzQuMCw4OC41IDI3Ni4wLDkwLjYgMjc4LjAsOTIuOCAyODAuMCw5NS4wIDI4Mi4wLDk3LjIgMjg0LjAsOTkuNCAyODYuMCwxMDEuNSAyODguMCwxMDMuNyAyOTAuMCwxMDUuNyAyOTIuMCwxMDcuNyAyOTQuMCwxMDkuNiAyOTYuMCwxMTEuNSAyOTguMCwxMTMuMiAzMDAuMCwxMTQuOCAzMDIuMCwxMTYuMyAzMDQuMCwxMTcuNyAzMDYuMCwxMTguOSAzMDguMCwxMTkuOSAzMTAuMCwxMjAuOSAzMTIuMCwxMjEuNiAzMTQuMCwxMjIuMiAzMTYuMCwxMjIuNyAzMTguMCwxMjIuOSAzMjAuMCwxMjMuMCAzMjIuMCwxMjIuOSAzMjQuMCwxMjIuNyAzMjYuMCwxMjIuMiAzMjguMCwxMjEuNiAzMzAuMCwxMjAuOSAzMzIuMCwxMTkuOSAzMzQuMCwxMTguOSAzMzYuMCwxMTcuNyAzMzguMCwxMTYuMyAzNDAuMCwxMTQuOCAzNDIuMCwxMTMuMiAzNDQuMCwxMTEuNSAzNDYuMCwxMDkuNiAzNDguMCwxMDcuNyAzNTAuMCwxMDUuNyAzNTIuMCwxMDMuNyAzNTQuMCwxMDEuNSAzNTYuMCw5OS40IDM1OC4wLDk3LjIgMzYwLjAsOTUuMCAzNjIuMCw5Mi44IDM2NC4wLDkwLjYgMzY2LjAsODguNSAzNjguMCw4Ni4zIDM3MC4wLDg0LjMgMzcyLjAsODIuMyAzNzQuMCw4MC40IDM3Ni4wLDc4LjUgMzc4LjAsNzYuOCAzODAuMCw3NS4yIDM4Mi4wLDczLjcgMzg0LjAsNzIuMyAzODYuMCw3MS4xIDM4OC4wLDcwLjEgMzkwLjAsNjkuMSAzOTIuMCw2OC40IDM5NC4wLDY3LjggMzk2LjAsNjcuMyAzOTguMCw2Ny4xIDQwMC4wLDY3LjAgNDAyLjAsNjcuMSA0MDQuMCw2Ny4zIDQwNi4wLDY3LjggNDA4LjAsNjguNCA0MTAuMCw2OS4xIDQxMi4wLDcwLjEgNDE0LjAsNzEuMSA0MTYuMCw3Mi4zIDQxOC4wLDczLjcgNDIwLjAsNzUuMiA0MjIuMCw3Ni44IDQyNC4wLDc4LjUgNDI2LjAsODAuNCA0MjguMCw4Mi4zIDQzMC4wLDg0LjMgNDMyLjAsODYuMyA0MzQuMCw4OC41IDQzNi4wLDkwLjYgNDM4LjAsOTIuOCA0NDAuMCw5NS4wIDQ0Mi4wLDk3LjIgNDQ0LjAsOTkuNCA0NDYuMCwxMDEuNSA0NDguMCwxMDMuNyA0NTAuMCwxMDUuNyA0NTIuMCwxMDcuNyA0NTQuMCwxMDkuNiA0NTYuMCwxMTEuNSA0NTguMCwxMTMuMiA0NjAuMCwxMTQuOCA0NjIuMCwxMTYuMyA0NjQuMCwxMTcuNyA0NjYuMCwxMTguOSA0NjguMCwxMTkuOSA0NzAuMCwxMjAuOSA0NzIuMCwxMjEuNiA0NzQuMCwxMjIuMiA0NzYuMCwxMjIuNyA0NzguMCwxMjIuOSA0ODAuMCwxMjMuMCA0ODIuMCwxMjIuOSA0ODQuMCwxMjIuNyA0ODYuMCwxMjIuMiA0ODguMCwxMjEuNiA0OTAuMCwxMjAuOSA0OTIuMCwxMTkuOSA0OTQuMCwxMTguOSA0OTYuMCwxMTcuNyA0OTguMCwxMTYuMyA1MDAuMCwxMTQuOCA1MDIuMCwxMTMuMiA1MDQuMCwxMTEuNSA1MDYuMCwxMDkuNiA1MDguMCwxMDcuNyA1MTAuMCwxMDUuNyA1MTIuMCwxMDMuNyA1MTQuMCwxMDEuNSA1MTYuMCw5OS40IDUxOC4wLDk3LjIgNTIwLjAsOTUuMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjU2M2ViIiBzdHJva2Utd2lkdGg9IjMuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjx0ZXh0IHg9IjI0MCIgeT0iNTIiIGZpbGw9IiM1NTU1NTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTUiPmNyZXN0YTwvdGV4dD48dGV4dCB4PSIxNjAiIHk9IjE1MiIgZmlsbD0iIzU1NTU1NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNSI+dmFsbGU8L3RleHQ+PGNpcmNsZSBjeD0iMzYwIiBjeT0iOTUiIHI9IjYiIGZpbGw9IiNkYzI2MjYiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjM2MCIgeTE9IjUyIiB4Mj0iMzYwIiB5Mj0iMTM4IiBzdHJva2U9IiNkYzI2MjYiIHN0cm9rZS13aWR0aD0iMyIgbWFya2VyLWVuZD0idXJsKCNtcikiIG1hcmtlci1zdGFydD0idXJsKCNtcikiLz48bGluZSB4MT0iMzkwIiB5MT0iMTYwIiB4Mj0iNTAwIiB5Mj0iMTYwIiBzdHJva2U9IiMyNTYzZWIiIHN0cm9rZS13aWR0aD0iMyIgbWFya2VyLWVuZD0idXJsKCNtYikiLz48dGV4dCB4PSIyMCIgeT0iMjA1IiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSJib2xkIj5PbmRhIGxvbmdpdHVkaW5hbCAodW4gbXVlbGxlKTwvdGV4dD48bGluZSB4MT0iNDAuMCIgeTE9IjIyMiIgeDI9IjQwLjAiIHkyPSIyNjQiIHN0cm9rZT0iI2I0NTMwOSIgc3Ryb2tlLXdpZHRoPSIzIi8+PGxpbmUgeDE9IjUwLjgiIHkxPSIyMjIiIHgyPSI1MC44IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSI2MS4yIiB5MT0iMjIyIiB4Mj0iNjEuMiIgeTI9IjI2NCIgc3Ryb2tlPSIjYjQ1MzA5IiBzdHJva2Utd2lkdGg9IjMiLz48bGluZSB4MT0iNzAuNyIgeTE9IjIyMiIgeDI9IjcwLjciIHkyPSIyNjQiIHN0cm9rZT0iI2I0NTMwOSIgc3Ryb2tlLXdpZHRoPSIzIi8+PGxpbmUgeDE9Ijc5LjAiIHkxPSIyMjIiIHgyPSI3OS4wIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSI4Ni4xIiB5MT0iMjIyIiB4Mj0iODYuMSIgeTI9IjI2NCIgc3Ryb2tlPSIjYjQ1MzA5IiBzdHJva2Utd2lkdGg9IjMiLz48bGluZSB4MT0iOTIuMSIgeTE9IjIyMiIgeDI9IjkyLjEiIHkyPSIyNjQiIHN0cm9rZT0iI2I0NTMwOSIgc3Ryb2tlLXdpZHRoPSIzIi8+PGxpbmUgeDE9Ijk3LjUiIHkxPSIyMjIiIHgyPSI5Ny41IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIxMDIuNSIgeTE9IjIyMiIgeDI9IjEwMi41IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIxMDcuOSIgeTE9IjIyMiIgeDI9IjEwNy45IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIxMTMuOSIgeTE9IjIyMiIgeDI9IjExMy45IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIxMjEuMCIgeTE9IjIyMiIgeDI9IjEyMS4wIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIxMjkuMyIgeTE9IjIyMiIgeDI9IjEyOS4zIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIxMzguOCIgeTE9IjIyMiIgeDI9IjEzOC44IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIxNDkuMiIgeTE9IjIyMiIgeDI9IjE0OS4yIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIxNjAuMCIgeTE9IjIyMiIgeDI9IjE2MC4wIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIxNzAuOCIgeTE9IjIyMiIgeDI9IjE3MC44IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIxODEuMiIgeTE9IjIyMiIgeDI9IjE4MS4yIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIxOTAuNyIgeTE9IjIyMiIgeDI9IjE5MC43IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIxOTkuMCIgeTE9IjIyMiIgeDI9IjE5OS4wIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIyMDYuMSIgeTE9IjIyMiIgeDI9IjIwNi4xIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIyMTIuMSIgeTE9IjIyMiIgeDI9IjIxMi4xIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIyMTcuNSIgeTE9IjIyMiIgeDI9IjIxNy41IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIyMjIuNSIgeTE9IjIyMiIgeDI9IjIyMi41IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIyMjcuOSIgeTE9IjIyMiIgeDI9IjIyNy45IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIyMzMuOSIgeTE9IjIyMiIgeDI9IjIzMy45IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIyNDEuMCIgeTE9IjIyMiIgeDI9IjI0MS4wIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIyNDkuMyIgeTE9IjIyMiIgeDI9IjI0OS4zIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIyNTguOCIgeTE9IjIyMiIgeDI9IjI1OC44IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIyNjkuMiIgeTE9IjIyMiIgeDI9IjI2OS4yIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIyODAuMCIgeTE9IjIyMiIgeDI9IjI4MC4wIiB5Mj0iMjY0IiBzdHJva2U9IiNkYzI2MjYiIHN0cm9rZS13aWR0aD0iNCIvPjxsaW5lIHgxPSIyOTAuOCIgeTE9IjIyMiIgeDI9IjI5MC44IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIzMDEuMiIgeTE9IjIyMiIgeDI9IjMwMS4yIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIzMTAuNyIgeTE9IjIyMiIgeDI9IjMxMC43IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIzMTkuMCIgeTE9IjIyMiIgeDI9IjMxOS4wIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIzMjYuMSIgeTE9IjIyMiIgeDI9IjMyNi4xIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIzMzIuMSIgeTE9IjIyMiIgeDI9IjMzMi4xIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIzMzcuNSIgeTE9IjIyMiIgeDI9IjMzNy41IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIzNDIuNSIgeTE9IjIyMiIgeDI9IjM0Mi41IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIzNDcuOSIgeTE9IjIyMiIgeDI9IjM0Ny45IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIzNTMuOSIgeTE9IjIyMiIgeDI9IjM1My45IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIzNjEuMCIgeTE9IjIyMiIgeDI9IjM2MS4wIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIzNjkuMyIgeTE9IjIyMiIgeDI9IjM2OS4zIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIzNzguOCIgeTE9IjIyMiIgeDI9IjM3OC44IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIzODkuMiIgeTE9IjIyMiIgeDI9IjM4OS4yIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSI0MDAuMCIgeTE9IjIyMiIgeDI9IjQwMC4wIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSI0MTAuOCIgeTE9IjIyMiIgeDI9IjQxMC44IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSI0MjEuMiIgeTE9IjIyMiIgeDI9IjQyMS4yIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSI0MzAuNyIgeTE9IjIyMiIgeDI9IjQzMC43IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSI0MzkuMCIgeTE9IjIyMiIgeDI9IjQzOS4wIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSI0NDYuMSIgeTE9IjIyMiIgeDI9IjQ0Ni4xIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSI0NTIuMSIgeTE9IjIyMiIgeDI9IjQ1Mi4xIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSI0NTcuNSIgeTE9IjIyMiIgeDI9IjQ1Ny41IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSI0NjIuNSIgeTE9IjIyMiIgeDI9IjQ2Mi41IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSI0NjcuOSIgeTE9IjIyMiIgeDI9IjQ2Ny45IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSI0NzMuOSIgeTE9IjIyMiIgeDI9IjQ3My45IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSI0ODEuMCIgeTE9IjIyMiIgeDI9IjQ4MS4wIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSI0ODkuMyIgeTE9IjIyMiIgeDI9IjQ4OS4zIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSI0OTguOCIgeTE9IjIyMiIgeDI9IjQ5OC44IiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSI1MDkuMiIgeTE9IjIyMiIgeDI9IjUwOS4yIiB5Mj0iMjY0IiBzdHJva2U9IiNiNDUzMDkiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSI0NDUiIHkxPSIyMTQiIHgyPSI1MjAiIHkyPSIyMTQiIHN0cm9rZT0iIzI1NjNlYiIgc3Ryb2tlLXdpZHRoPSIzIiBtYXJrZXItZW5kPSJ1cmwoI21iKSIvPjx0ZXh0IHg9IjEwMCIgeT0iMjg2IiBmaWxsPSIjZGMyNjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEzIj5jb21wcmVzacOzbjwvdGV4dD48dGV4dCB4PSIyMjAiIHk9IjI4NiIgZmlsbD0iI2RjMjYyNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMyI+Y29tcHJlc2nDs248L3RleHQ+PHRleHQgeD0iMzQwIiB5PSIyODYiIGZpbGw9IiNkYzI2MjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTMiPmNvbXByZXNpw7NuPC90ZXh0Pjx0ZXh0IHg9IjQ2MCIgeT0iMjg2IiBmaWxsPSIjZGMyNjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEzIj5jb21wcmVzacOzbjwvdGV4dD48dGV4dCB4PSIxNjAiIHk9IjMwNCIgZmlsbD0iIzE1ODAzZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMyI+cmFyZWZhY2Npw7NuPC90ZXh0Pjx0ZXh0IHg9IjI4MCIgeT0iMzA0IiBmaWxsPSIjMTU4MDNkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEzIj5yYXJlZmFjY2nDs248L3RleHQ+PHRleHQgeD0iNDAwIiB5PSIzMDQiIGZpbGw9IiMxNTgwM2QiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTMiPnJhcmVmYWNjacOzbjwvdGV4dD48bGluZSB4MT0iMzAiIHkxPSIzMzAiIHgyPSI4MCIgeTI9IjMzMCIgc3Ryb2tlPSIjZGMyNjI2IiBzdHJva2Utd2lkdGg9IjMiIG1hcmtlci1lbmQ9InVybCgjbXIpIiBtYXJrZXItc3RhcnQ9InVybCgjbXIpIi8+PHRleHQgeD0iODgiIHk9IjMzNSIgZmlsbD0iI2RjMjYyNiIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXNpemU9IjE0Ij52aWJyYWNpw7NuIGRlIGxhcyBwYXJ0w61jdWxhczwvdGV4dD48bGluZSB4MT0iMzMwIiB5MT0iMzMwIiB4Mj0iMzgwIiB5Mj0iMzMwIiBzdHJva2U9IiMyNTYzZWIiIHN0cm9rZS13aWR0aD0iMyIgbWFya2VyLWVuZD0idXJsKCNtYikiLz48dGV4dCB4PSIzODgiIHk9IjMzNSIgZmlsbD0iIzI1NjNlYiIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXNpemU9IjE0Ij5hdmFuY2UgZGUgbGEgb25kYTwvdGV4dD48L3N2Zz4=" />
+<em>Figura 2. Arriba, onda transversal: la cuerda sube y baja mientras la onda avanza hacia la derecha. Abajo, onda longitudinal: las espiras del muelle se acercan y se alejan en la misma dirección en la que avanza la onda.</em></p>
+<ul>
+<li>En una <strong>compresión</strong>, las partículas están más juntas que en reposo, así que la presión y la densidad <strong>aumentan</strong>.</li>
+<li>En una <strong>rarefacción</strong> (también llamada <strong>dilatación</strong>), las partículas están más separadas que en reposo, así que la presión y la densidad <strong>disminuyen</strong>.</li>
+</ul>
+<blockquote>
+<p>Las ondas electromagnéticas (la luz, los rayos X…) también son transversales. Lo veremos en el Módulo 5.</p>
+</blockquote>
+<hr />
+<h2 id="43-las-medidas-de-una-onda">4.3. Las medidas de una onda</h2>
+<p>Sea una ola del mar, un sonido o un rayo X, <strong>todas las ondas se describen con las mismas cinco medidas</strong>. Vamos a verlas una a una, con un dibujo y un ejemplo cotidiano.</p>
+<p>Partes de una onda: cresta, valle, amplitud y longitud de onda</p>
+<p><img alt="fig2" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgMjUwIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTUiPjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iMjUwIiBmaWxsPSIjZmZmIi8+PGRlZnM+PG1hcmtlciBpZD0ibWIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMjU2M2ViIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibXIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjZGMyNjI2Ii8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWciIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMTU4MDNkIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWsiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjNTU1NTU1Ii8+PC9tYXJrZXI+PC9kZWZzPjxsaW5lIHgxPSI0MCIgeTE9IjE1MCIgeDI9IjU2NSIgeTI9IjE1MCIgc3Ryb2tlPSIjNTU1NTU1IiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iNiA1Ii8+PHRleHQgeD0iNDQiIHk9IjE3MiIgZmlsbD0iIzY2NiIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXNpemU9IjEzIj5yZXBvc288L3RleHQ+PHBvbHlsaW5lIHBvaW50cz0iNDAuMCwxNTAuMCA0Mi4wLDE0Ni4yIDQ0LjAsMTQyLjUgNDYuMCwxMzguOCA0OC4wLDEzNS4xIDUwLjAsMTMxLjUgNTIuMCwxMjcuOSA1NC4wLDEyNC41IDU2LjAsMTIxLjEgNTguMCwxMTcuOSA2MC4wLDExNC43IDYyLjAsMTExLjggNjQuMCwxMDguOSA2Ni4wLDEwNi4zIDY4LjAsMTAzLjggNzAuMCwxMDEuNSA3Mi4wLDk5LjMgNzQuMCw5Ny40IDc2LjAsOTUuNyA3OC4wLDk0LjIgODAuMCw5Mi45IDgyLjAsOTEuOSA4NC4wLDkxLjEgODYuMCw5MC41IDg4LjAsOTAuMSA5MC4wLDkwLjAgOTIuMCw5MC4xIDk0LjAsOTAuNSA5Ni4wLDkxLjEgOTguMCw5MS45IDEwMC4wLDkyLjkgMTAyLjAsOTQuMiAxMDQuMCw5NS43IDEwNi4wLDk3LjQgMTA4LjAsOTkuMyAxMTAuMCwxMDEuNSAxMTIuMCwxMDMuOCAxMTQuMCwxMDYuMyAxMTYuMCwxMDguOSAxMTguMCwxMTEuOCAxMjAuMCwxMTQuNyAxMjIuMCwxMTcuOSAxMjQuMCwxMjEuMSAxMjYuMCwxMjQuNSAxMjguMCwxMjcuOSAxMzAuMCwxMzEuNSAxMzIuMCwxMzUuMSAxMzQuMCwxMzguOCAxMzYuMCwxNDIuNSAxMzguMCwxNDYuMiAxNDAuMCwxNTAuMCAxNDIuMCwxNTMuOCAxNDQuMCwxNTcuNSAxNDYuMCwxNjEuMiAxNDguMCwxNjQuOSAxNTAuMCwxNjguNSAxNTIuMCwxNzIuMSAxNTQuMCwxNzUuNSAxNTYuMCwxNzguOSAxNTguMCwxODIuMSAxNjAuMCwxODUuMyAxNjIuMCwxODguMiAxNjQuMCwxOTEuMSAxNjYuMCwxOTMuNyAxNjguMCwxOTYuMiAxNzAuMCwxOTguNSAxNzIuMCwyMDAuNyAxNzQuMCwyMDIuNiAxNzYuMCwyMDQuMyAxNzguMCwyMDUuOCAxODAuMCwyMDcuMSAxODIuMCwyMDguMSAxODQuMCwyMDguOSAxODYuMCwyMDkuNSAxODguMCwyMDkuOSAxOTAuMCwyMTAuMCAxOTIuMCwyMDkuOSAxOTQuMCwyMDkuNSAxOTYuMCwyMDguOSAxOTguMCwyMDguMSAyMDAuMCwyMDcuMSAyMDIuMCwyMDUuOCAyMDQuMCwyMDQuMyAyMDYuMCwyMDIuNiAyMDguMCwyMDAuNyAyMTAuMCwxOTguNSAyMTIuMCwxOTYuMiAyMTQuMCwxOTMuNyAyMTYuMCwxOTEuMSAyMTguMCwxODguMiAyMjAuMCwxODUuMyAyMjIuMCwxODIuMSAyMjQuMCwxNzguOSAyMjYuMCwxNzUuNSAyMjguMCwxNzIuMSAyMzAuMCwxNjguNSAyMzIuMCwxNjQuOSAyMzQuMCwxNjEuMiAyMzYuMCwxNTcuNSAyMzguMCwxNTMuOCAyNDAuMCwxNTAuMCAyNDIuMCwxNDYuMiAyNDQuMCwxNDIuNSAyNDYuMCwxMzguOCAyNDguMCwxMzUuMSAyNTAuMCwxMzEuNSAyNTIuMCwxMjcuOSAyNTQuMCwxMjQuNSAyNTYuMCwxMjEuMSAyNTguMCwxMTcuOSAyNjAuMCwxMTQuNyAyNjIuMCwxMTEuOCAyNjQuMCwxMDguOSAyNjYuMCwxMDYuMyAyNjguMCwxMDMuOCAyNzAuMCwxMDEuNSAyNzIuMCw5OS4zIDI3NC4wLDk3LjQgMjc2LjAsOTUuNyAyNzguMCw5NC4yIDI4MC4wLDkyLjkgMjgyLjAsOTEuOSAyODQuMCw5MS4xIDI4Ni4wLDkwLjUgMjg4LjAsOTAuMSAyOTAuMCw5MC4wIDI5Mi4wLDkwLjEgMjk0LjAsOTAuNSAyOTYuMCw5MS4xIDI5OC4wLDkxLjkgMzAwLjAsOTIuOSAzMDIuMCw5NC4yIDMwNC4wLDk1LjcgMzA2LjAsOTcuNCAzMDguMCw5OS4zIDMxMC4wLDEwMS41IDMxMi4wLDEwMy44IDMxNC4wLDEwNi4zIDMxNi4wLDEwOC45IDMxOC4wLDExMS44IDMyMC4wLDExNC43IDMyMi4wLDExNy45IDMyNC4wLDEyMS4xIDMyNi4wLDEyNC41IDMyOC4wLDEyNy45IDMzMC4wLDEzMS41IDMzMi4wLDEzNS4xIDMzNC4wLDEzOC44IDMzNi4wLDE0Mi41IDMzOC4wLDE0Ni4yIDM0MC4wLDE1MC4wIDM0Mi4wLDE1My44IDM0NC4wLDE1Ny41IDM0Ni4wLDE2MS4yIDM0OC4wLDE2NC45IDM1MC4wLDE2OC41IDM1Mi4wLDE3Mi4xIDM1NC4wLDE3NS41IDM1Ni4wLDE3OC45IDM1OC4wLDE4Mi4xIDM2MC4wLDE4NS4zIDM2Mi4wLDE4OC4yIDM2NC4wLDE5MS4xIDM2Ni4wLDE5My43IDM2OC4wLDE5Ni4yIDM3MC4wLDE5OC41IDM3Mi4wLDIwMC43IDM3NC4wLDIwMi42IDM3Ni4wLDIwNC4zIDM3OC4wLDIwNS44IDM4MC4wLDIwNy4xIDM4Mi4wLDIwOC4xIDM4NC4wLDIwOC45IDM4Ni4wLDIwOS41IDM4OC4wLDIwOS45IDM5MC4wLDIxMC4wIDM5Mi4wLDIwOS45IDM5NC4wLDIwOS41IDM5Ni4wLDIwOC45IDM5OC4wLDIwOC4xIDQwMC4wLDIwNy4xIDQwMi4wLDIwNS44IDQwNC4wLDIwNC4zIDQwNi4wLDIwMi42IDQwOC4wLDIwMC43IDQxMC4wLDE5OC41IDQxMi4wLDE5Ni4yIDQxNC4wLDE5My43IDQxNi4wLDE5MS4xIDQxOC4wLDE4OC4yIDQyMC4wLDE4NS4zIDQyMi4wLDE4Mi4xIDQyNC4wLDE3OC45IDQyNi4wLDE3NS41IDQyOC4wLDE3Mi4xIDQzMC4wLDE2OC41IDQzMi4wLDE2NC45IDQzNC4wLDE2MS4yIDQzNi4wLDE1Ny41IDQzOC4wLDE1My44IDQ0MC4wLDE1MC4wIDQ0Mi4wLDE0Ni4yIDQ0NC4wLDE0Mi41IDQ0Ni4wLDEzOC44IDQ0OC4wLDEzNS4xIDQ1MC4wLDEzMS41IDQ1Mi4wLDEyNy45IDQ1NC4wLDEyNC41IDQ1Ni4wLDEyMS4xIDQ1OC4wLDExNy45IDQ2MC4wLDExNC43IDQ2Mi4wLDExMS44IDQ2NC4wLDEwOC45IDQ2Ni4wLDEwNi4zIDQ2OC4wLDEwMy44IDQ3MC4wLDEwMS41IDQ3Mi4wLDk5LjMgNDc0LjAsOTcuNCA0NzYuMCw5NS43IDQ3OC4wLDk0LjIgNDgwLjAsOTIuOSA0ODIuMCw5MS45IDQ4NC4wLDkxLjEgNDg2LjAsOTAuNSA0ODguMCw5MC4xIDQ5MC4wLDkwLjAgNDkyLjAsOTAuMSA0OTQuMCw5MC41IDQ5Ni4wLDkxLjEgNDk4LjAsOTEuOSA1MDAuMCw5Mi45IDUwMi4wLDk0LjIgNTA0LjAsOTUuNyA1MDYuMCw5Ny40IDUwOC4wLDk5LjMgNTEwLjAsMTAxLjUgNTEyLjAsMTAzLjggNTE0LjAsMTA2LjMgNTE2LjAsMTA4LjkgNTE4LjAsMTExLjggNTIwLjAsMTE0LjcgNTIyLjAsMTE3LjkgNTI0LjAsMTIxLjEgNTI2LjAsMTI0LjUgNTI4LjAsMTI3LjkgNTMwLjAsMTMxLjUgNTMyLjAsMTM1LjEgNTM0LjAsMTM4LjggNTM2LjAsMTQyLjUgNTM4LjAsMTQ2LjIgNTQwLjAsMTUwLjAgNTQyLjAsMTUzLjggNTQ0LjAsMTU3LjUgNTQ2LjAsMTYxLjIgNTQ4LjAsMTY0LjkgNTUwLjAsMTY4LjUgNTUyLjAsMTcyLjEgNTU0LjAsMTc1LjUgNTU2LjAsMTc4LjkgNTU4LjAsMTgyLjEgNTYwLjAsMTg1LjMiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI1NjNlYiIgc3Ryb2tlLXdpZHRoPSIzLjUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48Y2lyY2xlIGN4PSI5MCIgY3k9IjkwIiByPSI1IiBmaWxsPSIjZGMyNjI2IiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMSIvPjxjaXJjbGUgY3g9IjI5MCIgY3k9IjkwIiByPSI1IiBmaWxsPSIjZGMyNjI2IiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMSIvPjxjaXJjbGUgY3g9IjQ5MCIgY3k9IjkwIiByPSI1IiBmaWxsPSIjZGMyNjI2IiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMSIvPjxjaXJjbGUgY3g9IjE5MCIgY3k9IjIxMCIgcj0iNSIgZmlsbD0iIzE1ODAzZCIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjEiLz48Y2lyY2xlIGN4PSIzOTAiIGN5PSIyMTAiIHI9IjUiIGZpbGw9IiMxNTgwM2QiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iOTAiIHk9IjExOCIgZmlsbD0iI2RjMjYyNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMyI+Y3Jlc3RhPC90ZXh0Pjx0ZXh0IHg9IjQ5MCIgeT0iMTE4IiBmaWxsPSIjZGMyNjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEzIj5jcmVzdGE8L3RleHQ+PHRleHQgeD0iMTkwIiB5PSIyMzIiIGZpbGw9IiMxNTgwM2QiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTUiPnZhbGxlPC90ZXh0Pjx0ZXh0IHg9IjM5MCIgeT0iMjMyIiBmaWxsPSIjMTU4MDNkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE1Ij52YWxsZTwvdGV4dD48bGluZSB4MT0iMjkwIiB5MT0iMTQ4IiB4Mj0iMjkwIiB5Mj0iOTciIHN0cm9rZT0iIzdjM2FlZCIgc3Ryb2tlLXdpZHRoPSIzIiBtYXJrZXItZW5kPSJ1cmwoI21iKSIgbWFya2VyLXN0YXJ0PSJ1cmwoI21iKSIvPjx0ZXh0IHg9IjMwMiIgeT0iODIiIGZpbGw9IiM3YzNhZWQiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9ImJvbGQiPkFtcGxpdHVkIChBKTwvdGV4dD48bGluZSB4MT0iOTAiIHkxPSI1NiIgeDI9IjI5MCIgeTI9IjU2IiBzdHJva2U9IiNlYTU4MGMiIHN0cm9rZS13aWR0aD0iMyIgbWFya2VyLWVuZD0idXJsKCNtaykiIG1hcmtlci1zdGFydD0idXJsKCNtaykiLz48bGluZSB4MT0iOTAiIHkxPSI2MCIgeDI9IjkwIiB5Mj0iODQiIHN0cm9rZT0iI2VhNTgwYyIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1kYXNoYXJyYXk9IjQgNCIvPjxsaW5lIHgxPSIyOTAiIHkxPSI2MCIgeDI9IjI5MCIgeTI9Ijg0IiBzdHJva2U9IiNlYTU4MGMiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtZGFzaGFycmF5PSI0IDQiLz48dGV4dCB4PSIxOTAiIHk9IjQwIiBmaWxsPSIjZWE1ODBjIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iYm9sZCI+TG9uZ2l0dWQgZGUgb25kYSAozrspPC90ZXh0Pjwvc3ZnPg==" />
+<em>Figura 3. Las partes de una onda. La línea de puntos es la posición de equilibrio.</em></p>
+<h3 id="1-amplitud-a-lo-alta-que-es-la-onda">1. Amplitud (A): lo alta que es la onda</h3>
+<p><strong>Qué es:</strong> la distancia desde la posición de equilibrio hasta lo más alto de una cresta.</p>
+<p><strong>Cómo imaginarlo:</strong> una ola pequeña y una ola enorme. La enorme tiene más amplitud.</p>
+<p><strong>Para qué sirve saberlo:</strong> cuanta más amplitud, <strong>más energía</strong> transporta la onda. En el sonido, mayor amplitud significa que se oye <strong>más fuerte</strong>.</p>
+<h3 id="2-longitud-de-onda-lo-larga-que-es-la-onda">2. Longitud de onda (λ): lo larga que es la onda</h3>
+<p>La letra griega <strong>λ</strong> se lee «lambda».</p>
+<p><strong>Qué es:</strong> la distancia entre <strong>dos crestas seguidas</strong>. También vale entre dos compresiones seguidas, o entre cualquier punto de la onda y el siguiente punto idéntico.</p>
+<p><strong>Cómo imaginarlo:</strong> la distancia que hay entre una ola y la siguiente cuando miras el mar desde la playa.</p>
+<p><strong>Unidad:</strong> el <strong>metro (m)</strong>. Como las ondas que veremos pueden ser muy cortas, se usan unidades más pequeñas:</p>
+<table>
+<thead>
+<tr>
+<th>Unidad</th>
+<th>Símbolo</th>
+<th>Equivale a</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Milímetro</td>
+<td>mm</td>
+<td>0,001 m</td>
+</tr>
+<tr>
+<td>Nanómetro</td>
+<td>nm</td>
+<td>0,000 000 001 m</td>
+</tr>
+<tr>
+<td>Ångström</td>
+<td>Å</td>
+<td>0,000 000 000 1 m</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Los rayos X tienen longitudes de onda diminutas, del orden de un ångström.</p>
+</blockquote>
+<h3 id="3-frecuencia-f-cuantas-ondas-pasan-cada-segundo">3. Frecuencia (f): cuántas ondas pasan cada segundo</h3>
+<p>Se representa con <strong>f</strong> o con la letra griega <strong>ν</strong> («nu»).</p>
+<p><strong>Qué es:</strong> el número de ondas completas que pasan por un punto <strong>en un segundo</strong>.</p>
+<p><strong>Cómo imaginarlo:</strong> estás en la playa con el agua por las rodillas y cuentas cuántas olas te golpean en un segundo. Eso es la frecuencia.</p>
+<p><strong>Unidad:</strong> el <strong>hercio (Hz)</strong>. <strong>1 Hz = 1 onda por segundo.</strong> Para números grandes se usan múltiplos:</p>
+<table>
+<thead>
+<tr>
+<th>Unidad</th>
+<th>Símbolo</th>
+<th>Equivale a</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Kilohercio</td>
+<td>kHz</td>
+<td>1 000 Hz</td>
+</tr>
+<tr>
+<td>Megahercio</td>
+<td>MHz</td>
+<td>1 000 000 Hz</td>
+</tr>
+</tbody>
+</table>
+<p>Frecuencia y periodo</p>
+<p><img alt="fig2" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgMzIwIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTUiPjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iMzIwIiBmaWxsPSIjZmZmIi8+PGRlZnM+PG1hcmtlciBpZD0ibWIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMjU2M2ViIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibXIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjZGMyNjI2Ii8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWciIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMTU4MDNkIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWsiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjNTU1NTU1Ii8+PC9tYXJrZXI+PC9kZWZzPjx0ZXh0IHg9IjIwIiB5PSIyNCIgZmlsbD0iIzIyMiIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iYm9sZCI+RnJlY3VlbmNpYSBiYWphOiAyIG9uZGFzIGVuIDEgc2VndW5kbyDihpIgZiA9IDIgSHo8L3RleHQ+PGxpbmUgeDE9IjUwIiB5MT0iNTAiIHgyPSI1MCIgeTI9IjE0MCIgc3Ryb2tlPSIjNTU1NTU1IiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iNSA0Ii8+PGxpbmUgeDE9IjU1MCIgeTE9IjUwIiB4Mj0iNTUwIiB5Mj0iMTQwIiBzdHJva2U9IiM1NTU1NTUiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtZGFzaGFycmF5PSI1IDQiLz48dGV4dCB4PSI1MCIgeT0iMTU3IiBmaWxsPSIjNTU1NTU1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE1Ij4wIHM8L3RleHQ+PHRleHQgeD0iNTUwIiB5PSIxNTciIGZpbGw9IiM1NTU1NTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTUiPjEgczwvdGV4dD48cG9seWxpbmUgcG9pbnRzPSI1MC4wLDk1LjAgNTIuMCw5My43IDU0LjAsOTIuNCA1Ni4wLDkxLjEgNTguMCw4OS44IDYwLjAsODguNSA2Mi4wLDg3LjMgNjQuMCw4Ni4wIDY2LjAsODQuOCA2OC4wLDgzLjYgNzAuMCw4Mi41IDcyLjAsODEuMyA3NC4wLDgwLjMgNzYuMCw3OS4yIDc4LjAsNzguMiA4MC4wLDc3LjIgODIuMCw3Ni4zIDg0LjAsNzUuNCA4Ni4wLDc0LjYgODguMCw3My44IDkwLjAsNzMuMCA5Mi4wLDcyLjQgOTQuMCw3MS44IDk2LjAsNzEuMiA5OC4wLDcwLjcgMTAwLjAsNzAuMyAxMDIuMCw2OS45IDEwNC4wLDY5LjYgMTA2LjAsNjkuMyAxMDguMCw2OS4yIDExMC4wLDY5LjEgMTEyLjAsNjkuMCAxMTQuMCw2OS4wIDExNi4wLDY5LjEgMTE4LjAsNjkuMiAxMjAuMCw2OS41IDEyMi4wLDY5LjcgMTI0LjAsNzAuMSAxMjYuMCw3MC41IDEyOC4wLDcwLjkgMTMwLjAsNzEuNSAxMzIuMCw3Mi4xIDEzNC4wLDcyLjcgMTM2LjAsNzMuNCAxMzguMCw3NC4yIDE0MC4wLDc1LjAgMTQyLjAsNzUuOCAxNDQuMCw3Ni43IDE0Ni4wLDc3LjcgMTQ4LjAsNzguNyAxNTAuMCw3OS43IDE1Mi4wLDgwLjggMTU0LjAsODEuOSAxNTYuMCw4My4xIDE1OC4wLDg0LjIgMTYwLjAsODUuNCAxNjIuMCw4Ni43IDE2NC4wLDg3LjkgMTY2LjAsODkuMiAxNjguMCw5MC40IDE3MC4wLDkxLjcgMTcyLjAsOTMuMCAxNzQuMCw5NC4zIDE3Ni4wLDk1LjcgMTc4LjAsOTcuMCAxODAuMCw5OC4zIDE4Mi4wLDk5LjYgMTg0LjAsMTAwLjggMTg2LjAsMTAyLjEgMTg4LjAsMTAzLjMgMTkwLjAsMTA0LjYgMTkyLjAsMTA1LjggMTk0LjAsMTA2LjkgMTk2LjAsMTA4LjEgMTk4LjAsMTA5LjIgMjAwLjAsMTEwLjMgMjAyLjAsMTExLjMgMjA0LjAsMTEyLjMgMjA2LjAsMTEzLjMgMjA4LjAsMTE0LjIgMjEwLjAsMTE1LjAgMjEyLjAsMTE1LjggMjE0LjAsMTE2LjYgMjE2LjAsMTE3LjMgMjE4LjAsMTE3LjkgMjIwLjAsMTE4LjUgMjIyLjAsMTE5LjEgMjI0LjAsMTE5LjUgMjI2LjAsMTE5LjkgMjI4LjAsMTIwLjMgMjMwLjAsMTIwLjUgMjMyLjAsMTIwLjggMjM0LjAsMTIwLjkgMjM2LjAsMTIxLjAgMjM4LjAsMTIxLjAgMjQwLjAsMTIwLjkgMjQyLjAsMTIwLjggMjQ0LjAsMTIwLjcgMjQ2LjAsMTIwLjQgMjQ4LjAsMTIwLjEgMjUwLjAsMTE5LjcgMjUyLjAsMTE5LjMgMjU0LjAsMTE4LjggMjU2LjAsMTE4LjIgMjU4LjAsMTE3LjYgMjYwLjAsMTE3LjAgMjYyLjAsMTE2LjIgMjY0LjAsMTE1LjQgMjY2LjAsMTE0LjYgMjY4LjAsMTEzLjcgMjcwLjAsMTEyLjggMjcyLjAsMTExLjggMjc0LjAsMTEwLjggMjc2LjAsMTA5LjcgMjc4LjAsMTA4LjcgMjgwLjAsMTA3LjUgMjgyLjAsMTA2LjQgMjg0LjAsMTA1LjIgMjg2LjAsMTA0LjAgMjg4LjAsMTAyLjcgMjkwLjAsMTAxLjUgMjkyLjAsMTAwLjIgMjk0LjAsOTguOSAyOTYuMCw5Ny42IDI5OC4wLDk2LjMgMzAwLjAsOTUuMCAzMDIuMCw5My43IDMwNC4wLDkyLjQgMzA2LjAsOTEuMSAzMDguMCw4OS44IDMxMC4wLDg4LjUgMzEyLjAsODcuMyAzMTQuMCw4Ni4wIDMxNi4wLDg0LjggMzE4LjAsODMuNiAzMjAuMCw4Mi41IDMyMi4wLDgxLjMgMzI0LjAsODAuMyAzMjYuMCw3OS4yIDMyOC4wLDc4LjIgMzMwLjAsNzcuMiAzMzIuMCw3Ni4zIDMzNC4wLDc1LjQgMzM2LjAsNzQuNiAzMzguMCw3My44IDM0MC4wLDczLjAgMzQyLjAsNzIuNCAzNDQuMCw3MS44IDM0Ni4wLDcxLjIgMzQ4LjAsNzAuNyAzNTAuMCw3MC4zIDM1Mi4wLDY5LjkgMzU0LjAsNjkuNiAzNTYuMCw2OS4zIDM1OC4wLDY5LjIgMzYwLjAsNjkuMSAzNjIuMCw2OS4wIDM2NC4wLDY5LjAgMzY2LjAsNjkuMSAzNjguMCw2OS4yIDM3MC4wLDY5LjUgMzcyLjAsNjkuNyAzNzQuMCw3MC4xIDM3Ni4wLDcwLjUgMzc4LjAsNzAuOSAzODAuMCw3MS41IDM4Mi4wLDcyLjEgMzg0LjAsNzIuNyAzODYuMCw3My40IDM4OC4wLDc0LjIgMzkwLjAsNzUuMCAzOTIuMCw3NS44IDM5NC4wLDc2LjcgMzk2LjAsNzcuNyAzOTguMCw3OC43IDQwMC4wLDc5LjcgNDAyLjAsODAuOCA0MDQuMCw4MS45IDQwNi4wLDgzLjEgNDA4LjAsODQuMiA0MTAuMCw4NS40IDQxMi4wLDg2LjcgNDE0LjAsODcuOSA0MTYuMCw4OS4yIDQxOC4wLDkwLjQgNDIwLjAsOTEuNyA0MjIuMCw5My4wIDQyNC4wLDk0LjMgNDI2LjAsOTUuNyA0MjguMCw5Ny4wIDQzMC4wLDk4LjMgNDMyLjAsOTkuNiA0MzQuMCwxMDAuOCA0MzYuMCwxMDIuMSA0MzguMCwxMDMuMyA0NDAuMCwxMDQuNiA0NDIuMCwxMDUuOCA0NDQuMCwxMDYuOSA0NDYuMCwxMDguMSA0NDguMCwxMDkuMiA0NTAuMCwxMTAuMyA0NTIuMCwxMTEuMyA0NTQuMCwxMTIuMyA0NTYuMCwxMTMuMyA0NTguMCwxMTQuMiA0NjAuMCwxMTUuMCA0NjIuMCwxMTUuOCA0NjQuMCwxMTYuNiA0NjYuMCwxMTcuMyA0NjguMCwxMTcuOSA0NzAuMCwxMTguNSA0NzIuMCwxMTkuMSA0NzQuMCwxMTkuNSA0NzYuMCwxMTkuOSA0NzguMCwxMjAuMyA0ODAuMCwxMjAuNSA0ODIuMCwxMjAuOCA0ODQuMCwxMjAuOSA0ODYuMCwxMjEuMCA0ODguMCwxMjEuMCA0OTAuMCwxMjAuOSA0OTIuMCwxMjAuOCA0OTQuMCwxMjAuNyA0OTYuMCwxMjAuNCA0OTguMCwxMjAuMSA1MDAuMCwxMTkuNyA1MDIuMCwxMTkuMyA1MDQuMCwxMTguOCA1MDYuMCwxMTguMiA1MDguMCwxMTcuNiA1MTAuMCwxMTcuMCA1MTIuMCwxMTYuMiA1MTQuMCwxMTUuNCA1MTYuMCwxMTQuNiA1MTguMCwxMTMuNyA1MjAuMCwxMTIuOCA1MjIuMCwxMTEuOCA1MjQuMCwxMTAuOCA1MjYuMCwxMDkuNyA1MjguMCwxMDguNyA1MzAuMCwxMDcuNSA1MzIuMCwxMDYuNCA1MzQuMCwxMDUuMiA1MzYuMCwxMDQuMCA1MzguMCwxMDIuNyA1NDAuMCwxMDEuNSA1NDIuMCwxMDAuMiA1NDQuMCw5OC45IDU0Ni4wLDk3LjYgNTQ4LjAsOTYuMyA1NTAuMCw5NS4wIiBmaWxsPSJub25lIiBzdHJva2U9IiMyNTYzZWIiIHN0cm9rZS13aWR0aD0iMy41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PGxpbmUgeDE9IjUwIiB5MT0iNTciIHgyPSIzMDAuMCIgeTI9IjU3IiBzdHJva2U9IiNkYzI2MjYiIHN0cm9rZS13aWR0aD0iMyIgbWFya2VyLWVuZD0idXJsKCNtcikiIG1hcmtlci1zdGFydD0idXJsKCNtcikiLz48dGV4dCB4PSIzMTAuMCIgeT0iNjEiIGZpbGw9IiNkYzI2MjYiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1zaXplPSIxNSIgZm9udC13ZWlnaHQ9ImJvbGQiPlQgPSAwLDUgczwvdGV4dD48dGV4dCB4PSIyMCIgeT0iMTc0IiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSJib2xkIj5GcmVjdWVuY2lhIGFsdGE6IDYgb25kYXMgZW4gMSBzZWd1bmRvIOKGkiBmID0gNiBIejwvdGV4dD48bGluZSB4MT0iNTAiIHkxPSIyMDAiIHgyPSI1MCIgeTI9IjI5MCIgc3Ryb2tlPSIjNTU1NTU1IiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iNSA0Ii8+PGxpbmUgeDE9IjU1MCIgeTE9IjIwMCIgeDI9IjU1MCIgeTI9IjI5MCIgc3Ryb2tlPSIjNTU1NTU1IiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iNSA0Ii8+PHRleHQgeD0iNTAiIHk9IjMwNyIgZmlsbD0iIzU1NTU1NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNSI+MCBzPC90ZXh0Pjx0ZXh0IHg9IjU1MCIgeT0iMzA3IiBmaWxsPSIjNTU1NTU1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE1Ij4xIHM8L3RleHQ+PHBvbHlsaW5lIHBvaW50cz0iNTAuMCwyNDUuMCA1Mi4wLDI0MS4xIDU0LjAsMjM3LjMgNTYuMCwyMzMuNiA1OC4wLDIzMC4zIDYwLjAsMjI3LjIgNjIuMCwyMjQuNiA2NC4wLDIyMi40IDY2LjAsMjIwLjcgNjguMCwyMTkuNiA3MC4wLDIxOS4xIDcyLjAsMjE5LjEgNzQuMCwyMTkuNyA3Ni4wLDIyMC45IDc4LjAsMjIyLjcgODAuMCwyMjUuMCA4Mi4wLDIyNy43IDg0LjAsMjMwLjggODYuMCwyMzQuMiA4OC4wLDIzNy45IDkwLjAsMjQxLjcgOTIuMCwyNDUuNyA5NC4wLDI0OS42IDk2LjAsMjUzLjMgOTguMCwyNTYuOSAxMDAuMCwyNjAuMyAxMDIuMCwyNjMuMyAxMDQuMCwyNjUuOCAxMDYuMCwyNjcuOSAxMDguMCwyNjkuNSAxMTAuMCwyNzAuNSAxMTIuMCwyNzEuMCAxMTQuMCwyNzAuOCAxMTYuMCwyNzAuMSAxMTguMCwyNjguOCAxMjAuMCwyNjcuMCAxMjIuMCwyNjQuNiAxMjQuMCwyNjEuOCAxMjYuMCwyNTguNyAxMjguMCwyNTUuMiAxMzAuMCwyNTEuNSAxMzIuMCwyNDcuNiAxMzQuMCwyNDMuNyAxMzYuMCwyMzkuOCAxMzguMCwyMzYuMCAxNDAuMCwyMzIuNSAxNDIuMCwyMjkuMiAxNDQuMCwyMjYuMyAxNDYuMCwyMjMuOCAxNDguMCwyMjEuOCAxNTAuMCwyMjAuMyAxNTIuMCwyMTkuMyAxNTQuMCwyMTkuMCAxNTYuMCwyMTkuMiAxNTguMCwyMjAuMSAxNjAuMCwyMjEuNSAxNjIuMCwyMjMuNCAxNjQuMCwyMjUuOCAxNjYuMCwyMjguNyAxNjguMCwyMzEuOSAxNzAuMCwyMzUuNCAxNzIuMCwyMzkuMiAxNzQuMCwyNDMuMCAxNzYuMCwyNDcuMCAxNzguMCwyNTAuOCAxODAuMCwyNTQuNiAxODIuMCwyNTguMSAxODQuMCwyNjEuMyAxODYuMCwyNjQuMiAxODguMCwyNjYuNiAxOTAuMCwyNjguNSAxOTIuMCwyNjkuOSAxOTQuMCwyNzAuOCAxOTYuMCwyNzEuMCAxOTguMCwyNzAuNyAyMDAuMCwyNjkuNyAyMDIuMCwyNjguMiAyMDQuMCwyNjYuMiAyMDYuMCwyNjMuNyAyMDguMCwyNjAuOCAyMTAuMCwyNTcuNSAyMTIuMCwyNTQuMCAyMTQuMCwyNTAuMiAyMTYuMCwyNDYuMyAyMTguMCwyNDIuNCAyMjAuMCwyMzguNSAyMjIuMCwyMzQuOCAyMjQuMCwyMzEuMyAyMjYuMCwyMjguMiAyMjguMCwyMjUuNCAyMzAuMCwyMjMuMCAyMzIuMCwyMjEuMiAyMzQuMCwyMTkuOSAyMzYuMCwyMTkuMiAyMzguMCwyMTkuMCAyNDAuMCwyMTkuNSAyNDIuMCwyMjAuNSAyNDQuMCwyMjIuMSAyNDYuMCwyMjQuMiAyNDguMCwyMjYuNyAyNTAuMCwyMjkuNyAyNTIuMCwyMzMuMSAyNTQuMCwyMzYuNyAyNTYuMCwyNDAuNCAyNTguMCwyNDQuMyAyNjAuMCwyNDguMyAyNjIuMCwyNTIuMSAyNjQuMCwyNTUuOCAyNjYuMCwyNTkuMiAyNjguMCwyNjIuMyAyNzAuMCwyNjUuMCAyNzIuMCwyNjcuMyAyNzQuMCwyNjkuMSAyNzYuMCwyNzAuMyAyNzguMCwyNzAuOSAyODAuMCwyNzAuOSAyODIuMCwyNzAuNCAyODQuMCwyNjkuMyAyODYuMCwyNjcuNiAyODguMCwyNjUuNCAyOTAuMCwyNjIuOCAyOTIuMCwyNTkuNyAyOTQuMCwyNTYuNCAyOTYuMCwyNTIuNyAyOTguMCwyNDguOSAzMDAuMCwyNDUuMCAzMDIuMCwyNDEuMSAzMDQuMCwyMzcuMyAzMDYuMCwyMzMuNiAzMDguMCwyMzAuMyAzMTAuMCwyMjcuMiAzMTIuMCwyMjQuNiAzMTQuMCwyMjIuNCAzMTYuMCwyMjAuNyAzMTguMCwyMTkuNiAzMjAuMCwyMTkuMSAzMjIuMCwyMTkuMSAzMjQuMCwyMTkuNyAzMjYuMCwyMjAuOSAzMjguMCwyMjIuNyAzMzAuMCwyMjUuMCAzMzIuMCwyMjcuNyAzMzQuMCwyMzAuOCAzMzYuMCwyMzQuMiAzMzguMCwyMzcuOSAzNDAuMCwyNDEuNyAzNDIuMCwyNDUuNyAzNDQuMCwyNDkuNiAzNDYuMCwyNTMuMyAzNDguMCwyNTYuOSAzNTAuMCwyNjAuMyAzNTIuMCwyNjMuMyAzNTQuMCwyNjUuOCAzNTYuMCwyNjcuOSAzNTguMCwyNjkuNSAzNjAuMCwyNzAuNSAzNjIuMCwyNzEuMCAzNjQuMCwyNzAuOCAzNjYuMCwyNzAuMSAzNjguMCwyNjguOCAzNzAuMCwyNjcuMCAzNzIuMCwyNjQuNiAzNzQuMCwyNjEuOCAzNzYuMCwyNTguNyAzNzguMCwyNTUuMiAzODAuMCwyNTEuNSAzODIuMCwyNDcuNiAzODQuMCwyNDMuNyAzODYuMCwyMzkuOCAzODguMCwyMzYuMCAzOTAuMCwyMzIuNSAzOTIuMCwyMjkuMiAzOTQuMCwyMjYuMyAzOTYuMCwyMjMuOCAzOTguMCwyMjEuOCA0MDAuMCwyMjAuMyA0MDIuMCwyMTkuMyA0MDQuMCwyMTkuMCA0MDYuMCwyMTkuMiA0MDguMCwyMjAuMSA0MTAuMCwyMjEuNSA0MTIuMCwyMjMuNCA0MTQuMCwyMjUuOCA0MTYuMCwyMjguNyA0MTguMCwyMzEuOSA0MjAuMCwyMzUuNCA0MjIuMCwyMzkuMiA0MjQuMCwyNDMuMCA0MjYuMCwyNDcuMCA0MjguMCwyNTAuOCA0MzAuMCwyNTQuNiA0MzIuMCwyNTguMSA0MzQuMCwyNjEuMyA0MzYuMCwyNjQuMiA0MzguMCwyNjYuNiA0NDAuMCwyNjguNSA0NDIuMCwyNjkuOSA0NDQuMCwyNzAuOCA0NDYuMCwyNzEuMCA0NDguMCwyNzAuNyA0NTAuMCwyNjkuNyA0NTIuMCwyNjguMiA0NTQuMCwyNjYuMiA0NTYuMCwyNjMuNyA0NTguMCwyNjAuOCA0NjAuMCwyNTcuNSA0NjIuMCwyNTQuMCA0NjQuMCwyNTAuMiA0NjYuMCwyNDYuMyA0NjguMCwyNDIuNCA0NzAuMCwyMzguNSA0NzIuMCwyMzQuOCA0NzQuMCwyMzEuMyA0NzYuMCwyMjguMiA0NzguMCwyMjUuNCA0ODAuMCwyMjMuMCA0ODIuMCwyMjEuMiA0ODQuMCwyMTkuOSA0ODYuMCwyMTkuMiA0ODguMCwyMTkuMCA0OTAuMCwyMTkuNSA0OTIuMCwyMjAuNSA0OTQuMCwyMjIuMSA0OTYuMCwyMjQuMiA0OTguMCwyMjYuNyA1MDAuMCwyMjkuNyA1MDIuMCwyMzMuMSA1MDQuMCwyMzYuNyA1MDYuMCwyNDAuNCA1MDguMCwyNDQuMyA1MTAuMCwyNDguMyA1MTIuMCwyNTIuMSA1MTQuMCwyNTUuOCA1MTYuMCwyNTkuMiA1MTguMCwyNjIuMyA1MjAuMCwyNjUuMCA1MjIuMCwyNjcuMyA1MjQuMCwyNjkuMSA1MjYuMCwyNzAuMyA1MjguMCwyNzAuOSA1MzAuMCwyNzAuOSA1MzIuMCwyNzAuNCA1MzQuMCwyNjkuMyA1MzYuMCwyNjcuNiA1MzguMCwyNjUuNCA1NDAuMCwyNjIuOCA1NDIuMCwyNTkuNyA1NDQuMCwyNTYuNCA1NDYuMCwyNTIuNyA1NDguMCwyNDguOSA1NTAuMCwyNDUuMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjU2M2ViIiBzdHJva2Utd2lkdGg9IjMuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxsaW5lIHgxPSI1MCIgeTE9IjIwNyIgeDI9IjEzMy4zMzMzMzMzMzMzMzMzMSIgeTI9IjIwNyIgc3Ryb2tlPSIjZGMyNjI2IiBzdHJva2Utd2lkdGg9IjMiIG1hcmtlci1lbmQ9InVybCgjbXIpIiBtYXJrZXItc3RhcnQ9InVybCgjbXIpIi8+PHRleHQgeD0iMTQzLjMzMzMzMzMzMzMzMzMxIiB5PSIyMTEiIGZpbGw9IiNkYzI2MjYiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1zaXplPSIxNSIgZm9udC13ZWlnaHQ9ImJvbGQiPlQg4omIIDAsMTcgczwvdGV4dD48L3N2Zz4=" />
+<em>Figura 4. Frecuencia y periodo. Arriba pasan 2 ondas en un segundo (f = 2 Hz) y cada onda tarda 0,5 s. Abajo pasan 6 ondas en un segundo (f = 6 Hz) y cada onda tarda unos 0,17 s.</em></p>
+<h3 id="4-periodo-t-lo-que-tarda-una-onda">4. Periodo (T): lo que tarda una onda</h3>
+<p><strong>Qué es:</strong> el <strong>tiempo que tarda en pasar una onda completa</strong>. Se mide en segundos (s).</p>
+<p><strong>Relación con la frecuencia:</strong> son <strong>inversos</strong>. Si pasan muchas ondas por segundo, cada una tarda poco.</p>
+<blockquote>
+<p><strong>T = 1 / f</strong> y <strong>f = 1 / T</strong></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Frecuencia (f)</th>
+<th>Periodo (T)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2 Hz (2 ondas por segundo)</td>
+<td>0,5 s</td>
+</tr>
+<tr>
+<td>4 Hz</td>
+<td>0,25 s</td>
+</tr>
+<tr>
+<td>10 Hz</td>
+<td>0,1 s</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-velocidad-de-propagacion-v-lo-rapido-que-avanza-la-onda">5. Velocidad de propagación (v): lo rápido que avanza la onda</h3>
+<p><strong>Qué es:</strong> la distancia que recorre la onda en un segundo. Se mide en <strong>metros por segundo (m/s)</strong>.</p>
+<p><strong>Cómo calcularla:</strong></p>
+<blockquote>
+<p><strong>v = λ · f</strong> (velocidad = longitud de onda × frecuencia)</p>
+</blockquote>
+<p><strong>Cómo entender esta fórmula con una analogía:</strong> imagina que caminas.</p>
+<ul>
+<li>Cada paso mide <strong>0,5 m</strong> (es como la longitud de onda).</li>
+<li>Das <strong>4 pasos por segundo</strong> (es como la frecuencia).</li>
+<li>Avanzas 0,5 × 4 = <strong>2 m cada segundo</strong> (es la velocidad).</li>
+</ul>
+<p>Con las ondas pasa igual: cada onda mide λ y pasan f ondas por segundo, así que la onda avanza λ · f metros cada segundo.</p>
+<p>Si necesitas despejar:</p>
+<blockquote>
+<p><strong>λ = v / f</strong> y <strong>f = v / λ</strong></p>
+</blockquote>
+<p><strong>La velocidad depende del medio.</strong> Algunos valores aproximados para el sonido:</p>
+<table>
+<thead>
+<tr>
+<th>Medio</th>
+<th>Velocidad del sonido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aire</td>
+<td>≈ 340 m/s</td>
+</tr>
+<tr>
+<td>Agua</td>
+<td>≈ 1 500 m/s</td>
+</tr>
+<tr>
+<td>Tejido blando del cuerpo</td>
+<td>≈ 1 540 m/s</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Las ondas electromagnéticas viajan a la velocidad de la luz, c = 3 × 10⁸ m/s (300 000 km/s). Lo veremos en el Módulo 5.</p>
+</blockquote>
+<h4 id="ejemplo-resuelto">Ejemplo resuelto</h4>
+<p><strong>Una nota musical (la) tiene una frecuencia de 440 Hz. ¿Qué longitud de onda tiene en el aire?</strong></p>
+<ul>
+<li>Datos: f = 440 Hz; v = 340 m/s.</li>
+<li>λ = v / f = 340 / 440 ≈ <strong>0,77 m</strong>.</li>
+</ul>
+<h3 id="la-regla-de-oro-longitud-de-onda-y-frecuencia-van-en-sentido-contrario">La regla de oro: longitud de onda y frecuencia van en sentido contrario</h3>
+<p>Si la onda avanza siempre a la misma velocidad, <strong>cuantas más ondas pasan por segundo, más cortas tienen que ser</strong>.</p>
+<p>Vuelve a la analogía de caminar: si quieres avanzar lo mismo cada segundo pero das <strong>muchos pasos</strong>, cada paso tiene que ser <strong>corto</strong>. Si das pocos pasos, cada uno es <strong>largo</strong>.</p>
+<p>Relación entre longitud de onda y frecuencia</p>
+<p><img alt="fig2" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgMzIwIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTUiPjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iMzIwIiBmaWxsPSIjZmZmIi8+PGRlZnM+PG1hcmtlciBpZD0ibWIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMjU2M2ViIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibXIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjZGMyNjI2Ii8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWciIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMTU4MDNkIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWsiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjNTU1NTU1Ii8+PC9tYXJrZXI+PC9kZWZzPjx0ZXh0IHg9IjIwIiB5PSIyNCIgZmlsbD0iIzIyMiIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iYm9sZCI+RnJlY3VlbmNpYSBiYWphIOKGkiBvbmRhIGxhcmdhPC90ZXh0Pjxwb2x5bGluZSBwb2ludHM9IjUwLjAsMTA1LjAgNTIuMCwxMDMuNyA1NC4wLDEwMi40IDU2LjAsMTAxLjEgNTguMCw5OS44IDYwLjAsOTguNSA2Mi4wLDk3LjMgNjQuMCw5Ni4wIDY2LjAsOTQuOCA2OC4wLDkzLjYgNzAuMCw5Mi41IDcyLjAsOTEuMyA3NC4wLDkwLjMgNzYuMCw4OS4yIDc4LjAsODguMiA4MC4wLDg3LjIgODIuMCw4Ni4zIDg0LjAsODUuNCA4Ni4wLDg0LjYgODguMCw4My44IDkwLjAsODMuMCA5Mi4wLDgyLjQgOTQuMCw4MS44IDk2LjAsODEuMiA5OC4wLDgwLjcgMTAwLjAsODAuMyAxMDIuMCw3OS45IDEwNC4wLDc5LjYgMTA2LjAsNzkuMyAxMDguMCw3OS4yIDExMC4wLDc5LjEgMTEyLjAsNzkuMCAxMTQuMCw3OS4wIDExNi4wLDc5LjEgMTE4LjAsNzkuMiAxMjAuMCw3OS41IDEyMi4wLDc5LjcgMTI0LjAsODAuMSAxMjYuMCw4MC41IDEyOC4wLDgwLjkgMTMwLjAsODEuNSAxMzIuMCw4Mi4xIDEzNC4wLDgyLjcgMTM2LjAsODMuNCAxMzguMCw4NC4yIDE0MC4wLDg1LjAgMTQyLjAsODUuOCAxNDQuMCw4Ni43IDE0Ni4wLDg3LjcgMTQ4LjAsODguNyAxNTAuMCw4OS43IDE1Mi4wLDkwLjggMTU0LjAsOTEuOSAxNTYuMCw5My4xIDE1OC4wLDk0LjIgMTYwLjAsOTUuNCAxNjIuMCw5Ni43IDE2NC4wLDk3LjkgMTY2LjAsOTkuMiAxNjguMCwxMDAuNCAxNzAuMCwxMDEuNyAxNzIuMCwxMDMuMCAxNzQuMCwxMDQuMyAxNzYuMCwxMDUuNyAxNzguMCwxMDcuMCAxODAuMCwxMDguMyAxODIuMCwxMDkuNiAxODQuMCwxMTAuOCAxODYuMCwxMTIuMSAxODguMCwxMTMuMyAxOTAuMCwxMTQuNiAxOTIuMCwxMTUuOCAxOTQuMCwxMTYuOSAxOTYuMCwxMTguMSAxOTguMCwxMTkuMiAyMDAuMCwxMjAuMyAyMDIuMCwxMjEuMyAyMDQuMCwxMjIuMyAyMDYuMCwxMjMuMyAyMDguMCwxMjQuMiAyMTAuMCwxMjUuMCAyMTIuMCwxMjUuOCAyMTQuMCwxMjYuNiAyMTYuMCwxMjcuMyAyMTguMCwxMjcuOSAyMjAuMCwxMjguNSAyMjIuMCwxMjkuMSAyMjQuMCwxMjkuNSAyMjYuMCwxMjkuOSAyMjguMCwxMzAuMyAyMzAuMCwxMzAuNSAyMzIuMCwxMzAuOCAyMzQuMCwxMzAuOSAyMzYuMCwxMzEuMCAyMzguMCwxMzEuMCAyNDAuMCwxMzAuOSAyNDIuMCwxMzAuOCAyNDQuMCwxMzAuNyAyNDYuMCwxMzAuNCAyNDguMCwxMzAuMSAyNTAuMCwxMjkuNyAyNTIuMCwxMjkuMyAyNTQuMCwxMjguOCAyNTYuMCwxMjguMiAyNTguMCwxMjcuNiAyNjAuMCwxMjcuMCAyNjIuMCwxMjYuMiAyNjQuMCwxMjUuNCAyNjYuMCwxMjQuNiAyNjguMCwxMjMuNyAyNzAuMCwxMjIuOCAyNzIuMCwxMjEuOCAyNzQuMCwxMjAuOCAyNzYuMCwxMTkuNyAyNzguMCwxMTguNyAyODAuMCwxMTcuNSAyODIuMCwxMTYuNCAyODQuMCwxMTUuMiAyODYuMCwxMTQuMCAyODguMCwxMTIuNyAyOTAuMCwxMTEuNSAyOTIuMCwxMTAuMiAyOTQuMCwxMDguOSAyOTYuMCwxMDcuNiAyOTguMCwxMDYuMyAzMDAuMCwxMDUuMCAzMDIuMCwxMDMuNyAzMDQuMCwxMDIuNCAzMDYuMCwxMDEuMSAzMDguMCw5OS44IDMxMC4wLDk4LjUgMzEyLjAsOTcuMyAzMTQuMCw5Ni4wIDMxNi4wLDk0LjggMzE4LjAsOTMuNiAzMjAuMCw5Mi41IDMyMi4wLDkxLjMgMzI0LjAsOTAuMyAzMjYuMCw4OS4yIDMyOC4wLDg4LjIgMzMwLjAsODcuMiAzMzIuMCw4Ni4zIDMzNC4wLDg1LjQgMzM2LjAsODQuNiAzMzguMCw4My44IDM0MC4wLDgzLjAgMzQyLjAsODIuNCAzNDQuMCw4MS44IDM0Ni4wLDgxLjIgMzQ4LjAsODAuNyAzNTAuMCw4MC4zIDM1Mi4wLDc5LjkgMzU0LjAsNzkuNiAzNTYuMCw3OS4zIDM1OC4wLDc5LjIgMzYwLjAsNzkuMSAzNjIuMCw3OS4wIDM2NC4wLDc5LjAgMzY2LjAsNzkuMSAzNjguMCw3OS4yIDM3MC4wLDc5LjUgMzcyLjAsNzkuNyAzNzQuMCw4MC4xIDM3Ni4wLDgwLjUgMzc4LjAsODAuOSAzODAuMCw4MS41IDM4Mi4wLDgyLjEgMzg0LjAsODIuNyAzODYuMCw4My40IDM4OC4wLDg0LjIgMzkwLjAsODUuMCAzOTIuMCw4NS44IDM5NC4wLDg2LjcgMzk2LjAsODcuNyAzOTguMCw4OC43IDQwMC4wLDg5LjcgNDAyLjAsOTAuOCA0MDQuMCw5MS45IDQwNi4wLDkzLjEgNDA4LjAsOTQuMiA0MTAuMCw5NS40IDQxMi4wLDk2LjcgNDE0LjAsOTcuOSA0MTYuMCw5OS4yIDQxOC4wLDEwMC40IDQyMC4wLDEwMS43IDQyMi4wLDEwMy4wIDQyNC4wLDEwNC4zIDQyNi4wLDEwNS43IDQyOC4wLDEwNy4wIDQzMC4wLDEwOC4zIDQzMi4wLDEwOS42IDQzNC4wLDExMC44IDQzNi4wLDExMi4xIDQzOC4wLDExMy4zIDQ0MC4wLDExNC42IDQ0Mi4wLDExNS44IDQ0NC4wLDExNi45IDQ0Ni4wLDExOC4xIDQ0OC4wLDExOS4yIDQ1MC4wLDEyMC4zIDQ1Mi4wLDEyMS4zIDQ1NC4wLDEyMi4zIDQ1Ni4wLDEyMy4zIDQ1OC4wLDEyNC4yIDQ2MC4wLDEyNS4wIDQ2Mi4wLDEyNS44IDQ2NC4wLDEyNi42IDQ2Ni4wLDEyNy4zIDQ2OC4wLDEyNy45IDQ3MC4wLDEyOC41IDQ3Mi4wLDEyOS4xIDQ3NC4wLDEyOS41IDQ3Ni4wLDEyOS45IDQ3OC4wLDEzMC4zIDQ4MC4wLDEzMC41IDQ4Mi4wLDEzMC44IDQ4NC4wLDEzMC45IDQ4Ni4wLDEzMS4wIDQ4OC4wLDEzMS4wIDQ5MC4wLDEzMC45IDQ5Mi4wLDEzMC44IDQ5NC4wLDEzMC43IDQ5Ni4wLDEzMC40IDQ5OC4wLDEzMC4xIDUwMC4wLDEyOS43IDUwMi4wLDEyOS4zIDUwNC4wLDEyOC44IDUwNi4wLDEyOC4yIDUwOC4wLDEyNy42IDUxMC4wLDEyNy4wIDUxMi4wLDEyNi4yIDUxNC4wLDEyNS40IDUxNi4wLDEyNC42IDUxOC4wLDEyMy43IDUyMC4wLDEyMi44IDUyMi4wLDEyMS44IDUyNC4wLDEyMC44IDUyNi4wLDExOS43IDUyOC4wLDExOC43IDUzMC4wLDExNy41IDUzMi4wLDExNi40IDUzNC4wLDExNS4yIDUzNi4wLDExNC4wIDUzOC4wLDExMi43IDU0MC4wLDExMS41IDU0Mi4wLDExMC4yIDU0NC4wLDEwOC45IDU0Ni4wLDEwNy42IDU0OC4wLDEwNi4zIDU1MC4wLDEwNS4wIiBmaWxsPSJub25lIiBzdHJva2U9IiMyNTYzZWIiIHN0cm9rZS13aWR0aD0iMy41IiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PGxpbmUgeDE9IjExMi41IiB5MT0iNjUiIHgyPSIzNjIuNSIgeTI9IjY1IiBzdHJva2U9IiNlYTU4MGMiIHN0cm9rZS13aWR0aD0iMyIgbWFya2VyLWVuZD0idXJsKCNtaykiIG1hcmtlci1zdGFydD0idXJsKCNtaykiLz48bGluZSB4MT0iMTEyLjUiIHkxPSI2NSIgeDI9IjExMi41IiB5Mj0iNzUiIHN0cm9rZT0iI2VhNTgwYyIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1kYXNoYXJyYXk9IjMgMyIvPjxsaW5lIHgxPSIzNjIuNSIgeTE9IjY1IiB4Mj0iMzYyLjUiIHkyPSI3NSIgc3Ryb2tlPSIjZWE1ODBjIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMyAzIi8+PHRleHQgeD0iMjM3LjUiIHk9IjU3IiBmaWxsPSIjZWE1ODBjIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iYm9sZCI+zrsgPSAwLDUgbTwvdGV4dD48dGV4dCB4PSIyMCIgeT0iMTUwIiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSJib2xkIj5GcmVjdWVuY2lhIGFsdGEg4oaSIG9uZGEgY29ydGE8L3RleHQ+PHBvbHlsaW5lIHBvaW50cz0iNTAuMCwyMzUuMCA1Mi4wLDIzMS43IDU0LjAsMjI4LjUgNTYuMCwyMjUuNCA1OC4wLDIyMi41IDYwLjAsMjE5LjcgNjIuMCwyMTcuMiA2NC4wLDIxNS4wIDY2LjAsMjEzLjAgNjguMCwyMTEuNSA3MC4wLDIxMC4zIDcyLjAsMjA5LjUgNzQuMCwyMDkuMSA3Ni4wLDIwOS4xIDc4LjAsMjA5LjUgODAuMCwyMTAuMyA4Mi4wLDIxMS41IDg0LjAsMjEzLjAgODYuMCwyMTUuMCA4OC4wLDIxNy4yIDkwLjAsMjE5LjcgOTIuMCwyMjIuNSA5NC4wLDIyNS40IDk2LjAsMjI4LjUgOTguMCwyMzEuNyAxMDAuMCwyMzUuMCAxMDIuMCwyMzguMyAxMDQuMCwyNDEuNSAxMDYuMCwyNDQuNiAxMDguMCwyNDcuNSAxMTAuMCwyNTAuMyAxMTIuMCwyNTIuOCAxMTQuMCwyNTUuMCAxMTYuMCwyNTcuMCAxMTguMCwyNTguNSAxMjAuMCwyNTkuNyAxMjIuMCwyNjAuNSAxMjQuMCwyNjAuOSAxMjYuMCwyNjAuOSAxMjguMCwyNjAuNSAxMzAuMCwyNTkuNyAxMzIuMCwyNTguNSAxMzQuMCwyNTcuMCAxMzYuMCwyNTUuMCAxMzguMCwyNTIuOCAxNDAuMCwyNTAuMyAxNDIuMCwyNDcuNSAxNDQuMCwyNDQuNiAxNDYuMCwyNDEuNSAxNDguMCwyMzguMyAxNTAuMCwyMzUuMCAxNTIuMCwyMzEuNyAxNTQuMCwyMjguNSAxNTYuMCwyMjUuNCAxNTguMCwyMjIuNSAxNjAuMCwyMTkuNyAxNjIuMCwyMTcuMiAxNjQuMCwyMTUuMCAxNjYuMCwyMTMuMCAxNjguMCwyMTEuNSAxNzAuMCwyMTAuMyAxNzIuMCwyMDkuNSAxNzQuMCwyMDkuMSAxNzYuMCwyMDkuMSAxNzguMCwyMDkuNSAxODAuMCwyMTAuMyAxODIuMCwyMTEuNSAxODQuMCwyMTMuMCAxODYuMCwyMTUuMCAxODguMCwyMTcuMiAxOTAuMCwyMTkuNyAxOTIuMCwyMjIuNSAxOTQuMCwyMjUuNCAxOTYuMCwyMjguNSAxOTguMCwyMzEuNyAyMDAuMCwyMzUuMCAyMDIuMCwyMzguMyAyMDQuMCwyNDEuNSAyMDYuMCwyNDQuNiAyMDguMCwyNDcuNSAyMTAuMCwyNTAuMyAyMTIuMCwyNTIuOCAyMTQuMCwyNTUuMCAyMTYuMCwyNTcuMCAyMTguMCwyNTguNSAyMjAuMCwyNTkuNyAyMjIuMCwyNjAuNSAyMjQuMCwyNjAuOSAyMjYuMCwyNjAuOSAyMjguMCwyNjAuNSAyMzAuMCwyNTkuNyAyMzIuMCwyNTguNSAyMzQuMCwyNTcuMCAyMzYuMCwyNTUuMCAyMzguMCwyNTIuOCAyNDAuMCwyNTAuMyAyNDIuMCwyNDcuNSAyNDQuMCwyNDQuNiAyNDYuMCwyNDEuNSAyNDguMCwyMzguMyAyNTAuMCwyMzUuMCAyNTIuMCwyMzEuNyAyNTQuMCwyMjguNSAyNTYuMCwyMjUuNCAyNTguMCwyMjIuNSAyNjAuMCwyMTkuNyAyNjIuMCwyMTcuMiAyNjQuMCwyMTUuMCAyNjYuMCwyMTMuMCAyNjguMCwyMTEuNSAyNzAuMCwyMTAuMyAyNzIuMCwyMDkuNSAyNzQuMCwyMDkuMSAyNzYuMCwyMDkuMSAyNzguMCwyMDkuNSAyODAuMCwyMTAuMyAyODIuMCwyMTEuNSAyODQuMCwyMTMuMCAyODYuMCwyMTUuMCAyODguMCwyMTcuMiAyOTAuMCwyMTkuNyAyOTIuMCwyMjIuNSAyOTQuMCwyMjUuNCAyOTYuMCwyMjguNSAyOTguMCwyMzEuNyAzMDAuMCwyMzUuMCAzMDIuMCwyMzguMyAzMDQuMCwyNDEuNSAzMDYuMCwyNDQuNiAzMDguMCwyNDcuNSAzMTAuMCwyNTAuMyAzMTIuMCwyNTIuOCAzMTQuMCwyNTUuMCAzMTYuMCwyNTcuMCAzMTguMCwyNTguNSAzMjAuMCwyNTkuNyAzMjIuMCwyNjAuNSAzMjQuMCwyNjAuOSAzMjYuMCwyNjAuOSAzMjguMCwyNjAuNSAzMzAuMCwyNTkuNyAzMzIuMCwyNTguNSAzMzQuMCwyNTcuMCAzMzYuMCwyNTUuMCAzMzguMCwyNTIuOCAzNDAuMCwyNTAuMyAzNDIuMCwyNDcuNSAzNDQuMCwyNDQuNiAzNDYuMCwyNDEuNSAzNDguMCwyMzguMyAzNTAuMCwyMzUuMCAzNTIuMCwyMzEuNyAzNTQuMCwyMjguNSAzNTYuMCwyMjUuNCAzNTguMCwyMjIuNSAzNjAuMCwyMTkuNyAzNjIuMCwyMTcuMiAzNjQuMCwyMTUuMCAzNjYuMCwyMTMuMCAzNjguMCwyMTEuNSAzNzAuMCwyMTAuMyAzNzIuMCwyMDkuNSAzNzQuMCwyMDkuMSAzNzYuMCwyMDkuMSAzNzguMCwyMDkuNSAzODAuMCwyMTAuMyAzODIuMCwyMTEuNSAzODQuMCwyMTMuMCAzODYuMCwyMTUuMCAzODguMCwyMTcuMiAzOTAuMCwyMTkuNyAzOTIuMCwyMjIuNSAzOTQuMCwyMjUuNCAzOTYuMCwyMjguNSAzOTguMCwyMzEuNyA0MDAuMCwyMzUuMCA0MDIuMCwyMzguMyA0MDQuMCwyNDEuNSA0MDYuMCwyNDQuNiA0MDguMCwyNDcuNSA0MTAuMCwyNTAuMyA0MTIuMCwyNTIuOCA0MTQuMCwyNTUuMCA0MTYuMCwyNTcuMCA0MTguMCwyNTguNSA0MjAuMCwyNTkuNyA0MjIuMCwyNjAuNSA0MjQuMCwyNjAuOSA0MjYuMCwyNjAuOSA0MjguMCwyNjAuNSA0MzAuMCwyNTkuNyA0MzIuMCwyNTguNSA0MzQuMCwyNTcuMCA0MzYuMCwyNTUuMCA0MzguMCwyNTIuOCA0NDAuMCwyNTAuMyA0NDIuMCwyNDcuNSA0NDQuMCwyNDQuNiA0NDYuMCwyNDEuNSA0NDguMCwyMzguMyA0NTAuMCwyMzUuMCA0NTIuMCwyMzEuNyA0NTQuMCwyMjguNSA0NTYuMCwyMjUuNCA0NTguMCwyMjIuNSA0NjAuMCwyMTkuNyA0NjIuMCwyMTcuMiA0NjQuMCwyMTUuMCA0NjYuMCwyMTMuMCA0NjguMCwyMTEuNSA0NzAuMCwyMTAuMyA0NzIuMCwyMDkuNSA0NzQuMCwyMDkuMSA0NzYuMCwyMDkuMSA0NzguMCwyMDkuNSA0ODAuMCwyMTAuMyA0ODIuMCwyMTEuNSA0ODQuMCwyMTMuMCA0ODYuMCwyMTUuMCA0ODguMCwyMTcuMiA0OTAuMCwyMTkuNyA0OTIuMCwyMjIuNSA0OTQuMCwyMjUuNCA0OTYuMCwyMjguNSA0OTguMCwyMzEuNyA1MDAuMCwyMzUuMCA1MDIuMCwyMzguMyA1MDQuMCwyNDEuNSA1MDYuMCwyNDQuNiA1MDguMCwyNDcuNSA1MTAuMCwyNTAuMyA1MTIuMCwyNTIuOCA1MTQuMCwyNTUuMCA1MTYuMCwyNTcuMCA1MTguMCwyNTguNSA1MjAuMCwyNTkuNyA1MjIuMCwyNjAuNSA1MjQuMCwyNjAuOSA1MjYuMCwyNjAuOSA1MjguMCwyNjAuNSA1MzAuMCwyNTkuNyA1MzIuMCwyNTguNSA1MzQuMCwyNTcuMCA1MzYuMCwyNTUuMCA1MzguMCwyNTIuOCA1NDAuMCwyNTAuMyA1NDIuMCwyNDcuNSA1NDQuMCwyNDQuNiA1NDYuMCwyNDEuNSA1NDguMCwyMzguMyA1NTAuMCwyMzUuMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjU2M2ViIiBzdHJva2Utd2lkdGg9IjMuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxsaW5lIHgxPSI3NS4wIiB5MT0iMTk1IiB4Mj0iMTc1LjAiIHkyPSIxOTUiIHN0cm9rZT0iI2VhNTgwYyIgc3Ryb2tlLXdpZHRoPSIzIiBtYXJrZXItZW5kPSJ1cmwoI21rKSIgbWFya2VyLXN0YXJ0PSJ1cmwoI21rKSIvPjxsaW5lIHgxPSI3NS4wIiB5MT0iMTk1IiB4Mj0iNzUuMCIgeTI9IjIwNSIgc3Ryb2tlPSIjZWE1ODBjIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWRhc2hhcnJheT0iMyAzIi8+PGxpbmUgeDE9IjE3NS4wIiB5MT0iMTk1IiB4Mj0iMTc1LjAiIHkyPSIyMDUiIHN0cm9rZT0iI2VhNTgwYyIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1kYXNoYXJyYXk9IjMgMyIvPjx0ZXh0IHg9IjEyNS4wIiB5PSIxODciIGZpbGw9IiNlYTU4MGMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTUiIGZvbnQtd2VpZ2h0PSJib2xkIj7OuyA9IDAsMiBtPC90ZXh0PjxsaW5lIHgxPSI1MCIgeTE9IjI5MCIgeDI9IjU1MCIgeTI9IjI5MCIgc3Ryb2tlPSIjNTU1NTU1IiBzdHJva2Utd2lkdGg9IjIiIG1hcmtlci1lbmQ9InVybCgjbWspIiBtYXJrZXItc3RhcnQ9InVybCgjbWspIi8+PHRleHQgeD0iMzAwIiB5PSIzMTAiIGZpbGw9IiM1NTU1NTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTUiPm1pc21hIGRpc3RhbmNpYTogMSBtZXRybzwvdGV4dD48L3N2Zz4=" />
+<em>Figura 5. En la misma distancia de 1 metro caben 2 ondas largas o 5 ondas cortas. Más ondas (frecuencia alta) significa ondas más cortas (longitud de onda corta).</em></p>
+<blockquote>
+<p><strong>Idea clave:</strong> frecuencia alta → longitud de onda corta. Frecuencia baja → longitud de onda larga.</p>
+</blockquote>
+<h3 id="resumen-de-las-cinco-medidas">Resumen de las cinco medidas</h3>
+<table>
+<thead>
+<tr>
+<th>Medida</th>
+<th>Símbolo</th>
+<th>Qué es, en una frase</th>
+<th>Unidad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Amplitud</strong></td>
+<td>A</td>
+<td>Lo alta que es la onda (más amplitud, más energía)</td>
+<td>Depende de lo que vibre</td>
+</tr>
+<tr>
+<td><strong>Longitud de onda</strong></td>
+<td>λ</td>
+<td>Distancia entre dos crestas seguidas</td>
+<td>metro (m)</td>
+</tr>
+<tr>
+<td><strong>Frecuencia</strong></td>
+<td>f o ν</td>
+<td>Número de ondas que pasan por segundo</td>
+<td>hercio (Hz)</td>
+</tr>
+<tr>
+<td><strong>Periodo</strong></td>
+<td>T</td>
+<td>Tiempo que tarda una onda en pasar (T = 1/f)</td>
+<td>segundo (s)</td>
+</tr>
+<tr>
+<td><strong>Velocidad</strong></td>
+<td>v</td>
+<td>Lo rápido que avanza la onda (v = λ · f)</td>
+<td>metro por segundo (m/s)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="44-el-sonido-y-los-ultrasonidos-en-medicina">4.4. El sonido y los ultrasonidos en medicina</h2>
+<h3 id="el-sonido">El sonido</h3>
+<p>El sonido es un ejemplo perfecto de <strong>onda mecánica y longitudinal</strong>. Cuando hablamos, nuestras cuerdas vocales empujan el aire y crean compresiones y rarefacciones que viajan hasta hacer vibrar el tímpano de quien nos escucha. Por eso el sonido es una <strong>onda de presión</strong>.</p>
+<p>Como es una onda mecánica, <strong>necesita un medio</strong> (aire, agua, tejido…). En el vacío no se propaga.</p>
+<h3 id="que-sonidos-podemos-oir">Qué sonidos podemos oír</h3>
+<p>El ser humano solo oye sonidos con frecuencias <strong>entre 20 y 20 000 Hz</strong>. Por debajo hay <strong>infrasonidos</strong> y por encima, <strong>ultrasonidos</strong>. Los ultrasonidos son sonidos de frecuencia muy alta, por tanto de longitud de onda muy corta. Nosotros no los oímos, pero los usan, por ejemplo, murciélagos y delfines para orientarse.</p>
+<p>Infrasonidos, sonido audible y ultrasonidos</p>
+<p><img alt="fig2" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NjAgMjE1IiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTUiPjxyZWN0IHdpZHRoPSI1NjAiIGhlaWdodD0iMjE1IiBmaWxsPSIjZmZmIi8+PGRlZnM+PG1hcmtlciBpZD0ibWIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMjU2M2ViIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibXIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjZGMyNjI2Ii8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWciIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMTU4MDNkIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWsiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjNTU1NTU1Ii8+PC9tYXJrZXI+PC9kZWZzPjxyZWN0IHg9IjIwIiB5PSI3NSIgd2lkdGg9IjEzMCIgaGVpZ2h0PSI0NCIgZmlsbD0iI2U1ZTdlYiIgc3Ryb2tlPSIjNTU1Ii8+PHRleHQgeD0iODUuMCIgeT0iMTAzIiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iYm9sZCI+SW5mcmFzb25pZG9zPC90ZXh0PjxyZWN0IHg9IjE1MCIgeT0iNzUiIHdpZHRoPSIyMjAiIGhlaWdodD0iNDQiIGZpbGw9IiNiYmY3ZDAiIHN0cm9rZT0iIzU1NSIvPjx0ZXh0IHg9IjI2MC4wIiB5PSIxMDMiIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTUiIGZvbnQtd2VpZ2h0PSJib2xkIj5Tb25pZG8gYXVkaWJsZTwvdGV4dD48cmVjdCB4PSIzNzAiIHk9Ijc1IiB3aWR0aD0iMTcwIiBoZWlnaHQ9IjQ0IiBmaWxsPSIjYmZkYmZlIiBzdHJva2U9IiM1NTUiLz48dGV4dCB4PSI0NTUuMCIgeT0iMTAzIiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iYm9sZCI+VWx0cmFzb25pZG9zPC90ZXh0Pjx0ZXh0IHg9IjE1MCIgeT0iMTUwIiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE1Ij4yMCBIejwvdGV4dD48dGV4dCB4PSIzNzAiIHk9IjE1MCIgZmlsbD0iIzIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNSI+MjAgMDAwIEh6PC90ZXh0Pjx0ZXh0IHg9IjQ1NSIgeT0iMzAiIGZpbGw9IiMyNTYzZWIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIj5FY29ncmFmw61hOjwvdGV4dD48dGV4dCB4PSI0NTUiIHk9IjQ4IiBmaWxsPSIjMjU2M2ViIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCI+bWVnYWhlcmNpb3MgKE1Ieik8L3RleHQ+PGxpbmUgeDE9IjQ1NSIgeTE9IjU1IiB4Mj0iNDU1IiB5Mj0iNzIiIHN0cm9rZT0iIzI1NjNlYiIgc3Ryb2tlLXdpZHRoPSIyLjUiIG1hcmtlci1lbmQ9InVybCgjbWIpIi8+PGxpbmUgeDE9IjIwIiB5MT0iMTgwIiB4Mj0iNTQwIiB5Mj0iMTgwIiBzdHJva2U9IiM1NTU1NTUiIHN0cm9rZS13aWR0aD0iMiIgbWFya2VyLWVuZD0idXJsKCNtaykiLz48dGV4dCB4PSIyODAiIHk9IjIwNCIgZmlsbD0iIzU1NTU1NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMyI+ZnJlY3VlbmNpYTogYXVtZW50YSBoYWNpYSBsYSBkZXJlY2hhIChlc2NhbGEgbm8gcHJvcG9yY2lvbmFsKTwvdGV4dD48L3N2Zz4=" />
+<em>Figura 6. Tipos de sonido según su frecuencia. Los ultrasonidos de la ecografía están en el orden de los megahercios.</em></p>
+<h3 id="la-ecografia">La ecografía</h3>
+<p>La <strong>ecografía</strong> (o ultrasonografía) usa ultrasonidos para ver el interior del cuerpo. Funciona como un <strong>eco</strong>: si gritas en una cueva, el sonido rebota en las paredes y vuelve. En la ecografía pasa lo mismo.</p>
+<ol>
+<li>La <strong>sonda</strong> envía pulsos de ultrasonidos al cuerpo.</li>
+<li>Los ultrasonidos se encuentran con distintos tejidos y órganos, y una parte <strong>rebota</strong>.</li>
+<li>La sonda <strong>recoge el eco</strong>, y el ecógrafo lo convierte en una imagen.</li>
+</ol>
+<p>Funcionamiento de una ecografía</p>
+<p><img alt="fig2" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1NjAgMjMwIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTUiPjxyZWN0IHdpZHRoPSI1NjAiIGhlaWdodD0iMjMwIiBmaWxsPSIjZmZmIi8+PGRlZnM+PG1hcmtlciBpZD0ibWIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMjU2M2ViIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibXIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjZGMyNjI2Ii8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWciIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMTU4MDNkIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWsiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjNTU1NTU1Ii8+PC9tYXJrZXI+PC9kZWZzPjx0ZXh0IHg9IjI4MCIgeT0iMjQiIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTUiIGZvbnQtd2VpZ2h0PSJib2xkIj5MYSBzb25kYSBlbnbDrWEgdWx0cmFzb25pZG9zIHkgcmVjb2dlIGVsIGVjbyBxdWUgZGV2dWVsdmVuIGxvcyDDs3JnYW5vczwvdGV4dD48cmVjdCB4PSI4NSIgeT0iNDAiIHdpZHRoPSI0NjAiIGhlaWdodD0iMTQwIiBmaWxsPSIjZmVlMmUyIi8+PHJlY3QgeD0iMjgiIHk9Ijc1IiB3aWR0aD0iNTIiIGhlaWdodD0iNzAiIHJ4PSI2IiBmaWxsPSIjNmI3MjgwIi8+PHRleHQgeD0iNTQiIHk9IjExMiIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMyI+U29uZGE8L3RleHQ+PGVsbGlwc2UgY3g9IjQ1MCIgY3k9IjExMCIgcng9IjM4IiByeT0iNTIiIGZpbGw9IiNmY2E1YTUiIHN0cm9rZT0iI2I5MWMxYyIgc3Ryb2tlLXdpZHRoPSIyIi8+PHRleHQgeD0iNDUwIiB5PSIxMTQiIGZpbGw9IiM3ZjFkMWQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTQiPsOzcmdhbm88L3RleHQ+PHBhdGggZD0iTTExNSA3MCBRMTI5IDg4IDExNSAxMDYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI1NjNlYiIgc3Ryb2tlLXdpZHRoPSIzLjUiLz48cGF0aCBkPSJNMTY1IDcwIFExNzkgODggMTY1IDEwNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjU2M2ViIiBzdHJva2Utd2lkdGg9IjMuNSIvPjxwYXRoIGQ9Ik0yMTUgNzAgUTIyOSA4OCAyMTUgMTA2IiBmaWxsPSJub25lIiBzdHJva2U9IiMyNTYzZWIiIHN0cm9rZS13aWR0aD0iMy41Ii8+PHBhdGggZD0iTTI2NSA3MCBRMjc5IDg4IDI2NSAxMDYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzI1NjNlYiIgc3Ryb2tlLXdpZHRoPSIzLjUiLz48cGF0aCBkPSJNMzE1IDcwIFEzMjkgODggMzE1IDEwNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjU2M2ViIiBzdHJva2Utd2lkdGg9IjMuNSIvPjxsaW5lIHgxPSIxMTAiIHkxPSI1NCIgeDI9IjM1MCIgeTI9IjU0IiBzdHJva2U9IiMyNTYzZWIiIHN0cm9rZS13aWR0aD0iMyIgbWFya2VyLWVuZD0idXJsKCNtYikiLz48cGF0aCBkPSJNMTQwIDEyMCBRMTI2IDEzOCAxNDAgMTU2IiBmaWxsPSJub25lIiBzdHJva2U9IiNkYzI2MjYiIHN0cm9rZS13aWR0aD0iMyIvPjxwYXRoIGQ9Ik0xOTAgMTIwIFExNzYgMTM4IDE5MCAxNTYiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2RjMjYyNiIgc3Ryb2tlLXdpZHRoPSIzIi8+PHBhdGggZD0iTTI0MCAxMjAgUTIyNiAxMzggMjQwIDE1NiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZGMyNjI2IiBzdHJva2Utd2lkdGg9IjMiLz48cGF0aCBkPSJNMjkwIDEyMCBRMjc2IDEzOCAyOTAgMTU2IiBmaWxsPSJub25lIiBzdHJva2U9IiNkYzI2MjYiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIzNTAiIHkxPSIxNzAiIHgyPSIxMTAiIHkyPSIxNzAiIHN0cm9rZT0iI2RjMjYyNiIgc3Ryb2tlLXdpZHRoPSIzIiBtYXJrZXItZW5kPSJ1cmwoI21yKSIvPjxsaW5lIHgxPSIxMDAiIHkxPSIyMDgiIHgyPSIxMzAiIHkyPSIyMDgiIHN0cm9rZT0iIzI1NjNlYiIgc3Ryb2tlLXdpZHRoPSIzLjUiLz48dGV4dCB4PSIxMzgiIHk9IjIxMyIgZmlsbD0iIzI1NjNlYiIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXNpemU9IjE0Ij51bHRyYXNvbmlkb3MgZW52aWFkb3M8L3RleHQ+PGxpbmUgeDE9IjMzMCIgeTE9IjIwOCIgeDI9IjM2MCIgeTI9IjIwOCIgc3Ryb2tlPSIjZGMyNjI2IiBzdHJva2Utd2lkdGg9IjMuNSIvPjx0ZXh0IHg9IjM2OCIgeT0iMjEzIiBmaWxsPSIjZGMyNjI2IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtc2l6ZT0iMTQiPmVjbyBxdWUgdnVlbHZlPC90ZXh0Pjwvc3ZnPg==" />
+<em>Figura 7. Funcionamiento de una ecografía.</em></p>
+<blockquote>
+<p><strong>En el hospital:</strong> la ecografía es una técnica <strong>no invasiva</strong> (no hay que entrar en el cuerpo) y <strong>no usa radiación ionizante</strong>: los ultrasonidos son ondas mecánicas y no arrancan electrones. Por eso se utiliza de forma muy habitual en muchas ramas de la medicina, como la cardiología o la obstetricia.</p>
+</blockquote>
+<h4 id="ejemplo-resuelto-que-longitud-de-onda-tiene-una-ecografia">Ejemplo resuelto: ¿qué longitud de onda tiene una ecografía?</h4>
+<p><strong>Una ecografía usa ultrasonidos de 5 MHz. ¿Qué longitud de onda tienen en el tejido blando?</strong></p>
+<ul>
+<li>Datos: f = 5 MHz = 5 000 000 Hz; v = 1 540 m/s.</li>
+<li>λ = v / f = 1 540 / 5 000 000 = 0,000 308 m ≈ <strong>0,31 mm</strong>.</li>
+</ul>
+<p>Son <strong>décimas de milímetro</strong>. Esa longitud de onda tan corta es lo que permite que la ecografía distinga detalles muy pequeños.</p>
+<hr />
+<h2 id="resumen-del-modulo">Resumen del módulo</h2>
+<ul>
+<li>Una <strong>onda</strong> es una perturbación que viaja y transporta <strong>energía, no materia</strong>.</li>
+<li>Las ondas mecánicas pueden ser <strong>transversales</strong> (vibración perpendicular al avance: crestas y valles) o <strong>longitudinales</strong> (vibración en la misma dirección: compresiones y rarefacciones).</li>
+<li>Las cinco medidas de una onda son <strong>amplitud, longitud de onda, frecuencia, periodo y velocidad</strong>.</li>
+<li><strong>T = 1/f</strong> y <strong>v = λ · f</strong>. Con velocidad constante, <strong>a más frecuencia, menos longitud de onda</strong>.</li>
+<li>El <strong>sonido</strong> es una onda mecánica longitudinal. Los <strong>ultrasonidos</strong> (más de 20 000 Hz) se usan en la <strong>ecografía</strong>, que no emplea radiación ionizante.</li>
+</ul>
+<h2 id="glosario">Glosario</h2>
+<table>
+<thead>
+<tr>
+<th>Término</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Onda</strong></td>
+<td>Perturbación que viaja transportando energía sin transportar materia.</td>
+</tr>
+<tr>
+<td><strong>Posición de equilibrio</strong></td>
+<td>Lugar donde está una partícula cuando no hay onda.</td>
+</tr>
+<tr>
+<td><strong>Cresta / valle</strong></td>
+<td>Punto más alto / más bajo de una onda transversal.</td>
+</tr>
+<tr>
+<td><strong>Compresión / rarefacción</strong></td>
+<td>Zona donde las partículas están más juntas / más separadas (onda longitudinal).</td>
+</tr>
+<tr>
+<td><strong>Amplitud (A)</strong></td>
+<td>Distancia de la posición de equilibrio a la cresta.</td>
+</tr>
+<tr>
+<td><strong>Longitud de onda (λ)</strong></td>
+<td>Distancia entre dos crestas (o dos compresiones) seguidas.</td>
+</tr>
+<tr>
+<td><strong>Frecuencia (f)</strong></td>
+<td>Número de ondas que pasan por un punto en un segundo.</td>
+</tr>
+<tr>
+<td><strong>Hercio (Hz)</strong></td>
+<td>Unidad de frecuencia: 1 onda por segundo.</td>
+</tr>
+<tr>
+<td><strong>Periodo (T)</strong></td>
+<td>Tiempo que tarda en pasar una onda completa.</td>
+</tr>
+<tr>
+<td><strong>Velocidad de propagación (v)</strong></td>
+<td>Distancia que avanza la onda en un segundo.</td>
+</tr>
+<tr>
+<td><strong>Ultrasonido</strong></td>
+<td>Sonido de frecuencia superior a 20 000 Hz.</td>
+</tr>
+<tr>
+<td><strong>Eco</strong></td>
+<td>Parte de una onda que rebota y vuelve al emisor.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="ejercicios-propuestos">Ejercicios propuestos</h2>
+<ol>
+<li>Por un punto pasan 10 ondas cada segundo. ¿Cuál es su frecuencia y cuál es su periodo?</li>
+<li>Una onda tiene un periodo de 0,02 s. ¿Cuál es su frecuencia?</li>
+<li>Un sonido de 1 000 Hz viaja por el aire a 340 m/s. ¿Qué longitud de onda tiene?</li>
+<li>Una ecografía usa ultrasonidos de 2 MHz. Si la velocidad en el tejido es 1 540 m/s, ¿qué longitud de onda tienen? Exprésala en milímetros.</li>
+<li>Se comparan ultrasonidos de 2 MHz y de 10 MHz en el mismo tejido. ¿Cuáles tienen la longitud de onda más corta?</li>
+<li>Verdadero o falso: «Una onda transporta materia de un sitio a otro». Justifica tu respuesta.</li>
+</ol>
+<h2 id="soluciones">Soluciones</h2>
+<ol>
+<li>f = <strong>10 Hz</strong>; T = 1 / 10 = <strong>0,1 s</strong>.</li>
+<li>f = 1 / T = 1 / 0,02 = <strong>50 Hz</strong>.</li>
+<li>λ = v / f = 340 / 1 000 = <strong>0,34 m</strong>.</li>
+<li>f = 2 000 000 Hz; λ = 1 540 / 2 000 000 = 0,000 77 m = <strong>0,77 mm</strong>.</li>
+<li>Los de <strong>10 MHz</strong>: λ = 1 540 / 10 000 000 = 0,000 154 m = 0,154 mm, frente a 0,77 mm los de 2 MHz. A más frecuencia, menos longitud de onda.</li>
+<li><strong>Falso.</strong> La onda transporta energía, pero las partículas solo vibran alrededor de su posición de equilibrio, como el corcho en el agua.</li>
+</ol>
+<hr />
+<p><strong>Siguiente módulo:</strong> ahora que sabes cómo se describe una onda, el Módulo 5 trata de las <strong>ondas electromagnéticas</strong>. Imagina todo lo que hemos visto, pero quitando el aire y el agua: lo que vibra ahora son campos eléctricos y magnéticos que viajan a la velocidad de la luz.</p>
+        </section>
+        
+</body>
+</html>
