@@ -3,12 +3,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tema_1 - Apuntes</title>
+    <title></title>
     <style>
+/* ==========================================================================
+   style.css - Estilos para compilación de temarios y apuntes técnicos
+   Compatible con renderizado en pantalla (HTML) e impresión a PDF
+   ========================================================================== */
 
 @page {
     size: A4;
-    margin: 18mm 16mm 20mm 16mm;
+    margin: 16mm 15mm 18mm 15mm;
     @bottom-center {
         content: counter(page);
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -19,18 +23,25 @@
 
 @media print {
     body {
-        font-size: 10.5pt;
-        line-height: 1.55;
+        font-size: 10pt;
+        line-height: 1.52;
     }
-    .portada {
+    .indice-tema {
+        page-break-after: avoid;
+        background: #f8fafc !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    .tema-front {
         page-break-after: always;
-        height: 92vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        break-after: page;
+    }
+    .salto-linea {
+        display: none;
     }
     .modulo-container {
         page-break-before: always;
+        break-before: page;
     }
     .no-break {
         page-break-inside: avoid;
@@ -58,76 +69,70 @@ body {
     line-height: 1.6;
 }
 
-/* PORTADA */
-.portada {
-    padding: 30px 20px;
-    text-align: center;
-    border: 2px solid #e2e8f0;
-    border-radius: 12px;
-    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-    margin-bottom: 40px;
+/* CABECERA INICIAL: FRONT + ÍNDICE */
+.tema-front {
+    margin-bottom: 10px;
 }
-.portada-header {
-    margin-top: 20px;
-}
-.portada-institucion {
-    font-size: 11pt;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #0369a1;
-    margin-bottom: 8px;
-}
-.portada-grado {
-    font-size: 13pt;
-    font-weight: 700;
-    color: #0f172a;
-    margin-bottom: 35px;
-}
-.portada-modulo-titulo {
-    font-size: 26pt;
+.tema-front h1 {
+    font-size: 20pt;
     font-weight: 800;
     color: #1e3a8a;
-    line-height: 1.25;
-    margin: 25px 0 10px 0;
-}
-.portada-subtitulo {
-    font-size: 14pt;
-    color: #475569;
-    margin-bottom: 40px;
-}
-.portada-indice {
-    text-align: left;
-    max-width: 520px;
-    margin: 0 auto;
-    background: #ffffff;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    padding: 18px 24px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
-}
-.portada-indice h3 {
-    margin-top: 0;
+    margin-top: 10px;
     margin-bottom: 12px;
-    font-size: 12pt;
-    color: #1e40af;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 2px solid #3b82f6;
     padding-bottom: 6px;
 }
-.portada-indice ol {
+.tema-front p {
+    font-size: 10pt;
+    line-height: 1.6;
+    color: #334155;
+    margin-bottom: 16px;
+}
+
+.salto-linea {
+    border: 0;
+    height: 1px;
+    background-color: #cbd5e1;
+    margin: 25px 0 30px 0;
+}
+
+/* ÍNDICE COMPACTO */
+.indice-tema {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 20px;
+    margin: 10px 0 25px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+.indice-tema .indice-titulo {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #1e3a8a;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin: 0 0 10px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #cbd5e1;
+}
+.indice-tema ol, .indice-tema ul {
     margin: 0;
     padding-left: 20px;
-    font-size: 10pt;
+    font-size: 9.5pt;
     color: #334155;
 }
-.portada-indice li {
-    margin-bottom: 6px;
+.indice-tema li {
+    margin-bottom: 5px;
+    line-height: 1.45;
+}
+.indice-tema li a {
+    color: #1e40af;
+    text-decoration: none;
     font-weight: 500;
 }
-.portada-footer {
-    font-size: 9pt;
-    color: #94a3b8;
-    margin-top: 30px;
+.indice-tema li a:hover {
+    text-decoration: underline;
+    color: #2563eb;
 }
 
 /* ENCABEZADOS */
@@ -141,10 +146,10 @@ h1 {
     padding-bottom: 6px;
 }
 h2 {
-    font-size: 15pt;
+    font-size: 14pt;
     font-weight: 700;
     color: #1e40af;
-    margin-top: 24px;
+    margin-top: 22px;
     margin-bottom: 10px;
     border-bottom: 1px solid #e2e8f0;
     padding-bottom: 4px;
@@ -264,33 +269,36 @@ code {
     font-size: 9pt;
     font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
-
     </style>
 </head>
 <body>
 
-        <div class="portada">
-            <div class="portada-header">
-                <div class="portada-institucion">Ciclo Formativo de Grado Superior</div>
-                <div class="portada-grado">Imagen para el Diagnóstico y Medicina Nuclear</div>
-            </div>
-            <div>
-                <div class="portada-modulo-titulo">Tema 1</div>
-                <div class="portada-subtitulo">Fundamentos Físicos y Equipos · Apuntes de Estudio</div>
-                <div class="portada-indice">
-                    <h3>Contenido del Tema</h3>
-                    <ol>
-                        <li><strong>Módulo 1:</strong> La estructura de la materia</li>
-<li><strong>Módulo 2:</strong> Métodos de transmisión de energía</li>
-<li><strong>Módulo 3:</strong> Clasificación de la radiación según su impacto</li>
-<li><strong>Módulo 4:</strong> El mundo de las ondas</li>
-                    </ol>
-                </div>
-            </div>
-            <div class="portada-footer">
-                Documento generado automáticamente · Compilación unificada de módulos
-            </div>
-        </div>
+        <header class="tema-front">
+            <h1 id="tema-1-caracterizacion-de-las-radiaciones-y-las-ondas">Tema 1. CARACTERIZACIÓN DE LAS RADIACIONES Y LAS ONDAS</h1>
+<p>En  esta unidad  se  aprenderá  a  reconocer y  describir  los  diferentes  tipos  de  radiaciones  y  energías 
+empleadas en imagen para el diagnóstico y en radioterapia, en función de su origen y sus distintas 
+características. Se estudiarán las diferencias entre radiación ionizante y no ionizante, entre radiación 
+electromagnética  y  de  partículas,  así  como  las  particularidades  de  las  ondas  materiales  –como  los 
+ultrasonidos– y del uso de campos magnéticos. Dentro  de  la  radiación  ionizante,  se  distinguirá  entre  las  procedencias  nuclear  y  no  nuclear, 
+desarrollando el fenómeno de la desintegración radiactiva y los radionucleidos implicados. Por último, se definirán y aprenderán a utilizar las principales magnitudes y unidades empleadas en 
+radioterapia e imagen para el diagnóstico.</p>
+            
+        <nav class="indice-tema">
+            <div class="indice-titulo">Índice de contenidos</div>
+            <ol>
+                <li><a href="#modulo-1"><strong>Módulo 1:</strong> La estructura de la materia</a></li>
+<li><a href="#modulo-2"><strong>Módulo 2:</strong> Métodos de transmisión de energía</a></li>
+<li><a href="#modulo-3"><strong>Módulo 3:</strong> Clasificación de la radiación según su impacto</a></li>
+<li><a href="#modulo-4"><strong>Módulo 4:</strong> El mundo de las ondas</a></li>
+<li><a href="#modulo-5"><strong>Módulo 5:</strong> Radiación electromagnética</a></li>
+<li><a href="#modulo-6"><strong>Módulo 6:</strong> Radiación</a></li>
+<li><a href="#modulo-7"><strong>Módulo 7:</strong> Magnetismo</a></li>
+<li><a href="#modulo-8"><strong>Módulo 8:</strong> Aplicaciones médicas</a></li>
+            </ol>
+        </nav>
+        
+        </header>
+        <hr class="salto-linea">
         
 
         <section class="modulo-container" id="modulo-1">
@@ -1377,6 +1385,22 @@ code {
 </ol>
 <hr />
 <p><strong>Siguiente módulo:</strong> ahora que sabes cómo se describe una onda, el Módulo 5 trata de las <strong>ondas electromagnéticas</strong>. Imagina todo lo que hemos visto, pero quitando el aire y el agua: lo que vibra ahora son campos eléctricos y magnéticos que viajan a la velocidad de la luz.</p>
+        </section>
+        
+        <section class="modulo-container" id="modulo-5">
+            <h1 id="modulo-5-radiacion-electromagnetica">Módulo 5. Radiación electromagnética</h1>
+        </section>
+        
+        <section class="modulo-container" id="modulo-6">
+            <h1 id="modulo-6-radiacion">Módulo 6. Radiación</h1>
+        </section>
+        
+        <section class="modulo-container" id="modulo-7">
+            <h1 id="modulo-7-magnetismo">Módulo 7. Magnetismo</h1>
+        </section>
+        
+        <section class="modulo-container" id="modulo-8">
+            <h1 id="modulo-8-aplicaciones-medicas">Módulo 8. Aplicaciones médicas</h1>
         </section>
         
 </body>

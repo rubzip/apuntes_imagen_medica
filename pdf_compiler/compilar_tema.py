@@ -2,15 +2,17 @@
 # -*- coding: utf-8 -*-
 """
 compilar_tema.py
-Compilador de apuntes para el Grado Superior en Imagen para el Diagnóstico y Medicina Nuclear.
+Compilador de apuntes para titulaciones técnicas y Formación Profesional.
 
-Encadena en orden numérico todas las carpetas/módulos de un tema y genera un único PDF
-autocontenido con portada, índice de contenidos, estilos editoriales y gráficos vectoriales SVG.
+Encadena en orden numérico todas las carpetas/módulos de un tema y genera un único
+documento HTML y PDF autocontenido, con índice compacto, estilos desacoplados (style.css)
+y gráficos vectoriales SVG incrustados en base64.
 
 Uso:
     python3 compilar_tema.py Tema_1
     python3 compilar_tema.py 1
-    ./compilar_tema.py Tema_1 -o Tema_1_Completo.pdf
+    ./compilar.sh 1
+    ./compilar.sh Tema_1 -o Tema_1.pdf
 """
 
 import sys
@@ -30,267 +32,42 @@ except ImportError:
     sys.exit(1)
 
 
-# Plantilla CSS profesional adaptada a apuntes técnicos / médicos
-CSS_TEMPLATE = """
-@page {
-    size: A4;
-    margin: 18mm 16mm 20mm 16mm;
-    @bottom-center {
-        content: counter(page);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        font-size: 8.5pt;
-        color: #64748b;
-    }
-}
+def cargar_css(ruta_css: Path = None, tema_dir: Path = None) -> str:
+    """
+    Carga la hoja de estilos CSS desde un archivo externo desacoplado (style.css).
+    Prioridad de búsqueda:
+    1. Archivo explícito pasado por CLI (--css).
+    2. style.css dentro de la carpeta del tema.
+    3. style.css en el directorio del script (pdf_compiler/style.css).
+    4. style.css en el directorio de trabajo actual.
+    """
+    candidatos = []
+    if ruta_css:
+        candidatos.append(Path(ruta_css).resolve())
+    if tema_dir:
+        candidatos.append((tema_dir / "style.css").resolve())
 
-@media print {
-    body {
-        font-size: 10.5pt;
-        line-height: 1.55;
-    }
-    .portada {
-        page-break-after: always;
-        height: 92vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-    .modulo-container {
-        page-break-before: always;
-    }
-    .no-break {
-        page-break-inside: avoid;
-    }
-    table, figure, .callout, blockquote {
-        page-break-inside: avoid;
-    }
-    h1, h2, h3, h4 {
-        page-break-after: avoid;
-    }
-}
+    script_dir = Path(__file__).resolve().parent
+    candidatos.extend([
+        (script_dir / "style.css").resolve(),
+        (Path.cwd() / "pdf_compiler" / "style.css").resolve(),
+        (Path.cwd() / "style.css").resolve(),
+    ])
 
-* {
-    box-sizing: border-box;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-}
+    for ruta in candidatos:
+        if ruta.is_file():
+            try:
+                contenido = ruta.read_text(encoding="utf-8").strip()
+                if contenido:
+                    return contenido
+            except Exception as e:
+                print(f"  [AVISO] No se pudo leer {ruta}: {e}")
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: #1e293b;
-    background-color: #ffffff;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-}
-
-/* PORTADA */
-.portada {
-    padding: 30px 20px;
-    text-align: center;
-    border: 2px solid #e2e8f0;
-    border-radius: 12px;
-    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
-    margin-bottom: 40px;
-}
-.portada-header {
-    margin-top: 20px;
-}
-.portada-institucion {
-    font-size: 11pt;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #0369a1;
-    margin-bottom: 8px;
-}
-.portada-grado {
-    font-size: 13pt;
-    font-weight: 700;
-    color: #0f172a;
-    margin-bottom: 35px;
-}
-.portada-modulo-titulo {
-    font-size: 26pt;
-    font-weight: 800;
-    color: #1e3a8a;
-    line-height: 1.25;
-    margin: 25px 0 10px 0;
-}
-.portada-subtitulo {
-    font-size: 14pt;
-    color: #475569;
-    margin-bottom: 40px;
-}
-.portada-indice {
-    text-align: left;
-    max-width: 520px;
-    margin: 0 auto;
-    background: #ffffff;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    padding: 18px 24px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
-}
-.portada-indice h3 {
-    margin-top: 0;
-    margin-bottom: 12px;
-    font-size: 12pt;
-    color: #1e40af;
-    border-bottom: 1px solid #e2e8f0;
-    padding-bottom: 6px;
-}
-.portada-indice ol {
-    margin: 0;
-    padding-left: 20px;
-    font-size: 10pt;
-    color: #334155;
-}
-.portada-indice li {
-    margin-bottom: 6px;
-    font-weight: 500;
-}
-.portada-footer {
-    font-size: 9pt;
-    color: #94a3b8;
-    margin-top: 30px;
-}
-
-/* ENCABEZADOS */
-h1 {
-    font-size: 20pt;
-    font-weight: 800;
-    color: #1e3a8a;
-    margin-top: 24px;
-    margin-bottom: 12px;
-    border-bottom: 2px solid #3b82f6;
-    padding-bottom: 6px;
-}
-h2 {
-    font-size: 15pt;
-    font-weight: 700;
-    color: #1e40af;
-    margin-top: 24px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #e2e8f0;
-    padding-bottom: 4px;
-}
-h3 {
-    font-size: 12pt;
-    font-weight: 600;
-    color: #334155;
-    margin-top: 18px;
-    margin-bottom: 8px;
-}
-h4 {
-    font-size: 11pt;
-    font-weight: 600;
-    color: #475569;
-    margin-top: 14px;
-    margin-bottom: 6px;
-}
-
-p {
-    margin-top: 0;
-    margin-bottom: 10px;
-    text-align: justify;
-}
-
-/* LISTAS */
-ul, ol {
-    margin-top: 0;
-    margin-bottom: 12px;
-    padding-left: 24px;
-}
-li {
-    margin-bottom: 4px;
-}
-
-/* TABLAS */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 18px 0;
-    font-size: 9.5pt;
-    page-break-inside: avoid;
-}
-th, td {
-    border: 1px solid #cbd5e1;
-    padding: 7px 11px;
-    text-align: left;
-    vertical-align: top;
-}
-th {
-    background-color: #f1f5f9;
-    color: #0f172a;
-    font-weight: 700;
-}
-tr:nth-child(even) td {
-    background-color: #f8fafc;
-}
-
-/* CITAS Y BLOQUES RESALTADOS */
-blockquote {
-    margin: 14px 0;
-    padding: 10px 16px;
-    background-color: #f0f7ff;
-    border-left: 4px solid #2563eb;
-    border-radius: 0 6px 6px 0;
-    color: #1e293b;
-    page-break-inside: avoid;
-}
-blockquote p {
-    margin-bottom: 6px;
-    text-align: left;
-}
-blockquote p:last-child {
-    margin-bottom: 0;
-}
-blockquote strong {
-    color: #1e40af;
-}
-
-/* IMÁGENES Y DIAGRAMAS SVG */
-figure {
-    margin: 18px auto;
-    text-align: center;
-    page-break-inside: avoid;
-}
-figure img, p img {
-    max-width: 92%;
-    max-height: 380px;
-    height: auto;
-    display: block;
-    margin: 10px auto;
-    object-fit: contain;
-}
-figcaption, .pie-figura {
-    font-size: 9pt;
-    font-style: italic;
-    color: #64748b;
-    margin-top: 6px;
-    margin-bottom: 12px;
-    text-align: center;
-    display: block;
-}
-
-/* SEPARADORES */
-hr {
-    border: 0;
-    height: 1px;
-    background-color: #e2e8f0;
-    margin: 20px 0;
-}
-
-/* CÓDIGO INLINE */
-code {
-    background-color: #f1f5f9;
-    padding: 2px 5px;
-    border-radius: 4px;
-    font-size: 9pt;
-    font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
-"""
+    print("  [AVISO] No se encontró 'style.css'. Usando estilos mínimos por defecto.")
+    return """
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1.6; margin: 20px; }
+    .indice-tema { background: #f8fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 6px; }
+    """
 
 
 def resolver_directorio_tema(arg_tema: str) -> Path:
@@ -300,7 +77,7 @@ def resolver_directorio_tema(arg_tema: str) -> Path:
     if ruta_directa.is_dir():
         return ruta_directa.resolve()
 
-    # Si pasaron solo un número, por ejemplo '1'
+    # Si pasaron solo un número o nombre corto
     candidatos = [
         cwd / f"Tema_{arg_tema}",
         cwd / f"tema_{arg_tema}",
@@ -327,6 +104,7 @@ def incrustar_recursos_locales(md_contenido: str, modulo_dir: Path) -> str:
     """
     Convierte referencias a imágenes locales (![alt](ruta)) en data URIs base64
     para que el HTML resultante sea 100% autocontenido y portable sin rutas rotas.
+    Busca tanto en la carpeta del módulo como en subcarpetas habituales (figs/, imgs/, images/).
     """
     def reemplazo(match):
         alt = match.group(1)
@@ -376,7 +154,6 @@ def envolver_figuras_html(html_contenido: str) -> str:
     Agrupa pares de imagen + pie de figura (*Figura X...*) dentro de etiquetas <figure>
     para garantizar que la imagen y su descripción nunca se separen entre páginas.
     """
-    # Patrón: <p><img ...></p>\s*<p><em>(Figura.*?)</em></p>
     patron = r'<p>\s*(<img[^>]+>)\s*</p>\s*<p>\s*<em>\s*(Figura[^<]+?)\s*</em>\s*</p>'
     reemplazo = r'<figure>\1<figcaption class="pie-figura"><em>\2</em></figcaption></figure>'
     return re.sub(patron, reemplazo, html_contenido, flags=re.IGNORECASE)
@@ -385,7 +162,7 @@ def envolver_figuras_html(html_contenido: str) -> str:
 def recopilar_modulos(tema_dir: Path):
     """
     Localiza y ordena numéricamente todas las subcarpetas del tema.
-    Lee el archivo Markdown principal de cada una.
+    Lee el archivo Markdown principal de cada una y omite carpetas con archivos vacíos.
     """
     subcarpetas = []
     for item in tema_dir.iterdir():
@@ -428,8 +205,32 @@ def recopilar_modulos(tema_dir: Path):
     return modulos
 
 
-def generar_html_unificado(tema_nombre: str, modulos: list, incluir_portada: bool = True) -> str:
-    """Genera el documento HTML completo y unificado con estilos y recursos incrustados."""
+def cargar_front(tema_dir: Path) -> str:
+    """Busca y lee front.md dentro de la carpeta del tema si existe."""
+    for nombre in ["front.md", "front.MD", "intro.md"]:
+        f = tema_dir / nombre
+        if f.is_file():
+            try:
+                contenido = f.read_text(encoding="utf-8").strip()
+                if contenido:
+                    return contenido
+            except Exception as e:
+                print(f"  [AVISO] No se pudo leer {f}: {e}")
+    return ""
+
+
+def generar_html_unificado(
+    tema_nombre: str,
+    modulos: list,
+    css_contenido: str,
+    front_contenido: str = "",
+    tema_dir: Path = None,
+    incluir_indice: bool = True
+) -> str:
+    """
+    Genera el documento HTML completo y unificado con estilos desacoplados y recursos incrustados.
+    Integra front.md y el índice compacto juntos en la cabecera, seguidos de un salto de línea.
+    """
     md_parser = markdown.Markdown(extensions=["extra", "tables", "toc", "sane_lists"])
 
     modulos_html = []
@@ -441,7 +242,11 @@ def generar_html_unificado(tema_nombre: str, modulos: list, incluir_portada: boo
         carpeta = mod["carpeta"]
         raw_md = mod["contenido_md"]
 
-        lista_indice.append(f"<li><strong>Módulo {num}:</strong> {titulo.replace(f'Módulo {num}.', '').strip()}</li>")
+        titulo_limpio = re.sub(rf"^Módulo\s+{num}[\.\:\s-]*", "", titulo, flags=re.IGNORECASE).strip()
+        if not titulo_limpio:
+            titulo_limpio = titulo
+
+        lista_indice.append(f'<li><a href="#modulo-{num}"><strong>Módulo {num}:</strong> {titulo_limpio}</a></li>')
 
         # Incrustar imágenes locales en base64
         md_con_imagenes = incrustar_recursos_locales(raw_md, carpeta)
@@ -458,45 +263,52 @@ def generar_html_unificado(tema_nombre: str, modulos: list, incluir_portada: boo
         """
         modulos_html.append(modulo_bloque)
 
-    # Bloque de portada
-    portada_html = ""
-    if incluir_portada:
+    # 1. Bloque de front.md (si existe)
+    front_html = ""
+    if front_contenido:
+        if tema_dir:
+            front_contenido = incrustar_recursos_locales(front_contenido, tema_dir)
+        md_parser.reset()
+        front_html = md_parser.convert(front_contenido)
+        front_html = envolver_figuras_html(front_html)
+
+    # 2. Bloque de índice compacto (si está habilitado)
+    indice_html = ""
+    if incluir_indice and lista_indice:
         items_indice = "\n".join(lista_indice)
-        nombre_bonito = tema_nombre.replace("_", " ").title()
-        portada_html = f"""
-        <div class="portada">
-            <div class="portada-header">
-                <div class="portada-institucion">Ciclo Formativo de Grado Superior</div>
-                <div class="portada-grado">Imagen para el Diagnóstico y Medicina Nuclear</div>
-            </div>
-            <div>
-                <div class="portada-modulo-titulo">{nombre_bonito}</div>
-                <div class="portada-subtitulo">Fundamentos Físicos y Equipos · Apuntes de Estudio</div>
-                <div class="portada-indice">
-                    <h3>Contenido del Tema</h3>
-                    <ol>
-                        {items_indice}
-                    </ol>
-                </div>
-            </div>
-            <div class="portada-footer">
-                Documento generado automáticamente · Compilación unificada de módulos
-            </div>
-        </div>
+        indice_html = f"""
+        <nav class="indice-tema">
+            <div class="indice-titulo">Índice de contenidos</div>
+            <ol>
+                {items_indice}
+            </ol>
+        </nav>
         """
 
+    # 3. front.md y el índice van juntos, seguidos de un salto de línea
+    cabecera_inicial = ""
+    if front_html or indice_html:
+        cabecera_inicial = f"""
+        <header class="tema-front">
+            {front_html}
+            {indice_html}
+        </header>
+        <hr class="salto-linea">
+        """
+
+    # Título limpio en <title> para evitar cabeceras ruidosas al imprimir en navegadores
     documento = f"""<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{tema_nombre} - Apuntes</title>
+    <title></title>
     <style>
-{CSS_TEMPLATE}
+{css_contenido}
     </style>
 </head>
 <body>
-{portada_html}
+{cabecera_inicial}
 {"".join(modulos_html)}
 </body>
 </html>
@@ -511,11 +323,14 @@ def encontrar_ejecutable_chrome() -> str:
         shutil.which("google-chrome-stable"),
         shutil.which("chromium"),
         shutil.which("chromium-browser"),
+        shutil.which("brave-browser"),
+        shutil.which("microsoft-edge"),
         "/usr/bin/google-chrome",
         "/usr/bin/google-chrome-stable",
         "/opt/google/chrome/google-chrome",
         "/usr/bin/chromium",
         "/usr/bin/chromium-browser",
+        "/snap/bin/chromium",
     ]
     for c in candidatos:
         if c and os.path.exists(c) and os.access(c, os.X_OK):
@@ -524,17 +339,21 @@ def encontrar_ejecutable_chrome() -> str:
 
 
 def compilar_html_a_pdf(html_path: Path, pdf_path: Path) -> bool:
-    """Compila el archivo HTML a PDF usando Chrome/Chromium o WeasyPrint."""
+    """
+    Compila el archivo HTML a PDF usando Chrome/Chromium o WeasyPrint.
+    Aplica '--no-pdf-header-footer' para suprimir cabeceras por defecto (título, fechas, URLs).
+    """
     # 1. Intentar con Chrome / Chromium
     chrome_bin = encontrar_ejecutable_chrome()
     if chrome_bin:
         print(f"[+] Motor detectado: Chrome/Chromium ({chrome_bin})")
-        # Probar primero con el nuevo headless de Chrome
+        # Headless moderno con supresión explícita de cabecera y pie por defecto
         cmd_new = [
             chrome_bin,
             "--headless=new",
             "--disable-gpu",
             "--no-sandbox",
+            "--no-pdf-header-footer",
             f"--print-to-pdf={pdf_path}",
             str(html_path)
         ]
@@ -551,6 +370,7 @@ def compilar_html_a_pdf(html_path: Path, pdf_path: Path) -> bool:
             "--headless",
             "--disable-gpu",
             "--no-sandbox",
+            "--no-pdf-header-footer",
             f"--print-to-pdf={pdf_path}",
             str(html_path)
         ]
@@ -578,11 +398,14 @@ def compilar_html_a_pdf(html_path: Path, pdf_path: Path) -> bool:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Compila todos los módulos de un tema en un único PDF encadenado."
+        description="Compila todos los módulos de una carpeta en un único HTML/PDF con índice compacto y CSS desacoplado."
     )
-    parser.add_argument("tema", help="Identificador o carpeta del tema (ej. 'Tema_1' o '1')")
-    parser.add_argument("-o", "--output", help="Ruta del archivo PDF de salida (opcional)")
-    parser.add_argument("--sin-portada", action="store_true", help="Omitir la página de portada e índice")
+    parser.add_argument("tema", help="Ruta o identificador de la carpeta a compilar (ej. 'Fisica/Tema_1' o '1')")
+    parser.add_argument("-o", "--output", help="Directorio donde guardar el HTML y el PDF (se crea si no existe)")
+    parser.add_argument("-n", "--name", help="Nombre base de los archivos generados (por defecto: nombre de la carpeta)")
+    parser.add_argument("--css", help="Ruta a un archivo style.css alternativo")
+    parser.add_argument("--sin-indice", action="store_true", help="Omitir el bloque de índice")
+    parser.add_argument("--sin-portada", dest="sin_indice", action="store_true", help="Alias para omitir el índice")
     parser.add_argument("--solo-html", action="store_true", help="Generar únicamente el archivo HTML unificado")
 
     args = parser.parse_args()
@@ -600,6 +423,32 @@ def main():
     tema_nombre = tema_dir.name
     print(f"[+] Carpeta del tema: {tema_dir}")
 
+    # Determinar nombre base de los archivos resultantes
+    if args.name:
+        nombre_base = Path(args.name).stem
+    else:
+        nombre_base = tema_nombre
+
+    # Determinar directorio de salida (crear si no existe)
+    if args.output:
+        ruta_salida = Path(args.output).resolve()
+        # Si pasaron una ruta con extensión .pdf o .html, interpretar directorio y nombre
+        if ruta_salida.suffix.lower() in [".pdf", ".html"]:
+            output_dir = ruta_salida.parent
+            if not args.name:
+                nombre_base = ruta_salida.stem
+        else:
+            output_dir = ruta_salida
+        output_dir.mkdir(parents=True, exist_ok=True)
+    else:
+        output_dir = tema_dir
+
+    html_salida = output_dir / f"{nombre_base}.html"
+    pdf_salida = output_dir / f"{nombre_base}.pdf"
+
+    # Cargar CSS desacoplado
+    css_contenido = cargar_css(ruta_css=args.css, tema_dir=tema_dir)
+
     # Recopilar módulos
     modulos = recopilar_modulos(tema_dir)
     if not modulos:
@@ -610,15 +459,22 @@ def main():
     for mod in modulos:
         print(f"    - [{mod['numero']}] {mod['titulo']} ({mod['archivo'].name})")
 
-    # Generar HTML unificado
+    # Cargar front.md si existe
+    front_contenido = cargar_front(tema_dir)
+    if front_contenido:
+        print(f"[+] Se encontró 'front.md' (incluido en cabecera junto al índice)")
+
+    # Generar HTML unificado (front.md + índice juntos, seguido de salto de línea)
     html_contenido = generar_html_unificado(
         tema_nombre=tema_nombre,
         modulos=modulos,
-        incluir_portada=not args.sin_portada
+        css_contenido=css_contenido,
+        front_contenido=front_contenido,
+        tema_dir=tema_dir,
+        incluir_indice=not args.sin_indice
     )
 
-    # Ruta del HTML temporal/salida
-    html_salida = tema_dir / f"{tema_nombre}_completo.html"
+    # Guardar HTML unificado
     html_salida.write_text(html_contenido, encoding="utf-8")
     print(f"[+] Documento HTML unificado generado: {html_salida} ({len(html_contenido)} bytes)")
 
@@ -626,28 +482,22 @@ def main():
         print("[✓] Proceso finalizado (--solo-html especificado).")
         return
 
-    # Ruta del PDF de salida
-    if args.output:
-        pdf_salida = Path(args.output).resolve()
-    else:
-        pdf_salida = tema_dir / f"{tema_nombre}.pdf"
-
-    print(f"[+] Compilando directamente a PDF: {pdf_salida.name} ...")
+    print(f"[+] Compilando a PDF: {pdf_salida.name} ...")
     exito = compilar_html_a_pdf(html_salida, pdf_salida)
 
     if exito:
         tamano_kb = pdf_salida.stat().st_size / 1024
-        print(f"\n[✓] ¡PDF generado exitosamente!")
-        print(f"    Ruta: {pdf_salida}")
-        print(f"    Tamaño: {tamano_kb:.1f} KB")
+        print(f"\n[✓] ¡Archivos generados exitosamente!")
+        print(f"    Directorio: {output_dir}")
+        print(f"    HTML:       {html_salida.name}")
+        print(f"    PDF:        {pdf_salida.name} ({tamano_kb:.1f} KB)")
         print(f"    Módulos incluidos: {len(modulos)}")
     else:
         print(f"\n[!] El documento HTML autocontenido está listo en:")
         print(f"    {html_salida}")
-        print(f"\nNo se pudo invocar directamente un motor headless en este entorno.")
-        print(f"Para generar el PDF final de una pasada en tu terminal:")
-        print(f"  google-chrome --headless=new --disable-gpu --print-to-pdf=\"{pdf_salida}\" \"{html_salida}\"")
-        print(f"o abre el archivo HTML en tu navegador y pulsa Ctrl+P -> 'Guardar como PDF'.")
+        print(f"\nPara generar el PDF sin cabeceras ni pies por defecto (sin fecha ni título arriba):")
+        print(f"  google-chrome --headless=new --disable-gpu --no-pdf-header-footer --print-to-pdf=\"{pdf_salida}\" \"{html_salida}\"")
+        print(f"O abre el HTML en el navegador, pulsa Ctrl+P y desmarca 'Encabezados y pies de página'.")
 
 
 if __name__ == "__main__":
