@@ -22,7 +22,7 @@ La mejor forma de comprobarlo es someter cada tipo de energía a la **«prueba d
 
 La respuesta divide todos los fenómenos en **dos grandes familias**: los que **necesitan materia** y los que **no la necesitan** (la radiación).
 
-![diagrama](diagrama.svg)
+![diagrama](figs/diagrama.svg)
 
 **Idea clave:** si la energía puede cruzar el vacío, hablamos de radiación.
 

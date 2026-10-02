@@ -53,7 +53,7 @@ Hoy sabemos que el átomo no es indivisible. A finales del siglo XIX y principio
 > **Para hacerte una idea:** el núcleo es unas **10 000 veces más pequeño** que el átomo. Si el núcleo fuese una canica de 1 cm, el átomo entero mediría unos 100 m, como un campo de fútbol. Casi todo el átomo es espacio vacío.
 
 Esquema del átomo
-![1](imagen_1.svg)
+![1](figs/imagen_1.svg)
 *Figura 1. Estructura del átomo: núcleo con protones y neutrones, y electrones en la corteza.*
 
 ### Las tres partículas fundamentales
@@ -126,7 +126,7 @@ Para moverse un electrón de un nivel superior a uno inferior pasa lo contrario:
 
 Transición electrónica según Bohr
 
-![1](imagen_2.svg)
+![1](figs/imagen_2.svg)
 *Figura 2. Desexcitación en el modelo de Bohr: el electrón pasa a un nivel inferior y emite un fotón.*
 
 > **En el hospital:** este tercer postulado es el mecanismo detrás de la **radiación X característica** de los tubos de rayos X. Lo verás en detalle en el Módulo 4.
@@ -226,7 +226,7 @@ Como tienen los mismos protones y electrones, **todos los isótopos de un elemen
 
 Isótopos del carbono
 
-![1](imagen_3.svg)
+![1](figs/imagen_3.svg)
 *Figura 3. Isótopos del carbono: mismo Z (6 protones) y distinto número de neutrones.*
 
 **Conclusión:** el ¹⁴C tiene dos neutrones de más. Eso aumenta su masa y lo hace inestable. Los núcleos inestables son los que emiten radiación (Módulo 3).

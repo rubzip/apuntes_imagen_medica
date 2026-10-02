@@ -27,4 +27,10 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-"$PYTHON_BIN" "$DIR/compilar_tema.py" "$@"
+if [ -f "$DIR/pdf_compiler/compilar_tema.py" ]; then
+    COMPILADOR="$DIR/pdf_compiler/compilar_tema.py"
+else
+    COMPILADOR="$DIR/compilar_tema.py"
+fi
+
+"$PYTHON_BIN" "$COMPILADOR" "$@"

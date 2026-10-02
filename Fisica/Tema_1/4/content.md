@@ -23,7 +23,7 @@ Lo mismo pasa con una ola en el mar. Si echas un corcho al agua, verás que **el
 
 Onda en el agua con un corcho
 
-![fig2](fig1.svg)
+![fig2](imgs/fig1.svg)
 *Figura 1. Una onda en el agua. La ola avanza, pero el corcho solo sube y baja alrededor de su sitio.*
 
 Ese sitio donde se queda cada partícula cuando no hay onda se llama **posición de equilibrio** (o de reposo).
@@ -43,7 +43,7 @@ Como vimos en el Módulo 2, las **ondas mecánicas** necesitan un medio material
 | **Partes de la onda** | **Crestas** (puntos más altos) y **valles** (puntos más bajos) | **Compresiones** (partículas apretadas) y **rarefacciones** (partículas separadas) |
 
 Onda transversal y onda longitudinal
-![fig2](fig2.svg)
+![fig2](imgs/fig2.svg)
 *Figura 2. Arriba, onda transversal: la cuerda sube y baja mientras la onda avanza hacia la derecha. Abajo, onda longitudinal: las espiras del muelle se acercan y se alejan en la misma dirección en la que avanza la onda.*
 
 - En una **compresión**, las partículas están más juntas que en reposo, así que la presión y la densidad **aumentan**.
@@ -59,7 +59,7 @@ Sea una ola del mar, un sonido o un rayo X, **todas las ondas se describen con l
 
 Partes de una onda: cresta, valle, amplitud y longitud de onda
 
-![fig2](fig3.svg)
+![fig2](imgs/fig3.svg)
 *Figura 3. Las partes de una onda. La línea de puntos es la posición de equilibrio.*
 
 ### 1. Amplitud (A): lo alta que es la onda
@@ -105,7 +105,7 @@ Se representa con **f** o con la letra griega **ν** («nu»).
 
 Frecuencia y periodo
 
-![fig2](fig4.svg)
+![fig2](imgs/fig4.svg)
 *Figura 4. Frecuencia y periodo. Arriba pasan 2 ondas en un segundo (f = 2 Hz) y cada onda tarda 0,5 s. Abajo pasan 6 ondas en un segundo (f = 6 Hz) y cada onda tarda unos 0,17 s.*
 
 ### 4. Periodo (T): lo que tarda una onda
@@ -167,7 +167,7 @@ Vuelve a la analogía de caminar: si quieres avanzar lo mismo cada segundo pero 
 
 Relación entre longitud de onda y frecuencia
 
-![fig2](fig5.svg)
+![fig2](imgs/fig5.svg)
 *Figura 5. En la misma distancia de 1 metro caben 2 ondas largas o 5 ondas cortas. Más ondas (frecuencia alta) significa ondas más cortas (longitud de onda corta).*
 
 > **Idea clave:** frecuencia alta → longitud de onda corta. Frecuencia baja → longitud de onda larga.
@@ -198,7 +198,7 @@ El ser humano solo oye sonidos con frecuencias **entre 20 y 20 000 Hz**. Por deb
 
 Infrasonidos, sonido audible y ultrasonidos
 
-![fig2](fig6.svg)
+![fig2](imgs/fig6.svg)
 *Figura 6. Tipos de sonido según su frecuencia. Los ultrasonidos de la ecografía están en el orden de los megahercios.*
 
 ### La ecografía
@@ -211,7 +211,7 @@ La **ecografía** (o ultrasonografía) usa ultrasonidos para ver el interior del
 
 Funcionamiento de una ecografía
 
-![fig2](fig7.svg)
+![fig2](imgs/fig7.svg)
 *Figura 7. Funcionamiento de una ecografía.*
 
 > **En el hospital:** la ecografía es una técnica **no invasiva** (no hay que entrar en el cuerpo) y **no usa radiación ionizante**: los ultrasonidos son ondas mecánicas y no arrancan electrones. Por eso se utiliza de forma muy habitual en muchas ramas de la medicina, como la cardiología o la obstetricia.
