@@ -21,8 +21,6 @@ Un ejemplo: la **ola** que hace el público en un estadio. La ola da la vuelta e
 
 Lo mismo pasa con una ola en el mar. Si echas un corcho al agua, verás que **el corcho no avanza con la ola**: solo sube y baja.
 
-Onda en el agua con un corcho
-
 ![fig2](imgs/fig1.svg)
 *Figura 1. Una onda en el agua. La ola avanza, pero el corcho solo sube y baja alrededor de su sitio.*
 
@@ -42,7 +40,6 @@ Como vimos en el Módulo 2, las **ondas mecánicas** necesitan un medio material
 | **Ejemplo** | Agitar una cuerda | El sonido; empujar y soltar un muelle |
 | **Partes de la onda** | **Crestas** (puntos más altos) y **valles** (puntos más bajos) | **Compresiones** (partículas apretadas) y **rarefacciones** (partículas separadas) |
 
-Onda transversal y onda longitudinal
 ![fig2](imgs/fig2.svg)
 *Figura 2. Arriba, onda transversal: la cuerda sube y baja mientras la onda avanza hacia la derecha. Abajo, onda longitudinal: las espiras del muelle se acercan y se alejan en la misma dirección en la que avanza la onda.*
 
@@ -56,8 +53,6 @@ Onda transversal y onda longitudinal
 ## 4.3. Las medidas de una onda
 
 Sea una ola del mar, un sonido o un rayo X, **todas las ondas se describen con las mismas cinco medidas**. Vamos a verlas una a una, con un dibujo y un ejemplo cotidiano.
-
-Partes de una onda: cresta, valle, amplitud y longitud de onda
 
 ![fig2](imgs/fig3.svg)
 *Figura 3. Las partes de una onda. La línea de puntos es la posición de equilibrio.*
@@ -102,8 +97,6 @@ Se representa con **f** o con la letra griega **ν** («nu»).
 | --- | --- | --- |
 | Kilohercio | kHz | 1 000 Hz |
 | Megahercio | MHz | 1 000 000 Hz |
-
-Frecuencia y periodo
 
 ![fig2](imgs/fig4.svg)
 *Figura 4. Frecuencia y periodo. Arriba pasan 2 ondas en un segundo (f = 2 Hz) y cada onda tarda 0,5 s. Abajo pasan 6 ondas en un segundo (f = 6 Hz) y cada onda tarda unos 0,17 s.*
@@ -165,8 +158,6 @@ Si la onda avanza siempre a la misma velocidad, **cuantas más ondas pasan por s
 
 Vuelve a la analogía de caminar: si quieres avanzar lo mismo cada segundo pero das **muchos pasos**, cada paso tiene que ser **corto**. Si das pocos pasos, cada uno es **largo**.
 
-Relación entre longitud de onda y frecuencia
-
 ![fig2](imgs/fig5.svg)
 *Figura 5. En la misma distancia de 1 metro caben 2 ondas largas o 5 ondas cortas. Más ondas (frecuencia alta) significa ondas más cortas (longitud de onda corta).*
 
@@ -196,25 +187,32 @@ Como es una onda mecánica, **necesita un medio** (aire, agua, tejido…). En el
 
 El ser humano solo oye sonidos con frecuencias **entre 20 y 20 000 Hz**. Por debajo hay **infrasonidos** y por encima, **ultrasonidos**. Los ultrasonidos son sonidos de frecuencia muy alta, por tanto de longitud de onda muy corta. Nosotros no los oímos, pero los usan, por ejemplo, murciélagos y delfines para orientarse.
 
-Infrasonidos, sonido audible y ultrasonidos
-
 ![fig2](imgs/fig6.svg)
-*Figura 6. Tipos de sonido según su frecuencia. Los ultrasonidos de la ecografía están en el orden de los megahercios.*
+*Figura 6. Tipos de sonido según su frecuencia. Los ultrasonidos de la ecografía médica operan en el orden de los megahercios (MHz).*
 
-### La ecografía
+### La ecografía y el concepto de interfase tisular
 
-La **ecografía** (o ultrasonografía) usa ultrasonidos para ver el interior del cuerpo. Funciona como un **eco**: si gritas en una cueva, el sonido rebota en las paredes y vuelve. En la ecografía pasa lo mismo.
+La **ecografía** (o ultrasonografía) utiliza ultrasonidos para visualizar el interior del cuerpo mediante la emisión y recepción de ecos:
 
-1. La **sonda** envía pulsos de ultrasonidos al cuerpo.
-2. Los ultrasonidos se encuentran con distintos tejidos y órganos, y una parte **rebota**.
-3. La sonda **recoge el eco**, y el ecógrafo lo convierte en una imagen.
-
-Funcionamiento de una ecografía
+1. La **sonda (transductor)** emite pulsos de ultrasonidos hacia el interior del cuerpo.
+2. La onda viaja por los tejidos hasta llegar a la **frontera o interfase** entre dos estructuras o tejidos distintos.
+3. En esa interfase, una parte de la onda **se refleja (rebota como un eco)** hacia la sonda, mientras que el resto continúa propagándose hacia planos más profundos.
+4. La sonda **recoge el eco** y el ecógrafo calcula la profundidad y la forma de la estructura a partir del tiempo que tarda el sonido en regresar, construyendo la imagen en tiempo real.
 
 ![fig2](imgs/fig7.svg)
-*Figura 7. Funcionamiento de una ecografía.*
+*Figura 7. Funcionamiento de una ecografía: emisión de ultrasonidos y captación de los ecos reflejados en las interfases anatómicas.*
 
-> **En el hospital:** la ecografía es una técnica **no invasiva** (no hay que entrar en el cuerpo) y **no usa radiación ionizante**: los ultrasonidos son ondas mecánicas y no arrancan electrones. Por eso se utiliza de forma muy habitual en muchas ramas de la medicina, como la cardiología o la obstetricia.
+> **La base física: ¿por qué se produce el eco? (Interfase e impedancia acústica)**
+> 
+> Una onda de ultrasonido no rebota dentro de un medio perfectamente homogéneo; el rebote ocurre al cruzar la **interfase** (límite de separación) entre dos medios con diferente **impedancia acústica (Z)**.
+> 
+> - La **impedancia acústica** es la resistencia que opone un material al paso de las ondas sonoras, y depende directamente de su **densidad** ($\rho$) y de la **velocidad del sonido** en ese medio ($v$): **Z = ρ · v**.
+> - **Pequeña diferencia de impedancia:** Entre dos tejidos blandos similares (por ejemplo, entre el hígado y el riñón), la diferencia es leve: la mayor parte de la onda continúa avanzando hacia planos más profundos y solo un pequeño eco rebota, permitiendo visualizar los órganos internos sin bloquear el haz.
+> - **Gran diferencia de impedancia:** Entre el tejido blando y el hueso, o entre la sonda y el aire, la diferencia de impedancia es gigantesca: prácticamente toda la onda rebota de golpe en la superficie, impidiendo ver lo que hay detrás (sombra acústica).
+> 
+> **¿Por qué se usa gel ecográfico?** En la práctica clínica se aplica siempre gel conductor entre la sonda y la piel para **eliminar cualquier burbuja de aire**. La enorme disparidad de impedancia entre el cristal de la sonda y el aire provocaría que el ultrasonido rebotara casi al 100 % antes de penetrar en el paciente.
+
+> **En el hospital:** la ecografía es una técnica **no invasiva** y **no usa radiación ionizante**: los ultrasonidos son ondas mecánicas de presión y no tienen energía cuántica para arrancar electrones de las moléculas. Por eso es una técnica de primera elección totalmente inocua, habitual en obstetricia, ginecología y cardiología.
 
 #### Ejemplo resuelto: ¿qué longitud de onda tiene una ecografía?
 
@@ -250,7 +248,9 @@ Son **décimas de milímetro**. Esa longitud de onda tan corta es lo que permite
 | **Periodo (T)** | Tiempo que tarda en pasar una onda completa. |
 | **Velocidad de propagación (v)** | Distancia que avanza la onda en un segundo. |
 | **Ultrasonido** | Sonido de frecuencia superior a 20 000 Hz. |
-| **Eco** | Parte de una onda que rebota y vuelve al emisor. |
+| **Eco** | Parte de una onda que rebota y vuelve al emisor al cruzar una frontera. |
+| **Interfase tisular** | Límite o superficie de contacto entre dos tejidos con diferentes propiedades acústicas. |
+| **Impedancia acústica (Z)** | Resistencia que opone un medio a la propagación del sonido ($Z = \rho \cdot v$). Su diferencia entre medios determina la intensidad del eco reflejado. |
 
 ---
 

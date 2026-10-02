@@ -23,6 +23,7 @@ La mejor forma de comprobarlo es someter cada tipo de energía a la **«prueba d
 La respuesta divide todos los fenómenos en **dos grandes familias**: los que **necesitan materia** y los que **no la necesitan** (la radiación).
 
 ![diagrama](figs/diagrama.svg)
+*Figura 1. Clasificación de los métodos de transmisión de energía según su necesidad de medio material.*
 
 **Idea clave:** si la energía puede cruzar el vacío, hablamos de radiación.
 
@@ -93,6 +94,43 @@ La radiación de partículas funciona exactamente igual, pero a escala microscó
 - **Necesitan medio material:** conducción y convección (calor) y ondas mecánicas (sonido, ultrasonidos).
 - **No lo necesitan** y se llaman **radiación:** ondas electromagnéticas (luz, rayos X) y radiación de partículas (α, β, neutrones).
 - Las ondas electromagnéticas son campos eléctrico y magnético que se propagan juntos; la radiación de partículas es energía cinética transportada por proyectiles subatómicos.
+
+## Glosario
+
+| Término | Definición precisa y sencilla |
+|---|---|
+| **Conducción térmica** | Transmisión de calor por contacto directo entre partículas a escala microscópica, sin desplazamiento global de materia. |
+| **Convección** | Transmisión de calor debida al movimiento macroscópico de un fluido (líquido o gas). |
+| **Onda mecánica** | Perturbación o vibración que se propaga a través de un medio material elástico transportando energía pero no materia. |
+| **Radiación** | Emisión y propagación de energía a través del espacio o de un medio material, capaz de propagarse en el vacío absoluto. |
+| **Onda electromagnética** | Radiación formada por campos eléctricos y magnéticos oscilantes acoplados que se autopropagan en el vacío a la velocidad de la luz. |
+| **Radiación de partículas** | Emisión y propagación de proyectiles subatómicos con masa que transportan energía cinética a gran velocidad (α, β, neutrones). |
+
+---
+
+## Ejercicios propuestos
+
+1. ¿Por qué dos astronautas en el espacio exterior pueden comunicarse por señales de radio, pero no pueden escucharse directamente si uno le habla al otro a un metro de distancia fuera de la nave?
+2. Clasifica los siguientes métodos de transmisión de energía según si requieren necesariamente un medio material o si constituyen radiaciones capaces de propagarse en el vacío:
+   - a) El ultrasonido emitido por la sonda de un ecógrafo.
+   - b) El haz de rayos X generado en un equipo de radiodiagnóstico.
+   - c) El enfriamiento de la piel de un paciente por contacto directo con una bolsa de hielo.
+   - d) Un haz de protones acelerados utilizado en tratamientos de radioterapia externa.
+3. Explica la diferencia física fundamental entre una onda electromagnética (como la luz o los rayos X) y la radiación de partículas (como la radiación alfa o beta). ¿Qué entidad física transporta la energía en cada caso?
+4. El Sol se encuentra a unos 150 millones de kilómetros de la Tierra, separados casi en su totalidad por el vacío del espacio. ¿A través de qué mecanismo nos llega su calor? ¿Podría llegarnos por conducción o por convección? Justifica tu respuesta.
+5. Razona si la siguiente afirmación es verdadera o falsa: *«La radiación de partículas requiere la presencia de aire para poder viajar, ya que las partículas necesitan apoyarse en las moléculas del gas para impulsarse hacia adelante»*.
+
+## Soluciones
+
+1. Las ondas de radio son ondas electromagnéticas y no requieren soporte material para propagarse, por lo que viajan perfectamente a través del vacío espacial. En cambio, la voz produce ondas mecánicas (sonoras) que necesitan átomos o moléculas materiales que vibren y choquen sucesivamente; en el vacío no existen partículas intermedias, por lo que la onda sonora no puede existir ni propagarse.
+2. 
+   - a) **Requiere medio material** (onda mecánica de presión).
+   - b) **No requiere medio material** (radiación electromagnética).
+   - c) **Requiere medio material** (conducción térmica por contacto directo de materia).
+   - d) **No requiere medio material** (radiación corpuscular o de partículas con energía cinética).
+3. En las **ondas electromagnéticas** no viaja masa material; la energía se propaga en forma de perturbaciones acopladas de un campo eléctrico y un campo magnético (fotones) a la velocidad de la luz. En la **radiación de partículas**, la energía viaja confinada como energía cinética en proyectiles subatómicos que poseen masa en reposo (núcleos de helio, electrones, protones o neutrones) desplazándose a gran velocidad.
+4. Llega exclusivamente por **radiación** (ondas electromagnéticas infrarrojas, luz visible y ultravioleta). No puede llegar por conducción ni por convección porque ambos métodos exigen la presencia continua de materia (un sólido en contacto o corrientes de fluido) a lo largo de todo el trayecto entre el Sol y la Tierra, y el espacio interplanetario es un vacío prácticamente perfecto.
+5. **Falsa.** La radiación de partículas está compuesta por corpúsculos dotados de masa y velocidad que se desplazan por inercia en línea recta. No necesitan ningún medio material para viajar; al contrario, la presencia de aire u otra materia frena, desvía y absorbe las partículas mediante colisiones con los átomos del entorno.
 
 ---
 

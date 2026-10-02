@@ -6,17 +6,16 @@
 > 
 > - Describir de qué partículas está formado un átomo, dónde se sitúan y qué carga y masa tienen.
 > - Explicar por qué los modelos atómicos fueron cambiando y qué aporta el modelo de Bohr.
-> - Interpretar la notación ᴬ₂X y deducir protones, neutrones y electrones de un átomo.
+> - Interpretar la notación ᴬ_Z X y deducir protones, neutrones y electrones de un átomo.
 > - Distinguir isótopos e iones, y calcular la carga de un ion.
 
 ---
 
-## 1. ¿Qué es la materia?
-Una de las primeras preguntas que se hizo la humanidad es qué es la materia y de qué está hecha.
+## 1.1. ¿Qué es la materia y de qué está hecha?
 
-Resulta evidente que el agua, el aire que nos redea, las piedras los humanos o el sol son materia ya que ocupamos un volumen y tenemos masa. No obstante somos muy distintos, tenemos propiedades completamente distintos e interactuamos con otra materia de manera distinta. Es por eso que llegamos a la pregunta, ¿Qué tiene en común toda la materia? ¿Y, qué hace diferenciarnos? Para responder estas preguntas decidieron ir a la raíz del problema, ¿Cuáles son las unidades mínimas que forman la materia?
+Una de las primeras preguntas que se hizo la humanidad es qué es la materia y de qué está constituida.
 
-## 1.1. ¿De qué está hecha la materia?
+Resulta evidente que el agua, el aire que nos rodea, las piedras, los seres humanos o el Sol son materia, ya que ocupan un volumen y poseen masa. No obstante, son muy distintos entre sí: tienen propiedades completamente distintas e interactúan de manera muy diferente. Es por eso que surge la pregunta: ¿qué tiene en común toda la materia?, ¿y qué nos hace diferentes? Para responder a estas cuestiones, la ciencia fue a la raíz del problema: ¿cuáles son las unidades mínimas que forman la materia?
 
 Un hueso, el aire, el agua o una placa de plomo tienen propiedades muy distintas, pero todos están formados por **átomos**. La palabra viene del griego *a-tomon*, «sin división»: durante siglos se pensó que el átomo era la unidad última e indivisible de la materia.
 
@@ -52,7 +51,6 @@ Hoy sabemos que el átomo no es indivisible. A finales del siglo XIX y principio
 
 > **Para hacerte una idea:** el núcleo es unas **10 000 veces más pequeño** que el átomo. Si el núcleo fuese una canica de 1 cm, el átomo entero mediría unos 100 m, como un campo de fútbol. Casi todo el átomo es espacio vacío.
 
-Esquema del átomo
 ![1](figs/imagen_1.svg)
 *Figura 1. Estructura del átomo: núcleo con protones y neutrones, y electrones en la corteza.*
 
@@ -124,12 +122,10 @@ Para moverse un electrón de un nivel superior a uno inferior pasa lo contrario:
 
 > Energía del fotón: **Eγ = | En,i − En,f |** (diferencia de energía entre el nivel inicial *i* y el final *f*).
 
-Transición electrónica según Bohr
-
 ![1](figs/imagen_2.svg)
 *Figura 2. Desexcitación en el modelo de Bohr: el electrón pasa a un nivel inferior y emite un fotón.*
 
-> **En el hospital:** este tercer postulado es el mecanismo detrás de la **radiación X característica** de los tubos de rayos X. Lo verás en detalle en el Módulo 4.
+> **En el hospital:** este tercer postulado es el mecanismo detrás de la **radiación X característica** de los tubos de rayos X. Lo verás en detalle en el **Módulo 5**.
 
 > **Para ir más allá: fórmulas de Bohr**
 > 
@@ -149,13 +145,14 @@ Transición electrónica según Bohr
 ## 1.4. Identidad nuclear: Z, N y A
 
 ### Los números que definen un núcleo
-Hasta ahora para definir un átomo hemos hablado de **número de protones**, **número de neutrones** y **número de electrones**. Aunque esta notación es completamente adecuada en física se utiliza otra (Z, A). 
 
-Debemos recordar que lo que más define a un átomo es **el numero de protones**, por así decirlo es el *DNI del elemento*. Conociendo el **Número atómico (Z)** (número de protones) podemos definir la mayoría de propiedades del átomo. En física el numero de protones se dice con la letra Z. Si decimos que un átomo tiene Z = 12, sabemos que tiene 12 protones y que estamos hablando del elemento llamado *Magnesio (Mg)*. Sabiendo el numero Z del átomo, podemos identificar a que elemento pertenece tan solo buscando en la tabla periódica.
+Hasta ahora, para describir un átomo hemos hablado de **número de protones**, **número de neutrones** y **número de electrones**. Aunque esta descripción es intuitiva, en física y medicina nuclear se utiliza una notación normalizada basada en dos cantidades clave: **Z** y **A**.
 
-*Ejercicio: Busca los elementos con Z = 1, 6, 92. Truco busca en la tabla periodica el número que viene en la esquina superior izquierda.*
+Lo que verdaderamente define la identidad química de un átomo es el **número de protones**: es, en sentido estricto, el *DNI del elemento*. Esta magnitud se denomina **número atómico (Z)**. Si indicamos que un átomo tiene Z = 12, sabemos de inmediato que tiene 12 protones y que se trata del elemento llamado *magnesio (Mg)*. Conociendo el número atómico Z, podemos identificar a qué elemento pertenece consultando la tabla periódica.
 
-Por otro lado el otro número que usamos para definir un átomo es el **número másico (A)**
+*Ejercicio: Busca los elementos con Z = 1, 6 y 92 en la tabla periódica. Truco: busca el número entero que figura en la esquina superior de cada casilla.*
+
+El segundo parámetro fundamental para caracterizar un núcleo es el **número másico (A)**, que cuantifica la masa nuclear total sumando protones y neutrones:
 
 | Símbolo | Nombre | Qué es |
 | --- | --- | --- |
@@ -165,7 +162,7 @@ Por otro lado el otro número que usamos para definir un átomo es el **número 
 
 En un átomo **neutro**, el número de electrones es igual a Z.
 
-**Notación:** ᴬ₂X, donde X es el símbolo del elemento. Como X y Z dan la misma información, a menudo se escribe solo ᴬX (por ejemplo, ¹⁴C).
+**Notación:** ᴬ_Z X (o bien ᴬX, omitiendo Z cuando el símbolo químico ya lo define; por ejemplo, ¹⁴C o ¹⁴₆C).
 
 ### Ejemplo resuelto 1: carga y masa de un átomo de carbono
 
@@ -224,12 +221,10 @@ Como tienen los mismos protones y electrones, **todos los isótopos de un elemen
 | Masa aproximada | ≈ 12 u | ≈ 14 u |
 | Estabilidad | Estable | **Inestable (radiactivo)** |
 
-Isótopos del carbono
-
 ![1](figs/imagen_3.svg)
 *Figura 3. Isótopos del carbono: mismo Z (6 protones) y distinto número de neutrones.*
 
-**Conclusión:** el ¹⁴C tiene dos neutrones de más. Eso aumenta su masa y lo hace inestable. Los núcleos inestables son los que emiten radiación (Módulo 3).
+**Conclusión:** el ¹⁴C tiene dos neutrones de más. Eso aumenta su masa y lo hace inestable. Los núcleos inestables son los que emiten radiación al desintegrarse (**Módulo 6**).
 
 ---
 
@@ -242,7 +237,7 @@ En un átomo neutro, **protones = electrones**. Si el átomo pierde o gana elect
 | **Catión** | Pierde uno o más electrones | Positiva |
 | **Anión** | Gana uno o más electrones | Negativa |
 
-La **radiación ionizante** es justamente la que tiene energía suficiente para arrancar electrones de la corteza y producir iones. Esto es lo que da nombre a este tipo de radiación (Módulo 2).
+La **radiación ionizante** es justamente la que tiene energía suficiente para arrancar electrones de la corteza y producir iones. Esto es lo que da nombre a este tipo de radiación (**Módulo 3**).
 
 ### Ejemplo resuelto 3: formación de un catión
 
@@ -287,7 +282,7 @@ La **radiación ionizante** es justamente la que tiene energía suficiente para 
 
 1. Un núcleo de fósforo se representa como ³¹₁₅P. ¿Cuántos protones, neutrones y electrones tiene en estado neutro?
 2. Un átomo neutro tiene 26 electrones y A = 56. ¿Cuántos neutrones tiene y cuál es su número atómico Z?
-3. Un átomo tiene Z = 8 y N = 10. Escribe su símbolo en la notación ᴬ₂X (el elemento con Z = 8 es el oxígeno, O) y calcula su carga neta en estado neutro.
+3. Un átomo tiene Z = 8 y N = 10. Escribe su símbolo en la notación ᴬ_Z X (el elemento con Z = 8 es el oxígeno, O) y calcula su carga neta en estado neutro.
 4. Un átomo de magnesio (Z = 12) pierde 2 electrones. ¿Cuál es su carga neta en cargas elementales? ¿Cómo se escribe el ion?
 5. Un átomo de azufre (Z = 16) gana 2 electrones. ¿Cuántos electrones tiene ahora y cuál es su carga neta? ¿Es un catión o un anión?
 
@@ -301,4 +296,4 @@ La **radiación ionizante** es justamente la que tiene energía suficiente para 
 
 ---
 
-**Siguiente módulo:** ahora que sabes qué es un ion, el Módulo 2 explica qué es la radiación y por qué algunas radiaciones son capaces de producirlos y otras no.
+**Siguiente módulo:** ahora que conoces cómo está constituida la materia a escala atómica y qué es un ion, el **Módulo 2** aborda cómo viaja la energía a través del espacio y de la materia: desde los mecanismos por contacto hasta las ondas electromagnéticas y la radiación de proyectiles subatómicos.
