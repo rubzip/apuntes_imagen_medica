@@ -9,6 +9,8 @@ Estudiaremos la gran frontera clínica: la diferencia entre la radiación que ti
 Por último, entraremos en el núcleo del átomo para entender cómo inestabilidad provoca su desintegración (radiactividad) y aprenderemos a hablar el idioma de los profesionales: definiendo las unidades y magnitudes radiológicas que medirás a diario en tu trabajo.
 
 > **Al terminar esta unidad, serás capaz de:**
+>
+>
 > * **a)** Reconocer los diferentes tipos de energías y radiaciones que se emplean en radioterapia e imagen para el diagnóstico.
 > 
 > 

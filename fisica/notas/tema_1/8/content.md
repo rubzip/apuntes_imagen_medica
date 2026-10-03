@@ -104,6 +104,7 @@ Teleterapia y braquiterapia
 La gran diferencia con el radiodiagnóstico es **el origen de la radiación**. Aquí **la fuente está dentro del paciente**.
 
 Medicina nuclear: el paciente emite la radiación
+![as](figs/4.svg)
 
 *Figura 4. Medicina nuclear. El radiofármaco se inyecta, se acumula en el órgano y desde allí emite radiación que capta el detector.*
 
