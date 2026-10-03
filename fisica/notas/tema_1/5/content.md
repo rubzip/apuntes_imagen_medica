@@ -151,7 +151,7 @@ Los rayos X son radiación **ionizante** de **origen no nuclear**: no proceden d
 
 ### ¿Dónde se producen? El tubo de rayos X
 
-Los rayo()s X de un hospital nacen en un **tubo de rayos X**. En su interior:
+Los rayos X de un hospital nacen en un **tubo de rayos X**. En su interior:
 
 1. Un **filamento (cátodo)** libera electrones.
 2. Una **alta tensión** (decenas de miles de voltios) los **acelera** a gran velocidad.
