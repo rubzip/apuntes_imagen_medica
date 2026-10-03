@@ -19,455 +19,282 @@
             });"></script>
     <style>
 /* ==========================================================================
-   style.css — Apuntes Imagen Médica
-   Diseño editorial técnico: limpio, jerarquico, imprimible
+   style.css - Estilos para compilación de temarios y apuntes técnicos
+   Compatible con renderizado en pantalla (HTML) e impresión a PDF
    ========================================================================== */
 
-/* ── FUENTES ── */
-@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-
-/* ── PÁGINA PARA IMPRESIÓN ── */
 @page {
     size: A4;
-    margin: 18mm 18mm 22mm 22mm;
+    margin: 16mm 15mm 18mm 15mm;
     @bottom-center {
         content: counter(page);
-        font-family: 'Inter', sans-serif;
-        font-size: 8pt;
-        color: #94a3b8;
-        letter-spacing: 0.5px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 8.5pt;
+        color: #64748b;
     }
 }
 
 @media print {
-    body { font-size: 10.5pt; }
-
-    .tema-front       { page-break-after: always; break-after: page; }
-    .salto-linea      { display: none; }
-    .modulo-container { page-break-before: always; break-before: page; }
-
-    table, figure, blockquote, .callout { page-break-inside: avoid; }
-    h1, h2, h3, h4                      { page-break-after: avoid; }
-
+    body {
+        font-size: 10pt;
+        line-height: 1.52;
+    }
     .indice-tema {
+        page-break-after: avoid;
         background: #f8fafc !important;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
     }
-    blockquote {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+    .tema-front {
+        page-break-after: always;
+        break-after: page;
+    }
+    .salto-linea {
+        display: none;
+    }
+    .modulo-container {
+        page-break-before: always;
+        break-before: page;
+    }
+    .no-break {
+        page-break-inside: avoid;
+    }
+    table, figure, .callout, blockquote {
+        page-break-inside: avoid;
+    }
+    h1, h2, h3, h4 {
+        page-break-after: avoid;
     }
 }
 
-/* ── RESET BÁSICO ── */
-*, *::before, *::after {
+* {
     box-sizing: border-box;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
 }
 
-/* ── CUERPO ── */
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 11pt;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     color: #1e293b;
-    background: #ffffff;
+    background-color: #ffffff;
     margin: 0;
-    padding: 0 0 40px 0;
-    line-height: 1.72;
-    max-width: 820px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 32px;
-    padding-right: 32px;
-}
-
-/* ── PORTADA (FRONT) ── */
-.tema-front {
-    padding: 48px 0 32px 0;
-    border-bottom: 3px solid #4f46e5;
-    margin-bottom: 0;
-}
-
-.tema-front h1 {
-    font-family: 'Bitter', Georgia, serif;
-    font-size: 28pt;
-    font-weight: 700;
-    color: #1e1b4b;
-    line-height: 1.18;
-    margin: 0 0 16px 0;
     padding: 0;
-    border: none;
-    letter-spacing: -0.5px;
+    line-height: 1.6;
 }
 
+/* CABECERA INICIAL: FRONT + ÍNDICE */
+.tema-front {
+    margin-bottom: 10px;
+}
+.tema-front h1 {
+    font-size: 20pt;
+    font-weight: 800;
+    color: #1e3a8a;
+    margin-top: 10px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #3b82f6;
+    padding-bottom: 6px;
+}
 .tema-front p {
-    font-size: 11pt;
-    color: #475569;
-    line-height: 1.7;
-    margin: 0 0 10px 0;
-    max-width: 70ch;
+    font-size: 10pt;
+    line-height: 1.6;
+    color: #334155;
+    margin-bottom: 16px;
 }
 
-.tema-front hr.salto-linea {
-    display: none;
-}
-
-/* ── SEPARADOR PORTADA → ÍNDICE ── */
 .salto-linea {
     border: 0;
-    height: 3px;
-    background: linear-gradient(to right, #4f46e5, #818cf8, transparent);
-    margin: 24px 0 28px 0;
+    height: 1px;
+    background-color: #cbd5e1;
+    margin: 25px 0 30px 0;
 }
 
-/* ── ÍNDICE ── */
+/* ÍNDICE COMPACTO */
 .indice-tema {
-    background: #fafafa;
+    background-color: #f8fafc;
     border: 1px solid #e2e8f0;
-    border-left: 4px solid #4f46e5;
-    border-radius: 0 8px 8px 0;
-    padding: 20px 28px;
-    margin: 0 0 40px 0;
+    border-radius: 8px;
+    padding: 14px 20px;
+    margin: 10px 0 25px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
-
 .indice-tema .indice-titulo {
-    font-family: 'Inter', sans-serif;
-    font-size: 8pt;
+    font-size: 11pt;
     font-weight: 700;
-    color: #4f46e5;
+    color: #1e3a8a;
     text-transform: uppercase;
-    letter-spacing: 1.8px;
-    margin: 0 0 14px 0;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #e2e8f0;
+    letter-spacing: 0.8px;
+    margin: 0 0 10px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #cbd5e1;
 }
-
-.indice-tema ol,
-.indice-tema ul {
+.indice-tema ol, .indice-tema ul {
     margin: 0;
-    padding-left: 18px;
-    font-size: 10pt;
+    padding-left: 20px;
+    font-size: 9.5pt;
     color: #334155;
 }
-
 .indice-tema li {
-    margin-bottom: 6px;
-    line-height: 1.5;
+    margin-bottom: 5px;
+    line-height: 1.45;
 }
-
 .indice-tema li a {
-    color: #3730a3;
+    color: #1e40af;
     text-decoration: none;
     font-weight: 500;
-    border-bottom: 1px dotted #a5b4fc;
-    padding-bottom: 1px;
-    transition: color 0.15s;
 }
-
 .indice-tema li a:hover {
-    color: #4f46e5;
-    border-bottom-style: solid;
+    text-decoration: underline;
+    color: #2563eb;
 }
 
-/* ── ENCABEZADOS ── */
+/* ENCABEZADOS */
 h1 {
-    font-family: 'Bitter', Georgia, serif;
-    font-size: 22pt;
-    font-weight: 700;
-    color: #1e1b4b;
-    margin: 40px 0 18px 0;
-    padding: 0;
-    border: none;
-    line-height: 1.2;
-    letter-spacing: -0.3px;
-    position: relative;
-}
-
-/* Número de módulo decorativo extraído del H1 */
-h1::before {
-    display: block;
-    font-family: 'Bitter', Georgia, serif;
-    font-size: 48pt;
-    font-weight: 700;
-    color: #e0e7ff;
-    line-height: 1;
-    margin-bottom: -8px;
-    letter-spacing: -2px;
-}
-
-h2 {
-    font-family: 'Inter', sans-serif;
-    font-size: 13pt;
-    font-weight: 700;
-    color: #312e81;
-    margin: 32px 0 10px 0;
+    font-size: 20pt;
+    font-weight: 800;
+    color: #1e3a8a;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #3b82f6;
     padding-bottom: 6px;
-    border-bottom: 2px solid #e0e7ff;
-    letter-spacing: -0.1px;
-    text-transform: none;
 }
-
+h2 {
+    font-size: 14pt;
+    font-weight: 700;
+    color: #1e40af;
+    margin-top: 22px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 4px;
+}
 h3 {
-    font-family: 'Inter', sans-serif;
+    font-size: 12pt;
+    font-weight: 600;
+    color: #334155;
+    margin-top: 18px;
+    margin-bottom: 8px;
+}
+h4 {
     font-size: 11pt;
     font-weight: 600;
-    color: #1e293b;
-    margin: 24px 0 8px 0;
-    padding-left: 12px;
-    border-left: 3px solid #818cf8;
-}
-
-h4 {
-    font-family: 'Inter', sans-serif;
-    font-size: 10.5pt;
-    font-weight: 600;
     color: #475569;
-    margin: 18px 0 6px 0;
-    text-transform: uppercase;
-    font-size: 8.5pt;
-    letter-spacing: 0.8px;
-    color: #6366f1;
+    margin-top: 14px;
+    margin-bottom: 6px;
 }
 
-/* ── PÁRRAFOS ── */
 p {
-    margin: 0 0 12px 0;
+    margin-top: 0;
+    margin-bottom: 10px;
     text-align: justify;
-    hyphens: auto;
-    -webkit-hyphens: auto;
 }
 
-/* ── STRONG & EM ── */
-strong { color: #1e1b4b; font-weight: 700; }
-em     { color: #475569; font-style: italic; }
-
-/* ── LISTAS ── */
+/* LISTAS */
 ul, ol {
-    margin: 0 0 14px 0;
-    padding-left: 26px;
+    margin-top: 0;
+    margin-bottom: 12px;
+    padding-left: 24px;
 }
-li { margin-bottom: 5px; line-height: 1.6; }
+li {
+    margin-bottom: 4px;
+}
 
-ul > li::marker { color: #6366f1; }
-ol > li::marker { color: #6366f1; font-weight: 600; }
-
-/* ── TABLAS ── */
+/* TABLAS */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
+    margin: 18px 0;
     font-size: 9.5pt;
     page-break-inside: avoid;
-    border-radius: 8px;
-    overflow: hidden;
 }
-
-thead th {
-    background-color: #312e81;
-    color: #e0e7ff;
-    font-weight: 700;
-    font-size: 9pt;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    padding: 9px 13px;
+th, td {
+    border: 1px solid #cbd5e1;
+    padding: 7px 11px;
     text-align: left;
-    border: none;
-}
-
-tbody td {
-    padding: 8px 13px;
-    border-bottom: 1px solid #e2e8f0;
-    border-left: none;
-    border-right: none;
     vertical-align: top;
-    color: #1e293b;
+}
+th {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    font-weight: 700;
+}
+tr:nth-child(even) td {
+    background-color: #f8fafc;
 }
 
-tbody tr:nth-child(even) td {
-    background-color: #f5f3ff;
-}
-
-tbody tr:last-child td {
-    border-bottom: 2px solid #c7d2fe;
-}
-
-/* ── BLOCKQUOTES: CALLOUTS POR TIPO ── */
-
-/* Base */
+/* CITAS Y BLOQUES RESALTADOS */
 blockquote {
-    margin: 18px 0;
-    padding: 13px 18px 13px 20px;
-    border-left: 4px solid #6366f1;
-    border-radius: 0 8px 8px 0;
-    background: #f5f3ff;
+    margin: 14px 0;
+    padding: 10px 16px;
+    background-color: #f0f7ff;
+    border-left: 4px solid #2563eb;
+    border-radius: 0 6px 6px 0;
     color: #1e293b;
     page-break-inside: avoid;
 }
-
 blockquote p {
-    margin: 0 0 6px 0;
+    margin-bottom: 6px;
     text-align: left;
 }
-
-blockquote p:last-child { margin-bottom: 0; }
-
-/* Idea clave → índigo */
-blockquote:has(strong:first-child) {
-    /* fallback; se sobreescribe por los patrones abajo */
+blockquote p:last-child {
+    margin-bottom: 0;
+}
+blockquote strong {
+    color: #1e40af;
 }
 
-/* Idea clave */
-blockquote:has(p > strong:first-child) {
-    border-left-color: #4f46e5;
-    background: #eef2ff;
-}
-blockquote strong { color: #3730a3; }
-
-/* Detección por contenido de texto — usamos atributo de clase si el compilador los emite,
-   si no, todos los blockquotes heredan el estilo base índigo. */
-
-/* En la práctica profesional → verde */
-blockquote.callout-profesional,
-blockquote:has(strong[data-type="profesional"]) {
-    border-left-color: #15803d;
-    background: #f0fdf4;
-}
-blockquote.callout-profesional strong { color: #14532d; }
-
-/* Dónde falla la analogía → naranja */
-blockquote.callout-limite,
-blockquote:has(strong[data-type="limite"]) {
-    border-left-color: #ea580c;
-    background: #fff7ed;
-}
-blockquote.callout-limite strong { color: #9a3412; }
-
-/* Para ir más allá → gris azulado */
-blockquote.callout-ampliacion,
-blockquote:has(strong[data-type="ampliacion"]) {
-    border-left-color: #64748b;
-    background: #f8fafc;
-}
-blockquote.callout-ampliacion strong { color: #334155; }
-
-/* ── IMÁGENES Y FIGURAS ── */
+/* IMÁGENES Y DIAGRAMAS SVG */
 figure {
-    margin: 24px auto;
+    margin: 18px auto;
     text-align: center;
     page-break-inside: avoid;
 }
-
-figure img,
-p img {
-    max-width: 95%;
-    max-height: 400px;
+figure img, p img {
+    max-width: 92%;
+    max-height: 380px;
     height: auto;
     display: block;
-    margin: 0 auto 8px auto;
+    margin: 10px auto;
     object-fit: contain;
-    border-radius: 6px;
 }
-
-figcaption,
-.pie-figura {
-    font-size: 8.5pt;
+figcaption, .pie-figura {
+    font-size: 9pt;
     font-style: italic;
     color: #64748b;
+    margin-top: 6px;
+    margin-bottom: 12px;
     text-align: center;
-    margin: 4px auto 0 auto;
-    max-width: 80%;
-    line-height: 1.45;
     display: block;
 }
 
-/* ── SEPARADORES ── */
+/* SEPARADORES */
 hr {
-    border: none;
+    border: 0;
     height: 1px;
-    background: #e2e8f0;
-    margin: 28px 0;
+    background-color: #e2e8f0;
+    margin: 20px 0;
 }
 
-/* ── CÓDIGO INLINE Y BLOQUES ── */
+/* CÓDIGO INLINE */
 code {
-    font-family: 'JetBrains Mono', 'Fira Code', SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 8.8pt;
-    background: #f1f5f9;
-    color: #4338ca;
-    padding: 2px 6px;
+    background-color: #f1f5f9;
+    padding: 2px 5px;
     border-radius: 4px;
-    border: 1px solid #e2e8f0;
+    font-size: 9pt;
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-pre {
-    background: #0f172a;
-    color: #e2e8f0;
-    padding: 16px 20px;
-    border-radius: 8px;
-    font-size: 8.5pt;
-    overflow-x: auto;
-    line-height: 1.55;
-    margin: 18px 0;
-}
-
-pre code {
-    background: none;
-    border: none;
-    color: inherit;
-    padding: 0;
-    font-size: inherit;
-}
-
-/* ── KATEX ── */
+/* FÓRMULAS MATEMÁTICAS (KATEX) */
 .katex {
-    font-size: 1.08em;
+    font-size: 1.05em;
     text-rendering: auto;
 }
 
 .katex-display {
-    margin: 1em 0;
+    margin: 0.8em 0;
     overflow-x: auto;
     overflow-y: hidden;
     page-break-inside: avoid;
     break-inside: avoid;
-    padding: 8px 0;
-}
-
-/* ── MÓDULO CONTAINER ── */
-.modulo-container {
-    padding-top: 8px;
-}
-
-/* ── SCROLLBAR SUTIL (PANTALLA) ── */
-@media screen {
-    body {
-        background: #f8f9fb;
-        padding-top: 32px;
-        padding-bottom: 64px;
-    }
-
-    .modulo-container,
-    .tema-front,
-    .indice-tema {
-        background: #ffffff;
-        border-radius: 10px;
-        padding-left: 40px;
-        padding-right: 40px;
-        margin-bottom: 24px;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.07), 0 0 0 1px rgba(0,0,0,0.04);
-    }
-
-    .tema-front {
-        padding-top: 40px;
-        padding-bottom: 32px;
-    }
-
-    .modulo-container {
-        padding-top: 36px;
-        padding-bottom: 36px;
-    }
 }
     </style>
 </head>
@@ -493,356 +320,727 @@ pre code {
 
         <section class="modulo-container" id="modulo-1">
             <h1 id="modulo-0-caja-de-herramientas-basicas">Módulo 0. Caja de herramientas básicas</h1>
-<p><em>Lo que necesitas saber antes de empezar: números, unidades y cómo manejar fórmulas sin sufrir</em></p>
+<p><em>Cómo sobrevivir a la física sin ser matemático</em></p>
 <blockquote>
 <p><strong>Al terminar este módulo sabrás:</strong>
-- Identificar qué es una magnitud física y por qué siempre va acompañada de su unidad.
-- Interpretar los prefijos del Sistema Internacional (kilo, mega, mili, micro…) y convertir entre ellos.
-- Leer y escribir números en notación científica para manejar cantidades muy grandes o muy pequeñas.
-- Despejar la incógnita de una fórmula sencilla aplicando la regla del balancín.</p>
+- Expresar una medida con su magnitud y su unidad, y distinguir las unidades del Sistema Internacional.
+- Convertir unidades usando los prefijos (kilo, mili, micro, nano…).
+- Leer y escribir números muy grandes o muy pequeños en notación científica.
+- Reconocer una relación directamente proporcional y una inversamente proporcional.
+- Despejar una incógnita en una fórmula sencilla y comprobar las unidades del resultado.
+- Manejar fracciones, porcentajes y potencias sencillas, y leer una gráfica.</p>
 </blockquote>
 <hr />
-<h2 id="01-magnitudes-y-unidades-el-idioma-de-medir-las-cosas">0.1. Magnitudes y unidades: el idioma de medir las cosas</h2>
-<p>Todo aquello que se puede medir es una <strong>magnitud física</strong>: la distancia de un tumor a la piel, el tiempo que dura una exploración, la energía de un rayo X. Pero un número solo no dice nada.</p>
-<p>Piensa en esto: el médico indica «el nódulo mide 8». ¿8 qué? ¿8 milímetros? ¿8 centímetros? Sin la unidad, el dato es inútil —y en clínica, la diferencia puede ser crítica.</p>
+<h2 id="para-que-sirve-este-modulo">¿Para qué sirve este módulo?</h2>
+<p>Si llevas años sin tocar una calculadora, es normal que las letras griegas y los números con exponentes te den respeto. <strong>No te preocupes.</strong> Este módulo repasa, desde cero y sin rodeos, el «idioma» básico que necesitas para entender los equipos del hospital.</p>
+<p>Estas son las herramientas que vas a usar en el resto del libro:</p>
+<table>
+<thead>
+<tr>
+<th>Herramienta</th>
+<th>Para qué te servirá</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Unidades y prefijos</strong></td>
+<td>Entender qué significan 80 kV, 200 mA, 100 MHz o 500 nm</td>
+</tr>
+<tr>
+<td><strong>Notación científica</strong></td>
+<td>Manejar la velocidad de la luz (3 × 10⁸ m/s) o el tamaño de un átomo (10⁻¹⁰ m)</td>
+</tr>
+<tr>
+<td><strong>Proporcionalidad</strong></td>
+<td>Entender cómo se relacionan frecuencia y longitud de onda, o kilovoltaje y energía</td>
+</tr>
+<tr>
+<td><strong>Despejar fórmulas</strong></td>
+<td>Calcular una longitud de onda, una distancia o un tiempo</td>
+</tr>
+<tr>
+<td><strong>Fracciones y porcentajes</strong></td>
+<td>Calcular cuánta cantidad queda de una muestra radiactiva</td>
+</tr>
+<tr>
+<td><strong>Leer gráficas</strong></td>
+<td>Interpretar las curvas y los espectros del libro</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p><strong>Idea clave:</strong> Una magnitud física = número + unidad. Sin la unidad, el número no tiene sentido físico.</p>
+<p><strong>Idea clave:</strong> no hace falta memorizar nada «como un loro». Solo hay que entender <strong>cómo se relacionan las cosas</strong>. Vas a hacer pocos cálculos y todos son sencillos.</p>
 </blockquote>
-<h3 id="el-sistema-internacional-de-unidades-si">El Sistema Internacional de Unidades (SI)</h3>
-<p>Para que médicos, ingenieros y científicos de todo el mundo hablen el mismo idioma, existe un acuerdo global: el <strong>Sistema Internacional de Unidades (SI)</strong>. Define siete unidades base de las que se derivan todas las demás:</p>
+<hr />
+<h2 id="01-magnitudes-y-unidades-el-idioma-de-medir">0.1. Magnitudes y unidades: el idioma de medir</h2>
+<p>En física, <strong>todo lo que se puede medir</strong> se llama <strong>magnitud</strong>: el tiempo, la longitud, la temperatura, la masa…</p>
+<p>Pero <strong>un número solo no significa nada</strong>. Si te digo «el paciente pesa 80», ¿80 kilos? ¿80 gramos? ¿80 libras? Falta algo.</p>
+<blockquote>
+<p><strong>La unidad es el «apellido» del número.</strong> Sin ella, el número no dice nada.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Medida</th>
+<th>¿Vale?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>«El paciente pesa 80»</td>
+<td>❌ falta la unidad</td>
+</tr>
+<tr>
+<td>«El paciente pesa <strong>80 kg</strong>»</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>«El tubo funciona a 100»</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>«El tubo funciona a <strong>100 kV</strong>»</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h3 id="el-sistema-internacional-si">El Sistema Internacional (SI)</h3>
+<p>Para que todo el mundo mida igual, existe un acuerdo mundial: el <strong>Sistema Internacional de Unidades (SI)</strong>. Estas son las unidades que más vas a ver:</p>
 <table>
 <thead>
 <tr>
 <th>Magnitud</th>
 <th>Unidad SI</th>
 <th>Símbolo</th>
+<th>Dónde la verás</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Longitud</td>
+<td><strong>Longitud</strong></td>
 <td>metro</td>
 <td>m</td>
+<td>Longitud de onda (Módulo 4)</td>
 </tr>
 <tr>
-<td>Masa</td>
-<td>kilogramo</td>
-<td>kg</td>
-</tr>
-<tr>
-<td>Tiempo</td>
+<td><strong>Tiempo</strong></td>
 <td>segundo</td>
 <td>s</td>
+<td>Periodo, vida media (Módulos 4 y 6)</td>
 </tr>
 <tr>
-<td>Corriente eléctrica</td>
+<td><strong>Masa</strong></td>
+<td>kilogramo</td>
+<td>kg</td>
+<td>Masa de las partículas (Módulo 1)</td>
+</tr>
+<tr>
+<td><strong>Frecuencia</strong></td>
+<td>hercio</td>
+<td>Hz</td>
+<td>Ondas (Módulos 4 y 5)</td>
+</tr>
+<tr>
+<td><strong>Tensión eléctrica</strong></td>
+<td>voltio</td>
+<td>V</td>
+<td>Tubo de rayos X (Módulo 5)</td>
+</tr>
+<tr>
+<td><strong>Intensidad de corriente</strong></td>
 <td>amperio</td>
 <td>A</td>
+<td>Equipos de rayos X</td>
 </tr>
 <tr>
-<td>Temperatura</td>
-<td>kelvin</td>
-<td>K</td>
+<td><strong>Energía</strong></td>
+<td>julio (J) y electronvoltio (eV)</td>
+<td>J, eV</td>
+<td>Fotones (Módulos 1 y 5)</td>
 </tr>
 <tr>
-<td>Cantidad de sustancia</td>
-<td>mol</td>
-<td>mol</td>
+<td><strong>Campo magnético</strong></td>
+<td>tesla</td>
+<td>T</td>
+<td>Resonancia magnética (Módulo 7)</td>
 </tr>
 <tr>
-<td>Intensidad luminosa</td>
-<td>candela</td>
-<td>cd</td>
+<td><strong>Actividad</strong></td>
+<td>becquerel</td>
+<td>Bq</td>
+<td>Radiactividad (Módulo 6)</td>
 </tr>
 </tbody>
 </table>
-<p>En imagen médica usarás sobre todo metros (o sus múltiplos), segundos, amperios y kiloelectronvoltios para la energía. Las unidades de dosis y actividad radiactiva las estudiaremos en el Módulo 8.</p>
 <blockquote>
-<p><strong>En la práctica profesional:</strong> Cuando ajustas los parámetros de un equipo de rayos X (kV, mA, ms), cada número lleva su unidad: kilovoltios controlan la energía de los fotones; miliamperios controlan la cantidad. Confundir la unidad es confundir el parámetro.</p>
+<p><strong>El hercio (Hz) en una frase:</strong> 1 Hz es <strong>una vez por segundo</strong>. Es decir, Hz = 1 / s. Una onda de 50 Hz hace 50 ciclos cada segundo.</p>
+<p><strong>Cuidado con las letras:</strong> la misma letra puede ser una magnitud o una unidad. Por ejemplo, <strong>m</strong> puede ser la <strong>masa</strong> o el <strong>metro</strong>. Fíjate siempre en el contexto.</p>
 </blockquote>
-<figure><img alt="Diagrama de magnitudes SI" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3NjAgMzQwIiB3aWR0aD0iNzYwIiBoZWlnaHQ9IjM0MCI+CiAgPHJlY3Qgd2lkdGg9Ijc2MCIgaGVpZ2h0PSIzNDAiIGZpbGw9IiNmZmZmZmYiLz4KCiAgPCEtLSBUw610dWxvIC0tPgogIDx0ZXh0IHg9IjM4MCIgeT0iMzIiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzFlMjkzYiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TGFzIDcgbWFnbml0dWRlcyBiYXNlIGRlbCBTaXN0ZW1hIEludGVybmFjaW9uYWwgKFNJKTwvdGV4dD4KCiAgPCEtLSBUYXJqZXRhcyBkZSBtYWduaXR1ZGVzOiA0IGFycmliYSwgMyBhYmFqbyAtLT4KICA8IS0tIExvbmdpdHVkIC0tPgogIDxyZWN0IHg9IjIwIiB5PSI2MCIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIxMDAiIHJ4PSI4IiBmaWxsPSIjZWZmNmZmIiBzdHJva2U9IiMyNTYzZWIiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHRleHQgeD0iMTAwIiB5PSI5MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjU2M2ViIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5Mb25naXR1ZDwvdGV4dD4KICA8dGV4dCB4PSIxMDAiIHk9IjExMiIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMWUyOTNiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5tPC90ZXh0PgogIDx0ZXh0IHg9IjEwMCIgeT0iMTMzIiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+bWV0cm88L3RleHQ+CiAgPHRleHQgeD0iMTAwIiB5PSIxNTAiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjNjQ3NDhiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5tbSwgY20g4oaSIGltYWdlbjwvdGV4dD4KCiAgPCEtLSBNYXNhIC0tPgogIDxyZWN0IHg9IjIwMCIgeT0iNjAiIHdpZHRoPSIxNjAiIGhlaWdodD0iMTAwIiByeD0iOCIgZmlsbD0iI2ZmZjdlZCIgc3Ryb2tlPSIjZWE1ODBjIiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDx0ZXh0IHg9IjI4MCIgeT0iOTAiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2VhNTgwYyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TWFzYTwvdGV4dD4KICA8dGV4dCB4PSIyODAiIHk9IjExMiIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMWUyOTNiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5rZzwvdGV4dD4KICA8dGV4dCB4PSIyODAiIHk9IjEzMyIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM2NDc0OGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmtpbG9ncmFtbzwvdGV4dD4KICA8dGV4dCB4PSIyODAiIHk9IjE1MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiM2NDc0OGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPm1hc2EgZGVsIHBhY2llbnRlPC90ZXh0PgoKICA8IS0tIFRpZW1wbyAtLT4KICA8cmVjdCB4PSIzODAiIHk9IjYwIiB3aWR0aD0iMTYwIiBoZWlnaHQ9IjEwMCIgcng9IjgiIGZpbGw9IiNmMGZkZjQiIHN0cm9rZT0iIzE1ODAzZCIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KICA8dGV4dCB4PSI0NjAiIHk9IjkwIiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMxNTgwM2QiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlRpZW1wbzwvdGV4dD4KICA8dGV4dCB4PSI0NjAiIHk9IjExMiIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMWUyOTNiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5zPC90ZXh0PgogIDx0ZXh0IHg9IjQ2MCIgeT0iMTMzIiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+c2VndW5kbzwvdGV4dD4KICA8dGV4dCB4PSI0NjAiIHk9IjE1MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiM2NDc0OGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPm1zIOKGkiBleHBvc2ljacOzbiBSWDwvdGV4dD4KCiAgPCEtLSBDb3JyaWVudGUgZWzDqWN0cmljYSAtLT4KICA8cmVjdCB4PSI1NjAiIHk9IjYwIiB3aWR0aD0iMTgwIiBoZWlnaHQ9IjEwMCIgcng9IjgiIGZpbGw9IiNmYWY1ZmYiIHN0cm9rZT0iIzdjM2FlZCIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KICA8dGV4dCB4PSI2NTAiIHk9IjkwIiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiM3YzNhZWQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNvcnJpZW50ZTwvdGV4dD4KICA8dGV4dCB4PSI2NTAiIHk9IjExMiIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMWUyOTNiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5BPC90ZXh0PgogIDx0ZXh0IHg9IjY1MCIgeT0iMTMzIiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+YW1wZXJpbzwvdGV4dD4KICA8dGV4dCB4PSI2NTAiIHk9IjE1MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiM2NDc0OGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPm1BIOKGkiB0dWJvIGRlIFJYPC90ZXh0PgoKICA8IS0tIEZpbGEgMjogVGVtcGVyYXR1cmEsIENhbnRpZGFkIHN1c3RhbmNpYSwgSW50ZW5zaWRhZCBsdW1pbm9zYSAtLT4KICA8IS0tIFRlbXBlcmF0dXJhIC0tPgogIDxyZWN0IHg9IjExMCIgeT0iMTg1IiB3aWR0aD0iMTYwIiBoZWlnaHQ9IjEwMCIgcng9IjgiIGZpbGw9IiNmZWYyZjIiIHN0cm9rZT0iI2RjMjYyNiIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KICA8dGV4dCB4PSIxOTAiIHk9IjIxNSIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZGMyNjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5UZW1wZXJhdHVyYTwvdGV4dD4KICA8dGV4dCB4PSIxOTAiIHk9IjIzNyIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMWUyOTNiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5LPC90ZXh0PgogIDx0ZXh0IHg9IjE5MCIgeT0iMjU4IiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+a2VsdmluPC90ZXh0PgogIDx0ZXh0IHg9IjE5MCIgeT0iMjc1IiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Y3Jpb2dlbmlhIGVuIFJNPC90ZXh0PgoKICA8IS0tIENhbnRpZGFkIGRlIHN1c3RhbmNpYSAtLT4KICA8cmVjdCB4PSIzMDAiIHk9IjE4NSIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIxMDAiIHJ4PSI4IiBmaWxsPSIjZjBmZGY0IiBzdHJva2U9IiMxNTgwM2QiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHRleHQgeD0iMzgwIiB5PSIyMTUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzE1ODAzZCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U3VzdGFuY2lhPC90ZXh0PgogIDx0ZXh0IHg9IjM4MCIgeT0iMjM3IiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMxZTI5M2IiIHRleHQtYW5jaG9yPSJtaWRkbGUiPm1vbDwvdGV4dD4KICA8dGV4dCB4PSIzODAiIHk9IjI1OCIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM2NDc0OGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPm1vbDwvdGV4dD4KICA8dGV4dCB4PSIzODAiIHk9IjI3NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiM2NDc0OGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPnF1w61taWNhIHJhZGlvZsOhcm1hY288L3RleHQ+CgogIDwhLS0gSW50ZW5zaWRhZCBsdW1pbm9zYSAtLT4KICA8cmVjdCB4PSI0OTAiIHk9IjE4NSIgd2lkdGg9IjE2MCIgaGVpZ2h0PSIxMDAiIHJ4PSI4IiBmaWxsPSIjZmZmYmViIiBzdHJva2U9IiNlYTU4MGMiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHRleHQgeD0iNTcwIiB5PSIyMTUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2VhNTgwYyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+THV6PC90ZXh0PgogIDx0ZXh0IHg9IjU3MCIgeT0iMjM3IiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMxZTI5M2IiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmNkPC90ZXh0PgogIDx0ZXh0IHg9IjU3MCIgeT0iMjU4IiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Y2FuZGVsYTwvdGV4dD4KICA8dGV4dCB4PSI1NzAiIHk9IjI3NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiM2NDc0OGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPm1vbml0b3JlcyBkaWFnbsOzc3RpY29zPC90ZXh0PgoKICA8IS0tIE5vdGEgcGllIC0tPgogIDx0ZXh0IHg9IjM4MCIgeT0iMzIwIiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzk0YTNiOCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RGUgZXN0YXMgNyB1bmlkYWRlcyBiYXNlIHNlIGRlcml2YW4gdG9kYXMgbGFzIGRlbcOhcyB1bmlkYWRlcyBkZWwgU0kgKHZvbHRpbywgaGVyY2lvLCBqb3VsZSwgZ3JheeKApik8L3RleHQ+Cjwvc3ZnPgo=" /><figcaption class="pie-figura"><em>Figura 1. Las siete magnitudes base del SI y los equipos hospitalarios en los que aparecen.</em></figcaption></figure>
 <hr />
 <h2 id="02-los-prefijos-multiplicadores-de-lo-gigante-a-lo-diminuto">0.2. Los prefijos multiplicadores: de lo gigante a lo diminuto</h2>
-<p>En un hospital mides cosas enormes —la frecuencia de un ecógrafo, que puede ser de 3 000 000 Hz— y cosas microscópicas —la longitud de onda de los rayos X, en el orden de 0,000 000 001 metros—. Escribir todos esos ceros es tedioso y fuente de errores. Los <strong>prefijos del SI</strong> son atajos oficiales que te permiten comprimir esos ceros en una sola letra.</p>
-<h3 id="prefijos-para-magnitudes-grandes-multiplicadores">Prefijos para magnitudes grandes («multiplicadores»)</h3>
+<p>En un hospital se miden cosas <strong>inmensamente grandes</strong> (como la frecuencia de un ecógrafo) y cosas <strong>ridículamente pequeñas</strong> (como una célula o una onda de rayos X). Para no escribir chorros de ceros, ponemos un <strong>prefijo</strong> delante de la unidad.</p>
+<figure><img alt="Escalera de prefijos del Sistema Internacional" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgMzA1IiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTUiPjxyZWN0IHdpZHRoPSI2NDAiIGhlaWdodD0iMzA1IiBmaWxsPSIjZmZmIi8+PGRlZnM+PG1hcmtlciBpZD0ibWIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMjU2M2ViIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibXIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjZGMyNjI2Ii8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWciIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMTU4MDNkIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWsiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjNTU1NTU1Ii8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibW8iIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjZWE1ODBjIi8+PC9tYXJrZXI+PC9kZWZzPjxyZWN0IHg9IjE0IiB5PSI0NCIgd2lkdGg9IjY2IiBoZWlnaHQ9IjE0NiIgZmlsbD0iI2MyNDEwYyIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjEiLz48dGV4dCB4PSI0NyIgeT0iNzIiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSJib2xkIj5UPC90ZXh0Pjx0ZXh0IHg9IjQ3IiB5PSIyMDgiIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIj50ZXJhPC90ZXh0Pjx0ZXh0IHg9IjQ3IiB5PSIyMjUiIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTMiPjEwwrnCsjwvdGV4dD48dGV4dCB4PSI0NyIgeT0iMjQxIiBmaWxsPSIjNTU1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjExIj51biBiaWxsw7NuPC90ZXh0PjxyZWN0IHg9Ijg0IiB5PSI1OCIgd2lkdGg9IjY2IiBoZWlnaHQ9IjEzMiIgZmlsbD0iI2VhNTgwYyIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjEiLz48dGV4dCB4PSIxMTciIHk9Ijg2IiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iYm9sZCI+RzwvdGV4dD48dGV4dCB4PSIxMTciIHk9IjIwOCIgZmlsbD0iIzIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiPmdpZ2E8L3RleHQ+PHRleHQgeD0iMTE3IiB5PSIyMjUiIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTMiPjEw4oG5PC90ZXh0Pjx0ZXh0IHg9IjExNyIgeT0iMjQxIiBmaWxsPSIjNTU1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjExIj5taWwgbWlsbG9uZXM8L3RleHQ+PHJlY3QgeD0iMTU0IiB5PSI3MiIgd2lkdGg9IjY2IiBoZWlnaHQ9IjExOCIgZmlsbD0iI2Y5NzMxNiIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjEiLz48dGV4dCB4PSIxODciIHk9IjEwMCIgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIyNCIgZm9udC13ZWlnaHQ9ImJvbGQiPk08L3RleHQ+PHRleHQgeD0iMTg3IiB5PSIyMDgiIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIj5tZWdhPC90ZXh0Pjx0ZXh0IHg9IjE4NyIgeT0iMjI1IiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEzIj4xMOKBtjwvdGV4dD48dGV4dCB4PSIxODciIHk9IjI0MSIgZmlsbD0iIzU1NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMSI+dW4gbWlsbMOzbjwvdGV4dD48cmVjdCB4PSIyMjQiIHk9Ijg2IiB3aWR0aD0iNjYiIGhlaWdodD0iMTA0IiBmaWxsPSIjZmI5MjNjIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjI1NyIgeT0iMTE0IiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iYm9sZCI+azwvdGV4dD48dGV4dCB4PSIyNTciIHk9IjIwOCIgZmlsbD0iIzIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiPmtpbG88L3RleHQ+PHRleHQgeD0iMjU3IiB5PSIyMjUiIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTMiPjEwwrM8L3RleHQ+PHRleHQgeD0iMjU3IiB5PSIyNDEiIGZpbGw9IiM1NTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTEiPm1pbDwvdGV4dD48cmVjdCB4PSIyOTQiIHk9IjEwMCIgd2lkdGg9IjY2IiBoZWlnaHQ9IjkwIiBmaWxsPSIjNmI3MjgwIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjMyNyIgeT0iMTI4IiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjI0IiBmb250LXdlaWdodD0iYm9sZCI+4oCUPC90ZXh0Pjx0ZXh0IHg9IjMyNyIgeT0iMjA4IiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCI+dW5pZGFkPC90ZXh0Pjx0ZXh0IHg9IjMyNyIgeT0iMjI1IiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEzIj4xMOKBsDwvdGV4dD48dGV4dCB4PSIzMjciIHk9IjI0MSIgZmlsbD0iIzU1NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMSI+dW5vPC90ZXh0PjxyZWN0IHg9IjM2NCIgeT0iMTE0IiB3aWR0aD0iNjYiIGhlaWdodD0iNzYiIGZpbGw9IiM2MGE1ZmEiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iMzk3IiB5PSIxNDIiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSJib2xkIj5tPC90ZXh0Pjx0ZXh0IHg9IjM5NyIgeT0iMjA4IiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCI+bWlsaTwvdGV4dD48dGV4dCB4PSIzOTciIHk9IjIyNSIgZmlsbD0iIzIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMyI+MTDigbvCszwvdGV4dD48dGV4dCB4PSIzOTciIHk9IjI0MSIgZmlsbD0iIzU1NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMSI+bWlsw6lzaW1hPC90ZXh0PjxyZWN0IHg9IjQzNCIgeT0iMTI4IiB3aWR0aD0iNjYiIGhlaWdodD0iNjIiIGZpbGw9IiMzYjgyZjYiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iNDY3IiB5PSIxNTYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSJib2xkIj7OvDwvdGV4dD48dGV4dCB4PSI0NjciIHk9IjIwOCIgZmlsbD0iIzIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiPm1pY3JvPC90ZXh0Pjx0ZXh0IHg9IjQ2NyIgeT0iMjI1IiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEzIj4xMOKBu+KBtjwvdGV4dD48dGV4dCB4PSI0NjciIHk9IjI0MSIgZmlsbD0iIzU1NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMSI+bWlsbG9uw6lzaW1hPC90ZXh0PjxyZWN0IHg9IjUwNCIgeT0iMTQyIiB3aWR0aD0iNjYiIGhlaWdodD0iNDgiIGZpbGw9IiMyNTYzZWIiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iNTM3IiB5PSIxNzAiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSJib2xkIj5uPC90ZXh0Pjx0ZXh0IHg9IjUzNyIgeT0iMjA4IiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCI+bmFubzwvdGV4dD48dGV4dCB4PSI1MzciIHk9IjIyNSIgZmlsbD0iIzIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMyI+MTDigbvigbk8L3RleHQ+PHRleHQgeD0iNTM3IiB5PSIyNDEiIGZpbGw9IiM1NTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTEiPm1pbDwvdGV4dD48dGV4dCB4PSI1MzciIHk9IjI1NCIgZmlsbD0iIzU1NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMSI+bWlsbG9uw6lzaW1hPC90ZXh0PjxyZWN0IHg9IjU3NCIgeT0iMTU2IiB3aWR0aD0iNjYiIGhlaWdodD0iMzQiIGZpbGw9IiMxZDRlZDgiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iNjA3IiB5PSIxODQiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMjQiIGZvbnQtd2VpZ2h0PSJib2xkIj5wPC90ZXh0Pjx0ZXh0IHg9IjYwNyIgeT0iMjA4IiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCI+cGljbzwvdGV4dD48dGV4dCB4PSI2MDciIHk9IjIyNSIgZmlsbD0iIzIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMyI+MTDigbvCucKyPC90ZXh0Pjx0ZXh0IHg9IjYwNyIgeT0iMjQxIiBmaWxsPSIjNTU1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjExIj5iaWxsb27DqXNpbWE8L3RleHQ+PGxpbmUgeDE9IjQwIiB5MT0iMjY4IiB4Mj0iNTkwIiB5Mj0iMjY4IiBzdHJva2U9IiM1NTU1NTUiIHN0cm9rZS13aWR0aD0iMyIgbWFya2VyLWVuZD0idXJsKCNtaykiIG1hcmtlci1zdGFydD0idXJsKCNtaykiLz48dGV4dCB4PSIzMTUiIHk9IjI5MCIgZmlsbD0iIzIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiPkNhZGEgZXNjYWzDs246IMOXIDEgMDAwIGhhY2lhIGxhIGl6cXVpZXJkYSwgw7cgMSAwMDAgaGFjaWEgbGEgZGVyZWNoYTwvdGV4dD48dGV4dCB4PSIzMTUiIHk9IjE4IiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iYm9sZCI+UHJlZmlqb3M6IGRlIGxvIGdpZ2FudGUgYSBsbyBkaW1pbnV0bzwvdGV4dD48L3N2Zz4=" /><figcaption class="pie-figura"><em>Figura 1. La escalera de prefijos. Cada escalón multiplica por 1 000 (hacia la izquierda) o divide entre 1 000 (hacia la derecha).</em></figcaption></figure>
+<h3 id="para-hacer-las-cosas-mas-grandes">Para hacer las cosas más grandes</h3>
 <table>
 <thead>
 <tr>
 <th>Prefijo</th>
 <th>Símbolo</th>
-<th>Factor</th>
-<th>Ejemplo clínico</th>
+<th>Significa</th>
+<th>Ejemplo</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>kilo</td>
-<td>k</td>
-<td>$\times 10^3$ (mil)</td>
-<td>80 kV en radiografía de tórax</td>
+<td><strong>tera</strong></td>
+<td>T</td>
+<td>un billón (10¹²)</td>
+<td>—</td>
 </tr>
 <tr>
-<td>mega</td>
-<td>M</td>
-<td>$\times 10^6$ (millón)</td>
-<td>3,5 MHz en sonda ecográfica</td>
-</tr>
-<tr>
-<td>giga</td>
+<td><strong>giga</strong></td>
 <td>G</td>
-<td>$\times 10^9$ (mil millones)</td>
-<td>1 GHz en algunos equipos de RF</td>
+<td>mil millones (10⁹)</td>
+<td>3 GHz = 3 000 millones de hercios</td>
+</tr>
+<tr>
+<td><strong>mega</strong></td>
+<td>M</td>
+<td>un millón (10⁶)</td>
+<td>100 MHz = 100 millones de hercios</td>
+</tr>
+<tr>
+<td><strong>kilo</strong></td>
+<td>k</td>
+<td>mil (10³)</td>
+<td>80 kV = 80 000 voltios</td>
 </tr>
 </tbody>
 </table>
-<h3 id="prefijos-para-magnitudes-pequenas-divisores">Prefijos para magnitudes pequeñas («divisores»)</h3>
+<h3 id="para-hacer-las-cosas-mas-pequenas">Para hacer las cosas más pequeñas</h3>
 <table>
 <thead>
 <tr>
 <th>Prefijo</th>
 <th>Símbolo</th>
-<th>Factor</th>
-<th>Ejemplo clínico</th>
+<th>Significa</th>
+<th>Ejemplo</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>mili</td>
+<td><strong>mili</strong></td>
 <td>m</td>
-<td>$\times 10^{-3}$ (milésima)</td>
-<td>200 mA en sala de rayos X</td>
+<td>la milésima parte (10⁻³)</td>
+<td>1 mm = 0,001 m</td>
 </tr>
 <tr>
-<td>micro</td>
+<td><strong>micro</strong></td>
 <td>μ</td>
-<td>$\times 10^{-6}$ (millonésima)</td>
-<td>microsegundos de pulso en RM</td>
+<td>la millonésima parte (10⁻⁶)</td>
+<td>1 μm = 0,000001 m</td>
 </tr>
 <tr>
-<td>nano</td>
+<td><strong>nano</strong></td>
 <td>n</td>
-<td>$\times 10^{-9}$ (milmillonésima)</td>
-<td>longitud de onda UV (~100–400 nm)</td>
+<td>la milmillonésima parte (10⁻⁹)</td>
+<td>500 nm = luz verde</td>
 </tr>
 <tr>
-<td>pico</td>
+<td><strong>pico</strong></td>
 <td>p</td>
-<td>$\times 10^{-12}$</td>
-<td>tamaño de átomos (~100 pm)</td>
+<td>la billonésima parte (10⁻¹²)</td>
+<td>—</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p><strong>Idea clave:</strong> Un prefijo es simplemente una potencia de 10 pegada a la unidad. Kilo = $10^3$, mili = $10^{-3}$, mega = $10^6$, micro = $10^{-6}$.</p>
+<p><strong>Cuidado: mayúscula y minúscula importan.</strong> La <strong>M mayúscula</strong> es <strong>mega</strong> (un millón) y la <strong>m minúscula</strong> es <strong>mili</strong> (una milésima). Un megahercio (MHz) y un milihercio (mHz) se diferencian en <strong>mil millones de veces</strong>. En cambio, <strong>kilo</strong> siempre es <strong>k minúscula</strong>.</p>
 </blockquote>
-<h3 id="como-convertir-entre-prefijos">Cómo convertir entre prefijos</h3>
-<p>La conversión es siempre una multiplicación o división por la potencia de 10 correspondiente:</p>
-<p>$$1\ \text{MHz} = 10^6\ \text{Hz} \qquad \qquad 1\ \text{mA} = 10^{-3}\ \text{A} = \frac{1}{1000}\ \text{A}$$</p>
-<p><strong>Ejemplo resuelto:</strong> Un ecógrafo trabaja a 7,5 MHz. ¿Cuántos hercios son?</p>
+<h3 id="los-prefijos-en-el-hospital">Los prefijos en el hospital</h3>
+<table>
+<thead>
+<tr>
+<th>Lo que verás</th>
+<th>Qué significa</th>
+<th>Dónde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>80 kV</strong></td>
+<td>80 000 voltios</td>
+<td>Tensión de un tubo de rayos X</td>
+</tr>
+<tr>
+<td><strong>200 mA</strong></td>
+<td>0,2 amperios</td>
+<td>Corriente de un equipo de rayos X</td>
+</tr>
+<tr>
+<td><strong>100 MHz</strong></td>
+<td>100 millones de hercios</td>
+<td>Frecuencia de una onda de radio</td>
+</tr>
+<tr>
+<td><strong>500 nm</strong></td>
+<td>0,0000005 m</td>
+<td>Longitud de onda de la luz verde</td>
+</tr>
+<tr>
+<td><strong>60 keV</strong></td>
+<td>60 000 electronvoltios</td>
+<td>Energía de un fotón de rayos X</td>
+</tr>
+<tr>
+<td><strong>600 MBq</strong></td>
+<td>600 millones de becquerelios</td>
+<td>Actividad de una dosis de tecnecio-99m</td>
+</tr>
+</tbody>
+</table>
+<h3 id="como-convertir-unidades-paso-a-paso">Cómo convertir unidades, paso a paso</h3>
+<ol>
+<li><strong>Mira el prefijo</strong> y cambia su significado por su valor.</li>
+<li><strong>Multiplica</strong> (si es un prefijo «grande») o <strong>divide</strong> (si es «pequeño»).</li>
+</ol>
+<h4 id="ejemplos-resueltos">Ejemplos resueltos</h4>
+<p><strong>1. Pasa 2,5 kV a voltios.</strong></p>
 <ul>
-<li>Dato: $f = 7{,}5\ \text{MHz}$</li>
-<li>Factor: $1\ \text{MHz} = 10^6\ \text{Hz}$</li>
-<li>Sustitución: $f = 7{,}5 \times 10^6\ \text{Hz}$</li>
-<li>Resultado: <strong>$7\ 500\ 000\ \text{Hz}$</strong> — razón por la que usamos el prefijo mega.</li>
+<li>kilo = 1 000.</li>
+<li>2,5 × 1 000 = <strong>2 500 V</strong>.</li>
 </ul>
-<figure><img alt="Tabla visual de prefijos SI" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3ODAgMjYwIiB3aWR0aD0iNzgwIiBoZWlnaHQ9IjI2MCI+CiAgPHJlY3Qgd2lkdGg9Ijc4MCIgaGVpZ2h0PSIyNjAiIGZpbGw9IiNmZmZmZmYiLz4KCiAgPCEtLSBUw610dWxvIC0tPgogIDx0ZXh0IHg9IjM5MCIgeT0iMjgiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzFlMjkzYiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UHJlZmlqb3MgZGVsIFNJIOKAlCBkZSBHaWdhIGEgbmFubzwvdGV4dD4KCiAgPCEtLSBMw61uZWEgY2VudHJhbCAtLT4KICA8bGluZSB4MT0iMzAiIHkxPSIxMzAiIHgyPSI3NTAiIHkyPSIxMzAiIHN0cm9rZT0iIzY0NzQ4YiIgc3Ryb2tlLXdpZHRoPSIyIi8+CgogIDwhLS0gTWFyY2Fkb3JlczogcG9zaWNpb25lcyB5IGRhdG9zIC0tPgogIDwhLS0gR2lnYSAtLT4KICA8bGluZSB4MT0iODAiIHkxPSIxMTUiIHgyPSI4MCIgeTI9IjE0NSIgc3Ryb2tlPSIjZGMyNjI2IiBzdHJva2Utd2lkdGg9IjIiLz4KICA8dGV4dCB4PSI4MCIgeT0iMTA4IiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNkYzI2MjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkc8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjkyIiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iI2RjMjYyNiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+R2lnYTwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iNzgiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjNjQ3NDhiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xMOKBuTwvdGV4dD4KICA8dGV4dCB4PSI4MCIgeT0iMTY1IiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MSBHSHogUkY8L3RleHQ+CgogIDwhLS0gTWVnYSAtLT4KICA8bGluZSB4MT0iMjAwIiB5MT0iMTE1IiB4Mj0iMjAwIiB5Mj0iMTQ1IiBzdHJva2U9IiNlYTU4MGMiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjIwMCIgeT0iMTA4IiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNlYTU4MGMiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk08L3RleHQ+CiAgPHRleHQgeD0iMjAwIiB5PSI5MiIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiNlYTU4MGMiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk1lZ2E8L3RleHQ+CiAgPHRleHQgeD0iMjAwIiB5PSI3OCIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiM2NDc0OGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjEw4oG2PC90ZXh0PgogIDx0ZXh0IHg9IjIwMCIgeT0iMTY1IiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Myw1IE1IeiBlY288L3RleHQ+CgogIDwhLS0gS2lsbyAtLT4KICA8bGluZSB4MT0iMzIwIiB5MT0iMTE1IiB4Mj0iMzIwIiB5Mj0iMTQ1IiBzdHJva2U9IiMyNTYzZWIiIHN0cm9rZS13aWR0aD0iMiIvPgogIDx0ZXh0IHg9IjMyMCIgeT0iMTA4IiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyNTYzZWIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPms8L3RleHQ+CiAgPHRleHQgeD0iMzIwIiB5PSI5MiIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMyNTYzZWIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPktpbG88L3RleHQ+CiAgPHRleHQgeD0iMzIwIiB5PSI3OCIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiM2NDc0OGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjEwwrM8L3RleHQ+CiAgPHRleHQgeD0iMzIwIiB5PSIxNjUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjNjQ3NDhiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj44MCBrViBSWDwvdGV4dD4KCiAgPCEtLSBVbmlkYWQgYmFzZSAoc2luIHByZWZpam8pIC0tPgogIDxjaXJjbGUgY3g9IjQxNSIgY3k9IjEzMCIgcj0iOCIgZmlsbD0iIzFlMjkzYiIvPgogIDx0ZXh0IHg9IjQxNSIgeT0iMTA4IiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMxZTI5M2IiIHRleHQtYW5jaG9yPSJtaWRkbGUiPsOXMTwvdGV4dD4KICA8dGV4dCB4PSI0MTUiIHk9IjkyIiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzFlMjkzYiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+dW5pZGFkPC90ZXh0PgogIDx0ZXh0IHg9IjQxNSIgeT0iNzgiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjNjQ3NDhiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xMOKBsDwvdGV4dD4KICA8dGV4dCB4PSI0MTUiIHk9IjE2NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiM2NDc0OGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjEgQSwgMSBtLCAxIEh6PC90ZXh0PgoKICA8IS0tIE1pbGkgLS0+CiAgPGxpbmUgeDE9IjUxMCIgeTE9IjExNSIgeDI9IjUxMCIgeTI9IjE0NSIgc3Ryb2tlPSIjMTU4MDNkIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8dGV4dCB4PSI1MTAiIHk9IjEwOCIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTMiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMTU4MDNkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5tPC90ZXh0PgogIDx0ZXh0IHg9IjUxMCIgeT0iOTIiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjMTU4MDNkIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5NaWxpPC90ZXh0PgogIDx0ZXh0IHg9IjUxMCIgeT0iNzgiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjNjQ3NDhiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xMOKBu8KzPC90ZXh0PgogIDx0ZXh0IHg9IjUxMCIgeT0iMTY1IiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MjAwIG1BIFJYPC90ZXh0PgoKICA8IS0tIE1pY3JvIC0tPgogIDxsaW5lIHgxPSI2MTAiIHkxPSIxMTUiIHgyPSI2MTAiIHkyPSIxNDUiIHN0cm9rZT0iIzdjM2FlZCIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHRleHQgeD0iNjEwIiB5PSIxMDgiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzdjM2FlZCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+zrw8L3RleHQ+CiAgPHRleHQgeD0iNjEwIiB5PSI5MiIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiM3YzNhZWQiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk1pY3JvPC90ZXh0PgogIDx0ZXh0IHg9IjYxMCIgeT0iNzgiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIiBmaWxsPSIjNjQ3NDhiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xMOKBu+KBtjwvdGV4dD4KICA8dGV4dCB4PSI2MTAiIHk9IjE2NSIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiM2NDc0OGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPs68cyBwdWxzbyBSTTwvdGV4dD4KCiAgPCEtLSBOYW5vIC0tPgogIDxsaW5lIHgxPSI3MTAiIHkxPSIxMTUiIHgyPSI3MTAiIHkyPSIxNDUiIHN0cm9rZT0iI2RjMjYyNiIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgPHRleHQgeD0iNzEwIiB5PSIxMDgiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2RjMjYyNiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+bjwvdGV4dD4KICA8dGV4dCB4PSI3MTAiIHk9IjkyIiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iI2RjMjYyNiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TmFubzwvdGV4dD4KICA8dGV4dCB4PSI3MTAiIHk9Ijc4IiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MTDigbvigbk8L3RleHQ+CiAgPHRleHQgeD0iNzEwIiB5PSIxNjUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjNjQ3NDhiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xMDDigJM0MDAgbm0gVVY8L3RleHQ+CgogIDwhLS0gRmxlY2hhcyBkZSBzZW50aWRvIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMzYsMTI2IDUwLDEzMCAzNiwxMzQiIGZpbGw9IiM2NDc0OGIiLz4KICA8dGV4dCB4PSIzOCIgeT0iMjE1IiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+w5c8L3RleHQ+CiAgPHBvbHlnb24gcG9pbnRzPSI3NDQsMTI2IDczMCwxMzAgNzQ0LDEzNCIgZmlsbD0iIzY0NzQ4YiIvPgoKICA8dGV4dCB4PSIyMjAiIHk9IjIxNSIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMxZTI5M2IiIHRleHQtYW5jaG9yPSJtaWRkbGUiPuKGkCBtYWduaXR1ZGVzIEdSQU5ERVMgKMOXMTDCsyBwb3IgcGFzbyk8L3RleHQ+CiAgPHRleHQgeD0iNTgwIiB5PSIyMTUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMWUyOTNiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5tYWduaXR1ZGVzIFBFUVVFw5FBUyAow7cxMMKzIHBvciBwYXNvKSDihpI8L3RleHQ+CgogIDwhLS0gTMOtbmVhIHNlcGFyYWRvcmEgLS0+CiAgPGxpbmUgeDE9IjMwIiB5MT0iMjAwIiB4Mj0iNzUwIiB5Mj0iMjAwIiBzdHJva2U9IiNlMmU4ZjAiIHN0cm9rZS13aWR0aD0iMSIvPgogIDx0ZXh0IHg9IjM5MCIgeT0iMjQ1IiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzk0YTNiOCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Q2FkYSBwYXNvIGVudHJlIHByZWZpam9zIGFkeWFjZW50ZXMgZXF1aXZhbGUgYSBtdWx0aXBsaWNhciBvIGRpdmlkaXIgcG9yIDEwMDAgKHRyZXMgw7NyZGVuZXMgZGUgbWFnbml0dWQpPC90ZXh0Pgo8L3N2Zz4K" /><figcaption class="pie-figura"><em>Figura 2. Línea de prefijos del SI, de giga ($10^9$) a nano ($10^{-9}$), con ejemplos clínicos en cada escala.</em></figcaption></figure>
+<p><strong>2. Pasa 150 mA a amperios.</strong></p>
+<ul>
+<li>mili = una milésima, así que hay que dividir entre 1 000.</li>
+<li>150 / 1 000 = <strong>0,15 A</strong>.</li>
+</ul>
+<p><strong>3. Pasa 100 MHz a hercios.</strong></p>
+<ul>
+<li>mega = un millón.</li>
+<li>100 × 1 000 000 = <strong>100 000 000 Hz</strong> (que es 10⁸ Hz).</li>
+</ul>
+<p><strong>4. Pasa 0,5 mm a micrómetros.</strong></p>
+<ul>
+<li>De mili a micro se baja un escalón (Figura 1) y hay que multiplicar por 1 000.</li>
+<li>0,5 × 1 000 = <strong>500 μm</strong>.</li>
+</ul>
+<p><strong>5. Pasa 6 horas a segundos.</strong></p>
+<ul>
+<li>1 hora = 3 600 s.</li>
+<li>6 × 3 600 = <strong>21 600 s</strong>.</li>
+</ul>
 <blockquote>
-<p><strong>Dónde falla la analogía:</strong> Comparar prefijos con «pisos de un edificio» funciona para subir (mega &gt; kilo &gt; unidad), pero recuerda que bajar de piso implica dividir, no restar. Pasar de MHz a kHz no es restar, es multiplicar por 1000.</p>
+<p><strong>Truco:</strong> si pasas a una unidad <strong>más pequeña</strong>, el número <strong>sale mayor</strong> (hay más «trocitos»). Si pasas a una <strong>más grande</strong>, el número <strong>sale menor</strong>. Compruébalo siempre.</p>
 </blockquote>
 <hr />
 <h2 id="03-notacion-cientifica-el-truco-del-10">0.3. Notación científica: el truco del «10»</h2>
-<p>Incluso con prefijos, a veces los números son difíciles de manejar. La velocidad de la luz es $300\ 000\ 000\ \text{m/s}$. Cargar de ceros ese número aumenta la probabilidad de equivocarse al escribirlo o leerlo. La <strong>notación científica</strong> resuelve esto expresando cualquier número como:</p>
-<p>$$\text{número} = a \times 10^n \quad \text{donde} \quad 1 \leq a &lt; 10 \text{ y } n \in \mathbb{Z}$$</p>
-<p>En palabras: escribes solo los dígitos significativos (entre 1 y 9,999…) y el exponente de 10 indica cuántos puestos se mueve la coma.</p>
-<h3 id="el-exponente-positivo-numeros-grandes">El exponente positivo: números grandes</h3>
-<p>Cada vez que el exponente sube en 1, la coma se desplaza un puesto a la derecha (el número se hace 10 veces mayor).</p>
-<p>$$3 \times 10^8\ \text{m/s} \quad \Leftrightarrow \quad 300\ 000\ 000\ \text{m/s}$$</p>
-<h3 id="el-exponente-negativo-numeros-pequenos">El exponente negativo: números pequeños</h3>
-<p>Cuando el exponente es negativo, la coma se desplaza a la izquierda (el número se hace más pequeño).</p>
-<p>$$1 \times 10^{-10}\ \text{m} \quad \Leftrightarrow \quad 0{,}000\ 000\ 000\ 1\ \text{m} \quad \text{(tamaño de un átomo)}$$</p>
+<p>Incluso con prefijos, a veces los números son inmanejables. La velocidad de la luz es aproximadamente <strong>300 000 000 m/s</strong>. Para simplificar, la física usa la <strong>notación científica</strong>, que consiste en un número multiplicado por <strong>10 elevado a una potencia</strong>:</p>
 <blockquote>
-<p><strong>Idea clave:</strong> Exponente positivo → número grande. Exponente negativo → número diminuto. El número delante de «$\times 10$» siempre está entre 1 y 10.</p>
+<p><strong>número × 10 elevado a n</strong></p>
 </blockquote>
-<p><strong>Ejemplo resuelto — convertir 0,0045 A a notación científica:</strong></p>
+<h3 id="exponente-positivo-numeros-grandes">Exponente positivo: números grandes</h3>
+<p>El exponente nos dice <strong>cuántos ceros</strong> hay que añadir.</p>
+<ul>
+<li>Velocidad de la luz: <strong>3 × 10⁸ m/s</strong> = 3 seguido de 8 ceros = 300 000 000 m/s.</li>
+</ul>
+<h3 id="exponente-negativo-numeros-diminutos">Exponente negativo: números diminutos</h3>
+<p>El exponente nos dice <strong>cuántos saltos da la coma hacia la izquierda</strong>.</p>
+<ul>
+<li>Tamaño de un átomo: <strong>10⁻¹⁰ m</strong> = 0,0000000001 m.</li>
+</ul>
+<blockquote>
+<p><strong>Truco mental:</strong> si el exponente lleva un <strong>«menos»</strong>, estás hablando de algo <strong>microscópico</strong>.</p>
+</blockquote>
+<h3 id="como-pasar-un-numero-a-notacion-cientifica">Cómo pasar un número a notación científica</h3>
 <ol>
-<li>Buscamos el primer dígito significativo: el «4».</li>
-<li>Contamos cuántos puestos hemos movido la coma hasta dejarlo como $4{,}5$: tres puestos a la derecha → exponente $-3$.</li>
-<li>Resultado: <strong>$4{,}5 \times 10^{-3}\ \text{A}$</strong>, es decir, <strong>$4{,}5\ \text{mA}$</strong>.</li>
+<li>Coloca la coma <strong>detrás de la primera cifra distinta de cero</strong>.</li>
+<li>Cuenta <strong>cuántos lugares</strong> has movido la coma: ese número es el exponente.</li>
+<li>Si has movido la coma <strong>hacia la izquierda</strong>, el exponente es <strong>positivo</strong>. Si la has movido <strong>hacia la derecha</strong>, es <strong>negativo</strong>.</li>
 </ol>
-<figure><img alt="Diagrama de notación científica" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3NjAgMzAwIiB3aWR0aD0iNzYwIiBoZWlnaHQ9IjMwMCI+CiAgPHJlY3Qgd2lkdGg9Ijc2MCIgaGVpZ2h0PSIzMDAiIGZpbGw9IiNmZmZmZmYiLz4KCiAgPCEtLSBUw610dWxvIC0tPgogIDx0ZXh0IHg9IjM4MCIgeT0iMjgiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzFlMjkzYiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Tm90YWNpw7NuIGNpZW50w61maWNhOiBkZXNwbGF6YW1pZW50byBkZSBsYSBjb21hIGRlY2ltYWw8L3RleHQ+CgogIDwhLS0gPT09PT09PT09PSBMQURPIElaUVVJRVJETzogbsO6bWVybyBncmFuZGUgPT09PT09PT09PSAtLT4KICA8dGV4dCB4PSIxODUiIHk9IjY1IiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMyNTYzZWIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkV4cG9uZW50ZSBQT1NJVElWTyDihpIgbsO6bWVybyBHUkFOREU8L3RleHQ+CgogIDwhLS0gTsO6bWVybyBjb24gY29tYSByZXNhbHRhZGEgLS0+CiAgPHRleHQgeD0iMTg1IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjMyIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzFlMjkzYiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+MzAwIDAwMCAwMDA8L3RleHQ+CiAgPHRleHQgeD0iMTg1IiB5PSIxNDAiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEzIiBmaWxsPSIjNjQ3NDhiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5tL3MgKHZlbG9jaWRhZCBkZSBsYSBsdXopPC90ZXh0PgoKICA8IS0tIEZsZWNoYSBoYWNpYSBhYmFqbyAtLT4KICA8bGluZSB4MT0iMTg1IiB5MT0iMTUwIiB4Mj0iMTg1IiB5Mj0iMTc1IiBzdHJva2U9IiMyNTYzZWIiIHN0cm9rZS13aWR0aD0iMiIgbWFya2VyLWVuZD0idXJsKCNhcnJvdy1ibHVlKSIvPgogIDxkZWZzPgogICAgPG1hcmtlciBpZD0iYXJyb3ctYmx1ZSIgbWFya2VyV2lkdGg9IjgiIG1hcmtlckhlaWdodD0iOCIgcmVmWD0iNCIgcmVmWT0iNCIgb3JpZW50PSJhdXRvIj4KICAgICAgPHBvbHlnb24gcG9pbnRzPSIwLDAgOCw0IDAsOCIgZmlsbD0iIzI1NjNlYiIvPgogICAgPC9tYXJrZXI+CiAgICA8bWFya2VyIGlkPSJhcnJvdy1yZWQiIG1hcmtlcldpZHRoPSI4IiBtYXJrZXJIZWlnaHQ9IjgiIHJlZlg9IjQiIHJlZlk9IjQiIG9yaWVudD0iYXV0byI+CiAgICAgIDxwb2x5Z29uIHBvaW50cz0iMCwwIDgsNCAwLDgiIGZpbGw9IiNkYzI2MjYiLz4KICAgIDwvbWFya2VyPgogIDwvZGVmcz4KCiAgPCEtLSBSZXN1bHRhZG8gLS0+CiAgPHJlY3QgeD0iOTAiIHk9IjE4NSIgd2lkdGg9IjE5MCIgaGVpZ2h0PSI0NCIgcng9IjYiIGZpbGw9IiNlZmY2ZmYiIHN0cm9rZT0iIzI1NjNlYiIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KICA8dGV4dCB4PSIxODUiIHk9IjIxMCIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjU2M2ViIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4zIMOXIDEw4oG4IG0vczwvdGV4dD4KICA8dGV4dCB4PSIxODUiIHk9IjIyOCIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiM2NDc0OGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmNvbWEgc2UgbXVldmUgOCBwdWVzdG9zIGEgbGEgaXpxdWllcmRhPC90ZXh0PgoKICA8IS0tIEluZGljYWRvciAtLT4KICA8dGV4dCB4PSIxODUiIHk9IjI2MCIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMyNTYzZWIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPm4gPSArOCAg4oaSICBuw7ptZXJvIGdyYW5kZTwvdGV4dD4KCiAgPCEtLSBEaXZpc29yIHZlcnRpY2FsIC0tPgogIDxsaW5lIHgxPSIzODAiIHkxPSI0NSIgeDI9IjM4MCIgeTI9IjI4NSIgc3Ryb2tlPSIjZTJlOGYwIiBzdHJva2Utd2lkdGg9IjIiLz4KCiAgPCEtLSA9PT09PT09PT09IExBRE8gREVSRUNITzogbsO6bWVybyBwZXF1ZcOxbyA9PT09PT09PT09IC0tPgogIDx0ZXh0IHg9IjU3MCIgeT0iNjUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2RjMjYyNiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RXhwb25lbnRlIE5FR0FUSVZPIOKGkiBuw7ptZXJvIFBFUVVFw5FPPC90ZXh0PgoKICA8IS0tIE7Dum1lcm8gY29uIGNvbWEgcmVzYWx0YWRhIC0tPgogIDx0ZXh0IHg9IjU3MCIgeT0iMTEwIiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMxZTI5M2IiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjAsMDAwIDAwMCAwMDAgMTwvdGV4dD4KICA8dGV4dCB4PSI1NzAiIHk9IjEzMyIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTMiIGZpbGw9IiM2NDc0OGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPm0gKHRhbWHDsW8gZGUgdW4gw6F0b21vKTwvdGV4dD4KCiAgPCEtLSBGbGVjaGEgaGFjaWEgYWJham8gLS0+CiAgPGxpbmUgeDE9IjU3MCIgeTE9IjE0NSIgeDI9IjU3MCIgeTI9IjE3NSIgc3Ryb2tlPSIjZGMyNjI2IiBzdHJva2Utd2lkdGg9IjIiIG1hcmtlci1lbmQ9InVybCgjYXJyb3ctcmVkKSIvPgoKICA8IS0tIFJlc3VsdGFkbyAtLT4KICA8cmVjdCB4PSI0NzAiIHk9IjE4NSIgd2lkdGg9IjIwMCIgaGVpZ2h0PSI0NCIgcng9IjYiIGZpbGw9IiNmZWYyZjIiIHN0cm9rZT0iI2RjMjYyNiIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KICA8dGV4dCB4PSI1NzAiIHk9IjIxMCIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZGMyNjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4xIMOXIDEw4oG7wrnigbAgbTwvdGV4dD4KICA8dGV4dCB4PSI1NzAiIHk9IjIyOCIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiM2NDc0OGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPmNvbWEgc2UgbXVldmUgMTAgcHVlc3RvcyBhIGxhIGRlcmVjaGE8L3RleHQ+CgogIDwhLS0gSW5kaWNhZG9yIC0tPgogIDx0ZXh0IHg9IjU3MCIgeT0iMjYwIiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iI2RjMjYyNiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+biA9IC0xMCAg4oaSICBuw7ptZXJvIGRpbWludXRvPC90ZXh0PgoKICA8IS0tIFJlZ2xhIGNvbcO6biBhYmFqbyAtLT4KICA8cmVjdCB4PSIxNDAiIHk9IjI3NyIgd2lkdGg9IjQ4MCIgaGVpZ2h0PSIyMCIgcng9IjQiIGZpbGw9IiNmOGZhZmMiLz4KICA8dGV4dCB4PSIzODAiIHk9IjI5MSIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM0NzU1NjkiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlJlZ2xhOiBlbCBuw7ptZXJvIGRlbGFudGUgZGUgwqvDlyAxMMK7IHNpZW1wcmUgZXN0w6EgZW50cmUgMSB5IDksOTnigKY8L3RleHQ+Cjwvc3ZnPgo=" /><figcaption class="pie-figura"><em>Figura 3. Desplazamiento de la coma decimal al convertir a notación científica: exponente positivo (derecha) y negativo (izquierda).</em></figcaption></figure>
-<blockquote>
-<p><strong>En la práctica profesional:</strong> Los fabricantes de equipos médicos expresan la longitud de onda de los rayos X en ångströms ($1\ \text{Å} = 10^{-10}\ \text{m}$) o en nanómetros. Saber leer notación científica te permite comparar esas cifras de forma inmediata.</p>
-</blockquote>
-<hr />
-<h2 id="04-proporcionalidad-la-regla-del-si-tu-subes-yo-tambien">0.4. Proporcionalidad: la regla del «si tú subes, yo también»</h2>
-<p>Muchas de las leyes que veremos en este curso relacionan dos magnitudes entre sí. Solo existen dos tipos de relación posibles, y dominarlas te ahorrará tener que memorizar comportamientos:</p>
-<h3 id="relacion-directamente-proporcional">Relación directamente proporcional</h3>
-<p>Dos magnitudes son <strong>directamente proporcionales</strong> cuando al multiplicar una por un factor, la otra se multiplica por el mismo factor. Si una crece, la otra crece en la misma medida.</p>
-<p>$$y = k \cdot x \quad (k = \text{constante positiva})$$</p>
-<p><strong>Analogía:</strong> La velocidad de un coche y la distancia recorrida en un tiempo fijo. Si vas el doble de rápido, recorres el doble de kilómetros.</p>
-<p><strong>Ejemplo físico:</strong> En un tubo de rayos X, la intensidad de corriente del tubo (mA) es directamente proporcional al número de fotones emitidos. Si doblas los mA, obtienes el doble de fotones (y por tanto el doble de dosis al paciente).</p>
-<h3 id="relacion-inversamente-proporcional">Relación inversamente proporcional</h3>
-<p>Dos magnitudes son <strong>inversamente proporcionales</strong> cuando al multiplicar una por un factor, la otra se divide por ese mismo factor. Si una sube, la otra baja.</p>
-<p>$$y = \frac{k}{x} \quad (k = \text{constante positiva})$$</p>
-<p><strong>Analogía:</strong> La velocidad en coche y el tiempo para llegar a un destino fijo. Si vas el doble de rápido, tardas la mitad.</p>
-<p><strong>Ejemplo físico en ondas:</strong> La frecuencia ($f$) y la longitud de onda ($\lambda$) de una onda están inversamente relacionadas: $v = \lambda \cdot f$. Si la frecuencia se duplica, la longitud de onda se reduce a la mitad (a velocidad constante).</p>
-<blockquote>
-<p><strong>Idea clave:</strong> Directamente proporcional → misma dirección (ambas suben o ambas bajan). Inversamente proporcional → direcciones opuestas (una sube, la otra baja).</p>
-</blockquote>
-<figure><img alt="Gráficas de proporcionalidad" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3NjAgMzIwIiB3aWR0aD0iNzYwIiBoZWlnaHQ9IjMyMCI+CiAgPHJlY3Qgd2lkdGg9Ijc2MCIgaGVpZ2h0PSIzMjAiIGZpbGw9IiNmZmZmZmYiLz4KCiAgPCEtLSBUw610dWxvIC0tPgogIDx0ZXh0IHg9IjM4MCIgeT0iMjgiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE1IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzFlMjkzYiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+UHJvcG9yY2lvbmFsaWRhZCBkaXJlY3RhIGUgaW52ZXJzYTwvdGV4dD4KCiAgPCEtLSA9PT09PSBHUsOBRklDQSBJWlFVSUVSREE6IERpcmVjdGEgPT09PT0gLS0+CiAgPHRleHQgeD0iMTg1IiB5PSI1OCIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTMiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjMjU2M2ViIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5EaXJlY3RhbWVudGUgcHJvcG9yY2lvbmFsPC90ZXh0PgogIDx0ZXh0IHg9IjE4NSIgeT0iNzUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjNjQ3NDhiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj55ID0gayDCtyB4PC90ZXh0PgoKICA8IS0tIEVqZXMgLS0+CiAgPGxpbmUgeDE9IjYwIiB5MT0iMjcwIiB4Mj0iMzEwIiB5Mj0iMjcwIiBzdHJva2U9IiM1NTU1NTUiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPGxpbmUgeDE9IjYwIiB5MT0iMjcwIiB4Mj0iNjAiIHkyPSI5NSIgc3Ryb2tlPSIjNTU1NTU1IiBzdHJva2Utd2lkdGg9IjEuNSIvPgogIDwhLS0gRmxlY2hhcyBlamVzIC0tPgogIDxwb2x5Z29uIHBvaW50cz0iMzEwLDI2NiAzMjIsMjcwIDMxMCwyNzQiIGZpbGw9IiM1NTU1NTUiLz4KICA8cG9seWdvbiBwb2ludHM9IjU2LDk1IDYwLDgzIDY0LDk1IiBmaWxsPSIjNTU1NTU1Ii8+CgogIDwhLS0gRXRpcXVldGFzIGVqZXMgLS0+CiAgPHRleHQgeD0iMzIwIiB5PSIyNzQiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjNTU1NTU1Ij54PC90ZXh0PgogIDx0ZXh0IHg9IjQ4IiB5PSI4MiIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM1NTU1NTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPnk8L3RleHQ+CgogIDwhLS0gTMOtbmVhIHJlY3RhIGRpcmVjdGEgLS0+CiAgPGxpbmUgeDE9IjYwIiB5MT0iMjcwIiB4Mj0iMzA1IiB5Mj0iMTAwIiBzdHJva2U9IiMyNTYzZWIiIHN0cm9rZS13aWR0aD0iMi41Ii8+CgogIDwhLS0gUHVudG9zIGVqZW1wbG8gLS0+CiAgPGNpcmNsZSBjeD0iMTIwIiBjeT0iMjI4IiByPSI1IiBmaWxsPSIjMjU2M2ViIi8+CiAgPGNpcmNsZSBjeD0iMTgwIiBjeT0iMTg1IiByPSI1IiBmaWxsPSIjMjU2M2ViIi8+CiAgPGNpcmNsZSBjeD0iMjQwIiBjeT0iMTQzIiByPSI1IiBmaWxsPSIjMjU2M2ViIi8+CgogIDwhLS0gTMOtbmVhcyBndcOtYSAtLT4KICA8bGluZSB4MT0iNjAiIHkxPSIyMjgiIHgyPSIxMjAiIHkyPSIyMjgiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtZGFzaGFycmF5PSI0LDMiLz4KICA8bGluZSB4MT0iMTIwIiB5MT0iMjI4IiB4Mj0iMTIwIiB5Mj0iMjcwIiBzdHJva2U9IiM5NGEzYjgiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWRhc2hhcnJheT0iNCwzIi8+CiAgPGxpbmUgeDE9IjYwIiB5MT0iMTg1IiB4Mj0iMTgwIiB5Mj0iMTg1IiBzdHJva2U9IiM5NGEzYjgiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWRhc2hhcnJheT0iNCwzIi8+CiAgPGxpbmUgeDE9IjE4MCIgeTE9IjE4NSIgeDI9IjE4MCIgeTI9IjI3MCIgc3Ryb2tlPSIjOTRhM2I4IiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1kYXNoYXJyYXk9IjQsMyIvPgoKICA8IS0tIEFub3RhY2lvbmVzIGd1w61hIC0tPgogIDx0ZXh0IHg9IjU1IiB5PSIyMzIiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjNjQ3NDhiIiB0ZXh0LWFuY2hvcj0iZW5kIj554oKBPC90ZXh0PgogIDx0ZXh0IHg9IjU1IiB5PSIxODgiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjNjQ3NDhiIiB0ZXh0LWFuY2hvcj0iZW5kIj4yeeKCgTwvdGV4dD4KICA8dGV4dCB4PSIxMjAiIHk9IjI4MyIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiM2NDc0OGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPnjigoE8L3RleHQ+CiAgPHRleHQgeD0iMTgwIiB5PSIyODMiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjNjQ3NDhiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj4yeOKCgTwvdGV4dD4KCiAgPCEtLSBFdGlxdWV0YSAtLT4KICA8cmVjdCB4PSIyMTUiIHk9IjExNSIgd2lkdGg9Ijg1IiBoZWlnaHQ9IjMwIiByeD0iNCIgZmlsbD0iI2VmZjZmZiIgc3Ryb2tlPSIjMjU2M2ViIiBzdHJva2Utd2lkdGg9IjEiLz4KICA8dGV4dCB4PSIyNTciIHk9IjEzNSIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiMyNTYzZWIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNpIHjDlzIg4oaSIHnDlzI8L3RleHQ+CgogIDwhLS0gRWplbXBsbyBjbMOtbmljbyAtLT4KICA8dGV4dCB4PSIxODUiIHk9IjMwMCIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTEiIGZpbGw9IiM2NDc0OGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkVqLjogbUEgw5cgMiDihpIgZm90b25lcyDDlyAyPC90ZXh0PgoKICA8IS0tIERpdmlzb3IgLS0+CiAgPGxpbmUgeDE9IjM4MCIgeTE9IjQ1IiB4Mj0iMzgwIiB5Mj0iMzA1IiBzdHJva2U9IiNlMmU4ZjAiIHN0cm9rZS13aWR0aD0iMiIvPgoKICA8IS0tID09PT09IEdSw4FGSUNBIERFUkVDSEE6IEludmVyc2EgPT09PT0gLS0+CiAgPHRleHQgeD0iNTcwIiB5PSI1OCIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTMiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjZGMyNjI2IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5JbnZlcnNhbWVudGUgcHJvcG9yY2lvbmFsPC90ZXh0PgogIDx0ZXh0IHg9IjU3MCIgeT0iNzUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjNjQ3NDhiIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj55ID0gayAvIHg8L3RleHQ+CgogIDwhLS0gRWplcyAtLT4KICA8bGluZSB4MT0iNDMwIiB5MT0iMjcwIiB4Mj0iNzIwIiB5Mj0iMjcwIiBzdHJva2U9IiM1NTU1NTUiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPGxpbmUgeDE9IjQzMCIgeTE9IjI3MCIgeDI9IjQzMCIgeTI9Ijk1IiBzdHJva2U9IiM1NTU1NTUiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPHBvbHlnb24gcG9pbnRzPSI3MjAsMjY2IDczMiwyNzAgNzIwLDI3NCIgZmlsbD0iIzU1NTU1NSIvPgogIDxwb2x5Z29uIHBvaW50cz0iNDI2LDk1IDQzMCw4MyA0MzQsOTUiIGZpbGw9IiM1NTU1NTUiLz4KICA8dGV4dCB4PSI3MzUiIHk9IjI3NCIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM1NTU1NTUiPng8L3RleHQ+CiAgPHRleHQgeD0iNDE4IiB5PSI4MiIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM1NTU1NTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPnk8L3RleHQ+CgogIDwhLS0gQ3VydmEgaGlww6lyYm9sYSAoYXByb3hpbWFkYSBjb24gc2VnbWVudG9zKSAtLT4KICA8cG9seWxpbmUgcG9pbnRzPSI0NDAsMTA1IDQ1MCwxMTIgNDYwLDEyMiA0NzUsMTM3IDQ5NSwxNTMgNTIwLDE2OCA1NTAsMTgzIDU4NSwxOTYgNjI1LDIwNyA2NzAsMjE2IDcxMCwyMjIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2RjMjYyNiIgc3Ryb2tlLXdpZHRoPSIyLjUiLz4KCiAgPCEtLSBQdW50b3MgZWplbXBsbyAtLT4KICA8Y2lyY2xlIGN4PSI0NjAiIGN5PSIxMjIiIHI9IjUiIGZpbGw9IiNkYzI2MjYiLz4KICA8Y2lyY2xlIGN4PSI1MjAiIGN5PSIxNjgiIHI9IjUiIGZpbGw9IiNkYzI2MjYiLz4KICA8Y2lyY2xlIGN4PSI2NTAiIGN5PSIyMTIiIHI9IjUiIGZpbGw9IiNkYzI2MjYiLz4KCiAgPCEtLSBMw61uZWFzIGd1w61hIC0tPgogIDxsaW5lIHgxPSI0MzAiIHkxPSIxMjIiIHgyPSI0NjAiIHkyPSIxMjIiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtZGFzaGFycmF5PSI0LDMiLz4KICA8bGluZSB4MT0iNDYwIiB5MT0iMTIyIiB4Mj0iNDYwIiB5Mj0iMjcwIiBzdHJva2U9IiM5NGEzYjgiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWRhc2hhcnJheT0iNCwzIi8+CiAgPGxpbmUgeDE9IjQzMCIgeTE9IjE2OCIgeDI9IjUyMCIgeTI9IjE2OCIgc3Ryb2tlPSIjOTRhM2I4IiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1kYXNoYXJyYXk9IjQsMyIvPgogIDxsaW5lIHgxPSI1MjAiIHkxPSIxNjgiIHgyPSI1MjAiIHkyPSIyNzAiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2UtZGFzaGFycmF5PSI0LDMiLz4KCiAgPHRleHQgeD0iNDI1IiB5PSIxMjYiIGZvbnQtZmFtaWx5PSJBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjNjQ3NDhiIiB0ZXh0LWFuY2hvcj0iZW5kIj554oKBPC90ZXh0PgogIDx0ZXh0IHg9IjQyNSIgeT0iMTcyIiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9ImVuZCI+eeKCgS8yPC90ZXh0PgogIDx0ZXh0IHg9IjQ2MCIgeT0iMjgzIiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+eOKCgTwvdGV4dD4KICA8dGV4dCB4PSI1MjAiIHk9IjI4MyIgZm9udC1mYW1pbHk9IkFyaWFsLCBIZWx2ZXRpY2EsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiM2NDc0OGIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPjJ44oKBPC90ZXh0PgoKICA8IS0tIEV0aXF1ZXRhIC0tPgogIDxyZWN0IHg9IjYxMCIgeT0iMTE1IiB3aWR0aD0iOTUiIGhlaWdodD0iMzAiIHJ4PSI0IiBmaWxsPSIjZmVmMmYyIiBzdHJva2U9IiNkYzI2MjYiIHN0cm9rZS13aWR0aD0iMSIvPgogIDx0ZXh0IHg9IjY1NyIgeT0iMTM1IiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iI2RjMjYyNiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U2kgeMOXMiDihpIgecO3MjwvdGV4dD4KCiAgPCEtLSBFamVtcGxvIGNsw61uaWNvIC0tPgogIDx0ZXh0IHg9IjU3MCIgeT0iMzAwIiBmb250LWZhbWlseT0iQXJpYWwsIEhlbHZldGljYSwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMSIgZmlsbD0iIzY0NzQ4YiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RWouOiBmIMOXIDIg4oaSIM67IMO3IDI8L3RleHQ+Cjwvc3ZnPgo=" /><figcaption class="pie-figura"><em>Figura 4. Izquierda: gráfica de proporcionalidad directa (recta que pasa por el origen). Derecha: gráfica de proporcionalidad inversa (hipérbola).</em></figcaption></figure>
-<blockquote>
-<p><strong>Dónde falla la analogía:</strong> La proporcionalidad supone que la relación es constante en todo el rango. En la realidad, muchos fenómenos físicos son solo aproximadamente proporcionales en un tramo concreto de valores. Fuera de ese tramo, la relación puede ser no lineal.</p>
-</blockquote>
-<hr />
-<h2 id="05-despejar-formulas-el-arte-de-dejar-la-incognita-sola">0.5. Despejar fórmulas: el arte de dejar la incógnita sola</h2>
-<p>A lo largo del curso habrá momentos en los que necesitarás calcular una magnitud a partir de otras. La buena noticia: con tres reglas basta para el 95 % de los casos.</p>
-<h3 id="la-regla-del-balancin">La regla del balancín</h3>
-<p>Una ecuación es como un balancín perfectamente equilibrado: ambos lados pesan lo mismo. Si haces algo a un lado, debes hacer <strong>exactamente lo mismo</strong> al otro para mantener el equilibrio.</p>
 <table>
 <thead>
 <tr>
-<th>Operación en el lado de la incógnita</th>
-<th>Qué haces al otro lado</th>
+<th>Número</th>
+<th>Cómo se mueve la coma</th>
+<th>Notación científica</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Está sumando ($+ a$)</td>
-<td>Restas $a$</td>
+<td>150 000</td>
+<td>5 lugares a la izquierda</td>
+<td><strong>1,5 × 10⁵</strong></td>
 </tr>
 <tr>
-<td>Está restando ($- a$)</td>
-<td>Sumas $a$</td>
+<td>4 500 000</td>
+<td>6 lugares a la izquierda</td>
+<td><strong>4,5 × 10⁶</strong></td>
 </tr>
 <tr>
-<td>Está multiplicando ($\times a$)</td>
-<td>Divides entre $a$</td>
+<td>0,0003</td>
+<td>4 lugares a la derecha</td>
+<td><strong>3 × 10⁻⁴</strong></td>
 </tr>
 <tr>
-<td>Está dividiendo ($\div a$)</td>
-<td>Multiplicas por $a$</td>
+<td>0,00072</td>
+<td>4 lugares a la derecha</td>
+<td><strong>7,2 × 10⁻⁴</strong></td>
 </tr>
 </tbody>
 </table>
-<h3 id="ejemplo-paso-a-paso-con-v-lambda-cdot-f">Ejemplo paso a paso con $v = \lambda \cdot f$</h3>
-<p>Esta es la <strong>ecuación de onda</strong>, que relaciona la velocidad de propagación ($v$), la longitud de onda ($\lambda$) y la frecuencia ($f$).</p>
-<p><strong>Problema:</strong> Un ultrasonido viaja a $v = 1540\ \text{m/s}$ en tejido blando. Si su frecuencia es $f = 5\ \text{MHz}$, ¿cuál es su longitud de onda $\lambda$?</p>
-<ol>
-<li><strong>Fórmula original:</strong> $v = \lambda \cdot f$</li>
-<li><strong>Despejar $\lambda$:</strong> la $f$ está multiplicando en el lado derecho; pasa al otro lado dividiendo:
-$$\lambda = \frac{v}{f}$$</li>
-<li><strong>Sustituir valores:</strong> $f = 5\ \text{MHz} = 5 \times 10^6\ \text{Hz}$
-$$\lambda = \frac{1540\ \text{m/s}}{5 \times 10^6\ \text{Hz}}$$</li>
-<li><strong>Calcular:</strong>
-$$\lambda = 3{,}08 \times 10^{-4}\ \text{m} = \mathbf{0{,}308\ \text{mm}}$$</li>
-</ol>
+<p>Para hacerlo <strong>al revés</strong> (de notación científica a número normal): 2,4 × 10³ = <strong>2 400</strong> y 6 × 10⁻² = <strong>0,06</strong>.</p>
+<h3 id="para-que-sirve-ver-el-orden-de-magnitud">Para qué sirve ver el orden de magnitud</h3>
+<figure><img alt="Regla de tamaños de 10⁻¹⁵ m a 1 m" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgMjg1IiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTUiPjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iMjg1IiBmaWxsPSIjZmZmIi8+PGRlZnM+PG1hcmtlciBpZD0ibWIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMjU2M2ViIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibXIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjZGMyNjI2Ii8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWciIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMTU4MDNkIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWsiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjNTU1NTU1Ii8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibW8iIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjZWE1ODBjIi8+PC9tYXJrZXI+PC9kZWZzPjxsaW5lIHgxPSI0MCIgeTE9IjE1MCIgeDI9IjU2MCIgeTI9IjE1MCIgc3Ryb2tlPSIjNTU1NTU1IiBzdHJva2Utd2lkdGg9IjMiLz48bGluZSB4MT0iNDAuMCIgeTE9IjE0NSIgeDI9IjQwLjAiIHkyPSIxNTUiIHN0cm9rZT0iIzU1NTU1NSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48bGluZSB4MT0iNzIuNSIgeTE9IjE0NSIgeDI9IjcyLjUiIHkyPSIxNTUiIHN0cm9rZT0iIzU1NTU1NSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48bGluZSB4MT0iMTA1LjAiIHkxPSIxNDUiIHgyPSIxMDUuMCIgeTI9IjE1NSIgc3Ryb2tlPSIjNTU1NTU1IiBzdHJva2Utd2lkdGg9IjEuNSIvPjxsaW5lIHgxPSIxMzcuNSIgeTE9IjE0NSIgeDI9IjEzNy41IiB5Mj0iMTU1IiBzdHJva2U9IiM1NTU1NTUiIHN0cm9rZS13aWR0aD0iMS41Ii8+PGxpbmUgeDE9IjE3MC4wIiB5MT0iMTQ1IiB4Mj0iMTcwLjAiIHkyPSIxNTUiIHN0cm9rZT0iIzU1NTU1NSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48bGluZSB4MT0iMjAyLjUiIHkxPSIxNDUiIHgyPSIyMDIuNSIgeTI9IjE1NSIgc3Ryb2tlPSIjNTU1NTU1IiBzdHJva2Utd2lkdGg9IjEuNSIvPjxsaW5lIHgxPSIyMzUuMCIgeTE9IjE0NSIgeDI9IjIzNS4wIiB5Mj0iMTU1IiBzdHJva2U9IiM1NTU1NTUiIHN0cm9rZS13aWR0aD0iMS41Ii8+PGxpbmUgeDE9IjI2Ny41IiB5MT0iMTQ1IiB4Mj0iMjY3LjUiIHkyPSIxNTUiIHN0cm9rZT0iIzU1NTU1NSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48bGluZSB4MT0iMzAwLjAiIHkxPSIxNDUiIHgyPSIzMDAuMCIgeTI9IjE1NSIgc3Ryb2tlPSIjNTU1NTU1IiBzdHJva2Utd2lkdGg9IjEuNSIvPjxsaW5lIHgxPSIzMzIuNSIgeTE9IjE0NSIgeDI9IjMzMi41IiB5Mj0iMTU1IiBzdHJva2U9IiM1NTU1NTUiIHN0cm9rZS13aWR0aD0iMS41Ii8+PGxpbmUgeDE9IjM2NS4wIiB5MT0iMTQ1IiB4Mj0iMzY1LjAiIHkyPSIxNTUiIHN0cm9rZT0iIzU1NTU1NSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48bGluZSB4MT0iMzk3LjUiIHkxPSIxNDUiIHgyPSIzOTcuNSIgeTI9IjE1NSIgc3Ryb2tlPSIjNTU1NTU1IiBzdHJva2Utd2lkdGg9IjEuNSIvPjxsaW5lIHgxPSI0MzAuMCIgeTE9IjE0NSIgeDI9IjQzMC4wIiB5Mj0iMTU1IiBzdHJva2U9IiM1NTU1NTUiIHN0cm9rZS13aWR0aD0iMS41Ii8+PGxpbmUgeDE9IjQ2Mi41IiB5MT0iMTQ1IiB4Mj0iNDYyLjUiIHkyPSIxNTUiIHN0cm9rZT0iIzU1NTU1NSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48bGluZSB4MT0iNDk1LjAiIHkxPSIxNDUiIHgyPSI0OTUuMCIgeTI9IjE1NSIgc3Ryb2tlPSIjNTU1NTU1IiBzdHJva2Utd2lkdGg9IjEuNSIvPjxsaW5lIHgxPSI1MjcuNSIgeTE9IjE0NSIgeDI9IjUyNy41IiB5Mj0iMTU1IiBzdHJva2U9IiM1NTU1NTUiIHN0cm9rZS13aWR0aD0iMS41Ii8+PGxpbmUgeDE9IjU2MC4wIiB5MT0iMTQ1IiB4Mj0iNTYwLjAiIHkyPSIxNTUiIHN0cm9rZT0iIzU1NTU1NSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48dGV4dCB4PSI0MC4wIiB5PSIxNzIiIGZpbGw9IiM1NTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTIiPjEw4oG7wrnigbUgbTwvdGV4dD48dGV4dCB4PSIyMDIuNSIgeT0iMTcyIiBmaWxsPSIjNTU1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEyIj4xMOKBu8K54oGwIG08L3RleHQ+PHRleHQgeD0iMzY1LjAiIHk9IjE3MiIgZmlsbD0iIzU1NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMiI+MTDigbvigbUgbTwvdGV4dD48dGV4dCB4PSI1MjcuNSIgeT0iMTcyIiBmaWxsPSIjNTU1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEyIj4xIG08L3RleHQ+PGNpcmNsZSBjeD0iNDAuMCIgY3k9IjE1MCIgcj0iNiIgZmlsbD0iI2RjMjYyNiIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjEiLz48bGluZSB4MT0iNDAuMCIgeTE9IjE0MyIgeDI9IjQwLjAiIHkyPSIxMTkiIHN0cm9rZT0iI2RjMjYyNiIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48dGV4dCB4PSIxNC4wIiB5PSI5OSIgZmlsbD0iIzIyMiIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iYm9sZCI+bsO6Y2xlbzwvdGV4dD48dGV4dCB4PSIxNC4wIiB5PSIxMTUiIGZpbGw9IiNkYzI2MjYiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9ImJvbGQiPuKJiCAxMOKBu8K54oG1IG08L3RleHQ+PGNpcmNsZSBjeD0iMjAyLjUiIGN5PSIxNTAiIHI9IjYiIGZpbGw9IiNkYzI2MjYiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjIwMi41IiB5MT0iMTQzIiB4Mj0iMjAyLjUiIHkyPSIxMTkiIHN0cm9rZT0iI2RjMjYyNiIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48dGV4dCB4PSIyMDIuNSIgeT0iOTkiIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTMiIGZvbnQtd2VpZ2h0PSJib2xkIj7DoXRvbW88L3RleHQ+PHRleHQgeD0iMjAyLjUiIHk9IjExNSIgZmlsbD0iI2RjMjYyNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9ImJvbGQiPuKJiCAxMOKBu8K54oGwIG08L3RleHQ+PGNpcmNsZSBjeD0iMzIyLjciIGN5PSIxNTAiIHI9IjYiIGZpbGw9IiMyNTYzZWIiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjMyMi43IiB5MT0iMTU3IiB4Mj0iMzIyLjciIHkyPSIxOTIiIHN0cm9rZT0iIzI1NjNlYiIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48dGV4dCB4PSIzMjIuNyIgeT0iMjA4IiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iYm9sZCI+bHV6IHZpc2libGUgKM67KTwvdGV4dD48dGV4dCB4PSIzMjIuNyIgeT0iMjI0IiBmaWxsPSIjMjU2M2ViIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iYm9sZCI+4omIIDUgw5cgMTDigbvigbcgbTwvdGV4dD48Y2lyY2xlIGN4PSIzNjAuMCIgY3k9IjE1MCIgcj0iNiIgZmlsbD0iIzE1ODAzZCIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjEiLz48bGluZSB4MT0iMzYwLjAiIHkxPSIxNDMiIHgyPSIzNjAuMCIgeTI9IjExOSIgc3Ryb2tlPSIjMTU4MDNkIiBzdHJva2Utd2lkdGg9IjEuNSIvPjx0ZXh0IHg9IjM2MC4wIiB5PSI5OSIgZmlsbD0iIzIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9ImJvbGQiPmdsw7NidWxvIHJvam88L3RleHQ+PHRleHQgeD0iMzYwLjAiIHk9IjExNSIgZmlsbD0iIzE1ODAzZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9ImJvbGQiPuKJiCA3IMOXIDEw4oG74oG2IG08L3RleHQ+PGNpcmNsZSBjeD0iMzk3LjUiIGN5PSIxNTAiIHI9IjYiIGZpbGw9IiMxNTgwM2QiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjM5Ny41IiB5MT0iMTU3IiB4Mj0iMzk3LjUiIHkyPSIyMzYiIHN0cm9rZT0iIzE1ODAzZCIgc3Ryb2tlLXdpZHRoPSIxLjUiLz48dGV4dCB4PSIzOTcuNSIgeT0iMjUyIiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iYm9sZCI+Z3Jvc29yIGRlIHVuIHBlbG88L3RleHQ+PHRleHQgeD0iMzk3LjUiIHk9IjI2OCIgZmlsbD0iIzE1ODAzZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9ImJvbGQiPuKJiCAxMOKBu+KBtCBtPC90ZXh0PjxjaXJjbGUgY3g9IjUzNS44IiBjeT0iMTUwIiByPSI2IiBmaWxsPSIjMTU4MDNkIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMSIvPjxsaW5lIHgxPSI1MzUuOCIgeTE9IjE0MyIgeDI9IjUzNS44IiB5Mj0iMTE5IiBzdHJva2U9IiMxNTgwM2QiIHN0cm9rZS13aWR0aD0iMS41Ii8+PHRleHQgeD0iNTM1LjgiIHk9Ijk5IiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iYm9sZCI+dW5hIHBlcnNvbmE8L3RleHQ+PHRleHQgeD0iNTM1LjgiIHk9IjExNSIgZmlsbD0iIzE1ODAzZCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMyIgZm9udC13ZWlnaHQ9ImJvbGQiPuKJiCAyIG08L3RleHQ+PHRleHQgeD0iMjAyLjUiIHk9IjgwIiBmaWxsPSIjZWE1ODBjIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEzIiBmb250LXdlaWdodD0iYm9sZCI+cmF5b3MgWDogzrsg4omIIDEw4oG7wrnigbAgbTwvdGV4dD48dGV4dCB4PSIzMTAiIHk9IjIyIiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCI+Q2FkYSBtYXJjYSB2YWxlIDEwIHZlY2VzIG3DoXMgcXVlIGxhIGFudGVyaW9yPC90ZXh0Pjwvc3ZnPg==" /><figcaption class="pie-figura"><em>Figura 2. Una regla de tamaños, de 10⁻¹⁵ m a 1 m. Cada marca vale 10 veces más que la anterior. Los rayos X tienen una longitud de onda parecida al tamaño de un átomo.</em></figcaption></figure>
+<p>Esto explica muchas cosas: un átomo es <strong>cien mil veces más grande que su núcleo</strong>, y una persona es <strong>unas 20 000 millones de veces más grande que un átomo</strong>.</p>
+<h3 id="multiplicar-y-dividir-con-potencias-de-10">Multiplicar y dividir con potencias de 10</h3>
+<p>Solo hay dos reglas:</p>
+<ul>
+<li><strong>Multiplicar:</strong> se <strong>suman</strong> los exponentes.</li>
+<li><strong>Dividir:</strong> se <strong>restan</strong> los exponentes.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Operación</th>
+<th>Cómo se hace</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(2 × 10³) · (3 × 10⁴)</td>
+<td>2 · 3 = 6 y 3 + 4 = 7</td>
+<td><strong>6 × 10⁷</strong></td>
+</tr>
+<tr>
+<td>(6 × 10⁸) / (2 × 10³)</td>
+<td>6 / 2 = 3 y 8 − 3 = 5</td>
+<td><strong>3 × 10⁵</strong></td>
+</tr>
+<tr>
+<td>(3 × 10⁸) / (1 × 10⁸)</td>
+<td>3 / 1 = 3 y 8 − 8 = 0</td>
+<td><strong>3 × 10⁰ = 3</strong></td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p><strong>En la práctica profesional:</strong> Una longitud de onda de 0,3 mm determina la resolución mínima que puede alcanzar ese transductor ecográfico —no puede «ver» detalles menores que su propia longitud de onda. Los transductores de alta frecuencia (10–15 MHz) tienen longitudes de onda más cortas y mayor resolución, pero menor penetración.</p>
-<p><strong>Idea clave:</strong> Para despejar, aplica la operación inversa al término que quieres aislar, y hazlo a ambos lados de la ecuación al mismo tiempo.</p>
+<p><strong>Recuerda:</strong> cualquier número elevado a 0 vale 1. Así, 10⁰ = 1.</p>
+</blockquote>
+<p>Si el resultado no tiene una sola cifra delante de la coma, se ajusta. Ejemplo: (3 × 10⁸) / (5 × 10¹⁴) = 0,6 × 10⁻⁶ = <strong>6 × 10⁻⁷</strong> (moviendo la coma un lugar a la derecha, el exponente baja en uno). Es la cuenta de la longitud de onda de la luz verde que verás en el Módulo 5.</p>
+<h3 id="ejemplo-resuelto-cuanto-tarda-la-luz-del-sol-en-llegar-a-la-tierra">Ejemplo resuelto: ¿cuánto tarda la luz del Sol en llegar a la Tierra?</h3>
+<ul>
+<li>Distancia: 1,5 × 10¹¹ m. Velocidad: 3 × 10⁸ m/s.</li>
+<li>Tiempo = distancia / velocidad = (1,5 × 10¹¹) / (3 × 10⁸).</li>
+<li>1,5 / 3 = 0,5 y 11 − 8 = 3, así que el tiempo es 0,5 × 10³ = <strong>500 s</strong>, es decir, unos <strong>8 minutos</strong>.</li>
+</ul>
+<blockquote>
+<p><strong>En la calculadora:</strong> para escribir 3 × 10⁸, pulsa la tecla <strong>EXP</strong> (o <strong>×10ˣ</strong>): <strong>3 · EXP · 8</strong>. Si tu calculadora no la tiene, puedes escribir 3 × 10 ^ 8.</p>
+</blockquote>
+<hr />
+<h2 id="04-proporcionalidad-la-regla-del-si-tu-subes-yo-bajo">0.4. Proporcionalidad: la regla del «si tú subes, yo bajo»</h2>
+<p>En el libro encontrarás leyes y fórmulas muy sencillas. Solo hay <strong>dos tipos de relaciones</strong>.</p>
+<figure><img alt="Proporcionalidad directa e inversa" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgMzIwIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTUiPjxyZWN0IHdpZHRoPSI2NDAiIGhlaWdodD0iMzIwIiBmaWxsPSIjZmZmIi8+PGRlZnM+PG1hcmtlciBpZD0ibWIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMjU2M2ViIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibXIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjZGMyNjI2Ii8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWciIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMTU4MDNkIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWsiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjNTU1NTU1Ii8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibW8iIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjZWE1ODBjIi8+PC9tYXJrZXI+PC9kZWZzPjx0ZXh0IHg9IjE3MCIgeT0iMTYiIGZpbGw9IiMyNTYzZWIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSJib2xkIj5EaXJlY3RhbWVudGUgcHJvcG9yY2lvbmFsPC90ZXh0Pjx0ZXh0IHg9IjQ4MCIgeT0iMTYiIGZpbGw9IiNkYzI2MjYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTYiIGZvbnQtd2VpZ2h0PSJib2xkIj5JbnZlcnNhbWVudGUgcHJvcG9yY2lvbmFsPC90ZXh0PjxsaW5lIHgxPSI2MCIgeTE9IjIzMCIgeDI9IjI5MCIgeTI9IjIzMCIgc3Ryb2tlPSIjNTU1NTU1IiBzdHJva2Utd2lkdGg9IjIuNSIgbWFya2VyLWVuZD0idXJsKCNtaykiLz48bGluZSB4MT0iNjAiIHkxPSIyMzAiIHgyPSI2MCIgeTI9IjU1IiBzdHJva2U9IiM1NTU1NTUiIHN0cm9rZS13aWR0aD0iMi41IiBtYXJrZXItZW5kPSJ1cmwoI21rKSIvPjxsaW5lIHgxPSI2MCIgeTE9IjIzMCIgeDI9IjI3OS42IiB5Mj0iNTkuNjAwMDAwMDAwMDAwMDIiIHN0cm9rZT0iIzI1NjNlYiIgc3Ryb2tlLXdpZHRoPSIzLjUiLz48dGV4dCB4PSI2MCIgeT0iMzYiIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1zaXplPSIxMiIgZm9udC13ZWlnaHQ9ImJvbGQiPmVuZXJnw61hIG3DoXhpbWEgKGtlVik8L3RleHQ+PHRleHQgeD0iMTc1IiB5PSIyNjYiIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSJib2xkIj50ZW5zacOzbiBkZWwgdHVibyAoa1YpPC90ZXh0PjxjaXJjbGUgY3g9IjEzMy4yIiBjeT0iMTczLjIiIHI9IjYiIGZpbGw9IiMyNTYzZWIiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iMTMzLjIiIHk9IjI0NyIgZmlsbD0iIzIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMiI+NDA8L3RleHQ+PHRleHQgeD0iMTQyLjIiIHk9IjE4OS4yIiBmaWxsPSIjMjU2M2ViIiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSJib2xkIj4oNDA7IDQwKTwvdGV4dD48Y2lyY2xlIGN4PSIyMDYuNCIgY3k9IjExNi40IiByPSI2IiBmaWxsPSIjMjU2M2ViIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjIwNi40IiB5PSIyNDciIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTIiPjgwPC90ZXh0Pjx0ZXh0IHg9IjIxNS40IiB5PSIxMzIuNCIgZmlsbD0iIzI1NjNlYiIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXNpemU9IjEyIiBmb250LXdlaWdodD0iYm9sZCI+KDgwOyA4MCk8L3RleHQ+PGNpcmNsZSBjeD0iMjc5LjYiIGN5PSI1OS42IiByPSI2IiBmaWxsPSIjMjU2M2ViIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjI3OS42IiB5PSIyNDciIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTIiPjEyMDwvdGV4dD48dGV4dCB4PSIyODguNiIgeT0iNzUuNiIgZmlsbD0iIzI1NjNlYiIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXNpemU9IjEyIiBmb250LXdlaWdodD0iYm9sZCI+KDEyMDsgMTIwKTwvdGV4dD48dGV4dCB4PSIxNzAiIHk9IjI4OCIgZmlsbD0iIzIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxMyI+U2kgc2UgZHVwbGljYSBlbCBrViAoNDAg4oaSIDgwKSw8L3RleHQ+PHRleHQgeD0iMTcwIiB5PSIzMDUiIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTMiPnNlIGR1cGxpY2EgbGEgZW5lcmfDrWEgKDQwIOKGkiA4MCkuPC90ZXh0PjxsaW5lIHgxPSIzODAiIHkxPSIyMzAiIHgyPSI2MTAiIHkyPSIyMzAiIHN0cm9rZT0iIzU1NTU1NSIgc3Ryb2tlLXdpZHRoPSIyLjUiIG1hcmtlci1lbmQ9InVybCgjbWspIi8+PGxpbmUgeDE9IjM4MCIgeTE9IjIzMCIgeDI9IjM4MCIgeTI9IjU1IiBzdHJva2U9IiM1NTU1NTUiIHN0cm9rZS13aWR0aD0iMi41IiBtYXJrZXItZW5kPSJ1cmwoI21rKSIvPjxwb2x5bGluZSBwb2ludHM9IjQzMi41LDYwLjAgNDM2LjAsNzAuNiA0MzkuNSw4MC4wIDQ0My4wLDg4LjMgNDQ2LjUsOTUuOCA0NTAuMCwxMDIuNSA0NTMuNSwxMDguNiA0NTcuMCwxMTQuMSA0NjAuNSwxMTkuMSA0NjQuMCwxMjMuOCA0NjcuNSwxMjguMCA0NzEuMCwxMzEuOSA0NzQuNSwxMzUuNiA0NzguMCwxMzguOSA0ODEuNSwxNDIuMSA0ODUuMCwxNDUuMCA0ODguNSwxNDcuNyA0OTIuMCwxNTAuMyA0OTUuNSwxNTIuNyA0OTkuMCwxNTUuMCA1MDIuNSwxNTcuMSA1MDYuMCwxNTkuMiA1MDkuNSwxNjEuMSA1MTMuMCwxNjIuOSA1MTYuNSwxNjQuNiA1MjAuMCwxNjYuMiA1MjMuNSwxNjcuOCA1MjcuMCwxNjkuMyA1MzAuNSwxNzAuNyA1MzQuMCwxNzIuMCA1MzcuNSwxNzMuMyA1NDEuMCwxNzQuNiA1NDQuNSwxNzUuNyA1NDguMCwxNzYuOSA1NTEuNSwxNzguMCA1NTUuMCwxNzkuMCA1NTguNSwxODAuMCA1NjIuMCwxODEuMCA1NjUuNSwxODEuOSA1NjkuMCwxODIuOCA1NzIuNSwxODMuNiA1NzYuMCwxODQuNSA1NzkuNSwxODUuMyA1ODMuMCwxODYuMCA1ODYuNSwxODYuOCA1OTAuMCwxODcuNSA1OTMuNSwxODguMiA1OTcuMCwxODguOSA2MDAuNSwxODkuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZGMyNjI2IiBzdHJva2Utd2lkdGg9IjMuNSIvPjx0ZXh0IHg9IjM4MCIgeT0iMzYiIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1zaXplPSIxMiIgZm9udC13ZWlnaHQ9ImJvbGQiPnRpZW1wbyBwYXJhIDEyMCBrbSAoaCk8L3RleHQ+PHRleHQgeD0iNDk1IiB5PSIyNjYiIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTIiIGZvbnQtd2VpZ2h0PSJib2xkIj52ZWxvY2lkYWQgKGttL2gpPC90ZXh0PjxjaXJjbGUgY3g9IjQzMi41IiBjeT0iNjAuMCIgcj0iNiIgZmlsbD0iI2RjMjYyNiIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjEiLz48dGV4dCB4PSI0MzIuNSIgeT0iMjQ3IiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEyIj4zMDwvdGV4dD48dGV4dCB4PSI0NDEuNSIgeT0iNTIuMCIgZmlsbD0iI2RjMjYyNiIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXNpemU9IjEyIiBmb250LXdlaWdodD0iYm9sZCI+KDMwOyA0KTwvdGV4dD48Y2lyY2xlIGN4PSI0ODUuMCIgY3k9IjE0NS4wIiByPSI2IiBmaWxsPSIjZGMyNjI2IiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjQ4NS4wIiB5PSIyNDciIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTIiPjYwPC90ZXh0Pjx0ZXh0IHg9IjQ5NC4wIiB5PSIxMzcuMCIgZmlsbD0iI2RjMjYyNiIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXNpemU9IjEyIiBmb250LXdlaWdodD0iYm9sZCI+KDYwOyAyKTwvdGV4dD48Y2lyY2xlIGN4PSI1OTAuMCIgY3k9IjE4Ny41IiByPSI2IiBmaWxsPSIjZGMyNjI2IiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjU5MC4wIiB5PSIyNDciIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTIiPjEyMDwvdGV4dD48dGV4dCB4PSI1OTkuMCIgeT0iMTc5LjUiIGZpbGw9IiNkYzI2MjYiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1zaXplPSIxMiIgZm9udC13ZWlnaHQ9ImJvbGQiPigxMjA7IDEpPC90ZXh0Pjx0ZXh0IHg9IjQ4NSIgeT0iMjg4IiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEzIj5TaSBzZSBkdXBsaWNhIGxhIHZlbG9jaWRhZCAoMzAg4oaSIDYwKSw8L3RleHQ+PHRleHQgeD0iNDg1IiB5PSIzMDUiIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTMiPmVsIHRpZW1wbyBzZSByZWR1Y2UgYSBsYSBtaXRhZCAoNCDihpIgMikuPC90ZXh0Pjwvc3ZnPg==" /><figcaption class="pie-figura"><em>Figura 3. A la izquierda, una relación directamente proporcional: una recta. A la derecha, una relación inversamente proporcional: una curva que baja.</em></figcaption></figure>
+<h3 id="relacion-directamente-proporcional-van-de-la-mano">Relación directamente proporcional: van de la mano</h3>
+<p>Si una cantidad <strong>se duplica</strong>, la otra <strong>también se duplica</strong>. Si se triplica, la otra se triplica.</p>
+<ul>
+<li><strong>Cotidiano:</strong> el precio de las manzanas y los kilos que compras. Si 2 kg cuestan 3 €, entonces 4 kg cuestan 6 €.</li>
+<li><strong>Físico:</strong> a <strong>más kilovoltaje</strong> del tubo de rayos X, <strong>más energía</strong> tienen los fotones. Con un tubo de 80 kV, los fotones más energéticos llegan a 80 keV; con 120 kV, a 120 keV.</li>
+</ul>
+<h3 id="relacion-inversamente-proporcional-enemigas-intimas">Relación inversamente proporcional: enemigas íntimas</h3>
+<p>Si una cantidad <strong>se duplica</strong>, la otra <strong>se reduce a la mitad</strong>.</p>
+<ul>
+<li><strong>Cotidiano:</strong> a más velocidad, menos tiempo para hacer el mismo viaje. Para recorrer 120 km: a 60 km/h tardas 2 horas; a 120 km/h, solo 1 hora.</li>
+<li><strong>Físico:</strong> a <strong>más frecuencia</strong> tiene una onda, <strong>menos longitud de onda</strong> tiene. Con 100 MHz, la longitud de onda es de 3 m; con 200 MHz, de 1,5 m.</li>
+</ul>
+<blockquote>
+<p><strong>Cuidado con una trampa:</strong> que una cantidad suba cuando la otra sube <strong>no basta</strong> para que sean directamente proporcionales. Por ejemplo, «a más horas de estudio, más nota» es cierto, pero <strong>si estudias el doble no sacas el doble de nota</strong>. Para que sea proporcional, <strong>el doble tiene que dar el doble</strong>.</p>
+</blockquote>
+<h3 id="como-lo-reconozco">¿Cómo lo reconozco?</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Directa</strong></th>
+<th><strong>Inversa</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Si una se duplica…</strong></td>
+<td>La otra se duplica</td>
+<td>La otra se reduce a la mitad</td>
+</tr>
+<tr>
+<td><strong>La gráfica es…</strong></td>
+<td>Una recta que sale del origen</td>
+<td>Una curva que baja</td>
+</tr>
+<tr>
+<td><strong>Se calcula con…</strong></td>
+<td>Una división constante (precio por kilo)</td>
+<td>Una multiplicación constante (distancia = velocidad · tiempo)</td>
+</tr>
+<tr>
+<td><strong>Ejemplo</strong></td>
+<td>kV y energía máxima de los fotones</td>
+<td>Frecuencia y longitud de onda</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Para ir más allá: la ley del cuadrado inverso.</strong> En protección radiológica es clave: si te alejas de una fuente de radiación <strong>al doble de distancia</strong>, la radiación que recibes no baja a la mitad, sino a <strong>la cuarta parte</strong>. Y al triple de distancia, a la novena parte. Por eso, <strong>alejarse</strong> es tan eficaz.</p>
+</blockquote>
+<hr />
+<h2 id="05-despejar-formulas-dejar-la-incognita-sola">0.5. Despejar fórmulas: dejar la incógnita sola</h2>
+<p>Habrá momentos (pocos) en los que tendrás que calcular algo, como la longitud de una onda. Para eso hay que <strong>despejar</strong> la fórmula.</p>
+<p><strong>Analogía:</strong> una <strong>balanza</strong>. Si quitas algo de un platillo, tienes que quitar lo mismo del otro para que siga equilibrada.</p>
+<p>La regla de oro es la de la balanza: <strong>para pasar algo al otro lado del signo igual (=), tiene que pasar haciendo lo contrario</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Si está…</th>
+<th>Pasa al otro lado…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sumando</strong> (+)</td>
+<td><strong>Restando</strong> (−)</td>
+</tr>
+<tr>
+<td><strong>Restando</strong> (−)</td>
+<td><strong>Sumando</strong> (+)</td>
+</tr>
+<tr>
+<td><strong>Multiplicando</strong> (·)</td>
+<td><strong>Dividiendo</strong> (/)</td>
+</tr>
+<tr>
+<td><strong>Dividiendo</strong> (/)</td>
+<td><strong>Multiplicando</strong> (·)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Dónde falla la analogía:</strong> en una balanza real, quitas peso de verdad. En una fórmula, no «quitas» nada: haces la <strong>misma operación en los dos lados</strong> para que la igualdad se mantenga.</p>
+</blockquote>
+<h3 id="ejemplo-practico-la-formula-de-las-ondas">Ejemplo práctico: la fórmula de las ondas</h3>
+<p>Sabemos que <strong>v = λ · f</strong> (velocidad = longitud de onda × frecuencia). Si queremos saber la longitud de onda (λ), la frecuencia (f) que la está multiplicando pasa al otro lado <strong>dividiendo</strong>:</p>
+<blockquote>
+<p><strong>λ = v / f</strong></p>
+</blockquote>
+<figure><img alt="Triángulo de la fórmula v = λ · f" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NDAgMjg1IiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTUiPjxyZWN0IHdpZHRoPSI2NDAiIGhlaWdodD0iMjg1IiBmaWxsPSIjZmZmIi8+PGRlZnM+PG1hcmtlciBpZD0ibWIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMjU2M2ViIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibXIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjZGMyNjI2Ii8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWciIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMTU4MDNkIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWsiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjNTU1NTU1Ii8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibW8iIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjZWE1ODBjIi8+PC9tYXJrZXI+PC9kZWZzPjxwb2x5Z29uIHBvaW50cz0iMTcwLDQwIDQwLDIzMCAzMDAsMjMwIiBmaWxsPSIjZWZmNmZmIiBzdHJva2U9IiMyNTYzZWIiIHN0cm9rZS13aWR0aD0iMyIvPjxsaW5lIHgxPSIxMDUiIHkxPSIxMzUiIHgyPSIyMzUiIHkyPSIxMzUiIHN0cm9rZT0iIzI1NjNlYiIgc3Ryb2tlLXdpZHRoPSIzIi8+PGxpbmUgeDE9IjE3MCIgeTE9IjEzNSIgeDI9IjE3MCIgeTI9IjIzMCIgc3Ryb2tlPSIjMjU2M2ViIiBzdHJva2Utd2lkdGg9IjMiLz48dGV4dCB4PSIxNzAiIHk9IjExMiIgZmlsbD0iIzI1NjNlYiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIzNCIgZm9udC13ZWlnaHQ9ImJvbGQiPnY8L3RleHQ+PHRleHQgeD0iMTEyIiB5PSIyMDUiIGZpbGw9IiNlYTU4MGMiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMzQiIGZvbnQtd2VpZ2h0PSJib2xkIj7OuzwvdGV4dD48dGV4dCB4PSIyMjgiIHk9IjIwNSIgZmlsbD0iI2RjMjYyNiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIzNCIgZm9udC13ZWlnaHQ9ImJvbGQiPmY8L3RleHQ+PHRleHQgeD0iMTcwIiB5PSIyMiIgZmlsbD0iIzIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9ImJvbGQiPnYgPSDOuyDCtyBmPC90ZXh0Pjx0ZXh0IHg9IjM0MCIgeT0iNjAiIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9ImJvbGQiPlRydWNvOiB0YXBhIGNvbiBlbCBkZWRvPC90ZXh0Pjx0ZXh0IHg9IjM0MCIgeT0iODAiIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1zaXplPSIxNiIgZm9udC13ZWlnaHQ9ImJvbGQiPmxhIGxldHJhIHF1ZSBxdWllcmVzIGNhbGN1bGFyPC90ZXh0Pjx0ZXh0IHg9IjM0MCIgeT0iMTIwIiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtc2l6ZT0iMTUiPlRhcGFzIHY6ICAgcXVlZGEgzrsgwrcgZjwvdGV4dD48dGV4dCB4PSIzNDAiIHk9IjEyNiIgZmlsbD0iIzIyMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1zaXplPSIxNSI+PC90ZXh0Pjx0ZXh0IHg9IjM0MCIgeT0iMTUwIiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtc2l6ZT0iMTQiPuKGkiAgdiA9IM67IMK3IGYgIChzZSBtdWx0aXBsaWNhbik8L3RleHQ+PHRleHQgeD0iMzQwIiB5PSIxOTAiIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1zaXplPSIxNSI+VGFwYXMgzrs6ICAgcXVlZGEgdiBzb2JyZSBmPC90ZXh0Pjx0ZXh0IHg9IjM0MCIgeT0iMjEwIiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtc2l6ZT0iMTQiPuKGkiAgzrsgPSB2IC8gZjwvdGV4dD48dGV4dCB4PSIzNDAiIHk9IjI0NSIgZmlsbD0iIzIyMiIgdGV4dC1hbmNob3I9InN0YXJ0IiBmb250LXNpemU9IjE1Ij5UYXBhcyBmOiAgIHF1ZWRhIHYgc29icmUgzrs8L3RleHQ+PHRleHQgeD0iMzQwIiB5PSIyNjUiIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1zaXplPSIxNCI+4oaSICBmID0gdiAvIM67PC90ZXh0Pjwvc3ZnPg==" /><figcaption class="pie-figura"><em>Figura 4. El triángulo de la fórmula v = λ · f. Tapa la letra que buscas y lo que queda te dice cómo calcularla.</em></figcaption></figure>
+<h3 id="receta-para-resolver-un-problema">Receta para resolver un problema</h3>
+<ol>
+<li><strong>Escribe la fórmula.</strong></li>
+<li><strong>Despeja</strong> la incógnita (la letra que buscas).</li>
+<li><strong>Sustituye</strong> los números, <strong>con sus unidades</strong>.</li>
+<li><strong>Calcula.</strong></li>
+<li><strong>Comprueba</strong> que el resultado tiene sentido y que la <strong>unidad</strong> es la correcta.</li>
+</ol>
+<h3 id="ejemplos-resueltos_1">Ejemplos resueltos</h3>
+<h4 id="ejemplo-1-la-longitud-de-onda-de-un-sonido">Ejemplo 1: la longitud de onda de un sonido</h4>
+<p><strong>Un sonido de 1 000 Hz viaja a 340 m/s. ¿Qué longitud de onda tiene?</strong></p>
+<ol>
+<li>Fórmula: v = λ · f.</li>
+<li>Despejamos: <strong>λ = v / f</strong>.</li>
+<li>Sustituimos: λ = 340 / 1 000.</li>
+<li>Calculamos: λ = <strong>0,34 m</strong>.</li>
+</ol>
+<h4 id="ejemplo-2-la-frecuencia-de-la-luz-verde">Ejemplo 2: la frecuencia de la luz verde</h4>
+<p><strong>La luz verde tiene una longitud de onda de 6 × 10⁻⁷ m. ¿Cuál es su frecuencia?</strong> (La velocidad de la luz es 3 × 10⁸ m/s.)</p>
+<ol>
+<li>Despejamos: <strong>f = v / λ</strong>.</li>
+<li>Sustituimos: f = (3 × 10⁸) / (6 × 10⁻⁷).</li>
+<li>3 / 6 = 0,5 y 8 − (−7) = 15, es decir, 0,5 × 10¹⁵ = <strong>5 × 10¹⁴ Hz</strong>.</li>
+</ol>
+<h4 id="ejemplo-3-a-que-distancia-ha-caido-el-rayo">Ejemplo 3: ¿a qué distancia ha caído el rayo?</h4>
+<p>Después de ver un relámpago, el trueno tarda <strong>3 segundos</strong> en llegar. El sonido viaja a 340 m/s. <strong>¿A qué distancia ha caído?</strong></p>
+<ol>
+<li>Fórmula: distancia = velocidad · tiempo.</li>
+<li>Sustituimos: d = 340 · 3 = <strong>1 020 m</strong> (algo más de 1 km).</li>
+</ol>
+<p>(La luz llega casi al instante, así que su tiempo no cuenta.)</p>
+<h4 id="comprobar-las-unidades">Comprobar las unidades</h4>
+<p>Las <strong>unidades también se despejan</strong>. En el ejemplo 1: λ = v / f → (m/s) / (1/s) = <strong>m</strong>. Como el hercio es 1/s, la unidad sale en metros, que es lo que esperábamos. Si te sale otra unidad, algo has hecho mal.</p>
+<hr />
+<h2 id="06-fracciones-porcentajes-y-potencias-sencillas">0.6. Fracciones, porcentajes y potencias sencillas</h2>
+<p>Cuando llegues a la <strong>radiactividad</strong> (Módulo 6) te encontrarás con «la mitad de la mitad». Aquí tienes lo necesario.</p>
+<h3 id="fracciones-y-porcentajes">Fracciones y porcentajes</h3>
+<table>
+<thead>
+<tr>
+<th>Fracción</th>
+<th>Decimal</th>
+<th>Porcentaje</th>
+<th>En palabras</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1/2</td>
+<td>0,5</td>
+<td><strong>50 %</strong></td>
+<td>la mitad</td>
+</tr>
+<tr>
+<td>1/4</td>
+<td>0,25</td>
+<td><strong>25 %</strong></td>
+<td>la cuarta parte</td>
+</tr>
+<tr>
+<td>1/8</td>
+<td>0,125</td>
+<td><strong>12,5 %</strong></td>
+<td>la octava parte</td>
+</tr>
+<tr>
+<td>1/10</td>
+<td>0,1</td>
+<td><strong>10 %</strong></td>
+<td>la décima parte</td>
+</tr>
+<tr>
+<td>3/4</td>
+<td>0,75</td>
+<td><strong>75 %</strong></td>
+<td>tres cuartos</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Calcular un porcentaje:</strong> el 25 % de 80 es 80 × 0,25 = <strong>20</strong> (o también 80 / 4).</p>
+<h3 id="potencias-multiplicar-un-numero-por-si-mismo">Potencias: multiplicar un número por sí mismo</h3>
+<p><strong>Elevar a n</strong> significa multiplicar el número por sí mismo <strong>n veces</strong>:</p>
+<ul>
+<li>2³ = 2 × 2 × 2 = <strong>8</strong>.</li>
+<li>(1/2)³ = 1/2 × 1/2 × 1/2 = <strong>1/8</strong>.</li>
+</ul>
+<p>Así, «la mitad de la mitad de la mitad» es (1/2)³ = 1/8 = 12,5 %.</p>
+<hr />
+<h2 id="07-como-leer-una-grafica">0.7. Cómo leer una gráfica</h2>
+<p>Las gráficas resumen mucha información en un dibujo. Hay que fijarse en cuatro cosas.</p>
+<figure><img alt="Temperatura de un paciente a lo largo de 12 horas" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgMzIwIiBmb250LWZhbWlseT0iQXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTUiPjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iMzIwIiBmaWxsPSIjZmZmIi8+PGRlZnM+PG1hcmtlciBpZD0ibWIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMjU2M2ViIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibXIiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjZGMyNjI2Ii8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWciIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjMTU4MDNkIi8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibWsiIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjNTU1NTU1Ii8+PC9tYXJrZXI+PG1hcmtlciBpZD0ibW8iIG1hcmtlcldpZHRoPSI5IiBtYXJrZXJIZWlnaHQ9IjkiIHJlZlg9IjgiIHJlZlk9IjQuNSIgb3JpZW50PSJhdXRvLXN0YXJ0LXJldmVyc2UiIG1hcmtlclVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgMEw5IDQuNUwwIDl6IiBmaWxsPSIjZWE1ODBjIi8+PC9tYXJrZXI+PC9kZWZzPjxsaW5lIHgxPSI4MCIgeTE9IjI2MCIgeDI9IjU2MCIgeTI9IjI2MCIgc3Ryb2tlPSIjZTVlN2ViIiBzdHJva2Utd2lkdGg9IjEiLz48dGV4dCB4PSI3MCIgeT0iMjY1IiBmaWxsPSIjNTU1IiB0ZXh0LWFuY2hvcj0iZW5kIiBmb250LXNpemU9IjEzIj4zNjwvdGV4dD48bGluZSB4MT0iODAiIHkxPSIyMDUiIHgyPSI1NjAiIHkyPSIyMDUiIHN0cm9rZT0iI2U1ZTdlYiIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iNzAiIHk9IjIxMCIgZmlsbD0iIzU1NSIgdGV4dC1hbmNob3I9ImVuZCIgZm9udC1zaXplPSIxMyI+Mzc8L3RleHQ+PGxpbmUgeDE9IjgwIiB5MT0iMTUwIiB4Mj0iNTYwIiB5Mj0iMTUwIiBzdHJva2U9IiNlNWU3ZWIiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjcwIiB5PSIxNTUiIGZpbGw9IiM1NTUiIHRleHQtYW5jaG9yPSJlbmQiIGZvbnQtc2l6ZT0iMTMiPjM4PC90ZXh0PjxsaW5lIHgxPSI4MCIgeTE9Ijk1IiB4Mj0iNTYwIiB5Mj0iOTUiIHN0cm9rZT0iI2U1ZTdlYiIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iNzAiIHk9IjEwMCIgZmlsbD0iIzU1NSIgdGV4dC1hbmNob3I9ImVuZCIgZm9udC1zaXplPSIxMyI+Mzk8L3RleHQ+PGxpbmUgeDE9IjgwIiB5MT0iNDAiIHgyPSI1NjAiIHkyPSI0MCIgc3Ryb2tlPSIjZTVlN2ViIiBzdHJva2Utd2lkdGg9IjEiLz48dGV4dCB4PSI3MCIgeT0iNDUiIGZpbGw9IiM1NTUiIHRleHQtYW5jaG9yPSJlbmQiIGZvbnQtc2l6ZT0iMTMiPjQwPC90ZXh0PjxsaW5lIHgxPSI4MCIgeTE9IjI2MCIgeDI9IjU3MCIgeTI9IjI2MCIgc3Ryb2tlPSIjNTU1NTU1IiBzdHJva2Utd2lkdGg9IjIuNSIgbWFya2VyLWVuZD0idXJsKCNtaykiLz48bGluZSB4MT0iODAiIHkxPSIyNjAiIHgyPSI4MCIgeTI9IjI4IiBzdHJva2U9IiM1NTU1NTUiIHN0cm9rZS13aWR0aD0iMi41IiBtYXJrZXItZW5kPSJ1cmwoI21rKSIvPjx0ZXh0IHg9IjgwIiB5PSIyODAiIGZpbGw9IiM1NTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTMiPjA8L3RleHQ+PHRleHQgeD0iMTYwIiB5PSIyODAiIGZpbGw9IiM1NTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTMiPjI8L3RleHQ+PHRleHQgeD0iMjQwIiB5PSIyODAiIGZpbGw9IiM1NTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTMiPjQ8L3RleHQ+PHRleHQgeD0iMzIwIiB5PSIyODAiIGZpbGw9IiM1NTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTMiPjY8L3RleHQ+PHRleHQgeD0iNDAwIiB5PSIyODAiIGZpbGw9IiM1NTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTMiPjg8L3RleHQ+PHRleHQgeD0iNDgwIiB5PSIyODAiIGZpbGw9IiM1NTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtc2l6ZT0iMTMiPjEwPC90ZXh0Pjx0ZXh0IHg9IjU2MCIgeT0iMjgwIiBmaWxsPSIjNTU1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LXNpemU9IjEzIj4xMjwvdGV4dD48cG9seWxpbmUgcG9pbnRzPSI4MCwyMTYgMTYwLDE3OCAyNDAsMTI4IDMyMCw5NSA0MDAsMTM5IDQ4MCwxODMgNTYwLDIwNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMjU2M2ViIiBzdHJva2Utd2lkdGg9IjMuNSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxjaXJjbGUgY3g9IjgwIiBjeT0iMjE2IiByPSI1IiBmaWxsPSIjMjU2M2ViIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMSIvPjxjaXJjbGUgY3g9IjE2MCIgY3k9IjE3OCIgcj0iNSIgZmlsbD0iIzI1NjNlYiIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjEiLz48Y2lyY2xlIGN4PSIyNDAiIGN5PSIxMjgiIHI9IjUiIGZpbGw9IiMyNTYzZWIiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIxIi8+PGNpcmNsZSBjeD0iMzIwIiBjeT0iOTUiIHI9IjUiIGZpbGw9IiMyNTYzZWIiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIxIi8+PGNpcmNsZSBjeD0iNDAwIiBjeT0iMTM5IiByPSI1IiBmaWxsPSIjMjU2M2ViIiBzdHJva2U9IiMzMzMiIHN0cm9rZS13aWR0aD0iMSIvPjxjaXJjbGUgY3g9IjQ4MCIgY3k9IjE4MyIgcj0iNSIgZmlsbD0iIzI1NjNlYiIgc3Ryb2tlPSIjMzMzIiBzdHJva2Utd2lkdGg9IjEiLz48Y2lyY2xlIGN4PSI1NjAiIGN5PSIyMDUiIHI9IjUiIGZpbGw9IiMyNTYzZWIiIHN0cm9rZT0iIzMzMyIgc3Ryb2tlLXdpZHRoPSIxIi8+PGxpbmUgeDE9IjMyMCIgeTE9Ijk1IiB4Mj0iODAiIHkyPSI5NSIgc3Ryb2tlPSIjZGMyNjI2IiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWRhc2hhcnJheT0iNiA0Ii8+PGxpbmUgeDE9IjMyMCIgeTE9Ijk1IiB4Mj0iMzIwIiB5Mj0iMjYwIiBzdHJva2U9IiNkYzI2MjYiIHN0cm9rZS13aWR0aD0iMi41IiBzdHJva2UtZGFzaGFycmF5PSI2IDQiLz48Y2lyY2xlIGN4PSIzMjAiIGN5PSI5NSIgcj0iOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZGMyNjI2IiBzdHJva2Utd2lkdGg9IjEiLz48dGV4dCB4PSIzMzYiIHk9IjgzIiBmaWxsPSIjZGMyNjI2IiB0ZXh0LWFuY2hvcj0ic3RhcnQiIGZvbnQtc2l6ZT0iMTQiIGZvbnQtd2VpZ2h0PSJib2xkIj7ikaIgYSBsYXMgNiBoOiAzOSwwIMKwQzwvdGV4dD48dGV4dCB4PSI4NiIgeT0iMjIiIGZpbGw9IiMyMjIiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1zaXplPSIxNCIgZm9udC13ZWlnaHQ9ImJvbGQiPuKRoCBlamUgdmVydGljYWw6IGxhIHRlbXBlcmF0dXJhICjCsEMpPC90ZXh0Pjx0ZXh0IHg9IjU2MCIgeT0iMzA2IiBmaWxsPSIjMjIyIiB0ZXh0LWFuY2hvcj0iZW5kIiBmb250LXNpemU9IjE0IiBmb250LXdlaWdodD0iYm9sZCI+4pGhIGVqZSBob3Jpem9udGFsOiBlbCB0aWVtcG8gKGhvcmFzKTwvdGV4dD48L3N2Zz4=" /><figcaption class="pie-figura"><em>Figura 5. Ejemplo: la temperatura de un paciente a lo largo de 12 horas.</em></figcaption></figure>
+<ol>
+<li><strong>① Eje vertical (y):</strong> dice <strong>qué se mide</strong> y en qué unidad (aquí, la temperatura en °C).</li>
+<li><strong>② Eje horizontal (x):</strong> suele ser el <strong>tiempo</strong> o la variable que cambia (aquí, las horas).</li>
+<li><strong>③ Cada punto:</strong> es un <strong>par de valores</strong>. El punto marcado dice: «a las 6 h, el paciente tenía 39,0 °C».</li>
+<li><strong>La forma de la curva:</strong> si <strong>sube</strong>, el valor aumenta; si <strong>baja</strong>, disminuye. La temperatura sube hasta las 6 h y luego baja.</li>
+</ol>
+<p><strong>Para leer un valor:</strong> busca el punto en la curva y traza una línea <strong>hasta el eje</strong>. A las 8 h, la temperatura es de unos 38,2 °C.</p>
+<blockquote>
+<p><strong>En el hospital:</strong> los espectros, las curvas de desintegración y los mapas de intensidad de los siguientes módulos se leen igual: <strong>dos ejes, una curva, un punto</strong>.</p>
 </blockquote>
 <hr />
 <h2 id="resumen-del-modulo">Resumen del módulo</h2>
 <ul>
-<li><strong>Magnitud = número + unidad.</strong> Sin la unidad el dato es incompleto e inútil en clínica.</li>
-<li><strong>Los prefijos del SI</strong> (kilo, mega, mili, micro, nano…) son potencias de 10 comprimidas en un símbolo; permiten expresar cantidades muy grandes o muy pequeñas sin chorros de ceros.</li>
-<li><strong>La notación científica</strong> escribe cualquier número como $a \times 10^n$ ($1 \leq a &lt; 10$). El exponente indica cuántos puestos se desplaza la coma decimal.</li>
-<li><strong>Proporcionalidad directa:</strong> misma dirección de cambio ($y = k \cdot x$). <strong>Inversa:</strong> direcciones opuestas ($y = k / x$).</li>
-<li><strong>Despejar una incógnita</strong> equivale a aplicar la operación inversa a ambos lados de la ecuación (regla del balancín).</li>
+<li>Una <strong>magnitud</strong> es algo medible; la <strong>unidad</strong> es su «apellido». El <strong>SI</strong> usa metro, segundo, kilogramo, hercio, voltio, amperio…</li>
+<li>Los <strong>prefijos</strong> acortan los números: <strong>k</strong> (mil), <strong>M</strong> (millón), <strong>G</strong> (mil millones), <strong>m</strong> (milésima), <strong>μ</strong> (millonésima), <strong>n</strong> (milmillonésima). Cada escalón es ×1 000 o ÷1 000. <strong>M</strong> y <strong>m</strong> no son lo mismo.</li>
+<li>La <strong>notación científica</strong> escribe números enormes o diminutos como <strong>número × 10ⁿ</strong>. Exponente <strong>positivo</strong>: grande. Exponente <strong>negativo</strong>: diminuto.</li>
+<li>Al <strong>multiplicar</strong> potencias de 10 se <strong>suman</strong> los exponentes; al <strong>dividir</strong>, se <strong>restan</strong>.</li>
+<li><strong>Directamente proporcional:</strong> si una se duplica, la otra también. <strong>Inversamente proporcional:</strong> si una se duplica, la otra se reduce a la mitad.</li>
+<li>Para <strong>despejar</strong>, lo que está de un lado pasa al otro haciendo <strong>la operación contraria</strong>. Comprueba siempre las unidades.</li>
+<li>La mitad = 1/2 = 50 %; la cuarta parte = 25 %; la octava parte = 12,5 %. <strong>Elevar a n</strong> es multiplicar n veces.</li>
+<li>En una <strong>gráfica</strong>, mira los ejes, los puntos y la forma de la curva.</li>
 </ul>
 <h2 id="glosario">Glosario</h2>
 <table>
 <thead>
 <tr>
 <th>Término</th>
-<th>Definición precisa y sencilla</th>
+<th>Significado</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Magnitud física</strong></td>
-<td>Propiedad del mundo real que se puede medir y expresar con un número y una unidad.</td>
+<td><strong>Magnitud</strong></td>
+<td>Cualquier cosa que se puede medir.</td>
 </tr>
 <tr>
 <td><strong>Unidad</strong></td>
-<td>Patrón de referencia con el que se compara la magnitud al medirla (p. ej., metro, segundo).</td>
+<td>Patrón con el que se mide una magnitud.</td>
 </tr>
 <tr>
 <td><strong>Sistema Internacional (SI)</strong></td>
-<td>Acuerdo global que define las siete unidades base y sus derivadas para garantizar coherencia científica.</td>
+<td>Acuerdo mundial sobre las unidades.</td>
 </tr>
 <tr>
-<td><strong>Prefijo SI</strong></td>
-<td>Símbolo que precede a una unidad e indica la potencia de 10 por la que se multiplica (k = $10^3$, m = $10^{-3}$…).</td>
+<td><strong>Hercio (Hz)</strong></td>
+<td>Unidad de frecuencia: una vez por segundo.</td>
+</tr>
+<tr>
+<td><strong>Prefijo</strong></td>
+<td>Letra que se pone delante de una unidad para indicar múltiplos o submúltiplos.</td>
 </tr>
 <tr>
 <td><strong>Notación científica</strong></td>
-<td>Forma de escribir números como $a \times 10^n$, donde $1 \leq a &lt; 10$ y $n$ es un número entero positivo o negativo.</td>
-</tr>
-<tr>
-<td><strong>Proporcionalidad directa</strong></td>
-<td>Relación entre dos magnitudes tal que su cociente es constante: si una se duplica, la otra también.</td>
-</tr>
-<tr>
-<td><strong>Proporcionalidad inversa</strong></td>
-<td>Relación entre dos magnitudes tal que su producto es constante: si una se duplica, la otra se reduce a la mitad.</td>
-</tr>
-<tr>
-<td><strong>Despejar</strong></td>
-<td>Operación algebraica que aísla una incógnita a un lado de la ecuación aplicando la operación inversa a ambos lados.</td>
+<td>Forma de escribir un número como «número × 10ⁿ».</td>
 </tr>
 <tr>
 <td><strong>Exponente</strong></td>
-<td>El número $n$ en $10^n$ que indica cuántos puestos se desplaza la coma decimal.</td>
+<td>Número pequeño colocado arriba a la derecha que indica cuántas veces se multiplica.</td>
+</tr>
+<tr>
+<td><strong>Directamente proporcional</strong></td>
+<td>Relación en la que, si una se duplica, la otra también.</td>
+</tr>
+<tr>
+<td><strong>Inversamente proporcional</strong></td>
+<td>Relación en la que, si una se duplica, la otra se reduce a la mitad.</td>
+</tr>
+<tr>
+<td><strong>Incógnita</strong></td>
+<td>Cantidad que se busca.</td>
+</tr>
+<tr>
+<td><strong>Despejar</strong></td>
+<td>Dejar la incógnita sola a un lado de la igualdad.</td>
+</tr>
+<tr>
+<td><strong>Porcentaje</strong></td>
+<td>Cantidad expresada como partes por cada 100.</td>
+</tr>
+<tr>
+<td><strong>Eje</strong></td>
+<td>Cada una de las dos rectas de una gráfica que indica una variable.</td>
 </tr>
 </tbody>
 </table>
 <hr />
 <h2 id="ejercicios-propuestos">Ejercicios propuestos</h2>
 <ol>
-<li>
-<p><strong>Reconocimiento de unidades.</strong> Un informe de TC indica que el nódulo mide «8» sin especificar la unidad. Razona por qué este dato es inutilizable clínicamente y qué unidad del SI sería la correcta para una medida anatómica de ese rango.</p>
-</li>
-<li>
-<p><strong>Conversión de prefijos.</strong> Un equipo de RM opera a una frecuencia de Larmor de 63,87 MHz para un campo de 1,5 T. Expresa esa frecuencia en hercios (Hz) y en kilohercios (kHz) usando notación científica.</p>
-</li>
-<li>
-<p><strong>Notación científica — de número a potencia.</strong> La carga del electrón es $0{,}000\ 000\ 000\ 000\ 000\ 000\ 16\ \text{C}$. Exprésala en notación científica.</p>
-</li>
-<li>
-<p><strong>Notación científica — de potencia a número.</strong> La longitud de onda de un rayo X diagnóstico típico es $\lambda = 6 \times 10^{-11}\ \text{m}$. ¿Cuántos nanómetros es eso? (Recuerda: $1\ \text{nm} = 10^{-9}\ \text{m}$.)</p>
-</li>
-<li>
-<p><strong>Proporcionalidad.</strong> En una sala de rayos X, si mantienes el kV constante y doblas la intensidad de corriente de 100 mA a 200 mA, ¿qué ocurre con el número de fotones emitidos y con la dosis al paciente? Razona si se trata de una relación directa o inversa.</p>
-</li>
-<li>
-<p><strong>Despejar fórmula.</strong> La ley de la onda es $v = \lambda \cdot f$. Un transductor ecográfico emite ondas de longitud de onda $\lambda = 0{,}5\ \text{mm}$ en un tejido donde la velocidad del sonido es $v = 1540\ \text{m/s}$. Despeja $f$ y calcula la frecuencia de trabajo del transductor en MHz.</p>
-</li>
+<li>Indica qué falta en la frase «el tubo funciona a 120» y completa con una unidad correcta.</li>
+<li>Convierte: a) 2,5 kV a V; b) 150 mA a A; c) 400 nm a m (en notación científica); d) 0,5 mm a μm; e) 3 GHz a Hz.</li>
+<li>Escribe en notación científica: a) 450 000; b) 0,0008; c) 6 200 000 000.</li>
+<li>Escribe como número normal: a) 2,4 × 10³; b) 6 × 10⁻².</li>
+<li>Calcula: a) (6 × 10⁸) / (2 × 10³); b) (2 × 10⁵) · (4 × 10²).</li>
+<li>Indica si la relación es directa o inversa: a) kilovoltaje y energía máxima de los fotones; b) número de trabajadores y tiempo para hacer una tarea; c) kilos de manzanas y su precio; d) frecuencia y longitud de onda.</li>
+<li>Una emisora emite a 50 MHz y otra a 100 MHz. ¿Cuál tiene mayor longitud de onda? Calcula las dos con λ = c / f (c = 3 × 10⁸ m/s).</li>
+<li>Despeja la letra indicada: a) v = λ · f, despeja f; b) d = v · t, despeja t; c) c = λ · ν, despeja λ.</li>
+<li>Un sonido de 500 Hz viaja a 340 m/s. ¿Cuál es su longitud de onda?</li>
+<li>Calcula el 12,5 % de 80.</li>
+<li>Calcula (1/2) · (1/2) · (1/2) · (1/2) y exprésalo en fracción y en porcentaje.</li>
+<li>Mira la Figura 5: ¿a qué hora se alcanza la temperatura máxima y cuál es? ¿Qué temperatura hay a las 10 h?</li>
 </ol>
 <h2 id="soluciones">Soluciones</h2>
 <ol>
-<li>
-<p>Sin la unidad no es posible saber si el nódulo mide 8 mm (benigno probable), 8 cm (muy relevante) u 8 alguna otra unidad. La unidad SI de longitud es el <strong>metro (m)</strong>; para medidas anatómicas en ese rango se usa el submúltiplo <strong>milímetro (mm)</strong> o <strong>centímetro (cm)</strong>, derivados del SI.</p>
-</li>
-<li>
-<p>Conversión: $63{,}87\ \text{MHz} = 63{,}87 \times 10^6\ \text{Hz} = \mathbf{6{,}387 \times 10^7\ \text{Hz}}$. En kilohercios: $6{,}387 \times 10^7\ \text{Hz} \div 10^3 = \mathbf{6{,}387 \times 10^4\ \text{kHz}}$.</p>
-</li>
-<li>
-<p>Contamos los puestos que mueve la coma hasta el primer dígito significativo («1»): 19 puestos a la derecha → exponente $-19$. Resultado: <strong>$1{,}6 \times 10^{-19}\ \text{C}$</strong>.</p>
-</li>
-<li>
-<p>$6 \times 10^{-11}\ \text{m} \div 10^{-9}\ \text{m/nm} = 6 \times 10^{-11+9}\ \text{nm} = 6 \times 10^{-2}\ \text{nm} = \mathbf{0{,}06\ \text{nm}}$. Los rayos X son mucho más cortos que la luz visible (400–700 nm), lo que refleja su altísima energía y capacidad penetrante.</p>
-</li>
-<li>
-<p>El número de fotones (y la dosis) es <strong>directamente proporcional</strong> a la intensidad de corriente (mA). Al doblar los mA de 100 a 200, se emiten el doble de fotones y la dosis al paciente se <strong>duplica</strong>. Se trata de una relación directa: $\text{Dosis} \propto \text{mA}$.</p>
-</li>
-<li>
-<p>Despeje: de $v = \lambda \cdot f$ se obtiene $f = v / \lambda$. Convertimos: $\lambda = 0{,}5\ \text{mm} = 0{,}5 \times 10^{-3}\ \text{m} = 5 \times 10^{-4}\ \text{m}$.
-$$f = \frac{1540\ \text{m/s}}{5 \times 10^{-4}\ \text{m}} = \frac{1540}{5} \times 10^4\ \text{Hz} = 308 \times 10^4\ \text{Hz} = \mathbf{3{,}08\ \text{MHz}}$$
-Un transductor de 3 MHz es típico de aplicaciones abdominales donde se necesita mayor penetración.</p>
-</li>
+<li>Falta la <strong>unidad</strong>. Por ejemplo: «el tubo funciona a <strong>120 kV</strong>».</li>
+<li>a) 2,5 × 1 000 = <strong>2 500 V</strong>. b) 150 / 1 000 = <strong>0,15 A</strong>. c) 400 nm = 400 × 10⁻⁹ m = <strong>4 × 10⁻⁷ m</strong>. d) 0,5 × 1 000 = <strong>500 μm</strong>. e) 3 × 10⁹ = <strong>3 000 000 000 Hz</strong>.</li>
+<li>a) <strong>4,5 × 10⁵</strong>. b) <strong>8 × 10⁻⁴</strong>. c) <strong>6,2 × 10⁹</strong>.</li>
+<li>a) <strong>2 400</strong>. b) <strong>0,06</strong>.</li>
+<li>a) 6 / 2 = 3 y 8 − 3 = 5: <strong>3 × 10⁵</strong>. b) 2 · 4 = 8 y 5 + 2 = 7: <strong>8 × 10⁷</strong>.</li>
+<li>a) <strong>Directa.</strong> b) <strong>Inversa</strong> (a más trabajadores, menos tiempo). c) <strong>Directa.</strong> d) <strong>Inversa.</strong></li>
+<li>50 MHz = 5 × 10⁷ Hz → λ = (3 × 10⁸) / (5 × 10⁷) = <strong>6 m</strong>. 100 MHz = 10⁸ Hz → λ = <strong>3 m</strong>. Tiene <strong>mayor</strong> longitud de onda la de <strong>50 MHz</strong>.</li>
+<li>a) <strong>f = v / λ</strong>. b) <strong>t = d / v</strong>. c) <strong>λ = c / ν</strong>.</li>
+<li>λ = v / f = 340 / 500 = <strong>0,68 m</strong>.</li>
+<li>80 · 0,125 = <strong>10</strong>.</li>
+<li>1/2 · 1/2 · 1/2 · 1/2 = <strong>1/16</strong> = 0,0625 = <strong>6,25 %</strong>.</li>
+<li>La temperatura máxima es <strong>39,0 °C</strong> y se alcanza a las <strong>6 horas</strong>. A las 10 h la temperatura es de unos <strong>37,4 °C</strong>.</li>
 </ol>
 <hr />
-<p><strong>Siguiente módulo:</strong> Ahora que manejas el idioma de la física —números, unidades y fórmulas— ya estás listo para explorar de qué está hecha la materia que los rayos X y los ultrasonidos van a atravesar: el átomo y sus componentes. Eso es exactamente lo que veremos en el Módulo 1.</p>
+<p><strong>Siguiente módulo:</strong> ya tienes la caja de herramientas. En el <strong>Módulo 1</strong> empezamos con la física: de qué está hecha la materia y cómo es un átomo.</p>
         </section>
         
 </body>
