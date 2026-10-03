@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 340" width="760" height="340">
+  <rect width="760" height="340" fill="#ffffff"/>
+
+  <!-- Título -->
+  <text x="380" y="32" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle">Las 7 magnitudes base del Sistema Internacional (SI)</text>
+
+  <!-- Tarjetas de magnitudes: 4 arriba, 3 abajo -->
+  <!-- Longitud -->
+  <rect x="20" y="60" width="160" height="100" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+  <text x="100" y="90" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#2563eb" text-anchor="middle">Longitud</text>
+  <text x="100" y="112" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" fill="#1e293b" text-anchor="middle">m</text>
+  <text x="100" y="133" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">metro</text>
+  <text x="100" y="150" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">mm, cm → imagen</text>
+
+  <!-- Masa -->
+  <rect x="200" y="60" width="160" height="100" rx="8" fill="#fff7ed" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="280" y="90" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#ea580c" text-anchor="middle">Masa</text>
+  <text x="280" y="112" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" fill="#1e293b" text-anchor="middle">kg</text>
+  <text x="280" y="133" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">kilogramo</text>
+  <text x="280" y="150" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">masa del paciente</text>
+
+  <!-- Tiempo -->
+  <rect x="380" y="60" width="160" height="100" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.5"/>
+  <text x="460" y="90" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#15803d" text-anchor="middle">Tiempo</text>
+  <text x="460" y="112" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" fill="#1e293b" text-anchor="middle">s</text>
+  <text x="460" y="133" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">segundo</text>
+  <text x="460" y="150" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">ms → exposición RX</text>
+
+  <!-- Corriente eléctrica -->
+  <rect x="560" y="60" width="180" height="100" rx="8" fill="#faf5ff" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="650" y="90" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#7c3aed" text-anchor="middle">Corriente</text>
+  <text x="650" y="112" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" fill="#1e293b" text-anchor="middle">A</text>
+  <text x="650" y="133" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">amperio</text>
+  <text x="650" y="150" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">mA → tubo de RX</text>
+
+  <!-- Fila 2: Temperatura, Cantidad sustancia, Intensidad luminosa -->
+  <!-- Temperatura -->
+  <rect x="110" y="185" width="160" height="100" rx="8" fill="#fef2f2" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="190" y="215" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#dc2626" text-anchor="middle">Temperatura</text>
+  <text x="190" y="237" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" fill="#1e293b" text-anchor="middle">K</text>
+  <text x="190" y="258" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">kelvin</text>
+  <text x="190" y="275" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">criogenia en RM</text>
+
+  <!-- Cantidad de sustancia -->
+  <rect x="300" y="185" width="160" height="100" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.5"/>
+  <text x="380" y="215" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#15803d" text-anchor="middle">Sustancia</text>
+  <text x="380" y="237" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" fill="#1e293b" text-anchor="middle">mol</text>
+  <text x="380" y="258" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">mol</text>
+  <text x="380" y="275" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">química radiofármaco</text>
+
+  <!-- Intensidad luminosa -->
+  <rect x="490" y="185" width="160" height="100" rx="8" fill="#fffbeb" stroke="#ea580c" stroke-width="1.5"/>
+  <text x="570" y="215" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#ea580c" text-anchor="middle">Luz</text>
+  <text x="570" y="237" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="bold" fill="#1e293b" text-anchor="middle">cd</text>
+  <text x="570" y="258" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">candela</text>
+  <text x="570" y="275" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">monitores diagnósticos</text>
+
+  <!-- Nota pie -->
+  <text x="380" y="320" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">De estas 7 unidades base se derivan todas las demás unidades del SI (voltio, hercio, joule, gray…)</text>
+</svg>

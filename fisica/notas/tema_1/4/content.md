@@ -206,7 +206,7 @@ La **ecografía** (o ultrasonografía) utiliza ultrasonidos para visualizar el i
 > 
 > Una onda de ultrasonido no rebota dentro de un medio perfectamente homogéneo; el rebote ocurre al cruzar la **interfase** (límite de separación) entre dos medios con diferente **impedancia acústica (Z)**.
 > 
-> - La **impedancia acústica** es la resistencia que opone un material al paso de las ondas sonoras, y depende directamente de su **densidad** ($\rho$) y de la **velocidad del sonido** en ese medio ($v$): **Z = ρ · v**.
+> - La **impedancia acústica** es la resistencia que opone un material al paso de las ondas sonoras, y depende directamente de su **densidad** (ρ) y de la **velocidad del sonido** en ese medio (v): **Z = ρ · v**.
 > - **Pequeña diferencia de impedancia:** Entre dos tejidos blandos similares (por ejemplo, entre el hígado y el riñón), la diferencia es leve: la mayor parte de la onda continúa avanzando hacia planos más profundos y solo un pequeño eco rebota, permitiendo visualizar los órganos internos sin bloquear el haz.
 > - **Gran diferencia de impedancia:** Entre el tejido blando y el hueso, o entre la sonda y el aire, la diferencia de impedancia es gigantesca: prácticamente toda la onda rebota de golpe en la superficie, impidiendo ver lo que hay detrás (sombra acústica).
 > 
@@ -250,7 +250,7 @@ Son **décimas de milímetro**. Esa longitud de onda tan corta es lo que permite
 | **Ultrasonido** | Sonido de frecuencia superior a 20 000 Hz. |
 | **Eco** | Parte de una onda que rebota y vuelve al emisor al cruzar una frontera. |
 | **Interfase tisular** | Límite o superficie de contacto entre dos tejidos con diferentes propiedades acústicas. |
-| **Impedancia acústica (Z)** | Resistencia que opone un medio a la propagación del sonido ($Z = \rho \cdot v$). Su diferencia entre medios determina la intensidad del eco reflejado. |
+| **Impedancia acústica (Z)** | Resistencia que opone un medio a la propagación del sonido (Z = ρ · v). Su diferencia entre medios determina la intensidad del eco reflejado. |
 
 ---
 

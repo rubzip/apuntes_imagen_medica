@@ -140,10 +140,12 @@ Se permite el uso exclusivo de cuatro tipos estandarizados de recuadro mediante 
 
 ## 4. Estándares de Redacción, Matemáticas y Notación
 
-### 4.1. Fórmulas matemáticas
-- **Texto plano y caracteres Unicode:** Para garantizar compatibilidad universal con parsers de Markdown, motores de renderizado a PDF y navegadores sin dependencias de KaTeX/MathJax frágiles, escribe las expresiones matemáticas en texto plano:
-  - Usar: `v = λ · f`, `E = h · ν`, `T = 1 / f`, `N = N₀ · e^(-λ·t)`
-  - Evitar el uso de delimitadores LaTeX (`$v = \lambda \cdot f$`) en los textos base que deban compilarse a través de múltiples herramientas simples.
+### 4.1. Fórmulas matemáticas y notación LaTeX
+- **Soporte LaTeX nativo (KaTeX):** El compilador incorpora soporte tipográfico automático mediante KaTeX.
+  - **Fórmulas en línea (inline):** Utiliza delimitadores simples `$ ... $` para fórmulas y magnitudes matemáticas dentro del párrafo (p. ej., `$v = \lambda \cdot f$`, `$E = h \cdot \nu$`, `$T = 1 / f$`, `$Z = \rho \cdot v$`).
+  - **Ecuaciones en bloque (display):** Utiliza delimitadores dobles `$$ ... $$` en líneas independientes para leyes físicas fundamentales, fracciones complejas o integrales:
+    $$N(t) = N_0 \cdot e^{-\lambda t}$$
+  - **Compatibilidad y química:** Para moléculas comunes o variables simples en texto corrido, también es válido el uso de Markdown y Unicode directo (`H₂O`, `Z = 12`).
 - **Estructura de cálculo en ejemplos resueltos:**
   1. Enunciado con datos numéricos realistas del sector.
   2. Identificación explícita de datos con sus símbolos y unidades.

@@ -4,6 +4,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
+    <!-- Soporte tipográfico para fórmulas matemáticas LaTeX con KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"
+            onload="renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false},
+                    {left: '\\(', right: '\\)', display: false},
+                    {left: '\\[', right: '\\]', display: true}
+                ],
+                throwOnError: false
+            });"></script>
     <style>
 /* ==========================================================================
    style.css - Estilos para compilación de temarios y apuntes técnicos
@@ -268,6 +281,20 @@ code {
     border-radius: 4px;
     font-size: 9pt;
     font-family: SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* FÓRMULAS MATEMÁTICAS (KATEX) */
+.katex {
+    font-size: 1.05em;
+    text-rendering: auto;
+}
+
+.katex-display {
+    margin: 0.8em 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    page-break-inside: avoid;
+    break-inside: avoid;
 }
     </style>
 </head>
@@ -542,7 +569,7 @@ code {
 <li>Energía del electrón en la órbita n: <strong>Eₙ = −13,6 · Z² / n²</strong> (en electronvoltios, 1 eV = 1,6 × 10⁻¹⁹ J)</li>
 </ul>
 <p>donde Z es el número atómico (ver 1.4). El signo negativo es un convenio: se toma como cero la energía del electrón ya libre, de modo que un electrón ligado tiene menos energía. La energía de ionización es el valor absoluto, |Eₙ|.</p>
-<p><strong>Ejemplo (hidrógeno, Z = 1).</strong> En n = 1: E₁ = −13,6 eV, así que arrancar su electrón cuesta 13,6 eV. En n = 2: E₂ = −3,4 eV. Si el electrón cae de n = 2 a n = 1, emite un fotón de |−3,4 − (−13,6)| = <strong>10,2 eV</strong>.</p>
+<p><strong>Ejemplo (hidrógeno, Z = 1).</strong> En n = 1: E₁ = -13,6 eV, así que arrancar su electrón cuesta 13,6 eV. En n = 2: E₂ = -3,4 eV. Si el electrón cae de n = 2 a n = 1, emite un fotón de | -3,4 - (-13,6) | = <strong>10,2 eV</strong>.</p>
 <p>Para el wolframio (Z = 74), la fórmula da unos 74 keV para el nivel K; el valor real es ≈ 70 keV. Es el orden de energía de los rayos X de diagnóstico.</p>
 <p>El modelo de Bohr funciona exactamente solo para átomos con un electrón, pero describe bien la idea de fondo para los demás.</p>
 </blockquote>
@@ -575,7 +602,7 @@ code {
 <tr>
 <td><strong>A</strong></td>
 <td>Número másico</td>
-<td>Número de <strong>nucleones</strong> (protones + neutrones): <strong>A = Z + N</strong>, es decir, <strong>N = A − Z</strong>.</td>
+<td>Número de <strong>nucleones</strong> (protones + neutrones): <strong>A = Z + N</strong>, es decir, <strong>N = A - Z</strong>.</td>
 </tr>
 </tbody>
 </table>
@@ -602,7 +629,7 @@ code {
 <p>Átomo de aluminio, ²⁷₁₃Al:</p>
 <ul>
 <li>Z = 13 → <strong>13 protones</strong>.</li>
-<li>N = A − Z = 27 − 13 = <strong>14 neutrones</strong>.</li>
+<li>N = A - Z = 27 - 13 = <strong>14 neutrones</strong>.</li>
 <li>Neutro → <strong>13 electrones</strong>.</li>
 <li>Masa aproximada: A ≈ <strong>27 u</strong>.</li>
 </ul>
@@ -1013,7 +1040,7 @@ code {
 <p>Cuando la radiación ionizante atraviesa el tejido vivo de un paciente o de un profesional, puede lesionar las estructuras celulares mediante dos vías:</p>
 <ul>
 <li><strong>Acción directa:</strong> La propia radiación ionizante impacta directamente contra macromoléculas biológicas críticas, especialmente las cadenas de <strong>ADN</strong>, arrancando electrones de sus enlaces y provocando roturas simples o dobles de la hélice genética.</li>
-<li><strong>Acción indirecta (radiólisis del agua):</strong> Dado que las células están compuestas en un 70–80 % por agua, la mayor parte de las interacciones ionizantes ocurren sobre moléculas de $H_2O$. Este fenómeno se denomina <strong>radiólisis del agua</strong>: la radiación descompone el agua celular generando <strong>radicales libres</strong> (especies químicas extraordinariamente reactivas e inestables con electrones desapareados, como el radical hidroxilo $OH^\bullet$). Estos radicales libres difunden y atacan químicamente al ADN y a las membranas celulares, causando la mayor parte del daño biológico global.</li>
+<li><strong>Acción indirecta (radiólisis del agua):</strong> Dado que las células están compuestas en un 70–80 % por agua, la mayor parte de las interacciones ionizantes ocurren sobre moléculas de H₂O. Este fenómeno se denomina <strong>radiólisis del agua</strong>: la radiación descompone el agua celular generando <strong>radicales libres</strong> (especies químicas extraordinariamente reactivas e inestables con electrones desapareados, como el radical hidroxilo, •OH). Estos radicales libres difunden y atacan químicamente al ADN y a las membranas celulares, causando la mayor parte del daño biológico global.</li>
 </ul>
 <blockquote>
 <p><strong>Para ir más allá: ¿cuánta energía hace falta?</strong></p>
@@ -1127,7 +1154,7 @@ code {
 </tr>
 <tr>
 <td><strong>Radical libre</strong></td>
-<td>Fragmento molecular químicamente inestable con electrones desapareados (como $OH^\bullet$) que daña de forma oxidativa el ADN celular.</td>
+<td>Fragmento molecular químicamente inestable con electrones desapareados (como el radical hidroxilo, •OH) que daña de forma oxidativa el ADN celular.</td>
 </tr>
 </tbody>
 </table>
@@ -1164,7 +1191,7 @@ code {
 <li>
 <ul>
 <li>En la <strong>acción directa</strong>, la radiación ionizante impacta directamente contra las macromoléculas esenciales de la célula (especialmente las cadenas del ADN), fracturando enlaces químicos directos de la doble hélice.</li>
-<li>En la <strong>acción indirecta</strong>, la radiación interacciona primero con el disolvente celular mayoritario (el agua, $H_2O$), provocando la <strong>radiólisis del agua</strong>. Este proceso genera <strong>radicales libres</strong> (especies químicas muy inestables y oxidantes con electrones desapareados, como el radical hidroxilo $OH^\bullet$). Estos radicales libres se difunden por el citoplasma y reaccionan químicamente contra el ADN y las membranas celulares, produciendo lesiones secundarias.</li>
+<li>En la <strong>acción indirecta</strong>, la radiación interacciona primero con el disolvente celular mayoritario (el agua, H₂O), provocando la <strong>radiólisis del agua</strong>. Este proceso genera <strong>radicales libres</strong> (especies químicas muy inestables y oxidantes con electrones desapareados, como el radical hidroxilo, •OH). Estos radicales libres se difunden por el citoplasma y reaccionan químicamente contra el ADN y las membranas celulares, produciendo lesiones secundarias.</li>
 </ul>
 </li>
 <li><strong>Falsa.</strong> La ionización es un proceso cuántico individual que ocurre átomo a átomo: para vencer la energía de ligadura y arrancar un electrón, cada fotón individual debe aportar al menos la energía de ionización (~10 eV). Aumentar la potencia de una bombilla de luz visible aumenta el flujo (número de fotones por segundo), pero cada fotón sigue teniendo individualmente ~2–3 eV, por lo que ninguno de ellos posee la energía necesaria para arrancar un electrón.</li>
@@ -1457,7 +1484,7 @@ code {
 <p><strong>La base física: ¿por qué se produce el eco? (Interfase e impedancia acústica)</strong></p>
 <p>Una onda de ultrasonido no rebota dentro de un medio perfectamente homogéneo; el rebote ocurre al cruzar la <strong>interfase</strong> (límite de separación) entre dos medios con diferente <strong>impedancia acústica (Z)</strong>.</p>
 <ul>
-<li>La <strong>impedancia acústica</strong> es la resistencia que opone un material al paso de las ondas sonoras, y depende directamente de su <strong>densidad</strong> ($\rho$) y de la <strong>velocidad del sonido</strong> en ese medio ($v$): <strong>Z = ρ · v</strong>.</li>
+<li>La <strong>impedancia acústica</strong> es la resistencia que opone un material al paso de las ondas sonoras, y depende directamente de su <strong>densidad</strong> (ρ) y de la <strong>velocidad del sonido</strong> en ese medio (v): <strong>Z = ρ · v</strong>.</li>
 <li><strong>Pequeña diferencia de impedancia:</strong> Entre dos tejidos blandos similares (por ejemplo, entre el hígado y el riñón), la diferencia es leve: la mayor parte de la onda continúa avanzando hacia planos más profundos y solo un pequeño eco rebota, permitiendo visualizar los órganos internos sin bloquear el haz.</li>
 <li><strong>Gran diferencia de impedancia:</strong> Entre el tejido blando y el hueso, o entre la sonda y el aire, la diferencia de impedancia es gigantesca: prácticamente toda la onda rebota de golpe en la superficie, impidiendo ver lo que hay detrás (sombra acústica).</li>
 </ul>
@@ -1543,7 +1570,7 @@ code {
 </tr>
 <tr>
 <td><strong>Impedancia acústica (Z)</strong></td>
-<td>Resistencia que opone un medio a la propagación del sonido ($Z = \rho \cdot v$). Su diferencia entre medios determina la intensidad del eco reflejado.</td>
+<td>Resistencia que opone un medio a la propagación del sonido (Z = ρ · v). Su diferencia entre medios determina la intensidad del eco reflejado.</td>
 </tr>
 </tbody>
 </table>
@@ -2452,11 +2479,11 @@ code {
 <li>Edad = 3 × 5 730 = <strong>17 190 años</strong>.</li>
 </ol>
 <h4 id="ejemplo-7-una-fraccion-que-no-es-redonda">Ejemplo 7: una fracción que no es «redonda»</h4>
-<p><strong>¿Y si queda el 70 %?</strong> No es una potencia exacta de ½. Se puede <strong>leer en la gráfica</strong>: el 70 % corresponde a algo más de media vida media, es decir, <strong>unos 3 000 años</strong>.</p>
+<p><strong>¿Y si queda el 70 %?</strong> No es una potencia exacta de 1/2. Se puede <strong>leer en la gráfica</strong>: el 70 % corresponde a algo más de media vida media, es decir, <strong>unos 3 000 años</strong>.</p>
 <blockquote>
 <p><strong>Para ir más allá: el cálculo exacto</strong></p>
 <p>Para fracciones que no son redondas se usa un logaritmo neperiano (la tecla <strong>ln</strong> de la calculadora):</p>
-<p><strong>t = (T½ / 0,693) · ln(N₀ / N)</strong></p>
+<p><strong>t = (T_{1/2} / 0,693) · ln(N₀ / N)</strong></p>
 <p>Para el 70 %: N₀ / N = 1 / 0,7 ≈ 1,43 → ln ≈ 0,357 → t = (5 730 / 0,693) · 0,357 ≈ <strong>2 950 años</strong>. Coincide con lo que leíamos en la gráfica.</p>
 </blockquote>
 <h3 id="que-hay-que-tener-en-cuenta">Qué hay que tener en cuenta</h3>

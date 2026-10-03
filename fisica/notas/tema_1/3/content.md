@@ -57,7 +57,7 @@ Como vimos al estudiar los iones (apartado 1.6), si a un átomo neutro le arranc
 Cuando la radiación ionizante atraviesa el tejido vivo de un paciente o de un profesional, puede lesionar las estructuras celulares mediante dos vías:
 
 - **Acción directa:** La propia radiación ionizante impacta directamente contra macromoléculas biológicas críticas, especialmente las cadenas de **ADN**, arrancando electrones de sus enlaces y provocando roturas simples o dobles de la hélice genética.
-- **Acción indirecta (radiólisis del agua):** Dado que las células están compuestas en un 70–80 % por agua, la mayor parte de las interacciones ionizantes ocurren sobre moléculas de $H_2O$. Este fenómeno se denomina **radiólisis del agua**: la radiación descompone el agua celular generando **radicales libres** (especies químicas extraordinariamente reactivas e inestables con electrones desapareados, como el radical hidroxilo $OH^\bullet$). Estos radicales libres difunden y atacan químicamente al ADN y a las membranas celulares, causando la mayor parte del daño biológico global.
+- **Acción indirecta (radiólisis del agua):** Dado que las células están compuestas en un 70–80 % por agua, la mayor parte de las interacciones ionizantes ocurren sobre moléculas de H₂O. Este fenómeno se denomina **radiólisis del agua**: la radiación descompone el agua celular generando **radicales libres** (especies químicas extraordinariamente reactivas e inestables con electrones desapareados, como el radical hidroxilo, •OH). Estos radicales libres difunden y atacan químicamente al ADN y a las membranas celulares, causando la mayor parte del daño biológico global.
 
 > **Para ir más allá: ¿cuánta energía hace falta?**
 > 
@@ -110,7 +110,7 @@ Dentro de la radiación ionizante hay **dos formas** de transferir energía al �
 | **Radiación directamente ionizante** | Radiación de partículas cargadas (α, β, protones) que interactúa electrostáticamente con los electrones y los expulsa de forma directa. |
 | **Radiación indirectamente ionizante** | Radiación neutra (rayos X, rayos gamma, neutrones) que libera partículas cargadas secundarias que son las que finalmente ionizan. |
 | **Radiólisis del agua** | Descomposición de moléculas de agua inducida por radiación ionizante, que genera radicales libres altamente reactivos dentro de la célula. |
-| **Radical libre** | Fragmento molecular químicamente inestable con electrones desapareados (como $OH^\bullet$) que daña de forma oxidativa el ADN celular. |
+| **Radical libre** | Fragmento molecular químicamente inestable con electrones desapareados (como el radical hidroxilo, •OH) que daña de forma oxidativa el ADN celular. |
 
 ---
 
@@ -142,7 +142,7 @@ Dentro de la radiación ionizante hay **dos formas** de transferir energía al �
    - Los **rayos X** son **indirectamente ionizantes**: al carecer de carga eléctrica, no ejercen atracción ni repulsión electrostática directa; interaccionan con la materia cediendo su energía a electrones secundarios (mediante efecto fotoeléctrico o dispersión Compton), y son estos electrones secundarios acelerados los que posteriormente ionizan los átomos adyacentes.
 4. 
    - En la **acción directa**, la radiación ionizante impacta directamente contra las macromoléculas esenciales de la célula (especialmente las cadenas del ADN), fracturando enlaces químicos directos de la doble hélice.
-   - En la **acción indirecta**, la radiación interacciona primero con el disolvente celular mayoritario (el agua, $H_2O$), provocando la **radiólisis del agua**. Este proceso genera **radicales libres** (especies químicas muy inestables y oxidantes con electrones desapareados, como el radical hidroxilo $OH^\bullet$). Estos radicales libres se difunden por el citoplasma y reaccionan químicamente contra el ADN y las membranas celulares, produciendo lesiones secundarias.
+   - En la **acción indirecta**, la radiación interacciona primero con el disolvente celular mayoritario (el agua, H₂O), provocando la **radiólisis del agua**. Este proceso genera **radicales libres** (especies químicas muy inestables y oxidantes con electrones desapareados, como el radical hidroxilo, •OH). Estos radicales libres se difunden por el citoplasma y reaccionan químicamente contra el ADN y las membranas celulares, produciendo lesiones secundarias.
 5. **Falsa.** La ionización es un proceso cuántico individual que ocurre átomo a átomo: para vencer la energía de ligadura y arrancar un electrón, cada fotón individual debe aportar al menos la energía de ionización (~10 eV). Aumentar la potencia de una bombilla de luz visible aumenta el flujo (número de fotones por segundo), pero cada fotón sigue teniendo individualmente ~2–3 eV, por lo que ninguno de ellos posee la energía necesaria para arrancar un electrón.
 
 ---

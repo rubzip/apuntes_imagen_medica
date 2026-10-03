@@ -336,13 +336,13 @@ Curva de desintegración del carbono-14
 
 #### Ejemplo 7: una fracción que no es «redonda»
 
-**¿Y si queda el 70 %?** No es una potencia exacta de ½. Se puede **leer en la gráfica**: el 70 % corresponde a algo más de media vida media, es decir, **unos 3 000 años**.
+**¿Y si queda el 70 %?** No es una potencia exacta de 1/2. Se puede **leer en la gráfica**: el 70 % corresponde a algo más de media vida media, es decir, **unos 3 000 años**.
 
 > **Para ir más allá: el cálculo exacto**
 > 
 > Para fracciones que no son redondas se usa un logaritmo neperiano (la tecla **ln** de la calculadora):
 > 
-> **t = (T½ / 0,693) · ln(N₀ / N)**
+> **t = (T_{1/2} / 0,693) · ln(N₀ / N)**
 > 
 > Para el 70 %: N₀ / N = 1 / 0,7 ≈ 1,43 → ln ≈ 0,357 → t = (5 730 / 0,693) · 0,357 ≈ **2 950 años**. Coincide con lo que leíamos en la gráfica.
 

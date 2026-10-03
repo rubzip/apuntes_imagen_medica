@@ -134,7 +134,7 @@ Para moverse un electrón de un nivel superior a uno inferior pasa lo contrario:
 > 
 > donde Z es el número atómico (ver 1.4). El signo negativo es un convenio: se toma como cero la energía del electrón ya libre, de modo que un electrón ligado tiene menos energía. La energía de ionización es el valor absoluto, |Eₙ|.
 > 
-> **Ejemplo (hidrógeno, Z = 1).** En n = 1: E₁ = −13,6 eV, así que arrancar su electrón cuesta 13,6 eV. En n = 2: E₂ = −3,4 eV. Si el electrón cae de n = 2 a n = 1, emite un fotón de |−3,4 − (−13,6)| = **10,2 eV**.
+> **Ejemplo (hidrógeno, Z = 1).** En n = 1: E₁ = -13,6 eV, así que arrancar su electrón cuesta 13,6 eV. En n = 2: E₂ = -3,4 eV. Si el electrón cae de n = 2 a n = 1, emite un fotón de | -3,4 - (-13,6) | = **10,2 eV**.
 > 
 > Para el wolframio (Z = 74), la fórmula da unos 74 keV para el nivel K; el valor real es ≈ 70 keV. Es el orden de energía de los rayos X de diagnóstico.
 > 
@@ -158,7 +158,7 @@ El segundo parámetro fundamental para caracterizar un núcleo es el **número m
 | --- | --- | --- |
 | **Z** | Número atómico | Número de **protones**. Define el elemento y su posición en la tabla periódica. |
 | **N** | Número de neutrones | Número de **neutrones**. |
-| **A** | Número másico | Número de **nucleones** (protones + neutrones): **A = Z + N**, es decir, **N = A − Z**. |
+| **A** | Número másico | Número de **nucleones** (protones + neutrones): **A = Z + N**, es decir, **N = A - Z**. |
 
 En un átomo **neutro**, el número de electrones es igual a Z.
 
@@ -189,7 +189,7 @@ Los electrones aportan menos del 0,03 % de la masa total: **la masa está casi t
 Átomo de aluminio, ²⁷₁₃Al:
 
 - Z = 13 → **13 protones**.
-- N = A − Z = 27 − 13 = **14 neutrones**.
+- N = A - Z = 27 - 13 = **14 neutrones**.
 - Neutro → **13 electrones**.
 - Masa aproximada: A ≈ **27 u**.
 

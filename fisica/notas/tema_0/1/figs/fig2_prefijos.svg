@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 260" width="780" height="260">
+  <rect width="780" height="260" fill="#ffffff"/>
+
+  <!-- Título -->
+  <text x="390" y="28" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#1e293b" text-anchor="middle">Prefijos del SI — de Giga a nano</text>
+
+  <!-- Línea central -->
+  <line x1="30" y1="130" x2="750" y2="130" stroke="#64748b" stroke-width="2"/>
+
+  <!-- Marcadores: posiciones y datos -->
+  <!-- Giga -->
+  <line x1="80" y1="115" x2="80" y2="145" stroke="#dc2626" stroke-width="2"/>
+  <text x="80" y="108" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#dc2626" text-anchor="middle">G</text>
+  <text x="80" y="92" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#dc2626" text-anchor="middle">Giga</text>
+  <text x="80" y="78" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">10⁹</text>
+  <text x="80" y="165" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">1 GHz RF</text>
+
+  <!-- Mega -->
+  <line x1="200" y1="115" x2="200" y2="145" stroke="#ea580c" stroke-width="2"/>
+  <text x="200" y="108" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#ea580c" text-anchor="middle">M</text>
+  <text x="200" y="92" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#ea580c" text-anchor="middle">Mega</text>
+  <text x="200" y="78" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">10⁶</text>
+  <text x="200" y="165" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">3,5 MHz eco</text>
+
+  <!-- Kilo -->
+  <line x1="320" y1="115" x2="320" y2="145" stroke="#2563eb" stroke-width="2"/>
+  <text x="320" y="108" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#2563eb" text-anchor="middle">k</text>
+  <text x="320" y="92" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#2563eb" text-anchor="middle">Kilo</text>
+  <text x="320" y="78" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">10³</text>
+  <text x="320" y="165" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">80 kV RX</text>
+
+  <!-- Unidad base (sin prefijo) -->
+  <circle cx="415" cy="130" r="8" fill="#1e293b"/>
+  <text x="415" y="108" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#1e293b" text-anchor="middle">×1</text>
+  <text x="415" y="92" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#1e293b" text-anchor="middle">unidad</text>
+  <text x="415" y="78" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">10⁰</text>
+  <text x="415" y="165" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">1 A, 1 m, 1 Hz</text>
+
+  <!-- Mili -->
+  <line x1="510" y1="115" x2="510" y2="145" stroke="#15803d" stroke-width="2"/>
+  <text x="510" y="108" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#15803d" text-anchor="middle">m</text>
+  <text x="510" y="92" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#15803d" text-anchor="middle">Mili</text>
+  <text x="510" y="78" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">10⁻³</text>
+  <text x="510" y="165" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">200 mA RX</text>
+
+  <!-- Micro -->
+  <line x1="610" y1="115" x2="610" y2="145" stroke="#7c3aed" stroke-width="2"/>
+  <text x="610" y="108" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#7c3aed" text-anchor="middle">μ</text>
+  <text x="610" y="92" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#7c3aed" text-anchor="middle">Micro</text>
+  <text x="610" y="78" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">10⁻⁶</text>
+  <text x="610" y="165" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">μs pulso RM</text>
+
+  <!-- Nano -->
+  <line x1="710" y1="115" x2="710" y2="145" stroke="#dc2626" stroke-width="2"/>
+  <text x="710" y="108" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="bold" fill="#dc2626" text-anchor="middle">n</text>
+  <text x="710" y="92" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#dc2626" text-anchor="middle">Nano</text>
+  <text x="710" y="78" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">10⁻⁹</text>
+  <text x="710" y="165" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#64748b" text-anchor="middle">100–400 nm UV</text>
+
+  <!-- Flechas de sentido -->
+  <polygon points="36,126 50,130 36,134" fill="#64748b"/>
+  <text x="38" y="215" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#64748b" text-anchor="middle">×</text>
+  <polygon points="744,126 730,130 744,134" fill="#64748b"/>
+
+  <text x="220" y="215" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#1e293b" text-anchor="middle">← magnitudes GRANDES (×10³ por paso)</text>
+  <text x="580" y="215" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#1e293b" text-anchor="middle">magnitudes PEQUEÑAS (÷10³ por paso) →</text>
+
+  <!-- Línea separadora -->
+  <line x1="30" y1="200" x2="750" y2="200" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="390" y="245" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Cada paso entre prefijos adyacentes equivale a multiplicar o dividir por 1000 (tres órdenes de magnitud)</text>
+</svg>

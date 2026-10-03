@@ -303,6 +303,19 @@ def generar_html_unificado(
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
+    <!-- Soporte tipográfico para fórmulas matemáticas LaTeX con KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"
+            onload="renderMathInElement(document.body, {{
+                delimiters: [
+                    {{left: '$$', right: '$$', display: true}},
+                    {{left: '$', right: '$', display: false}},
+                    {{left: '\\\\(', right: '\\\\)', display: false}},
+                    {{left: '\\\\[', right: '\\\\]', display: true}}
+                ],
+                throwOnError: false
+            }});"></script>
     <style>
 {css_contenido}
     </style>
@@ -354,6 +367,7 @@ def compilar_html_a_pdf(html_path: Path, pdf_path: Path) -> bool:
             "--disable-gpu",
             "--no-sandbox",
             "--no-pdf-header-footer",
+            "--virtual-time-budget=5000",
             f"--print-to-pdf={pdf_path}",
             str(html_path)
         ]
@@ -371,6 +385,7 @@ def compilar_html_a_pdf(html_path: Path, pdf_path: Path) -> bool:
             "--disable-gpu",
             "--no-sandbox",
             "--no-pdf-header-footer",
+            "--virtual-time-budget=5000",
             f"--print-to-pdf={pdf_path}",
             str(html_path)
         ]
@@ -496,7 +511,7 @@ def main():
         print(f"\n[!] El documento HTML autocontenido está listo en:")
         print(f"    {html_salida}")
         print(f"\nPara generar el PDF sin cabeceras ni pies por defecto (sin fecha ni título arriba):")
-        print(f"  google-chrome --headless=new --disable-gpu --no-pdf-header-footer --print-to-pdf=\"{pdf_salida}\" \"{html_salida}\"")
+        print(f"  google-chrome --headless=new --disable-gpu --no-pdf-header-footer --virtual-time-budget=5000 --print-to-pdf=\"{pdf_salida}\" \"{html_salida}\"")
         print(f"O abre el HTML en el navegador, pulsa Ctrl+P y desmarca 'Encabezados y pies de página'.")
 
 
